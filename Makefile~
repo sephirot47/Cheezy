@@ -1,7 +1,7 @@
 all: main.exe main.o Vector3.o Vector2.o Color.o Debug.o Printable.o
 
 main.exe: main.o Vector3.o Vector2.o Color.o Debug.o Printable.o
-	g++ -L/usr/local/lib/ main.o Vector3.o Vector2.o Color.o Debug.o Printable.o -o main.exe -lSDL2
+	g++ -L/usr/local/lib/ main.o Vector3.o Vector2.o Color.o Debug.o Printable.o -o main.exe -lSDL
 
 main.o: main.cpp
 	g++ -c main.cpp -o main.o
