@@ -21,7 +21,7 @@ int main()
     SDL_Window *sdlWin;
     SDL_Renderer *sdlRen;
     InitWindow(&sdlWin, &sdlRen, 0, 0, 640, 640);
-    SDL_SetRenderDrawColor(sdlRen, 0, 0, 50, 255);
+    SDL_SetRenderDrawColor(sdlRen, 0, 90, 50, 255);
 
     bool quit = false;
     while(not quit)
