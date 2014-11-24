@@ -151,36 +151,36 @@ all: $(PROGRAM)
 #------------------------------------------
 
 %.d:%.c
-	@echo -n $(dir $<) > $@
-	@$(DEPEND.d) $< >> $@
+	@echo -n $(dir $<) > ./deps/$@
+	@$(DEPEND.d) $< >> ./deps/$@
 
 %.d:%.C
-	@echo -n $(dir $<) > $@
-	@$(DEPEND.d) $< >> $@
+	@echo -n $(dir $<) > ./deps/$@
+	@$(DEPEND.d) $< >> ./deps/$@
 
 %.d:%.cc
-	@echo -n $(dir $<) > $@
-	@$(DEPEND.d) $< >> $@
+	@echo -n $(dir $<) > ./deps/$@
+	@$(DEPEND.d) $< >> ./deps/$@
 
 %.d:%.cpp
-	@echo -n $(dir $<) > $@
-	@$(DEPEND.d) $< >> $@
+	@echo -n $(dir $<) > ./deps/$@
+	@$(DEPEND.d) $< >> ./deps/$@
 
 %.d:%.CPP
-	@echo -n $(dir $<) > $@
-	@$(DEPEND.d) $< >> $@
+	@echo -n $(dir $<) > ./deps/$@
+	@$(DEPEND.d) $< >> ./deps/$@
 
 %.d:%.c++
-	@echo -n $(dir $<) > $@
-	@$(DEPEND.d) $< >> $@
+	@echo -n $(dir $<) > ./deps/$@
+	@$(DEPEND.d) $< >> ./deps/$@
 
 %.d:%.cp
-	@echo -n $(dir $<) > $@
-	@$(DEPEND.d) $< >> $@
+	@echo -n $(dir $<) > ./deps/$@
+	@$(DEPEND.d) $< >> ./deps/$@
 
 %.d:%.cxx
-	@echo -n $(dir $<) > $@
-	@$(DEPEND.d) $< >> $@
+	@echo -n $(dir $<) > ./deps/$@
+	@$(DEPEND.d) $< >> ./deps/$@
 
 # Rules for generating object files (.o).
 #----------------------------------------
