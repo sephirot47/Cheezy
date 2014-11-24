@@ -14,5 +14,5 @@ int main()
     w = Vector3(3, 3, 3);
     Vector2 t(1, 0.5);
     Color c = Color(4, 5, 6, 1);
-    Debug::Log(v & u);
+    Debug::Log(3 & v & "asd" & 6 & "sad" & 6 & w & 7.0f);
 }

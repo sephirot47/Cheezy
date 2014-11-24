@@ -1,11 +1,77 @@
 #include "Printable.h"
 
-string Printable::operator&(const Printable& p) const
+string operator&(const Printable &p1, const Printable &p2)
 {
-    return this->ToString() + " " + p.ToString();
+    return p1.ToString() + " " + p2.ToString();
 }
 
-string Printable::operator&(const string &str) const
+string operator&(const Printable &p, const string &str)
 {
-    return this->ToString() + str;
+    return p.ToString() + " " + str;
+}
+
+string operator&(const string &str, const Printable &p)
+{
+    return str + " " + p.ToString();
+}
+
+string operator&(const string &str1, const string &str2)
+{
+    return str1 + " " + str2;
+}
+
+string operator&(const string &str, const float &f)
+{
+    char buf[32];
+    sprintf(buf, " %f", f);
+    return str + buf;
+}
+
+string operator&(const float &f, const string &str)
+{
+    char buf[32];
+    sprintf(buf, "%f ", f);
+    return buf + str;
+}
+
+string operator&(const float &f, const Printable &p)
+{
+    char buf[32];
+    sprintf(buf, "%f ", f);
+    return buf + p.ToString();
+}
+
+string operator&(const Printable &p, const float &f)
+{
+    char buf[32];
+    sprintf(buf, " %f", f);
+    return p.ToString() + buf;
+}
+
+string operator&(const int &a, const Printable &p)
+{
+    char buf[32];
+    sprintf(buf, "%i ", a);
+    return buf + p.ToString();
+}
+
+string operator&(const Printable &p, const int &a)
+{
+    char buf[32];
+    sprintf(buf, " %i", a);
+    return p.ToString() + buf;
+}
+
+string operator&(const int &a, const string &str)
+{
+    char buf[32];
+    sprintf(buf, " %i", a);
+    return buf + str;
+}
+
+string operator&(const string &str, const int &a)
+{
+    char buf[32];
+    sprintf(buf, "%i ", a);
+    return str + buf;
 }
