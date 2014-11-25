@@ -16,7 +16,9 @@ public:
     float x, y, z;
 
     Vector3();
+    Vector3(int x, int y, int z);
     Vector3(float x, float y, float z);
+    Vector3(double x, double y, double z);
 
     Vector3 Norm();   //Devuelve el vector normalizado
 

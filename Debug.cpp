@@ -1,15 +1,16 @@
 #include "Debug.h"
 
+
 using namespace std;
 
-void Debug::Warning(const string &str)
+void Debug::_Warning(const char* str, int line, const char* file)
 {
-    cerr << "Warning(" << __FILE__ << ", " << __LINE__ << "):" << str << endl;
+    cerr << "Warning(" << file << ":" << line << "): " << str << endl;
 }
 
-void Debug::Error(const string &str)
+void Debug::_Error(const char* str, int line, const char* file)
 {
-    cerr << "Error(" << __FILE__ << ", " << __LINE__ << "):" << str << endl;
+    cerr << "Error(" << file << ":" << line << "): " << str << endl;
 }
 
 void Debug::Log(Printable &p)

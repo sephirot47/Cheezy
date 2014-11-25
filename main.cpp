@@ -1,27 +1,58 @@
 #include <iostream>
+#include <GL/gl.h>
+#include <GL/glu.h>
 #include "SDL2/SDL.h"
 #include "Debug.h"
+#include "GameObject.h"
+#include "CheezyWin.h"
 #include "Color.h"
+#include "Scene.h"
+#include "Camera.h"
 #include "Vector2.h"
 #include "Vector3.h"
 
 using namespace std;
 
-int InitWindow(SDL_Window **win, SDL_Renderer **ren, int x, int y, int width, int height)
+Camera cam;
+Scene *scene;
+
+void DrawAxis()
 {
-    if(SDL_Init(SDL_INIT_EVERYTHING) != 0) {Debug::Error("Error: could not open the window!"); return 0;}
-    *win = SDL_CreateWindow("Cheezy window", x, y, width, height, SDL_WINDOW_SHOWN);
-    if(*win == 0) {Debug::Error("Error: could not create the window!"); return 0;}
-    *ren = SDL_CreateRenderer(*win, -1, 0);
-    return 1;
+    glMatrixMode(GL_MODELVIEW);
+    glPushMatrix();
+    glLoadIdentity();
+    glBegin(GL_LINES);
+    glColor3f(1.0f, 0.0f, 0.0f);
+    glVertex3f(0.0f, 0.0f, 0.0f);
+    glVertex3f(9999.0f, 0.0f, 0.0f);
+    glEnd();
+    glBegin(GL_LINES);
+    glColor3f(0.0f, 1.0f, 0.0f);
+    glVertex3f(0.0f, 0.0f, 0.0f);
+    glVertex3f(0.0f, 9999.0f, 0.0);
+    glEnd();
+    glBegin(GL_LINES);
+    glColor3f(0.0f, 0.0f, 1.0f);
+    glVertex3f(0.0f, 0.0f, 0.0f);
+    glVertex3f(0.0f, 0.0f, 9999.0f);
+    glEnd();
+    glPopMatrix();
 }
 
 int main()
 {
-    SDL_Window *sdlWin;
-    SDL_Renderer *sdlRen;
-    InitWindow(&sdlWin, &sdlRen, 0, 0, 640, 640);
-    SDL_SetRenderDrawColor(sdlRen, 0, 90, 50, 255);
+    CheezyWin win;
+    win.Init();
+
+    glEnable(GL_DEPTH_TEST);
+
+    scene = win.CreateScene("FirstScene");
+    win.SetCurrentScene("FirstScene");
+    scene->Add(new GameObject("go1"));
+    scene->Add(new GameObject("go2"));
+    scene->Find("go1")->pos = Vector3(1, 0, 0);
+    scene->SetCamera(&cam);
+    cam.LookAt(Vector3(0,0,0));
 
     bool quit = false;
     while(not quit)
@@ -30,15 +61,37 @@ int main()
         while(SDL_PollEvent(&e))
         {
             if(e.type == SDL_QUIT) quit = true;
+            if(e.type == SDL_KEYDOWN)
+            {
+                if(e.key.keysym.sym == SDLK_w)
+                {
+                    cam.pos = cam.pos + (cam.forward.Norm() * 0.03f);
+                }
+                else if(e.key.keysym.sym == SDLK_s)
+                {
+                    cam.pos = cam.pos - (cam.forward.Norm() * 0.03f);
+                }
+                else if(e.key.keysym.sym == SDLK_a)
+                {
+                    cam.forward.y += 0.04;
+                    cam.forward.z += 0.04;
+                }
+                else if(e.key.keysym.sym == SDLK_d)
+                {
+                    cam.forward.y -= 0.04;
+                    cam.forward.z -= 0.04;
+                }
+            }
         }
 
-        SDL_RenderClear(sdlRen);
-        SDL_RenderPresent(sdlRen);
-        SDL_Delay(25);
+        cam.LookAt(scene->Find("go2")->pos);
+
+        win.Draw();
+        DrawAxis();
     }
 
-    SDL_DestroyWindow(sdlWin);
-    SDL_Quit();
+    DbgWarning("OSTIA");
+    win.Destroy();
 
     return 0;
 }

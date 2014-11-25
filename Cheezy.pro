@@ -8,7 +8,11 @@ SOURCES += main.cpp \
     Debug.cpp \
     Printable.cpp \
     Vector2.cpp \
-    Vector3.cpp
+    Vector3.cpp \
+    GameObject.cpp \
+    Scene.cpp \
+    Camera.cpp \
+    CheezyWin.cpp
 
 include(deployment.pri)
 qtcAddDeployment()
@@ -20,5 +24,9 @@ HEADERS += \
     Debug.h \
     Printable.h \
     Vector2.h \
-    Vector3.h
+    Vector3.h \
+    GameObject.h \
+    Scene.h \
+    Camera.h \
+    CheezyWin.h
 

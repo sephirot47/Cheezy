@@ -11,6 +11,19 @@ Vector2::Vector2(float x, float y)
     this->y = y;
 }
 
+Vector2::Vector2(int x, int y)
+{
+    this->x = (float)x;
+    this->y = (float)y;
+}
+
+Vector2::Vector2(double x, double y)
+{
+    this->x = (float)x;
+    this->y = (float)y;
+}
+
+
 float inline Vector2::Mod()
 {
     return sqrt(x*x + y*y);

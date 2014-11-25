@@ -15,7 +15,9 @@ public:
     float x, y;
 
     Vector2();
+    Vector2(int x, int y);
     Vector2(float x, float y);
+    Vector2(double x, double y);
 
     Vector2 Norm();   //Devuelve el vector normalizado
 
