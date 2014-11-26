@@ -13,47 +13,18 @@
 
 using namespace std;
 
-Camera cam;
-Scene *scene;
-
-void DrawAxis()
-{
-    glMatrixMode(GL_MODELVIEW);
-    glPushMatrix();
-    glLoadIdentity();
-    glBegin(GL_LINES);
-    glColor3f(1.0f, 0.0f, 0.0f);
-    glVertex3f(0.0f, 0.0f, 0.0f);
-    glVertex3f(9999.0f, 0.0f, 0.0f);
-    glEnd();
-    glBegin(GL_LINES);
-    glColor3f(0.0f, 1.0f, 0.0f);
-    glVertex3f(0.0f, 0.0f, 0.0f);
-    glVertex3f(0.0f, 9999.0f, 0.0);
-    glEnd();
-    glBegin(GL_LINES);
-    glColor3f(0.0f, 0.0f, 1.0f);
-    glVertex3f(0.0f, 0.0f, 0.0f);
-    glVertex3f(0.0f, 0.0f, 9999.0f);
-    glEnd();
-    glPopMatrix();
-}
-
 int main()
 {
     CheezyWin win;
     win.Init();
 
-    glEnable(GL_DEPTH_TEST);
-
-    scene = win.CreateScene("FirstScene");
-    win.SetCurrentScene("FirstScene");
+    Camera cam;
+    Scene *scene = win.CreateScene("FirstScene");
     scene->Add(new GameObject("go1"));
     scene->Add(new GameObject("go2"));
-    scene->Find("go1")->pos = Vector3(1, 0, 0);
     scene->SetCamera(&cam);
-    cam.LookAt(Vector3(0,0,0));
 
+    win.drawAxis = true;
     bool quit = false;
     while(not quit)
     {
@@ -61,7 +32,7 @@ int main()
         while(SDL_PollEvent(&e))
         {
             if(e.type == SDL_QUIT) quit = true;
-            if(e.type == SDL_KEYDOWN)
+            else if(e.type == SDL_KEYDOWN)
             {
                 if(e.key.keysym.sym == SDLK_w)
                 {
@@ -83,15 +54,9 @@ int main()
                 }
             }
         }
-
-        cam.LookAt(scene->Find("go2")->pos);
-
+        cam.LookAt(Vector3(0, 0, 0));
         win.Draw();
-        DrawAxis();
     }
-
-    DbgWarning("OSTIA");
     win.Destroy();
-
     return 0;
 }

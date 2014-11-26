@@ -15,6 +15,8 @@ class CheezyWin
 private:
     SceneMap scenes;
     int InitWindow(SDL_Window **win, SDL_Renderer **ren, int x, int y, int width, int height);
+    void DrawAxis();
+
     Scene *currentScene;
 
 public:
@@ -26,6 +28,8 @@ public:
     Scene* CreateScene(const char* sceneName);
     void SetCurrentScene(const char* sceneName);
     Scene* GetScene(const char* sceneName);
+
+    bool drawAxis;
 
     void Draw();
     void Destroy();

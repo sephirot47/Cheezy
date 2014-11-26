@@ -3,6 +3,8 @@
 CheezyWin::CheezyWin()
 {
     scenes = SceneMap();
+    drawAxis = false;
+    currentScene = NULL;
 }
 
 int CheezyWin::InitWindow(SDL_Window **win, SDL_Renderer **ren, int x, int y, int width, int height)
@@ -18,11 +20,15 @@ void CheezyWin::Init()
 {
     InitWindow(&sdlWin, &sdlRen, 0, 0, 640, 640);
     SDL_SetRenderDrawColor(sdlRen, 0, 90, 50, 255);
+
+    glEnable(GL_DEPTH_TEST);
 }
+
 Scene* CheezyWin::CreateScene(const char* sceneName)
 {
     Scene *scene = new Scene(sceneName);
     scenes.insert(pair<string, Scene*>(sceneName, scene));
+    if(currentScene == NULL) SetCurrentScene(sceneName);
     return scene;
 }
 
@@ -36,6 +42,30 @@ void CheezyWin::SetCurrentScene(const char* sceneName)
     currentScene = GetScene(sceneName);
 }
 
+
+void CheezyWin::DrawAxis()
+{
+    glMatrixMode(GL_MODELVIEW);
+    glPushMatrix();
+    glLoadIdentity();
+    glBegin(GL_LINES);
+    glColor3f(1.0f, 0.0f, 0.0f);
+    glVertex3f(0.0f, 0.0f, 0.0f);
+    glVertex3f(9999.0f, 0.0f, 0.0f);
+    glEnd();
+    glBegin(GL_LINES);
+    glColor3f(0.0f, 1.0f, 0.0f);
+    glVertex3f(0.0f, 0.0f, 0.0f);
+    glVertex3f(0.0f, 9999.0f, 0.0);
+    glEnd();
+    glBegin(GL_LINES);
+    glColor3f(0.0f, 0.0f, 1.0f);
+    glVertex3f(0.0f, 0.0f, 0.0f);
+    glVertex3f(0.0f, 0.0f, 9999.0f);
+    glEnd();
+    glPopMatrix();
+}
+
 void CheezyWin::Draw()
 {
     if(currentScene != 0 && currentScene->name != "unnamedScene")
@@ -43,6 +73,8 @@ void CheezyWin::Draw()
         currentScene->Update();
         currentScene->Draw();
     }
+
+    if(drawAxis) DrawAxis();
 
     SDL_GL_SwapWindow(sdlWin);
     SDL_Delay(25);
