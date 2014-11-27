@@ -66,16 +66,13 @@ void GameObject::_Draw()
     glScalef(scale.x, scale.y, scale.z);
 
     glBegin(GL_TRIANGLES);
-
     for(int i = 0; i < (int)vertexIndexes.size(); ++i)
     {
         int j = vertexIndexes[i]-1;
         if(j < 0 or j >= (int)vertices.size())  continue;
-
         glColor3f(1.0, 0.0, 0.0);
         glVertex3f(vertices[j].x, vertices[j].y, vertices[j].z);
     }
-
     glEnd();
 
     for(auto it : gameObjects)
@@ -88,6 +85,7 @@ void GameObject::_Draw()
 
 void GameObject::LoadMesh(const char *filename)
 {
+    vector<Vector3> tempVertices = vector<Vector3>();
     vertices = vector<Vector3>();
     vertexIndexes = vector<unsigned int>();
     FILE * f = fopen("mario_obj.obj", "r");
@@ -107,7 +105,7 @@ void GameObject::LoadMesh(const char *filename)
             Vector3 v;
             res = fscanf(f, "%f %f %f\n", &v.x, &v.y, &v.z);
             if(res < 0) return;
-            vertices.push_back(v);
+            tempVertices.push_back(v);
         }
         else if (strcmp(lineHeader, "f") == 0)
         {
@@ -132,7 +130,11 @@ void GameObject::LoadMesh(const char *filename)
             //normalIndices.push_back(normalIndex[2]);
         }
     }
-    DbgLog("asdadsdsa");
+
+    for(int i = 0; i < (int)vertexIndexes.size(); ++i)
+    {
+        vertices.push_back(tempVertices[vertexIndexes[i]-1]);
+    }
 }
 
 void GameObject::Add(GameObject *go)
