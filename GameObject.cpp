@@ -4,44 +4,64 @@
 
 GameObject::GameObject()
 {
-    pos = Vector3(.0f, .0f, .0f);
-    rot = Vector3(.0f, .0f, .0f);
+    pos = Vector3(0, 0, 0);
+    rot = Vector3(0, 0, 0);
+    scale = Vector3(1, 1, 1);
     name = "";
+    idGameObjects = 0;
+    LoadMesh("Computer Table.obj");
 }
 
 GameObject::GameObject(string name)
 {
     this->name = name;
+    scale = Vector3(1, 1, 1);
+    idGameObjects = 0;
+    LoadMesh("Computer Table.obj");
 }
 
 GameObject::GameObject(Vector3 pos, Vector3 rot)
 {
     this->pos = pos;
     this->rot = rot;
+    scale = Vector3(1, 1, 1);
     name = "";
+    idGameObjects = 0;
+    LoadMesh("Computer Table.obj");
 }
 
 GameObject::GameObject(string name, Vector3 pos, Vector3 rot)
 {
     this->pos = pos;
     this->rot = rot;
+    scale = Vector3(1, 1, 1);
     this->name = name;
+    idGameObjects = 0;
+    LoadMesh("Computer Table.obj");
+}
+
+void GameObject::_Update()
+{
+    for(auto it : gameObjects)
+    {
+        it.second->_Update();
+    }
+    Update();
 }
 
 void GameObject::Update()
 {
-    if(name == "go1") rot.z += 5;
-    else rot.y += 5;
-    pos.x = cos(clock() * 0.0001f);
-    if(name == "go1") pos.y = sin(clock() * 0.0001f);
-    else pos.z = sin(clock() * 0.0001f);
+    pos.x = sin(clock() * name.length() * 0.0000002f) * 1;
+    pos.y = sin(clock() * name.length() * 0.0000002f) * 1;
+    pos.z = sin(clock() * name.length() * 0.0000002f) * 1;
+
+    rot = Vector3(float(name.length()), name.length()/2.0f, name.length()/4.0f);
+    if(name == "go1") pos = pos * 0.1f;
 }
 
-void GameObject::Draw()
+void GameObject::_Draw()
 {
     glPushMatrix();
-    glMatrixMode(GL_MODELVIEW);
-    glLoadIdentity();
 
     glTranslatef(pos.x, pos.y, pos.z);
 
@@ -49,52 +69,98 @@ void GameObject::Draw()
     glRotatef(rot.y, 0.0, 1.0, 0.0);
     glRotatef(rot.z, 0.0, 0.0, 1.0);
 
-    glScalef(0.1, 0.1, 0.1);
+    glScalef(scale.x, scale.y, scale.z);
 
-    glBegin(GL_QUADS);                // Begin drawing the color cube with 6 quads
-         // Top face (y = 1.0f)
-         // Define vertices in counter-clockwise (CCW) order with normal pointing out
-         glColor3f(0.0f, 1.0f, 0.0f);     // Green
-         glVertex3f( 1.0f, 1.0f, -1.0f);
-         glVertex3f(-1.0f, 1.0f, -1.0f);
-         glVertex3f(-1.0f, 1.0f,  1.0f);
-         glVertex3f( 1.0f, 1.0f,  1.0f);
+    glBegin(GL_TRIANGLES);
 
-         // Bottom face (y = -1.0f)
-         glColor3f(1.0f, 0.5f, 0.0f);     // Orange
-         glVertex3f( 1.0f, -1.0f,  1.0f);
-         glVertex3f(-1.0f, -1.0f,  1.0f);
-         glVertex3f(-1.0f, -1.0f, -1.0f);
-         glVertex3f( 1.0f, -1.0f, -1.0f);
+    for(int i = 0; i < (int)vertexIndexes.size(); ++i)
+    {
+        int j = vertexIndexes[i]-1;
+        if(j < 0 or j >= (int)vertices.size())  continue;
 
-         // Front face  (z = 1.0f)
-         glColor3f(1.0f, 0.0f, 0.0f);     // Red
-         glVertex3f( 1.0f,  1.0f, 1.0f);
-         glVertex3f(-1.0f,  1.0f, 1.0f);
-         glVertex3f(-1.0f, -1.0f, 1.0f);
-         glVertex3f( 1.0f, -1.0f, 1.0f);
+        glColor3f(1.0, 0.0, 0.0);
+        glVertex3f(vertices[j].x, vertices[j].y, vertices[j].z);
+        /*glVertex3f(vertices[vertexIndexes[i+1]-1].x,
+                   vertices[vertexIndexes[i+1]-1].y,
+                   vertices[vertexIndexes[i+1]-1].z);
+        glVertex3f(vertices[vertexIndexes[i+2]-1].x,
+                   vertices[vertexIndexes[i+2]-1].y,
+                   vertices[vertexIndexes[i+2]-1].z);*/
+    }
 
-         // Back face (z = -1.0f)
-         glColor3f(1.0f, 1.0f, 0.0f);     // Yellow
-         glVertex3f( 1.0f, -1.0f, -1.0f);
-         glVertex3f(-1.0f, -1.0f, -1.0f);
-         glVertex3f(-1.0f,  1.0f, -1.0f);
-         glVertex3f( 1.0f,  1.0f, -1.0f);
+    glEnd();
 
-         // Left face (x = -1.0f)
-         glColor3f(0.0f, 0.0f, 1.0f);     // Blue
-         glVertex3f(-1.0f,  1.0f,  1.0f);
-         glVertex3f(-1.0f,  1.0f, -1.0f);
-         glVertex3f(-1.0f, -1.0f, -1.0f);
-         glVertex3f(-1.0f, -1.0f,  1.0f);
-
-         // Right face (x = 1.0f)
-         glColor3f(1.0f, 0.0f, 1.0f);     // Magenta
-         glVertex3f(1.0f,  1.0f, -1.0f);
-         glVertex3f(1.0f,  1.0f,  1.0f);
-         glVertex3f(1.0f, -1.0f,  1.0f);
-         glVertex3f(1.0f, -1.0f, -1.0f);
-      glEnd();  // End of drawing color-cube
+    for(auto it : gameObjects)
+    {
+        it.second->_Draw();
+    }
 
     glPopMatrix();
+}
+
+void GameObject::LoadMesh(const char *filename)
+{
+    vertices = vector<Vector3>();
+    vertexIndexes = vector<unsigned int>();
+    FILE * f = fopen("mario_obj.obj", "r");
+    if(f == NULL)
+    {
+        DbgError("Impossible to open the file!");
+        return;
+    }
+
+    while(!feof(f))
+    {
+        char lineHeader[128];
+        int res = fscanf(f, "%s", lineHeader);
+        if(res < 0) return;
+        if (strcmp(lineHeader, "v") == 0)
+        {
+            Vector3 v;
+            res = fscanf(f, "%f %f %f\n", &v.x, &v.y, &v.z);
+            if(res < 0) return;
+            vertices.push_back(v);
+        }
+        else if (strcmp(lineHeader, "f") == 0)
+        {
+            unsigned int vertexIndex[3], uvIndex[3], normalIndex[3];
+            int matches = fscanf(f, "%d/%d/%d %d/%d/%d %d/%d/%d\n", &vertexIndex[0], &uvIndex[0],
+                                                                    &normalIndex[0], &vertexIndex[1],
+                                                                    &uvIndex[1], &normalIndex[1], &vertexIndex[2],
+                                                                    &uvIndex[2], &normalIndex[2] );
+            if (matches != 9)
+            {
+                DbgError("File can't be read by our simple parser : ( Try exporting with other options\n");
+                return;
+            }
+            vertexIndexes.push_back(vertexIndex[0]);
+            vertexIndexes.push_back(vertexIndex[1]);
+            vertexIndexes.push_back(vertexIndex[2]);
+            //uvIndices    .push_back(uvIndex[0]);
+            //uvIndices    .push_back(uvIndex[1]);
+            //uvIndices    .push_back(uvIndex[2]);
+            //normalIndices.push_back(normalIndex[0]);
+            //normalIndices.push_back(normalIndex[1]);
+            //normalIndices.push_back(normalIndex[2]);
+        }
+    }
+    DbgLog("asdadsdsa");
+}
+
+void GameObject::Add(GameObject *go)
+{
+    ++idGameObjects;
+    if(go->name == "") //Assignem nom per defecte
+    {
+        char buff[1024];
+        sprintf(buff, "%s.GO%d", name.c_str(), idGameObjects);
+        go->name = buff;
+    }
+
+    gameObjects.insert(pair<string, GameObject*>(go->name, go));
+}
+
+GameObject* GameObject::Find(const string &name) const
+{
+    return gameObjects.find(name)->second;
 }

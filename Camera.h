@@ -9,12 +9,13 @@ class Camera
 {
 public:
     Vector3 pos;
-    Vector3 forward;
+    Vector3 rot;
 
     Camera();
 
-    void ApplyPerspective();
+    Vector3 GetForward();
     void LookAt(Vector3 to);
+    void ApplyPerspective();
 };
 
 #endif // CAMERA_H

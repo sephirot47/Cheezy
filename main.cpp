@@ -16,47 +16,19 @@ using namespace std;
 int main()
 {
     CheezyWin win;
-    win.Init();
+    win.Init(640, 640);
 
-    Camera cam;
+    Camera cam = Camera();
     Scene *scene = win.CreateScene("FirstScene");
-    scene->Add(new GameObject("go1"));
-    scene->Add(new GameObject("go2"));
-    scene->SetCamera(&cam);
-
+    GameObject *go1 = new GameObject("go1");
+    scene->Add(go1);
+    scene->SetCamera(cam);
+    scene->cam->pos = Vector3(0.0, 0.5, 0.0);
+    go1->scale = Vector3(0.1, 0.1, 0.1) * 0.1f;
+    cam.LookAt(Vector3(0,0,0));
     win.drawAxis = true;
-    bool quit = false;
-    while(not quit)
-    {
-        SDL_Event e;
-        while(SDL_PollEvent(&e))
-        {
-            if(e.type == SDL_QUIT) quit = true;
-            else if(e.type == SDL_KEYDOWN)
-            {
-                if(e.key.keysym.sym == SDLK_w)
-                {
-                    cam.pos = cam.pos + (cam.forward.Norm() * 0.03f);
-                }
-                else if(e.key.keysym.sym == SDLK_s)
-                {
-                    cam.pos = cam.pos - (cam.forward.Norm() * 0.03f);
-                }
-                else if(e.key.keysym.sym == SDLK_a)
-                {
-                    cam.forward.y += 0.04;
-                    cam.forward.z += 0.04;
-                }
-                else if(e.key.keysym.sym == SDLK_d)
-                {
-                    cam.forward.y -= 0.04;
-                    cam.forward.z -= 0.04;
-                }
-            }
-        }
-        cam.LookAt(Vector3(0, 0, 0));
-        win.Draw();
-    }
+
+    win.Loop();
     win.Destroy();
     return 0;
 }

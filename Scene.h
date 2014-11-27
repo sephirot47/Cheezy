@@ -4,33 +4,43 @@
 #include <iostream>
 #include <string>
 #include <map>
+#include <SDL2/SDL.h>
 
 #include "GameObject.h"
+#include "Debug.h"
 #include "Camera.h"
 
-typedef map<string, GameObject*> goMap;
+typedef map<string, GameObject*> GameObjMap;
 
 using namespace std;
 
 class Scene
 {
 private:
-    Camera *cam;
     int idGameObjects;
-    goMap gameObjects;
+    GameObjMap gameObjects;
 
 public:
+
     string name;
+
     Scene();
     Scene(string name);
-
-    void Update();
-    void Draw();
 
     void Add(GameObject *go);
     GameObject* Find(const string &name) const;
 
-    void SetCamera(Camera *cam);
+    Camera *cam;
+    void SetCamera(Camera &cam);
+
+    void Update();
+    void Draw();
+
+    void _Update();
+
+    bool IsPressed(int keyCode);
+    virtual void OnKeyDown();
+    virtual void OnKeyUp();
 };
 
 #endif //SCENE_H

@@ -2,22 +2,30 @@
 
 Camera::Camera()
 {
-    pos = Vector3(-0.5f, 3.0f, -0.5f);
-    forward = Vector3(-0.5f, 3.0f, -0.5f);
+    pos = Vector3(0, 0, 0);
+    rot = Vector3(0, 0, 0);
 }
 
+Vector3 Camera::GetForward()
+{
+    return (rot).Norm();
+}
 
 void Camera::LookAt(Vector3 to)
 {
-    forward = to - pos;
+    rot = to - pos;
 }
 
 void Camera::ApplyPerspective()
 {
     glMatrixMode(GL_PROJECTION);
+    glPushMatrix();
     glLoadIdentity();
     gluPerspective(45, 1.0, 0.1, -5.0);
-    gluLookAt(pos.x, pos.y, pos.z,
-              pos.x + forward.x, pos.y + forward.y, pos.z + forward.z,
-              0.0, 1.0, 0.0);
+    glTranslatef(pos.x, pos.y, pos.z);
+
+    glRotatef(rot.x, 1.0, 0.0, 0.0);
+    glRotatef(rot.y, 0.0, 1.0, 0.0);
+    glRotatef(rot.z, 0.0, 0.0, 1.0);
+    glPopMatrix();
 }

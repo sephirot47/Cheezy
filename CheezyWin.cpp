@@ -16,9 +16,9 @@ int CheezyWin::InitWindow(SDL_Window **win, SDL_Renderer **ren, int x, int y, in
     return 1;
 }
 
-void CheezyWin::Init()
+void CheezyWin::Init(int width, int height)
 {
-    InitWindow(&sdlWin, &sdlRen, 0, 0, 640, 640);
+    InitWindow(&sdlWin, &sdlRen, 0, 0, width, height);
     SDL_SetRenderDrawColor(sdlRen, 0, 90, 50, 255);
 
     glEnable(GL_DEPTH_TEST);
@@ -42,7 +42,6 @@ void CheezyWin::SetCurrentScene(const char* sceneName)
     currentScene = GetScene(sceneName);
 }
 
-
 void CheezyWin::DrawAxis()
 {
     glMatrixMode(GL_MODELVIEW);
@@ -51,33 +50,30 @@ void CheezyWin::DrawAxis()
     glBegin(GL_LINES);
     glColor3f(1.0f, 0.0f, 0.0f);
     glVertex3f(0.0f, 0.0f, 0.0f);
-    glVertex3f(9999.0f, 0.0f, 0.0f);
+    glVertex3f(9999999.0f, 0.0f, 0.0f);
     glEnd();
     glBegin(GL_LINES);
     glColor3f(0.0f, 1.0f, 0.0f);
     glVertex3f(0.0f, 0.0f, 0.0f);
-    glVertex3f(0.0f, 9999.0f, 0.0);
+    glVertex3f(0.0f, 9999999.0f, 0.0);
     glEnd();
     glBegin(GL_LINES);
     glColor3f(0.0f, 0.0f, 1.0f);
     glVertex3f(0.0f, 0.0f, 0.0f);
-    glVertex3f(0.0f, 0.0f, 9999.0f);
+    glVertex3f(0.0f, 0.0f, 9999999.0f);
     glEnd();
     glPopMatrix();
 }
 
 void CheezyWin::Draw()
 {
-    if(currentScene != 0 && currentScene->name != "unnamedScene")
+    if(currentScene != 0)
     {
         currentScene->Update();
         currentScene->Draw();
     }
 
     if(drawAxis) DrawAxis();
-
-    SDL_GL_SwapWindow(sdlWin);
-    SDL_Delay(25);
 }
 
 void CheezyWin::Destroy()
@@ -85,3 +81,45 @@ void CheezyWin::Destroy()
     SDL_DestroyWindow(sdlWin);
     SDL_Quit();
 }
+
+void CheezyWin::Loop()
+{
+    bool quit = false;
+    while(not quit)
+    {
+        SDL_Event e;
+        while(SDL_PollEvent(&e))
+        {
+            if(e.type == SDL_QUIT) quit = true;
+            else if(e.type == SDL_KEYDOWN)
+            {
+                _OnKeyDown();
+            }
+            else if(e.type == SDL_KEYUP)
+            {
+                _OnKeyUp();
+            }
+        }
+
+        currentScene->_Update();
+        Draw();
+
+        SDL_GL_SwapWindow(sdlWin);
+        SDL_Delay(CZ_DELAY_TIME);
+    }
+}
+
+void CheezyWin::_OnKeyDown()
+{
+    OnKeyDown();
+    currentScene->OnKeyDown();
+}
+
+void CheezyWin::_OnKeyUp()
+{
+    OnKeyUp();
+    currentScene->OnKeyUp();
+}
+
+void CheezyWin::OnKeyDown() {}
+void CheezyWin::OnKeyUp() {}

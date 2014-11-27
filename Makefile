@@ -57,7 +57,7 @@
 ##==========================================================================
 
 # The pre-processor and compiler options.
-MY_CFLAGS =
+MY_CFLAGS = -std=c++11
 
 # The linker options.
 MY_LIBS   = -lSDL2 -lGL -lGLU
