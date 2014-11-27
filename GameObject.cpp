@@ -51,18 +51,12 @@ void GameObject::_Update()
 
 void GameObject::Update()
 {
-    pos.x = sin(clock() * name.length() * 0.0000002f) * 1;
-    pos.y = sin(clock() * name.length() * 0.0000002f) * 1;
-    pos.z = sin(clock() * name.length() * 0.0000002f) * 1;
-
-    rot = Vector3(float(name.length()), name.length()/2.0f, name.length()/4.0f);
-    if(name == "go1") pos = pos * 0.1f;
 }
 
 void GameObject::_Draw()
 {
+    glMatrixMode(GL_MODELVIEW);
     glPushMatrix();
-
     glTranslatef(pos.x, pos.y, pos.z);
 
     glRotatef(rot.x, 1.0, 0.0, 0.0);
@@ -80,12 +74,6 @@ void GameObject::_Draw()
 
         glColor3f(1.0, 0.0, 0.0);
         glVertex3f(vertices[j].x, vertices[j].y, vertices[j].z);
-        /*glVertex3f(vertices[vertexIndexes[i+1]-1].x,
-                   vertices[vertexIndexes[i+1]-1].y,
-                   vertices[vertexIndexes[i+1]-1].z);
-        glVertex3f(vertices[vertexIndexes[i+2]-1].x,
-                   vertices[vertexIndexes[i+2]-1].y,
-                   vertices[vertexIndexes[i+2]-1].z);*/
     }
 
     glEnd();

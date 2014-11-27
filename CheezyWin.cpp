@@ -3,7 +3,7 @@
 CheezyWin::CheezyWin()
 {
     scenes = SceneMap();
-    drawAxis = false;
+    drawAxis = true;
     currentScene = NULL;
 }
 

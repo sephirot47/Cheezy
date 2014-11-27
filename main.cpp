@@ -23,8 +23,7 @@ int main()
     GameObject *go1 = new GameObject("go1");
     scene->Add(go1);
     scene->SetCamera(cam);
-    scene->cam->pos = Vector3(0.0, 0.5, 0.0);
-    go1->scale = Vector3(0.1, 0.1, 0.1) * 0.1f;
+    //go1->scale = Vector3(0.1, 0.1, 0.1);
     cam.LookAt(Vector3(0,0,0));
     win.drawAxis = true;
 
