@@ -10,6 +10,7 @@
 #include "Camera.h"
 #include "Vector2.h"
 #include "Vector3.h"
+#include "Quaternion.h"
 
 using namespace std;
 
@@ -17,6 +18,21 @@ int main()
 {
     CheezyWin win;
     win.Init(640, 640);
+    
+    Quaternion q = Quaternion(Vector3(1,1,90),5);
+    
+    float mat[16];
+    
+    q.GetRotMatrix(mat);
+
+    for (int i = 0; i < 4; ++i) {
+        for (int j = 0; j < 4; ++j) {
+            cout << " " << mat[i];
+        }
+        cout << endl;
+    }
+
+    DbgLog(q);
 
     Camera cam = Camera();
     Scene *scene = win.CreateScene("FirstScene");
