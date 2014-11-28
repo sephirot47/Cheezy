@@ -46,34 +46,42 @@ void CheezyWin::DrawAxis()
 {
     glMatrixMode(GL_MODELVIEW);
     glPushMatrix();
-    glLoadIdentity();
     glBegin(GL_LINES);
     glColor3f(1.0f, 0.0f, 0.0f);
     glVertex3f(0.0f, 0.0f, 0.0f);
-    glVertex3f(9999999.0f, 0.0f, 0.0f);
+    glVertex3f(999999999.0f, 0.0f, 0.0f);
     glEnd();
     glBegin(GL_LINES);
     glColor3f(0.0f, 1.0f, 0.0f);
     glVertex3f(0.0f, 0.0f, 0.0f);
-    glVertex3f(0.0f, 9999999.0f, 0.0);
+    glVertex3f(0.0f, 999999999.0f, 0.0);
     glEnd();
     glBegin(GL_LINES);
     glColor3f(0.0f, 0.0f, 1.0f);
     glVertex3f(0.0f, 0.0f, 0.0f);
-    glVertex3f(0.0f, 0.0f, 9999999.0f);
+    glVertex3f(0.0f, 0.0f, 999999999.0f);
     glEnd();
     glPopMatrix();
 }
 
 void CheezyWin::Draw()
 {
+    glClearColor(0.0, 0.0, 0.0, 1.0);
+    glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
+
     if(currentScene != 0)
     {
         currentScene->Update();
         currentScene->Draw();
     }
 
-    if(drawAxis) DrawAxis();
+
+    if(drawAxis)
+    {
+        DrawAxis();
+    }
+
+    glFlush();
 }
 
 void CheezyWin::Destroy()

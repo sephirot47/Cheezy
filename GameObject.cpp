@@ -65,13 +65,11 @@ void GameObject::_Draw()
 
     glScalef(scale.x, scale.y, scale.z);
 
-    glBegin(GL_TRIANGLES);
-    for(int i = 0; i < (int)vertexIndexes.size(); ++i)
+    glBegin(GL_QUADS);
+    for(int i = 0; i < (int)vertices.size(); ++i)
     {
-        int j = vertexIndexes[i]-1;
-        if(j < 0 or j >= (int)vertices.size())  continue;
-        glColor3f(1.0, 0.0, 0.0);
-        glVertex3f(vertices[j].x, vertices[j].y, vertices[j].z);
+        glColor4f(1.0, 0.0, 0.0, 1.0);
+        glVertex3f(vertices[i].x, vertices[i].y, vertices[i].z);
     }
     glEnd();
 
@@ -87,41 +85,43 @@ void GameObject::LoadMesh(const char *filename)
 {
     vector<Vector3> tempVertices = vector<Vector3>();
     vertices = vector<Vector3>();
-    vertexIndexes = vector<unsigned int>();
+    vector<unsigned int> vertexIndexes = vector<unsigned int>();
+
     FILE * f = fopen("mario_obj.obj", "r");
     if(f == NULL)
     {
-        DbgError("Impossible to open the file!");
+        DbgError("Error opening the file!");
         return;
     }
 
     while(!feof(f))
     {
-        char lineHeader[128];
+        char lineHeader[1024];
         int res = fscanf(f, "%s", lineHeader);
-        if(res < 0) return;
+        if(res < 0) break;
         if (strcmp(lineHeader, "v") == 0)
         {
             Vector3 v;
             res = fscanf(f, "%f %f %f\n", &v.x, &v.y, &v.z);
-            if(res < 0) return;
+            if(res < 0) break;
             tempVertices.push_back(v);
         }
         else if (strcmp(lineHeader, "f") == 0)
         {
-            unsigned int vertexIndex[3], uvIndex[3], normalIndex[3];
-            int matches = fscanf(f, "%d/%d/%d %d/%d/%d %d/%d/%d\n", &vertexIndex[0], &uvIndex[0],
-                                                                    &normalIndex[0], &vertexIndex[1],
-                                                                    &uvIndex[1], &normalIndex[1], &vertexIndex[2],
-                                                                    &uvIndex[2], &normalIndex[2] );
+            unsigned int vertexIndex[4], uvIndex[4], normalIndex[4];
+            int matches = fscanf(f, "%d/%d/%d %d/%d/%d %d/%d/%d %d/%d/%d\n", &vertexIndex[0], &uvIndex[0], &normalIndex[0],
+                                                                    &vertexIndex[1], &uvIndex[1], &normalIndex[1],
+                                                                    &vertexIndex[2], &uvIndex[2], &normalIndex[2],
+                                                                    &vertexIndex[3], &uvIndex[3], &normalIndex[3] );
             if (matches != 9)
             {
-                DbgError("File can't be read by our simple parser : ( Try exporting with other options\n");
-                return;
+                DbgError("Error reading the file!");
+                break;
             }
             vertexIndexes.push_back(vertexIndex[0]);
             vertexIndexes.push_back(vertexIndex[1]);
             vertexIndexes.push_back(vertexIndex[2]);
+            vertexIndexes.push_back(vertexIndex[3]);
             //uvIndices    .push_back(uvIndex[0]);
             //uvIndices    .push_back(uvIndex[1]);
             //uvIndices    .push_back(uvIndex[2]);

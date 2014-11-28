@@ -24,8 +24,8 @@ void Scene::_Update()
 
 void Scene::Update()
 {
-    double rotSpeed = 1.0;
-    float moveSpeed = 0.5f;
+    double rotSpeed = 1.0f;
+    float moveSpeed = 0.25f;
 
     if(IsPressed(SDLK_UP))
         cam->pos = cam->pos + cam->GetForward() * moveSpeed;
@@ -47,16 +47,11 @@ void Scene::Update()
 
 void Scene::Draw()
 {
-    glClearColor(1.0, 1.0, 1.0, 1.0);
-    glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
-
     cam->ApplyPerspective();
     for(auto it : gameObjects)
     {
         it.second->_Draw();
     }
-
-    glFlush();
 }
 
 
@@ -69,7 +64,6 @@ void Scene::Add(GameObject *go)
         sprintf(buff, "GO%d", idGameObjects);
         go->name = buff;
     }
-
     gameObjects.insert(pair<string, GameObject*>(go->name, go));
 }
 
@@ -97,7 +91,7 @@ bool Scene::IsPressed(int keyCode)
 
 void Scene::OnKeyDown()
 {
-
+    //DbgLog(cam->pos & cam->rot);
 }
 
 void Scene::OnKeyUp()

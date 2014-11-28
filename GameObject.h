@@ -2,6 +2,7 @@
 #define GAMEOBJECT_H
 
 #include "Vector3.h"
+#include "Vector2.h"
 #include "Debug.h"
 #include <map>
 #include <vector>
@@ -23,7 +24,9 @@ private:
 public:
 
     vector<Vector3> vertices;
-    vector<unsigned int> vertexIndexes;
+    vector<Vector2> uvs;
+    vector<Vector3> normals;
+
     Vector3 pos;
     Vector3 rot;
     Vector3 scale;

@@ -21,10 +21,11 @@ int main()
     Camera cam = Camera();
     Scene *scene = win.CreateScene("FirstScene");
     GameObject *go1 = new GameObject("go1");
+    cout << go1 << endl;
     scene->Add(go1);
     scene->SetCamera(cam);
-    //go1->scale = Vector3(0.1, 0.1, 0.1);
-    cam.LookAt(Vector3(0,0,0));
+    go1->scale = Vector3(0.1, 0.1, 0.1);
+    //cam.LookAt(Vector3(0,0,0));
     win.drawAxis = true;
 
     win.Loop();
