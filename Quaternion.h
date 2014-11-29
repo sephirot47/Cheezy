@@ -31,13 +31,16 @@ public:
     Quaternion  operator*(const float a)    const; //Multiplica x,y,z por un entero a
     Quaternion  operator/(const float a)    const; //Divide x,y,z entre un entero a
 
+    Quaternion operator* (const Quaternion &q) const;
+    Vector3 operator* (const Vector3 &v);
+
     bool operator==(const Quaternion &v) const;
 
     void GetRotMatrix(float (&mat)[16]) const;
+    Quaternion GetConjugate();
 
     //STATICS
     //Devuelve la distancia entre v y u
-    static float Distance(const Quaternion &v, const Quaternion &u);
     static Quaternion Lerp(const Quaternion &from, const Quaternion &to, float f);
 };
 

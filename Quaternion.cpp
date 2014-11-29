@@ -1,8 +1,9 @@
 #include "Quaternion.h"
+#include "Debug.h"
 
 Quaternion::Quaternion()
 {
-    x = y = z = w = 0;
+    x = y = z = w = 0.0f;
 }
 
 Quaternion::Quaternion(float x, float y, float z, float w)
@@ -64,20 +65,44 @@ Quaternion Quaternion::operator/(const float a) const
     return Quaternion(x/a, y/a, z/a, w/a);
 }
 
+Quaternion Quaternion::operator* (const Quaternion &q) const
+{
+	return Quaternion(w * q.x + x * q.w + y * q.z - z * q.y,
+	                  w * q.y + y * q.w + z * q.x - x * q.z,
+	                  w * q.z + z * q.w + x * q.y - y * q.x,
+	                  w * q.w - x * q.x - y * q.y - z * q.z);
+}
+
+Vector3 Quaternion::operator* (const Vector3 &v)
+{
+	Vector3 vn(v);
+    vn = vn.Norm();
+    DbgLog(vn & GetConjugate());
+    Quaternion vecQuat, resQuat;
+    vecQuat.x = vn.x;
+    vecQuat.y = vn.y;
+    vecQuat.z = vn.z;
+    vecQuat.w = 0.0f;
+ 
+    resQuat = vecQuat * GetConjugate();
+    resQuat = *this * resQuat;
+ 
+    return (Vector3(resQuat.x, resQuat.y, resQuat.z));
+}
 
 bool Quaternion::operator==(const Quaternion &v) const
 {
     return x == v.x and y == v.y and z == v.z and w == v.w; 
 }
 
-float Quaternion::Distance(const Quaternion &v, const Quaternion &u)
-{
-    return sqrt((v.x-u.x)*(v.x-u.x) + (v.y-u.y)*(v.y-u.y) + (v.z-u.z)*(v.z-u.z));
-}
-
 Quaternion Quaternion::Lerp(const Quaternion &from, const Quaternion &to, float f)
 {
     return from + (to - from) * f;
+}
+
+Quaternion Quaternion::GetConjugate()
+{
+	return Quaternion(-x, -y, -z, w);
 }
 
 void Quaternion::GetRotMatrix(float (&mat)[16]) const 

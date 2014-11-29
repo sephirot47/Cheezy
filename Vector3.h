@@ -20,9 +20,9 @@ public:
     Vector3(float x, float y, float z);
     Vector3(double x, double y, double z);
 
-    Vector3 Norm();   //Devuelve el vector normalizado
+    Vector3 Norm() const;   //Devuelve el vector normalizado
 
-    float Mod(); //Devuelve el modulo del vector
+    float Mod() const; //Devuelve el modulo del vector
 
     string ToString() const; //Devuelve el string "(x,y,z)"
 

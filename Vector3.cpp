@@ -26,12 +26,12 @@ Vector3::Vector3(double x, double y, double z)
     this->z = (float)z;
 }
 
-float inline Vector3::Mod()
+float inline Vector3::Mod() const
 {
     return sqrt(x*x + y*y + z*z);
 }
 
-Vector3 Vector3::Norm()
+Vector3 Vector3::Norm() const
 {
     float mod = Mod();
     return Vector3(x/mod, y/mod, z/mod);
