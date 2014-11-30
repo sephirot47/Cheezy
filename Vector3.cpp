@@ -78,22 +78,21 @@ bool Vector3::operator==(const Vector3 &v) const
     return x == v.x and y == v.y and z == v.z;
 }
 
-float Vector3::Distance(const Vector3 &v, const Vector3 &u)
+float Vector3::Distance(const Vector3 &u, const Vector3 &v)
 {
     return sqrt((v.x-u.x)*(v.x-u.x) + (v.y-u.y)*(v.y-u.y) + (v.z-u.z)*(v.z-u.z));
 }
 
-float Vector3::Dot(const Vector3 &v, const Vector3 &u)
+float Vector3::Dot(const Vector3 &u, const Vector3 &v)
 {
     return v.x*u.x + v.y*u.y + v.z*u.z;
 }
 
-Vector3 Vector3::Cross(const Vector3 &v, const Vector3 &u)
+Vector3 Vector3::Cross(const Vector3 &u, const Vector3 &v)
 {
-  float x = u.y*v.z-u.z*v.y;
-  float y = u.z*v.x-u.x*v.z;
-  float z = u.x*v.y-u.y*v.x;
-  return Vector3(x,y,z);
+    return Vector3(u.y * v.z - u.z * v.y,
+                u.z * v.x - u.x * v.z,
+                u.x * v.y - u.y * v.x);
 }
 
 Vector3 Vector3::Lerp(const Vector3 &from, const Vector3 &to, float f)

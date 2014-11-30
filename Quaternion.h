@@ -32,12 +32,13 @@ public:
     Quaternion  operator/(const float a)    const; //Divide x,y,z entre un entero a
 
     Quaternion operator* (const Quaternion &q) const;
-    Vector3 operator* (const Vector3 &v);
+    Vector3 operator* (const Vector3 &vec);
 
     bool operator==(const Quaternion &v) const;
 
+
     void GetRotMatrix(float (&mat)[16]) const;
-    Quaternion GetConjugate();
+    Quaternion GetConjugate() const;
 
     //STATICS
     //Devuelve la distancia entre v y u
