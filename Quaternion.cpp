@@ -16,6 +16,7 @@ Quaternion::Quaternion(float x, float y, float z, float w)
 
 Quaternion::Quaternion(Vector3 xyz, int w)
 {
+    xyz = xyz.Norm();
     this->x = xyz.x;
     this->y = xyz.y;
     this->z = xyz.z;
@@ -24,6 +25,7 @@ Quaternion::Quaternion(Vector3 xyz, int w)
 
 Quaternion::Quaternion(Vector3 xyz, float w)
 {
+    xyz = xyz.Norm();
     this->x = xyz.x;
     this->y = xyz.y;
     this->z = xyz.z;
@@ -32,6 +34,7 @@ Quaternion::Quaternion(Vector3 xyz, float w)
 
 Quaternion::Quaternion(Vector3 xyz, double w)
 {
+    xyz = xyz.Norm();
     this->x = xyz.x;
     this->y = xyz.y;
     this->z = xyz.z;
@@ -73,9 +76,22 @@ Quaternion Quaternion::operator* (const Quaternion &q) const
 	                  w * q.w - x * q.x - y * q.y - z * q.z);
 }
 
+
+
 Vector3 Quaternion::operator* (const Vector3 &v)
 {
-	Vector3 vn(v);
+	Vector3 u(this->x, this->y, this->z);
+
+    // Extract the scalar part of the quaternion
+    float s = this->w;
+
+    // Do the math
+    Vector3 vprime = u * (2.0f * Vector3::Dot(u, v))
+          + v * (s*s - Vector3::Dot(u, u))
+          + Vector3::Cross(u, v) * (2.0f * s);
+          return vprime;
+
+    /*Vector3 vn(v);
     vn = vn.Norm();
     DbgLog(vn & GetConjugate());
     Quaternion vecQuat, resQuat;
@@ -87,7 +103,7 @@ Vector3 Quaternion::operator* (const Vector3 &v)
     resQuat = vecQuat * GetConjugate();
     resQuat = *this * resQuat;
  
-    return (Vector3(resQuat.x, resQuat.y, resQuat.z));
+    return (Vector3(resQuat.x, resQuat.y, resQuat.z));*/
 }
 
 bool Quaternion::operator==(const Quaternion &v) const
@@ -121,13 +137,17 @@ void Quaternion::GetRotMatrix(float (&mat)[16]) const
     mat[1] = 2.0f * (xy - wz);
     mat[2] = 2.0f * (xz + wy);
     mat[3] = 0.0f;
+
     mat[4] = 2.0f * (xy + wz);
     mat[5] = 1.0f - 2.0f * (x2 + z2);
     mat[6] = 2.0f * (yz - wx);
     mat[7] = 0.0f;
+
     mat[8] = 2.0f * (xz - wy);
     mat[9] = 2.0f * (yz + wx);
     mat[10] = 1.0f - 2.0f * (x2 + y2);
-    mat[11] = mat[12] = mat[13] = mat[14] = mat[15] = 0.0f;  
+    mat[11] = 0.0f;
+    
+    mat[12] = mat[13] = mat[14] = mat[15] = 0.0f;  
 }
 

@@ -37,6 +37,8 @@ public:
     //STATICS
     //Devuelve la distancia entre v y u
     static float Distance(const Vector3 &v, const Vector3 &u);
+    static float Dot(const Vector3 &v, const Vector3 &u);
+    static Vector3 Cross(const Vector3 &v, const Vector3 &u);
     static Vector3 Lerp(const Vector3 &from, const Vector3 &to, float f);
 };
 

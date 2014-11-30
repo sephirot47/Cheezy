@@ -19,7 +19,20 @@ int main()
 {
     CheezyWin win;
     win.Init(640, 640);
-    
+
+    Vector3 vec = Vector3(1,0,0);
+    Quaternion q = Quaternion(Vector3(0,0,1), 90);
+
+    float mat[16];
+    q.GetRotMatrix(mat);
+    for (int i = 0; i < 4; ++i) {
+    	for (int j = 0; j < 4; ++j) {
+    		cout << " " << mat[4*i+j];
+    	}
+    	cout << endl;
+    }
+
+    DbgLog("Resultat:" & q*vec);
     Camera cam = Camera();
     Scene *scene = win.CreateScene("FirstScene");
     GameObject *go1 = new GameObject("go1");
