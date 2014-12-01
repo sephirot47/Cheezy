@@ -12,7 +12,8 @@ SOURCES += main.cpp \
     GameObject.cpp \
     Scene.cpp \
     Camera.cpp \
-    CheezyWin.cpp
+    CheezyWin.cpp \
+    Quaternion.cpp
 
 include(deployment.pri)
 qtcAddDeployment()
@@ -28,5 +29,6 @@ HEADERS += \
     GameObject.h \
     Scene.h \
     Camera.h \
-    CheezyWin.h
+    CheezyWin.h \
+    Quaternion.h
 

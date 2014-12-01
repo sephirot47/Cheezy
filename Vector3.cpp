@@ -91,8 +91,8 @@ float Vector3::Dot(const Vector3 &u, const Vector3 &v)
 Vector3 Vector3::Cross(const Vector3 &u, const Vector3 &v)
 {
     return Vector3(u.y * v.z - u.z * v.y,
-                u.z * v.x - u.x * v.z,
-                u.x * v.y - u.y * v.x);
+                   u.z * v.x - u.x * v.z,
+                   u.x * v.y - u.y * v.x);
 }
 
 Vector3 Vector3::Lerp(const Vector3 &from, const Vector3 &to, float f)

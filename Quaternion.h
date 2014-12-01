@@ -22,6 +22,7 @@ public:
     Quaternion(Vector3 xyz, float w);
     Quaternion(Vector3 xyz, double w);
 
+    static Quaternion Euler(float anglex, float angley, float anglez);
 
     string ToString() const; //Devuelve el string "(x,y,z)"
 
@@ -37,7 +38,7 @@ public:
     bool operator==(const Quaternion &v) const;
 
     void Normalize();
-    void GetRotMatrix(float (&mat)[16]) const;
+    void GetRotMatrix(float (&mat)[16]);
     Quaternion GetConjugate() const;
 
     //STATICS

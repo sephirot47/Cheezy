@@ -6,6 +6,38 @@ Quaternion::Quaternion()
     x = y = z = w = 0.0f;
 }
 
+Quaternion Quaternion::Euler(float anglex, float angley, float anglez)
+{
+    anglex *= M_PI/180.0f;
+    angley *= M_PI/180.0f;
+    anglez *= M_PI/180.0f;
+
+    double angle = anglex * 0.5;
+    const double sr = sin(angle);
+    const double cr = cos(angle);
+
+    angle = angley * 0.5;
+    const double sp = sin(angle);
+    const double cp = cos(angle);
+
+    angle = anglez * 0.5;
+    const double sy = sin(angle);
+    const double cy = cos(angle);
+
+    const double cpcy = cp * cy;
+    const double spcy = sp * cy;
+    const double cpsy = cp * sy;
+    const double spsy = sp * sy;
+
+    Quaternion q;
+    q.x = (float)(sr*cpcy - cr * spsy);
+    q.y = (float)(cr*spcy + sr * cpsy);
+    q.z = (float)(cr*cpsy - sr * spcy);
+    q.w = (float)(cr*cpcy + sr * spsy);
+    q.Normalize();
+    return q;
+}
+
 Quaternion::Quaternion(float x, float y, float z, float w)
 {
     Vector3 xyz(x,y,z);
@@ -78,14 +110,36 @@ Quaternion Quaternion::operator* (const Quaternion &q) const
 	                  w * q.w - x * q.x - y * q.y - z * q.z);
 }
 
-Vector3 Quaternion::operator* (const Vector3 &vec) 
+Vector3 Quaternion::operator* (const Vector3 &vec)
 {
+    /*
+    Vector3 uv, uuv;
+    Vector3 qvec(x,y,z);
+    uv = Vector3::Cross(qvec,vec);
+    uuv = Vector3::Cross(qvec,uv);
+    uv = uv * (2.0f * w);
+    uuv = uuv * 2.0f;
+
+    return vec + uv + uuv;
+    */
+    float mat[16];
+    GetRotMatrix(mat);
+
+    float v0 = mat[0] * vec.x + mat[4] * vec.y + mat[8]  * vec.z;
+    float v1 = mat[1] * vec.x + mat[5] * vec.y + mat[9]  * vec.z;
+    float v2 = mat[2] * vec.x + mat[6] * vec.y + mat[10] * vec.z;
+
+    return Vector3(v0, v1, v2);
+
+/*
     Quaternion resQuat, vecQuat(vec,0);
- 
+
     resQuat = vecQuat * GetConjugate();
     resQuat = *this * resQuat;
- 
+
     return (Vector3(resQuat.x, resQuat.y, resQuat.z));
+    */
+
 }
 
 bool Quaternion::operator==(const Quaternion &v) const
@@ -106,18 +160,28 @@ void Quaternion::Normalize() {
     w /= mag;
 }
 
-void Quaternion::GetRotMatrix(float (&mat)[16]) const 
-{ 
-    float x2 = x * x;
-    float y2 = y * y;
-    float z2 = z * z;
-    float xy = x * y;
-    float xz = x * z;
-    float yz = y * z;
-    float wx = w * x;
-    float wy = w * y;
-    float wz = w * z;
+void Quaternion::GetRotMatrix(float (&mat)[16])
+{
+    Normalize();
+    mat[0] = 1.0f - 2.0f * y*y - 2.0f * z*z;
+    mat[1] = 2.0f * x*y + 2.0f * z*w;
+    mat[2] = 2.0f * x*z - 2.0f * y*w;
+    mat[3] = 0.0f;
 
+    mat[4] = 2.0f * x*y - 2.0f * z*w;
+    mat[5] = 1.0f - 2.0f * x*x - 2.0f * z*z;
+    mat[6] = 2.0f * z*y + 2.0f * x*w;
+    mat[7] = 0.0f;
+
+    mat[8] = 2.0f * x*z + 2.0f * y*w;
+    mat[9] = 2.0f * z*y - 2.0f * x*w;
+    mat[10] = 1.0f - 2.0f * x*x - 2.0 * y*y;
+    mat[11] = 0.0f;
+
+    mat[12] = mat[13] = mat[14] = 0.0f;
+    mat[15] = 1.0f;
+
+    /*
     mat[0] = 1.0f - 2.0f * (y2 + z2);
     mat[4] = 2.0f * (xy - wz);
     mat[8] = 2.0f * (xz + wy);
@@ -132,7 +196,9 @@ void Quaternion::GetRotMatrix(float (&mat)[16]) const
     mat[6] = 2.0f * (yz + wx);
     mat[10] = 1.0f - 2.0f * (x2 + y2);
     mat[14] = 0.0f;
-    
-    mat[3] = mat[7] = mat[11] = mat[15] = 0.0f;  
+
+    mat[3] = mat[7] = mat[11] = 0.0f;
+    mat[15] = 1.0f;
+    */
 }
 
