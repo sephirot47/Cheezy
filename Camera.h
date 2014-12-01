@@ -4,12 +4,13 @@
 #include <GL/gl.h>
 #include <GL/glu.h>
 #include "Vector3.h"
+#include "Quaternion.h"
 
 class Camera
 {
 public:
     Vector3 pos;
-    Vector3 rot;
+    Quaternion rot;
 
     Camera();
 

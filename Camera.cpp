@@ -1,13 +1,15 @@
 #include "Camera.h"
+#include "Debug.h"
 
 Camera::Camera()
 {
     pos = Vector3(0.5, 0.5, 0.5);
-    rot = Vector3(0, 0, 0);
+    rot = Quaternion::Euler(0, 0, 0);
 }
 
 Vector3 Camera::GetForward()
 {
+    /*
     const float DEG2RAD = 3.141593f / 180;
     float sx, sy, sz, cx, cy, cz, theta;
 
@@ -43,11 +45,13 @@ Vector3 Camera::GetForward()
     forward.z = cx*cy;
 
     return forward.Norm();
+    */
+    return Vector3(0,0,0);
 }
 
 void Camera::LookAt(Vector3 to)
 {
-    rot = to - pos;
+    //rot = to - pos;
 }
 
 void Camera::ApplyPerspective()
@@ -56,12 +60,20 @@ void Camera::ApplyPerspective()
     glLoadIdentity();
     gluPerspective(45, 1.0, 0.1, -5.0);
 
-    glRotatef(rot.x, 1.0, 0.0, 0.0);
-    glRotatef(rot.y, 0.0, 1.0, 0.0);
-    glRotatef(rot.z, 0.0, 0.0, 1.0);
+    float mat[16];
+    rot.GetRotMatrix(mat);
+    glMultMatrixf(mat);
+
+    glTranslatef(-pos.x, -pos.y, -pos.z);
 
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 
-    glTranslatef(pos.x, pos.y, pos.z);
+    //DbgLog(rot);
+
+    /*
+    glRotatef(rot.x, 1.0, 0.0, 0.0);
+    glRotatef(rot.y, 0.0, 1.0, 0.0);
+    glRotatef(rot.z, 0.0, 0.0, 1.0);
+    */
 }

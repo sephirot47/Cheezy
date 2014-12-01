@@ -32,17 +32,17 @@ void Scene::Update()
     if(IsPressed(SDLK_DOWN))
         cam->pos = cam->pos - cam->GetForward() * moveSpeed;
     if(IsPressed(SDLK_w))
-        cam->rot = cam->rot - Vector3(rotSpeed, .0, .0);
+        cam->rot = Quaternion::Euler(-rotSpeed, .0, .0) * cam->rot;
     if(IsPressed(SDLK_s))
-        cam->rot = cam->rot + Vector3(rotSpeed, .0, .0);
+        cam->rot = Quaternion::Euler( rotSpeed, .0, .0) * cam->rot;
     if(IsPressed(SDLK_a))
-        cam->rot = cam->rot - Vector3(.0, rotSpeed, .0);
+        cam->rot = Quaternion::Euler(.0, -rotSpeed, .0) * cam->rot;
     if(IsPressed(SDLK_d))
-        cam->rot = cam->rot + Vector3(.0, rotSpeed, .0);
+        cam->rot = Quaternion::Euler(.0,  rotSpeed, .0) * cam->rot;
     if(IsPressed(SDLK_q))
-        cam->rot = cam->rot + Vector3(.0, .0, rotSpeed);
+        cam->rot = Quaternion::Euler(.0, .0, rotSpeed)  * cam->rot;
     if(IsPressed(SDLK_e))
-        cam->rot = cam->rot - Vector3(.0, .0, rotSpeed);
+        cam->rot = Quaternion::Euler(.0, .0, -rotSpeed) * cam->rot;
 }
 
 void Scene::Draw()

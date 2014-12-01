@@ -57,26 +57,20 @@ void GameObject::_Draw()
 {
     glMatrixMode(GL_MODELVIEW);
     glPushMatrix();
+
     glTranslatef(pos.x, pos.y, pos.z);
-
-    glRotatef(rot.x, 1.0, 0.0, 0.0);
-    glRotatef(rot.y, 0.0, 1.0, 0.0);
-    glRotatef(rot.z, 0.0, 0.0, 1.0);
-
     glScalef(scale.x, scale.y, scale.z);
 
-    glBegin(GL_QUADS);
+    glBegin(GL_TRIANGLES);
+    glColor4f(1.0, 0.0, 0.0, 1.0);
     for(int i = 0; i < (int)vertices.size(); ++i)
     {
-        glColor4f(1.0, 0.0, 0.0, 1.0);
         glVertex3f(vertices[i].x, vertices[i].y, vertices[i].z);
     }
     glEnd();
 
     for(auto it : gameObjects)
-    {
         it.second->_Draw();
-    }
 
     glPopMatrix();
 }
@@ -109,10 +103,10 @@ void GameObject::LoadMesh(const char *filename)
         else if (strcmp(lineHeader, "f") == 0)
         {
             unsigned int vertexIndex[4], uvIndex[4], normalIndex[4];
-            int matches = fscanf(f, "%d/%d/%d %d/%d/%d %d/%d/%d %d/%d/%d\n", &vertexIndex[0], &uvIndex[0], &normalIndex[0],
+            int matches = fscanf(f, "%d/%d/%d %d/%d/%d %d/%d/%d\n", &vertexIndex[0], &uvIndex[0], &normalIndex[0],
                                                                     &vertexIndex[1], &uvIndex[1], &normalIndex[1],
-                                                                    &vertexIndex[2], &uvIndex[2], &normalIndex[2],
-                                                                    &vertexIndex[3], &uvIndex[3], &normalIndex[3] );
+                                                                    &vertexIndex[2], &uvIndex[2], &normalIndex[2]);
+                                                                    //&vertexIndex[3], &uvIndex[3], &normalIndex[3] );
             if (matches != 9)
             {
                 DbgError("Error reading the file!");
@@ -121,7 +115,7 @@ void GameObject::LoadMesh(const char *filename)
             vertexIndexes.push_back(vertexIndex[0]);
             vertexIndexes.push_back(vertexIndex[1]);
             vertexIndexes.push_back(vertexIndex[2]);
-            vertexIndexes.push_back(vertexIndex[3]);
+            //vertexIndexes.push_back(vertexIndex[3]);
             //uvIndices    .push_back(uvIndex[0]);
             //uvIndices    .push_back(uvIndex[1]);
             //uvIndices    .push_back(uvIndex[2]);

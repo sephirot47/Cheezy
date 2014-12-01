@@ -44,29 +44,51 @@ void CheezyWin::SetCurrentScene(const char* sceneName)
 
 void CheezyWin::DrawAxis()
 {
+    const float size = 999999.0f;
     glMatrixMode(GL_MODELVIEW);
     glPushMatrix();
+    glBegin(GL_QUADS);
+    glColor3f(0.2f, 0.2f, 0.2f);
+    glVertex3f(0.0f, 0.0f, 0.0f);
+    glVertex3f(0.0f, size, 0.0f);
+    glVertex3f(size, size, 0.0f);
+    glVertex3f(size, 0.0f, 0.0f);
+    glEnd();
+    glBegin(GL_QUADS);
+    glColor3f(0.5f, 0.5f, 0.5f);
+    glVertex3f(0.0f, 0.0f, 0.0f);
+    glVertex3f(0.0f, size, 0.0f);
+    glVertex3f(0.0f, size, size);
+    glVertex3f(0.0f, 0.0f, size);
+    glEnd();
+    glBegin(GL_QUADS);
+    glColor3f(0.8f, 0.8f, 0.8f);
+    glVertex3f(0.0f, 0.0f, 0.0f);
+    glVertex3f(size, 0.0f, 0.0f);
+    glVertex3f(size, 0.0f, size);
+    glVertex3f(0.0f, 0.0f, size);
+    glEnd();
     glBegin(GL_LINES);
     glColor3f(1.0f, 0.0f, 0.0f);
     glVertex3f(0.0f, 0.0f, 0.0f);
-    glVertex3f(999999999.0f, 0.0f, 0.0f);
+    glVertex3f(size, 0.0f, 0.0f);
     glEnd();
     glBegin(GL_LINES);
     glColor3f(0.0f, 1.0f, 0.0f);
     glVertex3f(0.0f, 0.0f, 0.0f);
-    glVertex3f(0.0f, 999999999.0f, 0.0);
+    glVertex3f(0.0f, size, 0.0);
     glEnd();
     glBegin(GL_LINES);
     glColor3f(0.0f, 0.0f, 1.0f);
     glVertex3f(0.0f, 0.0f, 0.0f);
-    glVertex3f(0.0f, 0.0f, 999999999.0f);
+    glVertex3f(0.0f, 0.0f, size);
     glEnd();
     glPopMatrix();
 }
 
 void CheezyWin::Draw()
 {
-    glClearColor(0.0, 0.0, 0.0, 1.0);
+    glClearColor(0.0, 0.0, 0.2, 1.0);
     glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
 
     if(currentScene != 0)

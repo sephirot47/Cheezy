@@ -46,6 +46,7 @@ Quaternion::Quaternion(float x, float y, float z, float w)
     this->y = xyz.y;
     this->z = xyz.z;
     this->w = (float)w;
+    Normalize();
 }
 
 Quaternion::Quaternion(Vector3 xyz, int w)
@@ -104,10 +105,16 @@ Quaternion Quaternion::operator/(const float a) const
 
 Quaternion Quaternion::operator* (const Quaternion &q) const
 {
+    /*
 	return Quaternion(w * q.x + x * q.w + y * q.z - z * q.y,
 	                  w * q.y + y * q.w + z * q.x - x * q.z,
 	                  w * q.z + z * q.w + x * q.y - y * q.x,
 	                  w * q.w - x * q.x - y * q.y - z * q.z);
+                      */
+    return Quaternion(w * q.x + x * q.w + y * q.z - z * q.y,
+                      w * q.y + y * q.w + z * q.x - x * q.z,
+                      w * q.z + z * q.w + x * q.y - y * q.x,
+                      w * q.w - x * q.x - y * q.y - z * q.z);
 }
 
 Vector3 Quaternion::operator* (const Vector3 &vec)
