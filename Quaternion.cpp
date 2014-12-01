@@ -93,14 +93,17 @@ bool Quaternion::operator==(const Quaternion &v) const
     return x == v.x and y == v.y and z == v.z and w == v.w; 
 }
 
-Quaternion Quaternion::Lerp(const Quaternion &from, const Quaternion &to, float f)
-{
-    return from + (to - from) * f;
-}
-
 Quaternion Quaternion::GetConjugate() const
 {
 	return Quaternion(-x, -y, -z, w);
+}
+
+void Quaternion::Normalize() {
+    float mag = sqrt(x*x+y*y+z*z+w*w);
+    x /= mag;
+    y /= mag;
+    z /= mag;
+    w /= mag;
 }
 
 void Quaternion::GetRotMatrix(float (&mat)[16]) const 

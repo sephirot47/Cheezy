@@ -36,7 +36,7 @@ public:
 
     bool operator==(const Quaternion &v) const;
 
-
+    void Normalize();
     void GetRotMatrix(float (&mat)[16]) const;
     Quaternion GetConjugate() const;
 
