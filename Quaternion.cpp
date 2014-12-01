@@ -80,7 +80,7 @@ Quaternion Quaternion::operator* (const Quaternion &q) const
 
 Vector3 Quaternion::operator* (const Vector3 &vec) 
 {
-    Quaternion resQuat, vecQuat(vec.Norm(),0);
+    Quaternion resQuat, vecQuat(vec,0);
  
     resQuat = vecQuat * GetConjugate();
     resQuat = *this * resQuat;
