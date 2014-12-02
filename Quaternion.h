@@ -41,6 +41,12 @@ public:
     void GetRotMatrix(float (&mat)[16]);
     Quaternion GetConjugate() const;
 
+    Vector3 GetForward();
+    Vector3 GetUp();
+    Vector3 GetRight();
+
+    static Quaternion FromAxisAngle(float angle, Vector3 axis);
+
     //STATICS
     //Devuelve la distancia entre v y u
     static Quaternion Lerp(const Quaternion &from, const Quaternion &to, float f);

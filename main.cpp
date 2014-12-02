@@ -22,20 +22,15 @@ int main()
 
     Camera cam = Camera();
     Scene *scene = win.CreateScene("FirstScene");
-    GameObject *go1 = new GameObject("go1");
     GameObject *go2 = new GameObject("go2");
-    scene->Add(go1);
     scene->Add(go2);
     scene->SetCamera(cam);
-   // go1->scale = Vector3(0.1, 0.1, 0.1);
-    go1->pos.x += 1.5;
-    go1->pos.y += 1.5;
-    go1->pos.z += 1.5;
 
-    go2->pos.x += 3;
-    go2->pos.y += 3;
-    go2->pos.z += 3;
-    go2->scale = Vector3(0.5, 0.5, 0.5);
+    go2->pos.x += 5;
+    go2->pos.z += 5;
+    go2->scale = Vector3(0.3, 0.3, 0.3);
+
+    cam.LookAt(Vector3(0, 0, 0), Vector3(10, 10, 10), Vector3(0, 1, 0));
 
     win.drawAxis = true;
     win.Loop();

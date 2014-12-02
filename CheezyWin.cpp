@@ -85,6 +85,7 @@ void CheezyWin::DrawAxis()
     glVertex3f(0.0f, 0.0f, 0.0f);
     glVertex3f(0.0f, 0.0f, size);
     glEnd();
+
     glPopMatrix();
 }
 

@@ -7,25 +7,16 @@ Camera::Camera()
     rot = Quaternion::Euler(0, 0, 0);
 }
 
-Vector3 Camera::GetForward()
+void Camera::LookAt(Vector3 to, Vector3 eye, Vector3 up)
 {
-    return rot.GetConjugate() * Vector3(0,0,-1);
-}
+    pos = eye;
 
-Vector3 Camera::GetRight()
-{
-    return rot.GetConjugate() * Vector3(-1,0,0);
-}
-
-Vector3 Camera::GetUp()
-{
-    return rot.GetConjugate() * Vector3(0,-1,0);
-}
-
-
-void Camera::LookAt(Vector3 to)
-{
-    //rot = to - pos;
+    Vector3 forward = (to-eye).Norm();
+    up = up.Norm();
+    float cos_theta = Vector3::Dot(up, forward);
+    float angle = acos(cos_theta);
+    Vector3 w = Vector3::Cross(up, forward).Norm();
+    rot = Quaternion::FromAxisAngle(angle, w);
 }
 
 void Camera::ApplyPerspective()

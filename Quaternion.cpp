@@ -34,7 +34,7 @@ Quaternion Quaternion::Euler(float anglex, float angley, float anglez)
     q.y = (float)(cr*spcy + sr * cpsy);
     q.z = (float)(cr*cpsy - sr * spcy);
     q.w = (float)(cr*cpcy + sr * spsy);
-    //q.Normalize();
+    q.Normalize();
     return q;
 }
 
@@ -99,12 +99,6 @@ Quaternion Quaternion::operator/(const float a) const
 
 Quaternion Quaternion::operator* (const Quaternion &q) const
 {
-    /*
-	return Quaternion(w * q.x + x * q.w + y * q.z - z * q.y,
-	                  w * q.y + y * q.w + z * q.x - x * q.z,
-	                  w * q.z + z * q.w + x * q.y - y * q.x,
-	                  w * q.w - x * q.x - y * q.y - z * q.z);
-                      */
     return Quaternion(w * q.x + x * q.w + y * q.z - z * q.y,
                       w * q.y + y * q.w + z * q.x - x * q.z,
                       w * q.z + z * q.w + x * q.y - y * q.x,
@@ -113,16 +107,6 @@ Quaternion Quaternion::operator* (const Quaternion &q) const
 
 Vector3 Quaternion::operator* (const Vector3 &vec)
 {
-    /*
-    Vector3 uv, uuv;
-    Vector3 qvec(x,y,z);
-    uv = Vector3::Cross(qvec,vec);
-    uuv = Vector3::Cross(qvec,uv);
-    uv = uv * (2.0f * w);
-    uuv = uuv * 2.0f;
-
-    return vec + uv + uuv;
-    */
     float mat[16];
     GetRotMatrix(mat);
 
@@ -131,16 +115,6 @@ Vector3 Quaternion::operator* (const Vector3 &vec)
     float v2 = mat[2] * vec.x + mat[6] * vec.y + mat[10] * vec.z;
 
     return Vector3(v0, v1, v2);
-
-/*
-    Quaternion resQuat, vecQuat(vec,0);
-
-    resQuat = vecQuat * GetConjugate();
-    resQuat = *this * resQuat;
-
-    return (Vector3(resQuat.x, resQuat.y, resQuat.z));
-    */
-
 }
 
 bool Quaternion::operator==(const Quaternion &v) const
@@ -181,25 +155,26 @@ void Quaternion::GetRotMatrix(float (&mat)[16])
 
     mat[12] = mat[13] = mat[14] = 0.0f;
     mat[15] = 1.0f;
-
-    /*
-    mat[0] = 1.0f - 2.0f * (y2 + z2);
-    mat[4] = 2.0f * (xy - wz);
-    mat[8] = 2.0f * (xz + wy);
-    mat[12] = 0.0f;
-
-    mat[1] = 2.0f * (xy + wz);
-    mat[5] = 1.0f - 2.0f * (x2 + z2);
-    mat[9] = 2.0f * (yz - wx);
-    mat[13] = 0.0f;
-
-    mat[2] = 2.0f * (xz - wy);
-    mat[6] = 2.0f * (yz + wx);
-    mat[10] = 1.0f - 2.0f * (x2 + y2);
-    mat[14] = 0.0f;
-
-    mat[3] = mat[7] = mat[11] = 0.0f;
-    mat[15] = 1.0f;
-    */
 }
 
+Vector3 Quaternion::GetForward()
+{
+    return Vector3(0, 0, 1);
+}
+
+Vector3 Quaternion::GetUp()
+{
+    return Vector3(0, 1, 0);
+}
+
+Vector3 Quaternion::GetRight()
+{
+    return Vector3(1, 0, 0);
+}
+
+Quaternion Quaternion::FromAxisAngle(float angle, Vector3 axis)
+{
+    float half_sin = sin(0.5f * angle);
+    float half_cos = cos(0.5f * angle);
+    return Quaternion(half_cos, half_sin * axis.x, half_sin * axis.y, half_sin * axis.z);
+}

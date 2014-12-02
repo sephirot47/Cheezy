@@ -17,7 +17,7 @@ public:
     Vector3 GetForward();
     Vector3 GetRight();
     Vector3 GetUp();
-    void LookAt(Vector3 to);
+    void LookAt(Vector3 to, Vector3 eye, Vector3 up);
     void ApplyPerspective();
 };
 
