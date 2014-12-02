@@ -47,6 +47,7 @@ void CheezyWin::DrawAxis()
     const float size = 999999.0f;
     glMatrixMode(GL_MODELVIEW);
     glPushMatrix();
+
     glBegin(GL_QUADS);
     glColor3f(0.2f, 0.2f, 0.2f);
     glVertex3f(0.0f, 0.0f, 0.0f);
@@ -68,6 +69,7 @@ void CheezyWin::DrawAxis()
     glVertex3f(size, 0.0f, size);
     glVertex3f(0.0f, 0.0f, size);
     glEnd();
+
     glBegin(GL_LINES);
     glColor3f(1.0f, 0.0f, 0.0f);
     glVertex3f(0.0f, 0.0f, 0.0f);

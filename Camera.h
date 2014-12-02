@@ -15,6 +15,8 @@ public:
     Camera();
 
     Vector3 GetForward();
+    Vector3 GetRight();
+    Vector3 GetUp();
     void LookAt(Vector3 to);
     void ApplyPerspective();
 };

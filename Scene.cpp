@@ -25,16 +25,20 @@ void Scene::_Update()
 void Scene::Update()
 {
     double rotSpeed = 1.0f;
-    float moveSpeed = 0.25f;
+    float moveSpeed = 0.05f;
 
     if(IsPressed(SDLK_UP))
         cam->pos = cam->pos + cam->GetForward() * moveSpeed;
     if(IsPressed(SDLK_DOWN))
         cam->pos = cam->pos - cam->GetForward() * moveSpeed;
+    if(IsPressed(SDLK_LEFT))
+        cam->pos = cam->pos - cam->GetRight() * moveSpeed;
+    if(IsPressed(SDLK_RIGHT))
+        cam->pos = cam->pos + cam->GetRight() * moveSpeed;
     if(IsPressed(SDLK_w))
         cam->rot = Quaternion::Euler(-rotSpeed, .0, .0) * cam->rot;
     if(IsPressed(SDLK_s))
-        cam->rot = Quaternion::Euler( rotSpeed, .0, .0) * cam->rot;
+        cam->rot = Quaternion::Euler(rotSpeed, .0, .0)  * cam->rot;
     if(IsPressed(SDLK_a))
         cam->rot = Quaternion::Euler(.0, -rotSpeed, .0) * cam->rot;
     if(IsPressed(SDLK_d))

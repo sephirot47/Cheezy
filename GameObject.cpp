@@ -5,9 +5,10 @@
 GameObject::GameObject()
 {
     pos = Vector3(0, 0, 0);
-    rot = Vector3(0, 0, 0);
+    rot = Quaternion();
     scale = Vector3(1, 1, 1);
     name = "";
+    foo = .0f;
     idGameObjects = 0;
     LoadMesh("Computer Table.obj");
 }
@@ -15,26 +16,31 @@ GameObject::GameObject()
 GameObject::GameObject(string name)
 {
     this->name = name;
+    pos = Vector3(0, 0, 0);
+    rot = Quaternion();
     scale = Vector3(1, 1, 1);
+    foo = .0f;
     idGameObjects = 0;
     LoadMesh("Computer Table.obj");
 }
 
-GameObject::GameObject(Vector3 pos, Vector3 rot)
+GameObject::GameObject(Vector3 pos, Quaternion rot)
 {
     this->pos = pos;
     this->rot = rot;
     scale = Vector3(1, 1, 1);
+    foo = .0f;
     name = "";
     idGameObjects = 0;
     LoadMesh("Computer Table.obj");
 }
 
-GameObject::GameObject(string name, Vector3 pos, Vector3 rot)
+GameObject::GameObject(string name, Vector3 pos, Quaternion rot)
 {
     this->pos = pos;
     this->rot = rot;
     scale = Vector3(1, 1, 1);
+    foo = .0f;
     this->name = name;
     idGameObjects = 0;
     LoadMesh("Computer Table.obj");
@@ -59,10 +65,18 @@ void GameObject::_Draw()
     glPushMatrix();
 
     glTranslatef(pos.x, pos.y, pos.z);
+
+    foo += 5.0f;
+    float mat[16];
+    rot = Quaternion::Euler(.0f, foo, .0f);
+    rot.GetRotMatrix(mat);
+    glMultMatrixf(mat);
+
     glScalef(scale.x, scale.y, scale.z);
 
     glBegin(GL_TRIANGLES);
-    glColor4f(1.0, 0.0, 0.0, 1.0);
+    if(name == "go1") glColor4f(1.0, 0.0, 0.0, 1.0);
+    else glColor4f(0.0, 1.0, 0.0, 1.0);
     for(int i = 0; i < (int)vertices.size(); ++i)
     {
         glVertex3f(vertices[i].x, vertices[i].y, vertices[i].z);
@@ -81,7 +95,7 @@ void GameObject::LoadMesh(const char *filename)
     vertices = vector<Vector3>();
     vector<unsigned int> vertexIndexes = vector<unsigned int>();
 
-    FILE * f = fopen("mario_obj.obj", "r");
+    FILE * f = fopen("modelo.obj", "r");
     if(f == NULL)
     {
         DbgError("Error opening the file!");

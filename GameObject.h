@@ -1,6 +1,7 @@
 #ifndef GAMEOBJECT_H
 #define GAMEOBJECT_H
 
+#include "Quaternion.h"
 #include "Vector3.h"
 #include "Vector2.h"
 #include "Debug.h"
@@ -18,6 +19,7 @@ class GameObject
 typedef map<string, GameObject*> GameObjMap;
 
 private:
+    float foo;
     GameObjMap gameObjects;
     int idGameObjects;
 
@@ -28,15 +30,15 @@ public:
     vector<Vector3> normals;
 
     Vector3 pos;
-    Vector3 rot;
+    Quaternion rot;
     Vector3 scale;
 
     string  name;
 
     GameObject();
     GameObject(string name);
-    GameObject(Vector3 pos, Vector3 rot);
-    GameObject(string name, Vector3 pos, Vector3 rot);
+    GameObject(Vector3 pos, Quaternion rot);
+    GameObject(string name, Vector3 pos, Quaternion rot);
 
     void Add(GameObject *go);
     GameObject* Find(const string &name) const;

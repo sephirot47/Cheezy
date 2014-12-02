@@ -34,45 +34,39 @@ Quaternion Quaternion::Euler(float anglex, float angley, float anglez)
     q.y = (float)(cr*spcy + sr * cpsy);
     q.z = (float)(cr*cpsy - sr * spcy);
     q.w = (float)(cr*cpcy + sr * spsy);
-    q.Normalize();
+    //q.Normalize();
     return q;
 }
 
 Quaternion::Quaternion(float x, float y, float z, float w)
 {
-    Vector3 xyz(x,y,z);
-    xyz = xyz.Norm();
-    this->x = xyz.x;
-    this->y = xyz.y;
-    this->z = xyz.z;
+    this->x = x;
+    this->y = y;
+    this->z = z;
     this->w = (float)w;
-    Normalize();
 }
 
 Quaternion::Quaternion(Vector3 xyz, int w)
 {
-    xyz = xyz.Norm();
-    this->x = xyz.x;
-    this->y = xyz.y;
-    this->z = xyz.z;
+    this->x = x;
+    this->y = y;
+    this->z = z;
     this->w = (float)w;
 }
 
 Quaternion::Quaternion(Vector3 xyz, float w)
 {
-    xyz = xyz.Norm();
-    this->x = xyz.x;
-    this->y = xyz.y;
-    this->z = xyz.z;
+    this->x = x;
+    this->y = y;
+    this->z = z;
     this->w = w;
 }
 
 Quaternion::Quaternion(Vector3 xyz, double w)
 {
-    xyz = xyz.Norm();
-    this->x = xyz.x;
-    this->y = xyz.y;
-    this->z = xyz.z;
+    this->x = x;
+    this->y = y;
+    this->z = z;
     this->w = (float)w;
 }
 
