@@ -57,7 +57,7 @@
 ##==========================================================================
 
 # The pre-processor and compiler options.
-MY_CFLAGS = -std=c++11
+MY_CFLAGS = -std=c++11 -Iinclude
 
 # The linker options.
 MY_LIBS   = -lSDL2 -lGL -lGLU
@@ -70,7 +70,7 @@ LDFLAGS   =
 
 # The directories in which source files reside.
 # If not specified, only the current directory will be serached.
-SRCDIRS   =
+SRCDIRS   = src
 
 # The executable file name.
 # If not specified, current directory name or `a.out' will be used.

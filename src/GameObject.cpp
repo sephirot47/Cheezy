@@ -1,6 +1,6 @@
 #include "GameObject.h"
-#include<ctime>
-#include<stdlib.h>
+#include <ctime>
+#include <stdlib.h>
 
 GameObject::GameObject()
 {
