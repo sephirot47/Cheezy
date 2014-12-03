@@ -3,7 +3,7 @@
 *.lo
 *.o
 *.obj
-*.d
+#*.d
 cheezy
 # Precompiled Headers
 *.gch
