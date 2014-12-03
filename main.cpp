@@ -1,3 +1,4 @@
+///\file main.cpp
 #include <iostream>
 #include <GL/gl.h>
 #include <GL/glu.h>
