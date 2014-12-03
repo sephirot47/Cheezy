@@ -30,3 +30,5 @@ cheezy
 
 .cproject
 .project
+*.user*
+*.pro*

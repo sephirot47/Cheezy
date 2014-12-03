@@ -74,7 +74,7 @@ void GameObject::_Draw()
 
     glScalef(scale.x, scale.y, scale.z);
 
-    glBegin(GL_TRIANGLES);
+    glBegin(GL_LINES);
     if(name == "go1") glColor4f(1.0, 0.0, 0.0, 1.0);
     else glColor4f(0.0, 1.0, 0.0, 1.0);
     for(int i = 0; i < (int)vertices.size(); ++i)
