@@ -151,7 +151,8 @@ src/CheezyWin.o: src/CheezyWin.cpp /usr/include/stdc-predef.h \
  /usr/include/c++/4.8/bits/locale_facets.tcc \
  /usr/include/c++/4.8/bits/basic_ios.tcc \
  /usr/include/c++/4.8/bits/ostream.tcc /usr/include/c++/4.8/istream \
- /usr/include/c++/4.8/bits/istream.tcc include/Printable.h \
+ /usr/include/c++/4.8/bits/istream.tcc /usr/include/c++/4.8/sstream \
+ /usr/include/c++/4.8/bits/sstream.tcc include/Printable.h \
  include/Scene.h include/GameObject.h include/Quaternion.h \
  include/Vector3.h /usr/include/c++/4.8/cmath include/Vector2.h \
  /usr/include/c++/4.8/vector /usr/include/c++/4.8/bits/stl_construct.h \

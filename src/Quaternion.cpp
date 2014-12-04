@@ -159,17 +159,17 @@ void Quaternion::GetRotMatrix(float (&mat)[16])
 
 Vector3 Quaternion::GetForward()
 {
-    return Vector3(0, 0, 1);
+    return GetConjugate() * Vector3(0, 0, 1);
 }
 
 Vector3 Quaternion::GetUp()
 {
-    return Vector3(0, 1, 0);
+    return GetConjugate() * Vector3(0, 1, 0);
 }
 
 Vector3 Quaternion::GetRight()
 {
-    return Vector3(1, 0, 0);
+    return GetConjugate() * Vector3(1, 0, 0);
 }
 
 Quaternion Quaternion::FromAxisAngle(float angle, Vector3 axis)

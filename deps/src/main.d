@@ -143,6 +143,7 @@ src/main.o: src/main.cpp /usr/include/stdc-predef.h \
  /usr/local/include/SDL2/SDL_power.h /usr/local/include/SDL2/SDL_render.h \
  /usr/local/include/SDL2/SDL_system.h /usr/local/include/SDL2/SDL_timer.h \
  /usr/local/include/SDL2/SDL_version.h include/Debug.h \
+ /usr/include/c++/4.8/sstream /usr/include/c++/4.8/bits/sstream.tcc \
  include/Printable.h include/GameObject.h include/Quaternion.h \
  include/Vector3.h /usr/include/c++/4.8/cmath include/Vector2.h \
  include/Debug.h /usr/include/c++/4.8/map \

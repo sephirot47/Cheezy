@@ -9,9 +9,9 @@ CheezyWin::CheezyWin()
 
 int CheezyWin::InitWindow(SDL_Window **win, SDL_Renderer **ren, int x, int y, int width, int height)
 {
-    if(SDL_Init(SDL_INIT_EVERYTHING) != 0) {DbgError("Could not init SDL!"); return 0;}
+    if(SDL_Init(SDL_INIT_EVERYTHING) != 0) { DbgError("Could not init SDL!"); return 0; }
     *win = SDL_CreateWindow("Cheezy window", x, y, width, height, SDL_WINDOW_SHOWN | SDL_WINDOW_OPENGL);
-    if(*win == 0) {DbgError("Could not create the window!"); return 0;}
+    if(*win == 0) { DbgError("Could not create the window!"); return 0; }
     *ren = SDL_CreateRenderer(*win, -1, 0);
     return 1;
 }

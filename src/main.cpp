@@ -33,6 +33,8 @@ int main()
 
     cam.LookAt(Vector3(0, 0, 0), Vector3(10, 10, 10), Vector3(0, 1, 0));
 
+    Vector3 v(1,2,3);
+    DbgLog("aaaa");
     win.drawAxis = true;
     win.Loop();
     win.Destroy();

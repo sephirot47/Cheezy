@@ -111,7 +111,8 @@ src/GameObject.o: src/GameObject.cpp /usr/include/stdc-predef.h \
  /usr/include/i386-linux-gnu/bits/mathcalls.h \
  /usr/include/i386-linux-gnu/bits/mathinline.h include/Printable.h \
  /usr/include/string.h /usr/include/i386-linux-gnu/bits/string3.h \
- include/Vector2.h include/Debug.h /usr/include/c++/4.8/map \
+ include/Vector2.h include/Debug.h /usr/include/c++/4.8/sstream \
+ /usr/include/c++/4.8/bits/sstream.tcc /usr/include/c++/4.8/map \
  /usr/include/c++/4.8/bits/stl_tree.h \
  /usr/include/c++/4.8/bits/alloc_traits.h \
  /usr/include/c++/4.8/bits/ptr_traits.h \

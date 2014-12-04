@@ -2,21 +2,30 @@
 #define DEBUG_H
 
 #include <iostream>
+#include <sstream>
 #include <string>
 #include "Printable.h"
 
-#define DbgWarning(x) Debug::_Warning((x), __LINE__, __FILE__)
-#define DbgError(x) Debug::_Error((x), __LINE__, __FILE__)
-#define DbgLog(x) Debug::_Log((x))
+#define DbgWarning(x) {\
+    cerr << "Warning(" << __FILE__ << ": " << __FUNCTION__ << ": " << __LINE__ << "): " << (x) << endl;\
+\}
+
+#define DbgError(x) {\
+    cerr << "Error(" << __FILE__ << ": " << __FUNCTION__ << ": " << __LINE__ << "): " << (x) << endl;\
+}
+
+#define DbgLog(x) {\
+    Debug::Log << x;\
+}
+
+typedef ostringstream oss;
 
 using namespace std;
 
-namespace Debug
+class Debug
 {
-    void _Warning(const char* str, int line, const char* file);
-    void _Error(const char* str, int line, const char* file);
-    void _Log(Printable &p);
-    void _Log(const string str);
-}
+public:
+    static oss Log;
+};
 
 #endif //DEBUG_H
