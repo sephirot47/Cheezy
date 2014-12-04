@@ -36,7 +36,7 @@ int main()
     cam.LookAt(Vector3(0, 0, 0), Vector3(10, 10, 10), Vector3(0, 1, 0));
 
     Vector3 veccc = Vector3(1,2,3);
-    DbgLog(veccc << veccc << "asdads");
+    DbgLog(5 << endl << "asd" << cam.rot << veccc);
     win.drawAxis = true;
     win.Loop();
     win.Destroy();

@@ -7,6 +7,8 @@
 #include "Vector3.h"
 #include "Printable.h"
 
+using namespace std;
+
 #define DbgWarning(x) {\
     cerr << "Warning(" << __FILE__ << ": " << __FUNCTION__ << ": " << __LINE__ << "): " << (x) << endl;\
 \}
@@ -16,23 +18,12 @@
 }
 
 #define DbgLog(x) {\
-    Log log = Log();\
+    ostringstream log;\
     log << x;\
     cout << log.str() << endl;\
     log.flush();\
 }
 
-using namespace std;
-
-class Log : public ostringstream
-{
-public:
-    Log() {}
-    Log& operator<<(const Printable &p)
-    {
-       *this << p.ToString();
-       return *this;
-    }
-};
+ostream& operator<<(ostream &log, const Printable &p);
 
 #endif //DEBUG_H

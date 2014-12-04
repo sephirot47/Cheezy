@@ -1,4 +1,5 @@
 #include "Printable.h"
+
 /*
 //==== Printable ================================================
 string operator&(const Printable &p1, const Printable &p2)
