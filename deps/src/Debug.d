@@ -101,5 +101,14 @@ src/Debug.o: src/Debug.cpp /usr/include/stdc-predef.h include/Debug.h \
  /usr/include/c++/4.8/bits/basic_ios.tcc \
  /usr/include/c++/4.8/bits/ostream.tcc /usr/include/c++/4.8/istream \
  /usr/include/c++/4.8/bits/istream.tcc /usr/include/c++/4.8/sstream \
- /usr/include/c++/4.8/bits/sstream.tcc include/Printable.h \
+ /usr/include/c++/4.8/bits/sstream.tcc include/Vector3.h \
+ /usr/include/c++/4.8/cmath /usr/include/math.h \
+ /usr/include/i386-linux-gnu/bits/huge_val.h \
+ /usr/include/i386-linux-gnu/bits/huge_valf.h \
+ /usr/include/i386-linux-gnu/bits/huge_vall.h \
+ /usr/include/i386-linux-gnu/bits/inf.h \
+ /usr/include/i386-linux-gnu/bits/nan.h \
+ /usr/include/i386-linux-gnu/bits/mathdef.h \
+ /usr/include/i386-linux-gnu/bits/mathcalls.h \
+ /usr/include/i386-linux-gnu/bits/mathinline.h include/Printable.h \
  /usr/include/string.h /usr/include/i386-linux-gnu/bits/string3.h

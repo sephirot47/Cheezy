@@ -4,6 +4,7 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+#include "Vector3.h"
 #include "Printable.h"
 
 #define DbgWarning(x) {\
@@ -15,17 +16,23 @@
 }
 
 #define DbgLog(x) {\
-    Debug::Log << x;\
+    Log log = Log();\
+    log << x;\
+    cout << log.str() << endl;\
+    log.flush();\
 }
-
-typedef ostringstream oss;
 
 using namespace std;
 
-class Debug
+class Log : public ostringstream
 {
 public:
-    static oss Log;
+    Log() {}
+    Log& operator<<(const Printable &p)
+    {
+       *this << p.ToString();
+       return *this;
+    }
 };
 
 #endif //DEBUG_H

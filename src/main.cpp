@@ -13,6 +13,8 @@
 #include "Vector3.h"
 #include "Quaternion.h"
 #include <cmath>
+#include <string>
+#include <sstream>
 
 using namespace std;
 
@@ -33,8 +35,8 @@ int main()
 
     cam.LookAt(Vector3(0, 0, 0), Vector3(10, 10, 10), Vector3(0, 1, 0));
 
-    Vector3 v(1,2,3);
-    DbgLog("aaaa");
+    Vector3 veccc = Vector3(1,2,3);
+    DbgLog(veccc << veccc << "asdads");
     win.drawAxis = true;
     win.Loop();
     win.Destroy();

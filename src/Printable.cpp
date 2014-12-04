@@ -1,5 +1,5 @@
 #include "Printable.h"
-
+/*
 //==== Printable ================================================
 string operator&(const Printable &p1, const Printable &p2)
 {
@@ -108,3 +108,4 @@ string operator&(const string &str, const bool &a)
 	sprintf(buf, "%s ", a ? "true" : "false");
 	return str + buf;
 }
+*/
