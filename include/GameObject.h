@@ -5,19 +5,25 @@
 #include "Quaternion.h"
 #include "Vector3.h"
 #include "Vector2.h"
+#include "Transform.h"
+#include "Component.h"
 #include "Debug.h"
+#include "Mesh.h"
 #include <map>
 #include <vector>
 #include <string>
 #include <string.h>
 #include <stdio.h>
 #include <GL/gl.h>
+#include <ctime>
+#include <stdlib.h>
 
 using namespace std;
 
 class GameObject
 {
 typedef map<string, GameObject*> GameObjMap;
+typedef map<string, Component*> CompMap;
 
 private:
     float foo;
@@ -26,15 +32,11 @@ private:
 
 public:
 
-    vector<Vector3> vertices;
-    vector<Vector2> uvs;
-    vector<Vector3> normals;
-
-    Vector3 pos;
-    Quaternion rot;
-    Vector3 scale;
-
     string  name;
+
+    CompMap components;
+    Transform *transform; //default pointer to Transform for fast access
+    Mesh *mesh; //default pointer to Mesh for fast access
 
     GameObject();
     GameObject(string name);
@@ -44,7 +46,21 @@ public:
     void Add(GameObject *go);
     GameObject* Find(const string &name) const;
 
-    void LoadMesh(const char *filename);
+    ///\brief Add the component c to the GameObject
+    ///       If a component of the same type exists, returns false.
+    ///       Otherwise returns true.
+    bool AddComponent(Component &c);
+
+    ///\brief Returns true if the GameObject already contains a component of type type.
+    ///       Returns false otherwise.
+    bool HasComponent(const char *type);
+
+    ///\brief Returns a pointer to the component of type type of this GameObject.
+    ///       If the GameObject doesn't contain a component of type type, returns null.
+    void GetComponent(const char *type);
+
+    ///\brief Removes the component c from the GameObject
+    void RemoveComponent(Component &c);
 
     void _Update();
     void _Draw();

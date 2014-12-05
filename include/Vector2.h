@@ -19,23 +19,32 @@ public:
     Vector2(float x, float y);
     Vector2(double x, double y);
 
-    Vector2 Norm();   //Devuelve el vector normalizado
+    ///\brief Returns the normalized Vector2
+    Vector2 Norm() const;
 
-    float Mod(); //Devuelve el modulo del vector
+    ///\brief Returns the magnitude of the Vector2
+    float Magnitude() const;
 
-    string ToString() const; //Devuelve el string "(x,y)"
+    ///\brief Converts the Vector2 to a String
+    string ToString() const; //Devuelve el string "(x,y,z)"
 
     Vector2& operator=(const Vector2 &v);
     Vector2  operator+(const Vector2 &v) const;
     Vector2  operator-(const Vector2 &v) const;
-    Vector2  operator*(const float a) const; //Multiplica x,y por un entero a
-    Vector2  operator/(const float a) const; //Divide x,y entre un entero a
+    Vector2  operator*(const float a)    const; //Multiplica x,y,z por un entero a
+    Vector2  operator/(const float a)    const; //Divide x,y,z entre un entero a
 
     bool operator==(const Vector2 &v) const;
 
+    //STATICS
     //Devuelve la distancia entre v y u
-    static float Distance(const Vector2 &v, const Vector2 &u);
-    Vector2 Lerp(const Vector2 &from, const Vector2 &to, float f);
+    ///\brief Returns the distance between u and v
+    static float Distance(const Vector2 &u, const Vector2 &v);
+    ///\brief Makes a linear interpolation from vfrom to vto
+    ///       If f==0, returns vFrom
+    ///       If f==1 returns vto
+    ///       Else, returns a linear interpolation from vfrom to vto
+    static Vector2 Lerp(const Vector2 &vfrom, const Vector2 &vto, float f);
 };
 
 #endif // Vector2_H

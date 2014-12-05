@@ -1,4 +1,13 @@
 var searchData=
 [
-  ['tostring',['ToString',['../class_color.html#acfe66ae680f83ebeea4236c2d70f4d56',1,'Color::ToString()'],['../class_printable.html#a8d64181c7a724477e277b8993f7a7496',1,'Printable::ToString()'],['../class_quaternion.html#ac7e0e786f451e5c3a4c66c2e7648ad40',1,'Quaternion::ToString()'],['../class_vector2.html#ab160c7fa29c46e4f64d74b9f3e693db5',1,'Vector2::ToString()'],['../class_vector3.html#a857c4f09d5e377ffa13de465d4c48646',1,'Vector3::ToString()']]]
+  ['scale',['scale',['../class_transform.html#a2b4006024b283c6af2813e78e7092364',1,'Transform']]],
+  ['scene',['Scene',['../class_scene.html',1,'Scene'],['../class_scene.html#ad10176d75a9cc0da56626f682d083507',1,'Scene::Scene()'],['../class_scene.html#a3ccb797f55b72c851f696d1647527f5c',1,'Scene::Scene(string name)']]],
+  ['scene_2ecpp',['Scene.cpp',['../_scene_8cpp.html',1,'']]],
+  ['scene_2eh',['Scene.h',['../_scene_8h.html',1,'']]],
+  ['scenemap',['SceneMap',['../_cheezy_win_8h.html#ac0092b0f8ab6047f20a37da5d395c2bb',1,'CheezyWin.h']]],
+  ['scenes',['scenes',['../class_cheezy_win.html#a6e68ab23beefec081da7a8218d78967a',1,'CheezyWin']]],
+  ['sdlren',['sdlRen',['../class_cheezy_win.html#a77a43915f13dcf7f20c1da6d521c2643',1,'CheezyWin']]],
+  ['sdlwin',['sdlWin',['../class_cheezy_win.html#a038253cdeca8b79a157cb418ce63596b',1,'CheezyWin']]],
+  ['setcamera',['SetCamera',['../class_scene.html#a21b9c42f2b2af16c05c99e865e064769',1,'Scene']]],
+  ['setcurrentscene',['SetCurrentScene',['../class_cheezy_win.html#a2a514db4af32814361e9cedfe5470288',1,'CheezyWin']]]
 ];

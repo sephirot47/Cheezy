@@ -9,20 +9,26 @@
 
 using namespace std;
 
-#define DbgWarning(x) {\
-    cerr << "Warning(" << __FILE__ << ": " << __FUNCTION__ << ": " << __LINE__ << "): " << (x) << endl;\
-\}
+#define DbgWarning(x) do{\
+    ostringstream log;\
+    log << x;\
+    cerr << "Warning(" << __FILE__ << ": " << __FUNCTION__ << ": " << __LINE__ << "): " << log.str() << endl;\
+    log.flush();\
+} while(0)
 
-#define DbgError(x) {\
-    cerr << "Error(" << __FILE__ << ": " << __FUNCTION__ << ": " << __LINE__ << "): " << (x) << endl;\
-}
+#define DbgError(x) do{\
+    ostringstream log;\
+    log << x;\
+    cerr << "Error(" << __FILE__ << ": " << __FUNCTION__ << ": " << __LINE__ << "): " << log.str() << endl;\
+    log.flush();\
+} while(0)
 
-#define DbgLog(x) {\
+#define DbgLog(x) do{\
     ostringstream log;\
     log << x;\
     cout << log.str() << endl;\
     log.flush();\
-}
+} while(0)
 
 ostream& operator<<(ostream &log, const Printable &p);
 

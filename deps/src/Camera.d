@@ -111,5 +111,5 @@ src/Camera.o: src/Camera.cpp /usr/include/stdc-predef.h include/Camera.h \
  /usr/include/i386-linux-gnu/bits/mathcalls.h \
  /usr/include/i386-linux-gnu/bits/mathinline.h include/Printable.h \
  /usr/include/string.h /usr/include/i386-linux-gnu/bits/string3.h \
- include/Quaternion.h include/Debug.h /usr/include/c++/4.8/sstream \
- /usr/include/c++/4.8/bits/sstream.tcc
+ include/Debug.h /usr/include/c++/4.8/sstream \
+ /usr/include/c++/4.8/bits/sstream.tcc include/Quaternion.h

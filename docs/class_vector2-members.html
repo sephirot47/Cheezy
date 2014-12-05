@@ -39,7 +39,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -73,7 +72,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -91,10 +90,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <p>This is the complete list of members for <a class="el" href="class_vector2.html">Vector2</a>, including all inherited members.</p>
 <table class="directory">
-  <tr class="even"><td class="entry"><a class="el" href="class_vector2.html#ad9cef161bbb703b7689e9a4e625aa042">Distance</a>(const Vector2 &amp;v, const Vector2 &amp;u)</td><td class="entry"><a class="el" href="class_vector2.html">Vector2</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
-  <tr><td class="entry"><a class="el" href="class_vector2.html#ae516022a55731e8ef192259a56707c73">Lerp</a>(const Vector2 &amp;from, const Vector2 &amp;to, float f)</td><td class="entry"><a class="el" href="class_vector2.html">Vector2</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_vector2.html#aa97d288115b93af64330cd84120e0e6e">Mod</a>()</td><td class="entry"><a class="el" href="class_vector2.html">Vector2</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr><td class="entry"><a class="el" href="class_vector2.html#a3e1ad5dffb64cb777c3df03525df449c">Norm</a>()</td><td class="entry"><a class="el" href="class_vector2.html">Vector2</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_vector2.html#a7630e2330e6b5c62bb83be4c44ad1ffe">Distance</a>(const Vector2 &amp;u, const Vector2 &amp;v)</td><td class="entry"><a class="el" href="class_vector2.html">Vector2</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_vector2.html#a611d994f04a4e1f12b7ca00dde22df4a">Lerp</a>(const Vector2 &amp;vfrom, const Vector2 &amp;vto, float f)</td><td class="entry"><a class="el" href="class_vector2.html">Vector2</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_vector2.html#a29ed8ce9689da245c7b49c76c7af3b73">Magnitude</a>() const </td><td class="entry"><a class="el" href="class_vector2.html">Vector2</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_vector2.html#afa11999183374039eaadeba86bdfa342">Norm</a>() const </td><td class="entry"><a class="el" href="class_vector2.html">Vector2</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="class_vector2.html#a99aa49dea3bd21d6f9c7a112d2229968">operator*</a>(const float a) const </td><td class="entry"><a class="el" href="class_vector2.html">Vector2</a></td><td class="entry"></td></tr>
   <tr><td class="entry"><a class="el" href="class_vector2.html#a93473ed56b2cedcafe3690572eeeec33">operator+</a>(const Vector2 &amp;v) const </td><td class="entry"><a class="el" href="class_vector2.html">Vector2</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="class_vector2.html#a39dfeea6e55ef1df7b819cf35efd4a79">operator-</a>(const Vector2 &amp;v) const </td><td class="entry"><a class="el" href="class_vector2.html">Vector2</a></td><td class="entry"></td></tr>
@@ -111,7 +110,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </table></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Dec 3 2014 15:43:53 for Cheezy by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Dec 5 2014 13:23:48 for Cheezy by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

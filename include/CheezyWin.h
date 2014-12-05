@@ -30,18 +30,35 @@ public:
     SDL_Renderer *sdlRen;
 
     CheezyWin();
+
+    ///\brief Inits and creates the window
     void Init(int width, int height);
+
+    ///\brief Creates a scene with name sceneName nad returns a pointer to it.
     Scene* CreateScene(const char* sceneName);
+
+    ///\brief Sets the current scene to be drawn
     void SetCurrentScene(const char* sceneName);
+
+    ///\brief Returns a pointer to the scene with name sceneName
+    ///       If its not found, returns null.
     Scene* GetScene(const char* sceneName);
+
+    ///\brief Loops until the user closes the window
     void Loop();
 
     bool drawAxis;
 
+    ///\brief Draws the current scene
     void Draw();
+
+    ///\brief Destroys the window
     void Destroy();
 
+    ///\brief This function is called every time a key is pushed down
     virtual void OnKeyDown();
+
+    ///\brief This function is called every time a key is released
     virtual void OnKeyUp();
 };
 

@@ -39,7 +39,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -73,7 +72,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -114,6 +113,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a6e4627389673c8b5cce81bf3eec79938"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_color.html#a6e4627389673c8b5cce81bf3eec79938">Color</a> (float <a class="el" href="class_color.html#a3958a556b47d2de3dd45c75aac833c20">r</a>, float <a class="el" href="class_color.html#a5defbb21620e480e556181772d665f34">g</a>, float <a class="el" href="class_color.html#a33e482be18d6ea31d2b403bee13683b7">b</a>, float <a class="el" href="class_color.html#a98047aee65fc3d825f88a76da728fd27">a</a>)</td></tr>
 <tr class="separator:a6e4627389673c8b5cce81bf3eec79938"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acfe66ae680f83ebeea4236c2d70f4d56"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_color.html#acfe66ae680f83ebeea4236c2d70f4d56">ToString</a> () const </td></tr>
+<tr class="memdesc:acfe66ae680f83ebeea4236c2d70f4d56"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a string representing the color.  <a href="#acfe66ae680f83ebeea4236c2d70f4d56">More...</a><br/></td></tr>
 <tr class="separator:acfe66ae680f83ebeea4236c2d70f4d56"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a760419516f2d1faec4352b1e175a7f43"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_color.html">Color</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_color.html#a760419516f2d1faec4352b1e175a7f43">operator=</a> (const <a class="el" href="class_color.html">Color</a> &amp;v)</td></tr>
 <tr class="separator:a760419516f2d1faec4352b1e175a7f43"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -131,8 +131,10 @@ Public Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a5011ffe230b2636268b53b5c4eda3210"><td class="memItemLeft" align="right" valign="top">static float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_color.html#a5011ffe230b2636268b53b5c4eda3210">Distance</a> (const <a class="el" href="class_color.html">Color</a> &amp;v, const <a class="el" href="class_color.html">Color</a> &amp;u)</td></tr>
+<tr class="memdesc:a5011ffe230b2636268b53b5c4eda3210"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the distance between color v and u (wtf?)  <a href="#a5011ffe230b2636268b53b5c4eda3210">More...</a><br/></td></tr>
 <tr class="separator:a5011ffe230b2636268b53b5c4eda3210"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af62d722d038897878f70a3b24c95645f"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_color.html">Color</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_color.html#af62d722d038897878f70a3b24c95645f">Lerp</a> (const <a class="el" href="class_color.html">Color</a> &amp;from, const <a class="el" href="class_color.html">Color</a> &amp;to, float f)</td></tr>
+<tr class="memdesc:af62d722d038897878f70a3b24c95645f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns de linear interpolation between from and to.  <a href="#af62d722d038897878f70a3b24c95645f">More...</a><br/></td></tr>
 <tr class="separator:af62d722d038897878f70a3b24c95645f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
@@ -302,6 +304,8 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Returns the distance between color v and u (wtf?) </p>
+
 <p>Definition at line <a class="el" href="_color_8cpp_source.html#l00067">67</a> of file <a class="el" href="_color_8cpp_source.html">Color.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;{</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordflow">return</span> sqrt((v.<a class="code" href="class_color.html#a3958a556b47d2de3dd45c75aac833c20">r</a>-u.<a class="code" href="class_color.html#a3958a556b47d2de3dd45c75aac833c20">r</a>)*(v.<a class="code" href="class_color.html#a3958a556b47d2de3dd45c75aac833c20">r</a>-u.<a class="code" href="class_color.html#a3958a556b47d2de3dd45c75aac833c20">r</a>) + (v.<a class="code" href="class_color.html#a5defbb21620e480e556181772d665f34">g</a>-u.<a class="code" href="class_color.html#a5defbb21620e480e556181772d665f34">g</a>)*(v.<a class="code" href="class_color.html#a5defbb21620e480e556181772d665f34">g</a>-u.<a class="code" href="class_color.html#a5defbb21620e480e556181772d665f34">g</a>) + (v.<a class="code" href="class_color.html#a33e482be18d6ea31d2b403bee13683b7">b</a>-u.<a class="code" href="class_color.html#a33e482be18d6ea31d2b403bee13683b7">b</a>)*(v.<a class="code" href="class_color.html#a33e482be18d6ea31d2b403bee13683b7">b</a>-u.<a class="code" href="class_color.html#a33e482be18d6ea31d2b403bee13683b7">b</a>));</div>
@@ -349,6 +353,8 @@ Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Returns de linear interpolation between from and to. </p>
 
 <p>Definition at line <a class="el" href="_color_8cpp_source.html#l00072">72</a> of file <a class="el" href="_color_8cpp_source.html">Color.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;{</div>
@@ -536,6 +542,8 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Returns a string representing the color. </p>
+
 <p>Implements <a class="el" href="class_printable.html#a8d64181c7a724477e277b8993f7a7496">Printable</a>.</p>
 
 <p>Definition at line <a class="el" href="_color_8cpp_source.html#l00025">25</a> of file <a class="el" href="_color_8cpp_source.html">Color.cpp</a>.</p>
@@ -609,13 +617,13 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>/home/sephirot47/Cheezy/<a class="el" href="_color_8h_source.html">Color.h</a></li>
-<li>/home/sephirot47/Cheezy/<a class="el" href="_color_8cpp_source.html">Color.cpp</a></li>
+<li><a class="el" href="_color_8h_source.html">Color.h</a></li>
+<li>/home/sephirot47/Cheezy/src/<a class="el" href="_color_8cpp_source.html">Color.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Dec 3 2014 15:43:53 for Cheezy by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Dec 5 2014 13:23:48 for Cheezy by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

@@ -39,7 +39,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -73,7 +72,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -92,8 +91,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <p>This is the complete list of members for <a class="el" href="class_quaternion.html">Quaternion</a>, including all inherited members.</p>
 <table class="directory">
   <tr class="even"><td class="entry"><a class="el" href="class_quaternion.html#a90ae2f44644efb3f64c5a696d70380e3">Euler</a>(float anglex, float angley, float anglez)</td><td class="entry"><a class="el" href="class_quaternion.html">Quaternion</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
-  <tr><td class="entry"><a class="el" href="class_quaternion.html#a59068bd382dfb41e4553e5c0b935fe2b">GetConjugate</a>() const </td><td class="entry"><a class="el" href="class_quaternion.html">Quaternion</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_quaternion.html#a404a3e23dd44941e72110f6900306fda">GetRotMatrix</a>(float(&amp;mat)[16])</td><td class="entry"><a class="el" href="class_quaternion.html">Quaternion</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_quaternion.html#a2345be0d2a0ba82e9135a3e723b01e86">FromAxisAngle</a>(float angle, Vector3 axis)</td><td class="entry"><a class="el" href="class_quaternion.html">Quaternion</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_quaternion.html#a59068bd382dfb41e4553e5c0b935fe2b">GetConjugate</a>() const </td><td class="entry"><a class="el" href="class_quaternion.html">Quaternion</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_quaternion.html#ad5a7279384fd105325650a26377df332">GetForward</a>()</td><td class="entry"><a class="el" href="class_quaternion.html">Quaternion</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_quaternion.html#ae3a7bf8e13635edbaaec7141ad889945">GetRight</a>()</td><td class="entry"><a class="el" href="class_quaternion.html">Quaternion</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_quaternion.html#a404a3e23dd44941e72110f6900306fda">GetRotMatrix</a>(float(&amp;mat)[16])</td><td class="entry"><a class="el" href="class_quaternion.html">Quaternion</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_quaternion.html#a01ad8b546a3380fe702810f7e26274cc">GetUp</a>()</td><td class="entry"><a class="el" href="class_quaternion.html">Quaternion</a></td><td class="entry"></td></tr>
   <tr><td class="entry"><a class="el" href="class_quaternion.html#aa4c019127f2dffe7d6385b76732664de">Lerp</a>(const Quaternion &amp;from, const Quaternion &amp;to, float f)</td><td class="entry"><a class="el" href="class_quaternion.html">Quaternion</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="class_quaternion.html#a5c08e0c7533e0c1a526a7401f4754910">Normalize</a>()</td><td class="entry"><a class="el" href="class_quaternion.html">Quaternion</a></td><td class="entry"></td></tr>
   <tr><td class="entry"><a class="el" href="class_quaternion.html#adb58ac67f9bf7f50ef5896d7bcb3ae53">operator*</a>(const float a) const </td><td class="entry"><a class="el" href="class_quaternion.html">Quaternion</a></td><td class="entry"></td></tr>
@@ -117,7 +120,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </table></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Dec 3 2014 15:43:53 for Cheezy by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Dec 5 2014 13:23:48 for Cheezy by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

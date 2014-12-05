@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Cheezy: /home/sephirot47/Cheezy/Debug.cpp Source File</title>
+<title>Cheezy: /home/sephirot47/Cheezy/src/Debug.cpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -39,7 +39,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -71,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -82,7 +81,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_75b82e7e4a5feb05200b9ad7adf06257.html">home</a></li><li class="navelem"><a class="el" href="dir_e5c6af04cc64bc4afc284ef8a1896284.html">sephirot47</a></li><li class="navelem"><a class="el" href="dir_018ca05db5e660bb772e08904d42b268.html">Cheezy</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -92,41 +91,19 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="contents">
 <a href="_debug_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_debug_8h.html">Debug.h</a>&quot;</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">using namespace </span>std;</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
-<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="namespace_debug.html#a75e85798c8566de5eb0fdc1ac66e7cb6">    6</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespace_debug.html#a75e85798c8566de5eb0fdc1ac66e7cb6">Debug::_Warning</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* str, <span class="keywordtype">int</span> line, <span class="keyword">const</span> <span class="keywordtype">char</span>* file)</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;{</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    cerr &lt;&lt; <span class="stringliteral">&quot;Warning(&quot;</span> &lt;&lt; file &lt;&lt; <span class="stringliteral">&quot;:&quot;</span> &lt;&lt; line &lt;&lt; <span class="stringliteral">&quot;): &quot;</span> &lt;&lt; str &lt;&lt; endl;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;}</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
-<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="namespace_debug.html#ae458d4cb3d917aecc9336dd2431166fd">   11</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespace_debug.html#ae458d4cb3d917aecc9336dd2431166fd">Debug::_Error</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* str, <span class="keywordtype">int</span> line, <span class="keyword">const</span> <span class="keywordtype">char</span>* file)</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;{</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    cerr &lt;&lt; <span class="stringliteral">&quot;Error(&quot;</span> &lt;&lt; file &lt;&lt; <span class="stringliteral">&quot;:&quot;</span> &lt;&lt; line &lt;&lt; <span class="stringliteral">&quot;): &quot;</span> &lt;&lt; str &lt;&lt; endl;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;}</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
-<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="namespace_debug.html#a29957209fb91c8a9f7974ee64904cc83">   16</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespace_debug.html#a29957209fb91c8a9f7974ee64904cc83">Debug::_Log</a>(<a class="code" href="class_printable.html">Printable</a> &amp;p)</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;{</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    cout &lt;&lt; p.<a class="code" href="class_printable.html#a8d64181c7a724477e277b8993f7a7496">ToString</a>() &lt;&lt; endl;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;}</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
-<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="namespace_debug.html#a1bc479f9a0fbe300580680db8ce92709">   21</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespace_debug.html#a29957209fb91c8a9f7974ee64904cc83">Debug::_Log</a>(<span class="keyword">const</span> <span class="keywordtype">string</span> str)</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;{</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    cout &lt;&lt; str &lt;&lt; endl;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;}</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
-<div class="ttc" id="namespace_debug_html_a75e85798c8566de5eb0fdc1ac66e7cb6"><div class="ttname"><a href="namespace_debug.html#a75e85798c8566de5eb0fdc1ac66e7cb6">Debug::_Warning</a></div><div class="ttdeci">void _Warning(const char *str, int line, const char *file)</div><div class="ttdef"><b>Definition:</b> <a href="_debug_8cpp_source.html#l00006">Debug.cpp:6</a></div></div>
+<div class="line"><a name="l00003"></a><span class="lineno"><a class="line" href="_debug_8cpp.html#ab52e2d67c65a8190c6d70825f9c32ca5">    3</a></span>&#160;ostream&amp; <a class="code" href="_debug_8cpp.html#ab52e2d67c65a8190c6d70825f9c32ca5">operator&lt;&lt;</a>(ostream &amp;log, <span class="keyword">const</span> <a class="code" href="class_printable.html">Printable</a> &amp;p)</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;{</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;   log &lt;&lt; p.<a class="code" href="class_printable.html#a8d64181c7a724477e277b8993f7a7496">ToString</a>();</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;   <span class="keywordflow">return</span> log;</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;}</div>
 <div class="ttc" id="class_printable_html_a8d64181c7a724477e277b8993f7a7496"><div class="ttname"><a href="class_printable.html#a8d64181c7a724477e277b8993f7a7496">Printable::ToString</a></div><div class="ttdeci">virtual string ToString() const =0</div></div>
 <div class="ttc" id="class_printable_html"><div class="ttname"><a href="class_printable.html">Printable</a></div><div class="ttdef"><b>Definition:</b> <a href="_printable_8h_source.html#l00010">Printable.h:10</a></div></div>
-<div class="ttc" id="namespace_debug_html_a29957209fb91c8a9f7974ee64904cc83"><div class="ttname"><a href="namespace_debug.html#a29957209fb91c8a9f7974ee64904cc83">Debug::_Log</a></div><div class="ttdeci">void _Log(Printable &amp;p)</div><div class="ttdef"><b>Definition:</b> <a href="_debug_8cpp_source.html#l00016">Debug.cpp:16</a></div></div>
+<div class="ttc" id="_debug_8cpp_html_ab52e2d67c65a8190c6d70825f9c32ca5"><div class="ttname"><a href="_debug_8cpp.html#ab52e2d67c65a8190c6d70825f9c32ca5">operator&lt;&lt;</a></div><div class="ttdeci">ostream &amp; operator&lt;&lt;(ostream &amp;log, const Printable &amp;p)</div><div class="ttdef"><b>Definition:</b> <a href="_debug_8cpp_source.html#l00003">Debug.cpp:3</a></div></div>
 <div class="ttc" id="_debug_8h_html"><div class="ttname"><a href="_debug_8h.html">Debug.h</a></div></div>
-<div class="ttc" id="namespace_debug_html_ae458d4cb3d917aecc9336dd2431166fd"><div class="ttname"><a href="namespace_debug.html#ae458d4cb3d917aecc9336dd2431166fd">Debug::_Error</a></div><div class="ttdeci">void _Error(const char *str, int line, const char *file)</div><div class="ttdef"><b>Definition:</b> <a href="_debug_8cpp_source.html#l00011">Debug.cpp:11</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Dec 3 2014 15:43:53 for Cheezy by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Dec 5 2014 13:23:48 for Cheezy by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

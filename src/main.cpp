@@ -29,14 +29,12 @@ int main()
     scene->Add(go2);
     scene->SetCamera(cam);
 
-    go2->pos.x += 5;
-    go2->pos.z += 5;
-    go2->scale = Vector3(0.3, 0.3, 0.3);
+    go2->transform->pos.x += 5;
+    go2->transform->pos.z += 5;
+    go2->transform->scale = Vector3(0.3, 0.3, 0.3);
 
     cam.LookAt(Vector3(0, 0, 0), Vector3(10, 10, 10), Vector3(0, 1, 0));
 
-    Vector3 veccc = Vector3(1,2,3);
-    DbgLog(5 << endl << "asd" << cam.rot << veccc);
     win.drawAxis = true;
     win.Loop();
     win.Destroy();

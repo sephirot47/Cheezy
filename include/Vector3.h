@@ -20,10 +20,13 @@ public:
     Vector3(float x, float y, float z);
     Vector3(double x, double y, double z);
 
-    Vector3 Norm() const;   //Devuelve el vector normalizado
+    ///\brief Returns the normalized Vector3
+    Vector3 Norm() const;
 
-    float Mod() const; //Devuelve el modulo del vector
+    ///\brief Returns the magnitude of the Vector3
+    float Magnitude() const;
 
+    ///\brief Converts the Vector3 to a String
     string ToString() const; //Devuelve el string "(x,y,z)"
 
     Vector3& operator=(const Vector3 &v);
@@ -36,10 +39,17 @@ public:
 
     //STATICS
     //Devuelve la distancia entre v y u
+    ///\brief Returns the distance between u and v
     static float Distance(const Vector3 &u, const Vector3 &v);
+    ///\brief Returns the dot product of u and v
     static float Dot(const Vector3 &u, const Vector3 &v);
+    ///\brief Returns the cross product of u and v
     static Vector3 Cross(const Vector3 &u, const Vector3 &v);
-    static Vector3 Lerp(const Vector3 &from, const Vector3 &to, float f);
+    ///\brief Makes a linear interpolation from vfrom to vto
+    ///       If f==0, returns vFrom
+    ///       If f==1 returns vto
+    ///       Else, returns a linear interpolation from vfrom to vto
+    static Vector3 Lerp(const Vector3 &vfrom, const Vector3 &vto, float f);
 };
 
 #endif // VECTOR3_H

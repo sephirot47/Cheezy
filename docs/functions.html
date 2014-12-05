@@ -39,7 +39,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -86,6 +85,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="#index_e"><span>e</span></a></li>
       <li><a href="#index_f"><span>f</span></a></li>
       <li><a href="#index_g"><span>g</span></a></li>
+      <li><a href="#index_h"><span>h</span></a></li>
       <li><a href="#index_i"><span>i</span></a></li>
       <li><a href="#index_l"><span>l</span></a></li>
       <li><a href="#index_m"><span>m</span></a></li>
@@ -110,7 +110,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -147,6 +147,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 : <a class="el" href="class_game_object.html#aca7d736adcf5fef45bdd68d4b2e711d3">GameObject</a>
 , <a class="el" href="class_scene.html#a980be0cac8e3b639f751d8a3a4851c29">Scene</a>
 </li>
+<li>AddComponent()
+: <a class="el" href="class_game_object.html#aa1250cc4d2be868377bbb453bde1e541">GameObject</a>
+</li>
 <li>ApplyPerspective()
 : <a class="el" href="class_camera.html#a5e90e605373f291940de0ae59b286b10">Camera</a>
 </li>
@@ -173,6 +176,15 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>Color()
 : <a class="el" href="class_color.html#a9a742cbe9f9f4037f5d9f4e81a9b2428">Color</a>
 </li>
+<li>CompMap
+: <a class="el" href="class_game_object.html#a8ecc69d13c4ce2944d816c32d078a837">GameObject</a>
+</li>
+<li>Component()
+: <a class="el" href="class_component.html#a8775db6d1a2c1afc2e77cd3c8f39da6f">Component</a>
+</li>
+<li>components
+: <a class="el" href="class_game_object.html#affe36fa2992e099827fdfae531c3a0dd">GameObject</a>
+</li>
 <li>CreateScene()
 : <a class="el" href="class_cheezy_win.html#add09435dc913ad9665b621322a670b2a">CheezyWin</a>
 </li>
@@ -191,7 +203,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </li>
 <li>Distance()
 : <a class="el" href="class_color.html#a5011ffe230b2636268b53b5c4eda3210">Color</a>
-, <a class="el" href="class_vector2.html#ad9cef161bbb703b7689e9a4e625aa042">Vector2</a>
+, <a class="el" href="class_vector2.html#a7630e2330e6b5c62bb83be4c44ad1ffe">Vector2</a>
 , <a class="el" href="class_vector3.html#a6d0f7210c2798b586134b49694656a5b">Vector3</a>
 </li>
 <li>Dot()
@@ -199,6 +211,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </li>
 <li>Draw()
 : <a class="el" href="class_cheezy_win.html#ab8883617197c24b2b8b49a8980dd7d74">CheezyWin</a>
+, <a class="el" href="class_mesh.html#afdd95c079fd0442afef8a6c421c8bfc9">Mesh</a>
 , <a class="el" href="class_scene.html#a4813338ee7c6c995f5bb6f10e3673804">Scene</a>
 </li>
 <li>DrawAxis()
@@ -225,6 +238,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>foo
 : <a class="el" href="class_game_object.html#ac84eda788293226d8817587132243c08">GameObject</a>
 </li>
+<li>FromAxisAngle()
+: <a class="el" href="class_quaternion.html#a2345be0d2a0ba82e9135a3e723b01e86">Quaternion</a>
+</li>
 </ul>
 
 
@@ -247,9 +263,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </li>
 <li>GetForward()
 : <a class="el" href="class_camera.html#a499eb43600d149147c4ace7ef42862bc">Camera</a>
+, <a class="el" href="class_quaternion.html#ad5a7279384fd105325650a26377df332">Quaternion</a>
+</li>
+<li>getMiliseconds()
+: <a class="el" href="class_time.html#aa9216448e7028fa8b9c99b556f533a5b">Time</a>
 </li>
 <li>GetRight()
 : <a class="el" href="class_camera.html#a8bee4969f385c276623e50c5820f80f8">Camera</a>
+, <a class="el" href="class_quaternion.html#ae3a7bf8e13635edbaaec7141ad889945">Quaternion</a>
 </li>
 <li>GetRotMatrix()
 : <a class="el" href="class_quaternion.html#a404a3e23dd44941e72110f6900306fda">Quaternion</a>
@@ -257,8 +278,19 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>GetScene()
 : <a class="el" href="class_cheezy_win.html#a0008af96dfa9ab49d982d329e8a5c8a8">CheezyWin</a>
 </li>
+<li>getSeconds()
+: <a class="el" href="class_time.html#ac61b981abb21215b7f4c75ed2b133782">Time</a>
+</li>
 <li>GetUp()
 : <a class="el" href="class_camera.html#ad63369417fa7aa6e2e421c7f0c23708c">Camera</a>
+, <a class="el" href="class_quaternion.html#a01ad8b546a3380fe702810f7e26274cc">Quaternion</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_h"></a>- h -</h3><ul>
+<li>HasComponent()
+: <a class="el" href="class_game_object.html#a0012490b2b5620e032a78f472c7e89e1">GameObject</a>
 </li>
 </ul>
 
@@ -270,6 +302,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </li>
 <li>Init()
 : <a class="el" href="class_cheezy_win.html#a6c9b171d966a7a9275fa285483272744">CheezyWin</a>
+, <a class="el" href="class_component.html#a0bb954fe977d71269e2db01bc8a77e95">Component</a>
+, <a class="el" href="class_transform.html#a4b911801aa231c13922c0e11032b8d5a">Transform</a>
 </li>
 <li>InitWindow()
 : <a class="el" href="class_cheezy_win.html#a9289dd68b9f2625e88227005b0bc2cdb">CheezyWin</a>
@@ -284,14 +318,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>Lerp()
 : <a class="el" href="class_color.html#af62d722d038897878f70a3b24c95645f">Color</a>
 , <a class="el" href="class_quaternion.html#aa4c019127f2dffe7d6385b76732664de">Quaternion</a>
-, <a class="el" href="class_vector2.html#ae516022a55731e8ef192259a56707c73">Vector2</a>
-, <a class="el" href="class_vector3.html#ad4d9049d49186f0722421a1bfa6b13f9">Vector3</a>
+, <a class="el" href="class_vector2.html#a611d994f04a4e1f12b7ca00dde22df4a">Vector2</a>
+, <a class="el" href="class_vector3.html#a37a9839e67ee817f90bcf38e5dbf208d">Vector3</a>
 </li>
-<li>LoadMesh()
-: <a class="el" href="class_game_object.html#a8bb370f9618ecaa164956a158d5c566c">GameObject</a>
+<li>LoadFromFile()
+: <a class="el" href="class_mesh.html#a40ce2cc50dd996c0c247128a199d9708">Mesh</a>
 </li>
 <li>LookAt()
-: <a class="el" href="class_camera.html#a6c0688aebe53e756cfb52cb800fcd792">Camera</a>
+: <a class="el" href="class_camera.html#a527e6b39d3d410179dd0e19f9e58aa6f">Camera</a>
 </li>
 <li>Loop()
 : <a class="el" href="class_cheezy_win.html#adad40846f082e3127213dbbc4aaf73ba">CheezyWin</a>
@@ -300,9 +334,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <h3><a class="anchor" id="index_m"></a>- m -</h3><ul>
-<li>Mod()
-: <a class="el" href="class_vector2.html#aa97d288115b93af64330cd84120e0e6e">Vector2</a>
-, <a class="el" href="class_vector3.html#a0da60bd6aea6552b06f835547c7eb895">Vector3</a>
+<li>Magnitude()
+: <a class="el" href="class_vector2.html#a29ed8ce9689da245c7b49c76c7af3b73">Vector2</a>
+, <a class="el" href="class_vector3.html#a3ca930e253f930f58c8f2e0194fbb958">Vector3</a>
+</li>
+<li>Mesh()
+: <a class="el" href="class_mesh.html#a2af137f1571af89172b9c102302c416b">Mesh</a>
 </li>
 </ul>
 
@@ -313,7 +350,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 , <a class="el" href="class_scene.html#a13709f4f935428d6a78da7427813d232">Scene</a>
 </li>
 <li>Norm()
-: <a class="el" href="class_vector2.html#a3e1ad5dffb64cb777c3df03525df449c">Vector2</a>
+: <a class="el" href="class_vector2.html#afa11999183374039eaadeba86bdfa342">Vector2</a>
 , <a class="el" href="class_vector3.html#a808347650aa1256e78ba7c143fe2f3a8">Vector3</a>
 </li>
 <li>Normalize()
@@ -336,7 +373,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </li>
 <li>operator*()
 : <a class="el" href="class_color.html#a3fadf679fa40189614126b419709cda3">Color</a>
-, <a class="el" href="class_quaternion.html#adb58ac67f9bf7f50ef5896d7bcb3ae53">Quaternion</a>
+, <a class="el" href="class_quaternion.html#a10ffc30bea32cae1dc7d08494070022d">Quaternion</a>
 , <a class="el" href="class_vector2.html#a99aa49dea3bd21d6f9c7a112d2229968">Vector2</a>
 , <a class="el" href="class_vector3.html#ad519b17fabc6268154e844321461f700">Vector3</a>
 </li>
@@ -376,7 +413,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <h3><a class="anchor" id="index_p"></a>- p -</h3><ul>
 <li>pos
 : <a class="el" href="class_camera.html#a2c4c5bcf8f5885968d4e5ebc28074846">Camera</a>
-, <a class="el" href="class_game_object.html#aa4a774e81e4d9e44012f8fcdb821b33c">GameObject</a>
+, <a class="el" href="class_transform.html#a140888762a494cbacc579526ae70d3f9">Transform</a>
 </li>
 </ul>
 
@@ -392,16 +429,19 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>r
 : <a class="el" href="class_color.html#a3958a556b47d2de3dd45c75aac833c20">Color</a>
 </li>
+<li>RemoveComponent()
+: <a class="el" href="class_game_object.html#abcbb4a7e4bde56e7c1fa4c7e4704f542">GameObject</a>
+</li>
 <li>rot
 : <a class="el" href="class_camera.html#adf9703ce73cda000ec2214880ea866cd">Camera</a>
-, <a class="el" href="class_game_object.html#ac01c18194edb0c85047cea3ccc1038c2">GameObject</a>
+, <a class="el" href="class_transform.html#ab94717ec62107de39f1047a0f62451b8">Transform</a>
 </li>
 </ul>
 
 
 <h3><a class="anchor" id="index_s"></a>- s -</h3><ul>
 <li>scale
-: <a class="el" href="class_game_object.html#a03eb9290ac1b0af12b22ea354fbf4fef">GameObject</a>
+: <a class="el" href="class_transform.html#a2b4006024b283c6af2813e78e7092364">Transform</a>
 </li>
 <li>Scene()
 : <a class="el" href="class_scene.html#ad10176d75a9cc0da56626f682d083507">Scene</a>
@@ -432,6 +472,15 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 , <a class="el" href="class_vector2.html#ab160c7fa29c46e4f64d74b9f3e693db5">Vector2</a>
 , <a class="el" href="class_vector3.html#a857c4f09d5e377ffa13de465d4c48646">Vector3</a>
 </li>
+<li>transform
+: <a class="el" href="class_game_object.html#a9edf603be120d5a9221e5c5c962465f8">GameObject</a>
+</li>
+<li>Transform()
+: <a class="el" href="class_transform.html#aa08ca4266efabc768973cdeea51945ab">Transform</a>
+</li>
+<li>type
+: <a class="el" href="class_component.html#a17323449ffdbf730bccac778b02c9053">Component</a>
+</li>
 </ul>
 
 
@@ -451,7 +500,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 : <a class="el" href="class_vector2.html#a22104d1809be26a419ef1f959e3761bf">Vector2</a>
 </li>
 <li>Vector3()
-: <a class="el" href="class_vector3.html#a0f49191f7e001e7f7ae1cb49522118b4">Vector3</a>
+: <a class="el" href="class_vector3.html#af7339592cdacffdfc39566133bd285d0">Vector3</a>
 </li>
 <li>vertices
 : <a class="el" href="class_game_object.html#aebe97ae47017ba87f3d97fb6e99324df">GameObject</a>
@@ -493,7 +542,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Dec 3 2014 15:43:53 for Cheezy by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Dec 5 2014 13:23:48 for Cheezy by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

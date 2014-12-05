@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Cheezy: /home/sephirot47/Cheezy/main.cpp Source File</title>
+<title>Cheezy: /home/sephirot47/Cheezy/src/main.cpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -39,7 +39,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -71,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -82,7 +81,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_75b82e7e4a5feb05200b9ad7adf06257.html">home</a></li><li class="navelem"><a class="el" href="dir_e5c6af04cc64bc4afc284ef8a1896284.html">sephirot47</a></li><li class="navelem"><a class="el" href="dir_018ca05db5e660bb772e08904d42b268.html">Cheezy</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -104,67 +103,65 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_vector3_8h.html">Vector3.h</a>&quot;</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_quaternion_8h.html">Quaternion.h</a>&quot;</span></div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;cmath&gt;</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">using namespace </span>std;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;sstream&gt;</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
-<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">   19</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a>()</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;{</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <a class="code" href="class_cheezy_win.html">CheezyWin</a> win;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    win.<a class="code" href="class_cheezy_win.html#a6c9b171d966a7a9275fa285483272744">Init</a>(640, 640);</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <a class="code" href="class_camera.html">Camera</a> cam = <a class="code" href="class_camera.html">Camera</a>();</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <a class="code" href="class_scene.html">Scene</a> *scene = win.<a class="code" href="class_cheezy_win.html#add09435dc913ad9665b621322a670b2a">CreateScene</a>(<span class="stringliteral">&quot;FirstScene&quot;</span>);</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <a class="code" href="class_game_object.html">GameObject</a> *go1 = <span class="keyword">new</span> <a class="code" href="class_game_object.html">GameObject</a>(<span class="stringliteral">&quot;go1&quot;</span>);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="code" href="class_game_object.html">GameObject</a> *go2 = <span class="keyword">new</span> <a class="code" href="class_game_object.html">GameObject</a>(<span class="stringliteral">&quot;go2&quot;</span>);</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    scene-&gt;<a class="code" href="class_scene.html#a980be0cac8e3b639f751d8a3a4851c29">Add</a>(go1);</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">using namespace </span>std;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">   21</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a>()</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;{</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <a class="code" href="class_cheezy_win.html">CheezyWin</a> win;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    win.<a class="code" href="class_cheezy_win.html#a6c9b171d966a7a9275fa285483272744">Init</a>(640, 640);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <a class="code" href="class_camera.html">Camera</a> cam = <a class="code" href="class_camera.html">Camera</a>();</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="code" href="class_scene.html">Scene</a> *scene = win.<a class="code" href="class_cheezy_win.html#add09435dc913ad9665b621322a670b2a">CreateScene</a>(<span class="stringliteral">&quot;FirstScene&quot;</span>);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <a class="code" href="class_game_object.html">GameObject</a> *go2 = <span class="keyword">new</span> <a class="code" href="class_game_object.html">GameObject</a>(<span class="stringliteral">&quot;go2&quot;</span>);</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    scene-&gt;<a class="code" href="class_scene.html#a980be0cac8e3b639f751d8a3a4851c29">Add</a>(go2);</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    scene-&gt;<a class="code" href="class_scene.html#a21b9c42f2b2af16c05c99e865e064769">SetCamera</a>(cam);</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;   <span class="comment">// go1-&gt;scale = Vector3(0.1, 0.1, 0.1);</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    go1-&gt;<a class="code" href="class_game_object.html#aa4a774e81e4d9e44012f8fcdb821b33c">pos</a>.<a class="code" href="class_vector3.html#a7e2d3237b29a2f29d7b3d8b2934e35f2">x</a> += 1.5;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    go1-&gt;<a class="code" href="class_game_object.html#aa4a774e81e4d9e44012f8fcdb821b33c">pos</a>.<a class="code" href="class_vector3.html#a86eb35a9fa2d5a49e7fad66a35fa9c13">y</a> += 1.5;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    go1-&gt;<a class="code" href="class_game_object.html#aa4a774e81e4d9e44012f8fcdb821b33c">pos</a>.<a class="code" href="class_vector3.html#aa8c9461eb24bd2c364258078811a3e9d">z</a> += 1.5;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    go2-&gt;<a class="code" href="class_game_object.html#a9edf603be120d5a9221e5c5c962465f8">transform</a>-&gt;<a class="code" href="class_transform.html#a140888762a494cbacc579526ae70d3f9">pos</a>.<a class="code" href="class_vector3.html#a7e2d3237b29a2f29d7b3d8b2934e35f2">x</a> += 5;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    go2-&gt;<a class="code" href="class_game_object.html#a9edf603be120d5a9221e5c5c962465f8">transform</a>-&gt;<a class="code" href="class_transform.html#a140888762a494cbacc579526ae70d3f9">pos</a>.<a class="code" href="class_vector3.html#aa8c9461eb24bd2c364258078811a3e9d">z</a> += 5;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    go2-&gt;<a class="code" href="class_game_object.html#a9edf603be120d5a9221e5c5c962465f8">transform</a>-&gt;<a class="code" href="class_transform.html#a2b4006024b283c6af2813e78e7092364">scale</a> = <a class="code" href="class_vector3.html">Vector3</a>(0.3, 0.3, 0.3);</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    go2-&gt;<a class="code" href="class_game_object.html#aa4a774e81e4d9e44012f8fcdb821b33c">pos</a>.<a class="code" href="class_vector3.html#a7e2d3237b29a2f29d7b3d8b2934e35f2">x</a> += 3;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    go2-&gt;<a class="code" href="class_game_object.html#aa4a774e81e4d9e44012f8fcdb821b33c">pos</a>.<a class="code" href="class_vector3.html#a86eb35a9fa2d5a49e7fad66a35fa9c13">y</a> += 3;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    go2-&gt;<a class="code" href="class_game_object.html#aa4a774e81e4d9e44012f8fcdb821b33c">pos</a>.<a class="code" href="class_vector3.html#aa8c9461eb24bd2c364258078811a3e9d">z</a> += 3;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    go2-&gt;<a class="code" href="class_game_object.html#a03eb9290ac1b0af12b22ea354fbf4fef">scale</a> = <a class="code" href="class_vector3.html">Vector3</a>(0.5, 0.5, 0.5);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    win.<a class="code" href="class_cheezy_win.html#ae9223538accb7c1d115f9abfe153f254">drawAxis</a> = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    win.<a class="code" href="class_cheezy_win.html#adad40846f082e3127213dbbc4aaf73ba">Loop</a>();</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    win.<a class="code" href="class_cheezy_win.html#a52a6c5c5209775850c5c02dcab1dfeaf">Destroy</a>();</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;}</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    cam.<a class="code" href="class_camera.html#a527e6b39d3d410179dd0e19f9e58aa6f">LookAt</a>(<a class="code" href="class_vector3.html">Vector3</a>(0, 0, 0), <a class="code" href="class_vector3.html">Vector3</a>(10, 10, 10), <a class="code" href="class_vector3.html">Vector3</a>(0, 1, 0));</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    win.<a class="code" href="class_cheezy_win.html#ae9223538accb7c1d115f9abfe153f254">drawAxis</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    win.<a class="code" href="class_cheezy_win.html#adad40846f082e3127213dbbc4aaf73ba">Loop</a>();</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    win.<a class="code" href="class_cheezy_win.html#a52a6c5c5209775850c5c02dcab1dfeaf">Destroy</a>();</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;}</div>
 <div class="ttc" id="_cheezy_win_8h_html"><div class="ttname"><a href="_cheezy_win_8h.html">CheezyWin.h</a></div></div>
 <div class="ttc" id="class_cheezy_win_html"><div class="ttname"><a href="class_cheezy_win.html">CheezyWin</a></div><div class="ttdef"><b>Definition:</b> <a href="_cheezy_win_8h_source.html#l00015">CheezyWin.h:15</a></div></div>
-<div class="ttc" id="class_cheezy_win_html_a52a6c5c5209775850c5c02dcab1dfeaf"><div class="ttname"><a href="class_cheezy_win.html#a52a6c5c5209775850c5c02dcab1dfeaf">CheezyWin::Destroy</a></div><div class="ttdeci">void Destroy()</div><div class="ttdef"><b>Definition:</b> <a href="_cheezy_win_8cpp_source.html#l00111">CheezyWin.cpp:111</a></div></div>
+<div class="ttc" id="class_cheezy_win_html_a52a6c5c5209775850c5c02dcab1dfeaf"><div class="ttname"><a href="class_cheezy_win.html#a52a6c5c5209775850c5c02dcab1dfeaf">CheezyWin::Destroy</a></div><div class="ttdeci">void Destroy()</div><div class="ttdoc">Destroys the window. </div><div class="ttdef"><b>Definition:</b> <a href="_cheezy_win_8cpp_source.html#l00112">CheezyWin.cpp:112</a></div></div>
 <div class="ttc" id="_game_object_8h_html"><div class="ttname"><a href="_game_object_8h.html">GameObject.h</a></div></div>
 <div class="ttc" id="class_vector3_html_aa8c9461eb24bd2c364258078811a3e9d"><div class="ttname"><a href="class_vector3.html#aa8c9461eb24bd2c364258078811a3e9d">Vector3::z</a></div><div class="ttdeci">float z</div><div class="ttdef"><b>Definition:</b> <a href="_vector3_8h_source.html#l00016">Vector3.h:16</a></div></div>
-<div class="ttc" id="class_scene_html_a21b9c42f2b2af16c05c99e865e064769"><div class="ttname"><a href="class_scene.html#a21b9c42f2b2af16c05c99e865e064769">Scene::SetCamera</a></div><div class="ttdeci">void SetCamera(Camera &amp;cam)</div><div class="ttdef"><b>Definition:</b> <a href="_scene_8cpp_source.html#l00082">Scene.cpp:82</a></div></div>
-<div class="ttc" id="class_cheezy_win_html_a6c9b171d966a7a9275fa285483272744"><div class="ttname"><a href="class_cheezy_win.html#a6c9b171d966a7a9275fa285483272744">CheezyWin::Init</a></div><div class="ttdeci">void Init(int width, int height)</div><div class="ttdef"><b>Definition:</b> <a href="_cheezy_win_8cpp_source.html#l00019">CheezyWin.cpp:19</a></div></div>
-<div class="ttc" id="class_scene_html_a980be0cac8e3b639f751d8a3a4851c29"><div class="ttname"><a href="class_scene.html#a980be0cac8e3b639f751d8a3a4851c29">Scene::Add</a></div><div class="ttdeci">void Add(GameObject *go)</div><div class="ttdef"><b>Definition:</b> <a href="_scene_8cpp_source.html#l00062">Scene.cpp:62</a></div></div>
-<div class="ttc" id="class_vector3_html_a86eb35a9fa2d5a49e7fad66a35fa9c13"><div class="ttname"><a href="class_vector3.html#a86eb35a9fa2d5a49e7fad66a35fa9c13">Vector3::y</a></div><div class="ttdeci">float y</div><div class="ttdef"><b>Definition:</b> <a href="_vector3_8h_source.html#l00016">Vector3.h:16</a></div></div>
-<div class="ttc" id="class_camera_html"><div class="ttname"><a href="class_camera.html">Camera</a></div><div class="ttdef"><b>Definition:</b> <a href="_camera_8h_source.html#l00009">Camera.h:9</a></div></div>
+<div class="ttc" id="class_scene_html_a21b9c42f2b2af16c05c99e865e064769"><div class="ttname"><a href="class_scene.html#a21b9c42f2b2af16c05c99e865e064769">Scene::SetCamera</a></div><div class="ttdeci">void SetCamera(Camera &amp;cam)</div><div class="ttdoc">Sets the scene&#39;s current camera. </div><div class="ttdef"><b>Definition:</b> <a href="_scene_8cpp_source.html#l00082">Scene.cpp:82</a></div></div>
+<div class="ttc" id="class_transform_html_a2b4006024b283c6af2813e78e7092364"><div class="ttname"><a href="class_transform.html#a2b4006024b283c6af2813e78e7092364">Transform::scale</a></div><div class="ttdeci">Vector3 scale</div><div class="ttdef"><b>Definition:</b> <a href="_transform_8h_source.html#l00013">Transform.h:13</a></div></div>
+<div class="ttc" id="class_cheezy_win_html_a6c9b171d966a7a9275fa285483272744"><div class="ttname"><a href="class_cheezy_win.html#a6c9b171d966a7a9275fa285483272744">CheezyWin::Init</a></div><div class="ttdeci">void Init(int width, int height)</div><div class="ttdoc">Inits and creates the window. </div><div class="ttdef"><b>Definition:</b> <a href="_cheezy_win_8cpp_source.html#l00019">CheezyWin.cpp:19</a></div></div>
+<div class="ttc" id="class_scene_html_a980be0cac8e3b639f751d8a3a4851c29"><div class="ttname"><a href="class_scene.html#a980be0cac8e3b639f751d8a3a4851c29">Scene::Add</a></div><div class="ttdeci">void Add(GameObject *go)</div><div class="ttdoc">Adds the go GameObject to the scene. </div><div class="ttdef"><b>Definition:</b> <a href="_scene_8cpp_source.html#l00062">Scene.cpp:62</a></div></div>
+<div class="ttc" id="class_camera_html"><div class="ttname"><a href="class_camera.html">Camera</a></div><div class="ttdef"><b>Definition:</b> <a href="_camera_8h_source.html#l00010">Camera.h:10</a></div></div>
 <div class="ttc" id="class_vector3_html_a7e2d3237b29a2f29d7b3d8b2934e35f2"><div class="ttname"><a href="class_vector3.html#a7e2d3237b29a2f29d7b3d8b2934e35f2">Vector3::x</a></div><div class="ttdeci">float x</div><div class="ttdef"><b>Definition:</b> <a href="_vector3_8h_source.html#l00016">Vector3.h:16</a></div></div>
+<div class="ttc" id="class_camera_html_a527e6b39d3d410179dd0e19f9e58aa6f"><div class="ttname"><a href="class_camera.html#a527e6b39d3d410179dd0e19f9e58aa6f">Camera::LookAt</a></div><div class="ttdeci">void LookAt(Vector3 to, Vector3 eye, Vector3 up)</div><div class="ttdoc">Moves the camera to eye, and rotates it to make it look to to, with the up vector of the camera align...</div><div class="ttdef"><b>Definition:</b> <a href="_camera_8cpp_source.html#l00009">Camera.cpp:9</a></div></div>
 <div class="ttc" id="_scene_8h_html"><div class="ttname"><a href="_scene_8h.html">Scene.h</a></div></div>
-<div class="ttc" id="main_8cpp_html_ae66f6b31b5ad750f1fe042a706a4e3d4"><div class="ttname"><a href="main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a></div><div class="ttdeci">int main()</div><div class="ttdef"><b>Definition:</b> <a href="main_8cpp_source.html#l00019">main.cpp:19</a></div></div>
-<div class="ttc" id="class_cheezy_win_html_ae9223538accb7c1d115f9abfe153f254"><div class="ttname"><a href="class_cheezy_win.html#ae9223538accb7c1d115f9abfe153f254">CheezyWin::drawAxis</a></div><div class="ttdeci">bool drawAxis</div><div class="ttdef"><b>Definition:</b> <a href="_cheezy_win_8h_source.html#l00039">CheezyWin.h:39</a></div></div>
-<div class="ttc" id="class_cheezy_win_html_add09435dc913ad9665b621322a670b2a"><div class="ttname"><a href="class_cheezy_win.html#add09435dc913ad9665b621322a670b2a">CheezyWin::CreateScene</a></div><div class="ttdeci">Scene * CreateScene(const char *sceneName)</div><div class="ttdef"><b>Definition:</b> <a href="_cheezy_win_8cpp_source.html#l00027">CheezyWin.cpp:27</a></div></div>
-<div class="ttc" id="class_game_object_html"><div class="ttname"><a href="class_game_object.html">GameObject</a></div><div class="ttdef"><b>Definition:</b> <a href="_game_object_8h_source.html#l00018">GameObject.h:18</a></div></div>
+<div class="ttc" id="main_8cpp_html_ae66f6b31b5ad750f1fe042a706a4e3d4"><div class="ttname"><a href="main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a></div><div class="ttdeci">int main()</div><div class="ttdef"><b>Definition:</b> <a href="main_8cpp_source.html#l00021">main.cpp:21</a></div></div>
+<div class="ttc" id="class_game_object_html_a9edf603be120d5a9221e5c5c962465f8"><div class="ttname"><a href="class_game_object.html#a9edf603be120d5a9221e5c5c962465f8">GameObject::transform</a></div><div class="ttdeci">Transform * transform</div><div class="ttdef"><b>Definition:</b> <a href="_game_object_8h_source.html#l00039">GameObject.h:39</a></div></div>
+<div class="ttc" id="class_cheezy_win_html_ae9223538accb7c1d115f9abfe153f254"><div class="ttname"><a href="class_cheezy_win.html#ae9223538accb7c1d115f9abfe153f254">CheezyWin::drawAxis</a></div><div class="ttdeci">bool drawAxis</div><div class="ttdef"><b>Definition:</b> <a href="_cheezy_win_8h_source.html#l00050">CheezyWin.h:50</a></div></div>
+<div class="ttc" id="class_cheezy_win_html_add09435dc913ad9665b621322a670b2a"><div class="ttname"><a href="class_cheezy_win.html#add09435dc913ad9665b621322a670b2a">CheezyWin::CreateScene</a></div><div class="ttdeci">Scene * CreateScene(const char *sceneName)</div><div class="ttdoc">Creates a scene with name sceneName nad returns a pointer to it. </div><div class="ttdef"><b>Definition:</b> <a href="_cheezy_win_8cpp_source.html#l00027">CheezyWin.cpp:27</a></div></div>
+<div class="ttc" id="class_game_object_html"><div class="ttname"><a href="class_game_object.html">GameObject</a></div><div class="ttdef"><b>Definition:</b> <a href="_game_object_8h_source.html#l00020">GameObject.h:20</a></div></div>
 <div class="ttc" id="class_scene_html"><div class="ttname"><a href="class_scene.html">Scene</a></div><div class="ttdef"><b>Definition:</b> <a href="_scene_8h_source.html#l00017">Scene.h:17</a></div></div>
 <div class="ttc" id="_vector2_8h_html"><div class="ttname"><a href="_vector2_8h.html">Vector2.h</a></div></div>
 <div class="ttc" id="_quaternion_8h_html"><div class="ttname"><a href="_quaternion_8h.html">Quaternion.h</a></div></div>
 <div class="ttc" id="class_vector3_html"><div class="ttname"><a href="class_vector3.html">Vector3</a></div><div class="ttdef"><b>Definition:</b> <a href="_vector3_8h_source.html#l00012">Vector3.h:12</a></div></div>
 <div class="ttc" id="_vector3_8h_html"><div class="ttname"><a href="_vector3_8h.html">Vector3.h</a></div></div>
 <div class="ttc" id="_camera_8h_html"><div class="ttname"><a href="_camera_8h.html">Camera.h</a></div></div>
-<div class="ttc" id="class_game_object_html_aa4a774e81e4d9e44012f8fcdb821b33c"><div class="ttname"><a href="class_game_object.html#aa4a774e81e4d9e44012f8fcdb821b33c">GameObject::pos</a></div><div class="ttdeci">Vector3 pos</div><div class="ttdef"><b>Definition:</b> <a href="_game_object_8h_source.html#l00033">GameObject.h:33</a></div></div>
+<div class="ttc" id="class_transform_html_a140888762a494cbacc579526ae70d3f9"><div class="ttname"><a href="class_transform.html#a140888762a494cbacc579526ae70d3f9">Transform::pos</a></div><div class="ttdeci">Vector3 pos</div><div class="ttdef"><b>Definition:</b> <a href="_transform_8h_source.html#l00011">Transform.h:11</a></div></div>
 <div class="ttc" id="_color_8h_html"><div class="ttname"><a href="_color_8h.html">Color.h</a></div></div>
 <div class="ttc" id="_debug_8h_html"><div class="ttname"><a href="_debug_8h.html">Debug.h</a></div></div>
-<div class="ttc" id="class_game_object_html_a03eb9290ac1b0af12b22ea354fbf4fef"><div class="ttname"><a href="class_game_object.html#a03eb9290ac1b0af12b22ea354fbf4fef">GameObject::scale</a></div><div class="ttdeci">Vector3 scale</div><div class="ttdef"><b>Definition:</b> <a href="_game_object_8h_source.html#l00035">GameObject.h:35</a></div></div>
-<div class="ttc" id="class_cheezy_win_html_adad40846f082e3127213dbbc4aaf73ba"><div class="ttname"><a href="class_cheezy_win.html#adad40846f082e3127213dbbc4aaf73ba">CheezyWin::Loop</a></div><div class="ttdeci">void Loop()</div><div class="ttdef"><b>Definition:</b> <a href="_cheezy_win_8cpp_source.html#l00117">CheezyWin.cpp:117</a></div></div>
+<div class="ttc" id="class_cheezy_win_html_adad40846f082e3127213dbbc4aaf73ba"><div class="ttname"><a href="class_cheezy_win.html#adad40846f082e3127213dbbc4aaf73ba">CheezyWin::Loop</a></div><div class="ttdeci">void Loop()</div><div class="ttdoc">Loops until the user closes the window. </div><div class="ttdef"><b>Definition:</b> <a href="_cheezy_win_8cpp_source.html#l00118">CheezyWin.cpp:118</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Dec 3 2014 15:43:53 for Cheezy by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Dec 5 2014 13:23:48 for Cheezy by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

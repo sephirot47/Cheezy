@@ -39,7 +39,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -89,6 +88,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="#index_p"><span>p</span></a></li>
       <li><a href="#index_r"><span>r</span></a></li>
       <li><a href="#index_s"><span>s</span></a></li>
+      <li><a href="#index_t"><span>t</span></a></li>
       <li><a href="#index_u"><span>u</span></a></li>
       <li><a href="#index_v"><span>v</span></a></li>
       <li><a href="#index_w"><span>w</span></a></li>
@@ -103,7 +103,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -132,6 +132,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <h3><a class="anchor" id="index_c"></a>- c -</h3><ul>
 <li>cam
 : <a class="el" href="class_scene.html#aeac676eac579e2831faae0eedaa8db8d">Scene</a>
+</li>
+<li>components
+: <a class="el" href="class_game_object.html#affe36fa2992e099827fdfae531c3a0dd">GameObject</a>
 </li>
 <li>currentScene
 : <a class="el" href="class_cheezy_win.html#a8f9ffbcf7bd6dcc7720b4b59af7ca100">CheezyWin</a>
@@ -186,7 +189,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <h3><a class="anchor" id="index_p"></a>- p -</h3><ul>
 <li>pos
 : <a class="el" href="class_camera.html#a2c4c5bcf8f5885968d4e5ebc28074846">Camera</a>
-, <a class="el" href="class_game_object.html#aa4a774e81e4d9e44012f8fcdb821b33c">GameObject</a>
+, <a class="el" href="class_transform.html#a140888762a494cbacc579526ae70d3f9">Transform</a>
 </li>
 </ul>
 
@@ -197,14 +200,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </li>
 <li>rot
 : <a class="el" href="class_camera.html#adf9703ce73cda000ec2214880ea866cd">Camera</a>
-, <a class="el" href="class_game_object.html#ac01c18194edb0c85047cea3ccc1038c2">GameObject</a>
+, <a class="el" href="class_transform.html#ab94717ec62107de39f1047a0f62451b8">Transform</a>
 </li>
 </ul>
 
 
 <h3><a class="anchor" id="index_s"></a>- s -</h3><ul>
 <li>scale
-: <a class="el" href="class_game_object.html#a03eb9290ac1b0af12b22ea354fbf4fef">GameObject</a>
+: <a class="el" href="class_transform.html#a2b4006024b283c6af2813e78e7092364">Transform</a>
 </li>
 <li>scenes
 : <a class="el" href="class_cheezy_win.html#a6e68ab23beefec081da7a8218d78967a">CheezyWin</a>
@@ -214,6 +217,16 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </li>
 <li>sdlWin
 : <a class="el" href="class_cheezy_win.html#a038253cdeca8b79a157cb418ce63596b">CheezyWin</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_t"></a>- t -</h3><ul>
+<li>transform
+: <a class="el" href="class_game_object.html#a9edf603be120d5a9221e5c5c962465f8">GameObject</a>
+</li>
+<li>type
+: <a class="el" href="class_component.html#a17323449ffdbf730bccac778b02c9053">Component</a>
 </li>
 </ul>
 
@@ -266,7 +279,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Dec 3 2014 15:43:53 for Cheezy by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Dec 5 2014 13:23:48 for Cheezy by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

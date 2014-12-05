@@ -24,14 +24,14 @@ Vector2::Vector2(double x, double y)
 }
 
 
-float inline Vector2::Mod()
+float inline Vector2::Magnitude() const
 {
     return sqrt(x*x + y*y);
 }
 
-Vector2 Vector2::Norm()
+Vector2 Vector2::Norm() const
 {
-    float mod = Mod();
+    float mod = Magnitude();
     return Vector2(x/mod, y/mod);
 }
 

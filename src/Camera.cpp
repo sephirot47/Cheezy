@@ -1,5 +1,4 @@
 #include "Camera.h"
-#include "Debug.h"
 
 Camera::Camera()
 {

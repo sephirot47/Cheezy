@@ -5,10 +5,6 @@ long Time::getMiliseconds() {
 	return SDL_GetTicks();
 }
 
-float Time::getMicroseconds() {
-	return SDL_GetTicks()/1000;
-}
-
 float Time::getSeconds() {
-	return SDL_GetTicks()/1000000;
+	return SDL_GetTicks()/1000;
 }

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['vertices',['vertices',['../class_game_object.html#aebe97ae47017ba87f3d97fb6e99324df',1,'GameObject']]]
+  ['uvs',['uvs',['../class_game_object.html#a3a6761f17b82aa18ecffa1fb1eb9801b',1,'GameObject']]]
 ];

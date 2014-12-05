@@ -18,6 +18,7 @@ public:
     Color(float r, float g, float b);
     Color(float r, float g, float b, float a);
 
+    ///\brief Returns a string representing the color
     string ToString() const; //Devuelve el string "(r,g,b,a)"
 
     Color& operator=(const Color &v);
@@ -29,8 +30,10 @@ public:
     bool operator==(const Color &v) const;
 
     //STATICS
-    //Devuelve la distancia entre v y u
+    ///\brief Returns the distance between color v and u (wtf?)
     static float Distance(const Color &v, const Color &u);
+
+    ///\brief Returns de linear interpolation between from and to.
     static Color Lerp(const Color &from, const Color &to, float f);
 };
 

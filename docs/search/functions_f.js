@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['update',['Update',['../class_game_object.html#a1bd14aa169f501f94f1721943d716535',1,'GameObject::Update()'],['../class_scene.html#a71a71b4f7752b853ff8032b0941a9d8d',1,'Scene::Update()']]]
+  ['scene',['Scene',['../class_scene.html#ad10176d75a9cc0da56626f682d083507',1,'Scene::Scene()'],['../class_scene.html#a3ccb797f55b72c851f696d1647527f5c',1,'Scene::Scene(string name)']]],
+  ['setcamera',['SetCamera',['../class_scene.html#a21b9c42f2b2af16c05c99e865e064769',1,'Scene']]],
+  ['setcurrentscene',['SetCurrentScene',['../class_cheezy_win.html#a2a514db4af32814361e9cedfe5470288',1,'CheezyWin']]]
 ];
