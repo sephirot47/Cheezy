@@ -154,11 +154,11 @@ src/Scene.o: src/Scene.cpp /usr/include/stdc-predef.h include/Scene.h \
  include/Printable.h include/Vector2.h include/Transform.h \
  include/Component.h include/Debug.h /usr/include/c++/4.8/sstream \
  /usr/include/c++/4.8/bits/sstream.tcc include/Mesh.h \
- /usr/include/c++/4.8/vector /usr/include/c++/4.8/bits/stl_construct.h \
+ /usr/include/GL/gl.h /usr/include/GL/glext.h /usr/include/c++/4.8/vector \
+ /usr/include/c++/4.8/bits/stl_construct.h \
  /usr/include/c++/4.8/ext/alloc_traits.h \
  /usr/include/c++/4.8/bits/stl_uninitialized.h \
  /usr/include/c++/4.8/bits/stl_vector.h \
  /usr/include/c++/4.8/bits/stl_bvector.h \
- /usr/include/c++/4.8/bits/vector.tcc /usr/include/GL/gl.h \
- /usr/include/GL/glext.h /usr/include/c++/4.8/ctime include/Camera.h \
- /usr/include/GL/glu.h
+ /usr/include/c++/4.8/bits/vector.tcc /usr/include/c++/4.8/ctime \
+ include/Camera.h /usr/include/GL/glu.h

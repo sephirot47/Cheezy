@@ -65,12 +65,12 @@ bool GameObject::AddComponent(Component &c)
     }
 }
 
-bool GameObject::HasComponent(const char *type)
+bool GameObject::HasComponent(const char *type) const
 {
     return components.find(type) != components.end();
 }
 
-Component GameObject::GetComponent(const char *type)
+Component* GameObject::GetComponent(const char *type) const
 {
     return components.find(type)->second;
 }

@@ -53,11 +53,11 @@ public:
 
     ///\brief Returns true if the GameObject already contains a component of type type.
     ///       Returns false otherwise.
-    bool HasComponent(const char *type);
+    bool HasComponent(const char *type) const;
 
     ///\brief Returns a pointer to the component of type type of this GameObject.
     ///       If the GameObject doesn't contain a component of type type, returns null.
-    void GetComponent(const char *type);
+    Component* GetComponent(const char *type) const;
 
     ///\brief Removes the component c from the GameObject
     void RemoveComponent(Component &c);

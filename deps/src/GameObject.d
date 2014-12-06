@@ -114,6 +114,7 @@ src/GameObject.o: src/GameObject.cpp /usr/include/stdc-predef.h \
  include/Vector2.h include/Transform.h include/Component.h \
  include/Debug.h /usr/include/c++/4.8/sstream \
  /usr/include/c++/4.8/bits/sstream.tcc include/Mesh.h \
+ /usr/include/GL/gl.h /usr/include/GL/glext.h /usr/include/inttypes.h \
  /usr/include/c++/4.8/vector /usr/include/c++/4.8/bits/stl_construct.h \
  /usr/include/c++/4.8/ext/alloc_traits.h \
  /usr/include/c++/4.8/bits/alloc_traits.h \
@@ -127,6 +128,4 @@ src/GameObject.o: src/GameObject.cpp /usr/include/stdc-predef.h \
  /usr/include/c++/4.8/bits/stl_relops.h /usr/include/c++/4.8/array \
  /usr/include/c++/4.8/stdexcept \
  /usr/include/c++/4.8/bits/uses_allocator.h \
- /usr/include/c++/4.8/bits/stl_multimap.h /usr/include/GL/gl.h \
- /usr/include/GL/glext.h /usr/include/inttypes.h \
- /usr/include/c++/4.8/ctime
+ /usr/include/c++/4.8/bits/stl_multimap.h /usr/include/c++/4.8/ctime
