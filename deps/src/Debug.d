@@ -1,20 +1,21 @@
 src/Debug.o: src/Debug.cpp /usr/include/stdc-predef.h include/Debug.h \
- /usr/include/c++/4.8/iostream \
- /usr/include/i386-linux-gnu/c++/4.8/bits/c++config.h \
- /usr/include/i386-linux-gnu/c++/4.8/bits/os_defines.h \
+ /usr/include/GL/gl.h /usr/include/GL/glext.h \
+ /usr/lib/gcc/i686-linux-gnu/4.8/include/stddef.h /usr/include/inttypes.h \
  /usr/include/features.h /usr/include/i386-linux-gnu/sys/cdefs.h \
  /usr/include/i386-linux-gnu/bits/wordsize.h \
  /usr/include/i386-linux-gnu/gnu/stubs.h \
  /usr/include/i386-linux-gnu/gnu/stubs-32.h \
+ /usr/lib/gcc/i686-linux-gnu/4.8/include/stdint.h /usr/include/stdint.h \
+ /usr/include/i386-linux-gnu/bits/wchar.h /usr/include/c++/4.8/iostream \
+ /usr/include/i386-linux-gnu/c++/4.8/bits/c++config.h \
+ /usr/include/i386-linux-gnu/c++/4.8/bits/os_defines.h \
  /usr/include/i386-linux-gnu/c++/4.8/bits/cpu_defines.h \
  /usr/include/c++/4.8/ostream /usr/include/c++/4.8/ios \
  /usr/include/c++/4.8/iosfwd /usr/include/c++/4.8/bits/stringfwd.h \
  /usr/include/c++/4.8/bits/memoryfwd.h \
  /usr/include/c++/4.8/bits/postypes.h /usr/include/c++/4.8/cwchar \
  /usr/include/wchar.h /usr/include/stdio.h \
- /usr/lib/gcc/i686-linux-gnu/4.8/include/stdarg.h \
- /usr/include/i386-linux-gnu/bits/wchar.h \
- /usr/lib/gcc/i686-linux-gnu/4.8/include/stddef.h /usr/include/xlocale.h \
+ /usr/lib/gcc/i686-linux-gnu/4.8/include/stdarg.h /usr/include/xlocale.h \
  /usr/include/i386-linux-gnu/bits/wchar2.h /usr/include/c++/4.8/exception \
  /usr/include/c++/4.8/bits/atomic_lockfree_defines.h \
  /usr/include/c++/4.8/bits/exception_ptr.h \
@@ -33,7 +34,6 @@ src/Debug.o: src/Debug.cpp /usr/include/stdc-predef.h include/Debug.h \
  /usr/include/c++/4.8/bits/stl_iterator_base_funcs.h \
  /usr/include/c++/4.8/debug/debug.h \
  /usr/include/c++/4.8/bits/stl_iterator.h /usr/include/c++/4.8/cstdint \
- /usr/lib/gcc/i686-linux-gnu/4.8/include/stdint.h /usr/include/stdint.h \
  /usr/include/c++/4.8/bits/localefwd.h \
  /usr/include/i386-linux-gnu/c++/4.8/bits/c++locale.h \
  /usr/include/c++/4.8/clocale /usr/include/locale.h \

@@ -15,6 +15,7 @@
 #define CZ_FRAGMENT_SHADER GL_FRAGMENT_SHADER
 
 #define CZ_MAX_SHADER_ERROR_LOG_SIZE 2056
+
 using namespace std;
 
 class Shader

@@ -29,19 +29,23 @@ bool Shader::LoadFromFile(const char *filepath)
     fseek(f, 0, SEEK_SET);
 
     srcCode = new char[fileLength+1];
-    fread(srcCode, sizeof(char), fileLength, f);
+    DBG_ASSERT_RET_MSG(fread(srcCode, sizeof(char), fileLength, f), "There was an error trying to read the file of the shader.");
     srcCode[fileLength+1] = '\0';
 
     //Bind the shader with openGL
     shaderId = glCreateShader(type); //create id
-    glShaderSource(shaderId, 1, &srcCode, &srcCodeLength); //pass the code read to openGL
+    //Pass the read code to openGL
+    DBG_ASSERT_GL_MSG(glShaderSource(shaderId, 1, &srcCode, &srcCodeLength), "There was an error trying to read the shader file.");
 
-    glCompileShader(shaderId); //try to compile the shader
+    //Try to compile the shader
+    DBG_ASSERT_GL_MSG(glCompileShader(shaderId), "There was an error when trying to compile your shader.");
+
     int compilationResult;
-    glGetShaderiv(shaderId, GL_COMPILE_STATUS, &compilationResult); //get the compilation flag
-    if(compilationResult == GL_FALSE) //if something failed during compilation
+    glGetShaderiv(shaderId, GL_COMPILE_STATUS, &compilationResult); //Get the compilation flag
+
+    if(compilationResult == GL_FALSE) //If something failed during compilation
     {
-        char *shaderErrorLog[CZ_MAX_SHADER_ERROR_LOG_SIZE];
+        char shaderErrorLog[CZ_MAX_SHADER_ERROR_LOG_SIZE];
         glGetShaderInfoLog(shaderId, CZ_MAX_SHADER_ERROR_LOG_SIZE, 0, shaderErrorLog);
         DbgError(filepath << " contains errors! It can't be compiled");
         DbgLog(shaderErrorLog);
@@ -52,7 +56,7 @@ bool Shader::LoadFromFile(const char *filepath)
         return false;
     }
 
-    return true;
+    return true; //Everything went good
 }
 
 

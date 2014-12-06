@@ -137,6 +137,7 @@ src/CheezyWin.o: src/CheezyWin.cpp /usr/include/stdc-predef.h \
  /usr/local/include/SDL2/SDL_power.h /usr/local/include/SDL2/SDL_render.h \
  /usr/local/include/SDL2/SDL_system.h /usr/local/include/SDL2/SDL_timer.h \
  /usr/local/include/SDL2/SDL_version.h include/Debug.h \
+ /usr/include/GL/gl.h /usr/include/GL/glext.h \
  /usr/include/c++/4.8/iostream /usr/include/c++/4.8/ostream \
  /usr/include/c++/4.8/ios /usr/include/c++/4.8/bits/ios_base.h \
  /usr/include/c++/4.8/bits/locale_classes.h \
@@ -156,8 +157,7 @@ src/CheezyWin.o: src/CheezyWin.cpp /usr/include/stdc-predef.h \
  /usr/include/c++/4.8/cmath include/Printable.h include/Scene.h \
  include/GameObject.h include/Quaternion.h include/Vector2.h \
  include/Transform.h include/Component.h include/Mesh.h \
- /usr/include/GL/gl.h /usr/include/GL/glext.h /usr/include/c++/4.8/vector \
- /usr/include/c++/4.8/bits/stl_construct.h \
+ /usr/include/c++/4.8/vector /usr/include/c++/4.8/bits/stl_construct.h \
  /usr/include/c++/4.8/ext/alloc_traits.h \
  /usr/include/c++/4.8/bits/stl_uninitialized.h \
  /usr/include/c++/4.8/bits/stl_vector.h \

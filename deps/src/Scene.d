@@ -152,10 +152,10 @@ src/Scene.o: src/Scene.cpp /usr/include/stdc-predef.h include/Scene.h \
  /usr/local/include/SDL2/SDL_version.h include/GameObject.h \
  include/Quaternion.h include/Vector3.h /usr/include/c++/4.8/cmath \
  include/Printable.h include/Vector2.h include/Transform.h \
- include/Component.h include/Debug.h /usr/include/c++/4.8/sstream \
+ include/Component.h include/Debug.h /usr/include/GL/gl.h \
+ /usr/include/GL/glext.h /usr/include/c++/4.8/sstream \
  /usr/include/c++/4.8/bits/sstream.tcc include/Mesh.h \
- /usr/include/GL/gl.h /usr/include/GL/glext.h /usr/include/c++/4.8/vector \
- /usr/include/c++/4.8/bits/stl_construct.h \
+ /usr/include/c++/4.8/vector /usr/include/c++/4.8/bits/stl_construct.h \
  /usr/include/c++/4.8/ext/alloc_traits.h \
  /usr/include/c++/4.8/bits/stl_uninitialized.h \
  /usr/include/c++/4.8/bits/stl_vector.h \
