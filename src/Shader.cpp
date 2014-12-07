@@ -13,6 +13,12 @@ Shader::Shader(unsigned int shaderType) : Shader()
     this->type = shaderType;
 }
 
+Shader::Shader(unsigned int shaderType, const char *filepath) : Shader(shaderType)
+{
+    this->type = shaderType;
+    LoadFromFile(filepath);
+}
+
 bool Shader::LoadFromFile(const char *filepath)
 {
     if(srcCode != 0) delete srcCode; //Free the previous srcCode
@@ -25,12 +31,11 @@ bool Shader::LoadFromFile(const char *filepath)
     }
 
     fseek(f, 0, SEEK_END);
-    int fileLength = ftell(f);
+    srcCodeLength = ftell(f);
     fseek(f, 0, SEEK_SET);
 
-    srcCode = new char[fileLength+1];
-    DBG_ASSERT_RET_MSG(fread(srcCode, sizeof(char), fileLength, f), "There was an error trying to read the file of the shader.");
-    srcCode[fileLength+1] = '\0';
+    srcCode = new char[srcCodeLength];
+    DBG_ASSERT_RET_MSG(fread(srcCode, sizeof(char), srcCodeLength, f), "There was an error trying to read the file of the shader.");
 
     //Bind the shader with openGL
     shaderId = glCreateShader(type); //create id
@@ -50,18 +55,23 @@ bool Shader::LoadFromFile(const char *filepath)
         DbgError(filepath << " contains errors! It can't be compiled");
         DbgLog(shaderErrorLog);
 
+        delete srcCode;
         srcCode = 0;
         srcCodeLength = 0;
         glDeleteShader(shaderId);
         return false;
     }
-
     return true; //Everything went good
 }
-
 
 int Shader::GetShaderId()
 {
     if(shaderId == 0) return -1;
     return shaderId;
 }
+
+int Shader::GetType()
+{
+    return type;
+}
+

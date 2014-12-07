@@ -6,6 +6,8 @@
 #include "Vector3.h"
 #include "Vector2.h"
 #include "Transform.h"
+#include "Material.h"
+#include "Shader.h"
 #include "Component.h"
 #include "Debug.h"
 #include "Mesh.h"

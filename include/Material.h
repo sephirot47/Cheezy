@@ -31,13 +31,17 @@ public:
     ///\brief Attaches to the Material a Shader of type shaderType
     ///       If there was a previous attached Shader of the same type, it will be replaced
     ///       If something goes wrong, returns false. Otherwise returns true.
-    bool AttachShader(Shader &shader, unsigned int shaderType);
+    bool AttachShader(Shader &shader);
 
     ///\brief Returns the id of the shader attached to this Material
     ///       If no shader is attached, returns -1
     int GetShaderId(unsigned int shaderType);
 
+    ///\brief Sets the GL state in order to use the Shaders of this Material in the next rendering
     void UseProgram();
+
+    ///\brief Sets the GL state in order to leave using the Shaders of this Material in the next rendering
+    void UnUseProgram();
 };
 
 #endif // MATERIAL_H

@@ -18,12 +18,6 @@
 
 using namespace std;
 
-int a()
-{
-    cout << "MEC" << endl;
-    return -1;
-}
-
 int main()
 {
     CheezyWin win;

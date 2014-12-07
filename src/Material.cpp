@@ -7,8 +7,9 @@ Material::Material()
     programId = -1;
 }
 
-bool Material::AttachShader(Shader &shader, unsigned int shaderType)
+bool Material::AttachShader(Shader &shader)
 {
+    int shaderType = shader.GetType();
     switch(shaderType)
     {
         case CZ_VERTEX_SHADER:
@@ -72,4 +73,9 @@ int Material::GetShaderId(unsigned int shaderType)
 void Material::UseProgram()
 {
     if(programId > 0) glUseProgram(programId);
+}
+
+void Material::UnUseProgram()
+{
+    glUseProgram(0);
 }

@@ -5,6 +5,14 @@ Mesh::Mesh()
     vertexCount = 0;
     type = "Mesh";
     glGenBuffers(1, &vertexBufferId);
+
+    material = new Material();
+
+    Shader *vertexShader = new Shader(CZ_VERTEX_SHADER, "Shaders/vertexShader.glsl");
+    Shader *fragmentShader = new Shader(CZ_FRAGMENT_SHADER, "Shaders/fragmentShader.glsl");
+
+    material->AttachShader(*vertexShader);
+    material->AttachShader(*fragmentShader);
 }
 
 void Mesh::Draw()
@@ -12,15 +20,14 @@ void Mesh::Draw()
     if(vertexCount <= 0) return;
 
     glBindBuffer(GL_ARRAY_BUFFER, vertexBufferId);
-
     glEnableVertexAttribArray(0);
-
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
 
+    material->UseProgram();
     glDrawArrays(GL_TRIANGLES, 0, vertexCount);
+    material->UnUseProgram();
 
     glDisableVertexAttribArray(0);
-
     glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 

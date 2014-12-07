@@ -35,6 +35,10 @@ public:
     ///       shaderType can be CZ_VERTEX_SHADER or CZ_FRAGMENT_SHADER
     Shader(unsigned int shaderType);
 
+    ///\brief Creates a shader of type shaderType and calls LoadFromFile(filepath) directly
+    ///       shaderType can be CZ_VERTEX_SHADER or CZ_FRAGMENT_SHADER
+    Shader(unsigned int shaderType, const char* filepath);
+
     ///\brief Loads a shader from a file, compiles it and binds it to openGL
     ///       If something went wrong, returns false. Otherwise, returns true.
     bool LoadFromFile(const char *filepath);
@@ -42,6 +46,10 @@ public:
     ///\brief Returns the shader id.
     ///       If the shader hasn't been loaded yet from a file, returns -1.
     int GetShaderId();
+
+    ///\brief Returns the shader type.
+    ///       It can be CZ_VERTEX_SHADER or CZ_FRAGMENT_SHADER.
+    int GetType();
 };
 
 #endif // SHADER_H

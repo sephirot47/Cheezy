@@ -112,17 +112,18 @@ src/GameObject.o: src/GameObject.cpp /usr/include/stdc-predef.h \
  /usr/include/i386-linux-gnu/bits/mathinline.h include/Printable.h \
  /usr/include/string.h /usr/include/i386-linux-gnu/bits/string3.h \
  include/Vector2.h include/Transform.h include/Component.h \
- include/Debug.h /usr/include/GL/gl.h /usr/include/GL/glext.h \
- /usr/include/inttypes.h /usr/include/c++/4.8/sstream \
- /usr/include/c++/4.8/bits/sstream.tcc include/Mesh.h \
- /usr/include/c++/4.8/vector /usr/include/c++/4.8/bits/stl_construct.h \
+ include/Material.h /usr/include/GL/gl.h /usr/include/GL/glext.h \
+ /usr/include/inttypes.h /usr/include/c++/4.8/vector \
+ /usr/include/c++/4.8/bits/stl_construct.h \
  /usr/include/c++/4.8/ext/alloc_traits.h \
  /usr/include/c++/4.8/bits/alloc_traits.h \
  /usr/include/c++/4.8/bits/ptr_traits.h \
  /usr/include/c++/4.8/bits/stl_uninitialized.h \
  /usr/include/c++/4.8/bits/stl_vector.h \
  /usr/include/c++/4.8/bits/stl_bvector.h \
- /usr/include/c++/4.8/bits/vector.tcc /usr/include/c++/4.8/map \
+ /usr/include/c++/4.8/bits/vector.tcc include/Debug.h \
+ /usr/include/c++/4.8/sstream /usr/include/c++/4.8/bits/sstream.tcc \
+ include/Shader.h include/Mesh.h /usr/include/c++/4.8/map \
  /usr/include/c++/4.8/bits/stl_tree.h /usr/include/c++/4.8/bits/stl_map.h \
  /usr/include/c++/4.8/tuple /usr/include/c++/4.8/utility \
  /usr/include/c++/4.8/bits/stl_relops.h /usr/include/c++/4.8/array \

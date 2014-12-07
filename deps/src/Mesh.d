@@ -122,4 +122,5 @@ src/Mesh.o: src/Mesh.cpp /usr/include/stdc-predef.h include/Mesh.h \
  /usr/include/i386-linux-gnu/bits/mathcalls.h \
  /usr/include/i386-linux-gnu/bits/mathinline.h include/Printable.h \
  /usr/include/string.h /usr/include/i386-linux-gnu/bits/string3.h \
- include/Component.h include/Vector2.h
+ include/Shader.h include/Component.h include/Vector2.h \
+ include/Material.h
