@@ -48,28 +48,6 @@ void CheezyWin::DrawAxis()
     glMatrixMode(GL_MODELVIEW);
     glPushMatrix();
 
-    glBegin(GL_QUADS);
-    glColor3f(0.2f, 0.2f, 0.2f);
-    glVertex3f(0.0f, 0.0f, 0.0f);
-    glVertex3f(0.0f, size, 0.0f);
-    glVertex3f(size, size, 0.0f);
-    glVertex3f(size, 0.0f, 0.0f);
-    glEnd();
-    glBegin(GL_QUADS);
-    glColor3f(0.5f, 0.5f, 0.5f);
-    glVertex3f(0.0f, 0.0f, 0.0f);
-    glVertex3f(0.0f, size, 0.0f);
-    glVertex3f(0.0f, size, size);
-    glVertex3f(0.0f, 0.0f, size);
-    glEnd();
-    glBegin(GL_QUADS);
-    glColor3f(0.8f, 0.8f, 0.8f);
-    glVertex3f(0.0f, 0.0f, 0.0f);
-    glVertex3f(size, 0.0f, 0.0f);
-    glVertex3f(size, 0.0f, size);
-    glVertex3f(0.0f, 0.0f, size);
-    glEnd();
-
     glBegin(GL_LINES);
     glColor3f(1.0f, 0.0f, 0.0f);
     glVertex3f(0.0f, 0.0f, 0.0f);

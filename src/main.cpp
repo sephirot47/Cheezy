@@ -30,8 +30,9 @@ int main()
     scene->SetCamera(cam);
 
     go2->transform->pos.x += 5;
+    go2->transform->pos.y += 5;
     go2->transform->pos.z += 5;
-    go2->transform->scale = Vector3(0.3, 0.3, 0.3);
+    go2->transform->scale = Vector3(0.05, 0.05, 0.05);
 
     cam.LookAt(Vector3(0, 0, 0), Vector3(10, 10, 10), Vector3(0, 1, 0));
 

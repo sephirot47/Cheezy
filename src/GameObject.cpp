@@ -7,7 +7,7 @@ GameObject::GameObject()
 
     transform = t;
     transform->pos = Vector3(0, 0, 0);
-    transform->rot = Quaternion();
+    transform->rot = Quaternion::Euler(0, 0, 0);
     transform->scale = Vector3(1, 1, 1);
 
     Mesh *m = new Mesh();  //Create the default Mesh
@@ -18,7 +18,6 @@ GameObject::GameObject()
 
     name = "";
 
-    foo = .0f;
     idGameObjects = 0;
 }
 
@@ -89,9 +88,7 @@ void GameObject::_Draw()
 
     glTranslatef(transform->pos.x, transform->pos.y, transform->pos.z);
 
-    foo += 5.0f;
     float mat[16];
-    transform->rot = Quaternion::Euler(.0f, foo, .0f);
     transform->rot.GetRotMatrix(mat);
     glMultMatrixf(mat);
 

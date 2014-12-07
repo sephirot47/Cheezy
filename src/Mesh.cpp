@@ -21,11 +21,11 @@ void Mesh::Draw()
 
     glBindBuffer(GL_ARRAY_BUFFER, vertexBufferId);
     glEnableVertexAttribArray(0);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vector3), 0);
 
-    material->UseProgram();
+    material->UseProgram(); //Use the shader
     glDrawArrays(GL_TRIANGLES, 0, vertexCount);
-    material->UnUseProgram();
+    material->UnUseProgram(); //Dont use this shader from now on
 
     glDisableVertexAttribArray(0);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
@@ -57,11 +57,11 @@ void Mesh::LoadFromFile(const char *filepath)
         }
         else if (strcmp(lineHeader, "f") == 0)
         {
-            unsigned int vertexIndex[3], uvIndex[3], normalIndex[3];
-            int matches = fscanf(f, "%d/%d/%d %d/%d/%d %d/%d/%d\n", &vertexIndex[0], &uvIndex[0], &normalIndex[0],
-                                                                    &vertexIndex[1], &uvIndex[1], &normalIndex[1],
-                                                                    &vertexIndex[2], &uvIndex[2], &normalIndex[2]);
-                                                                    //&vertexIndex[3], &uvIndex[3], &normalIndex[3] );
+            unsigned int vertexIndex[3], foo;
+            int matches = fscanf(f, "%d/%d/%d %d/%d/%d %d/%d/%d\n", &vertexIndex[0], &foo, &foo,
+                                                                    &vertexIndex[1], &foo, &foo,
+                                                                    &vertexIndex[2], &foo, &foo);
+
             if (matches != 9)
             {
                 DbgError("Error reading the file!");
@@ -79,7 +79,7 @@ void Mesh::LoadFromFile(const char *filepath)
 
     vertexCount = vertices.size();
     glBindBuffer(GL_ARRAY_BUFFER, vertexBufferId);
-    glBufferData(GL_ARRAY_BUFFER, vertices.size(), &vertices[0], GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, vertexCount * sizeof(Vector3), &vertices[0], GL_STATIC_DRAW); //Load the mesh to the GPU
     glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
