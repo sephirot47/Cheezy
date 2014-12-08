@@ -151,15 +151,14 @@ src/Scene.o: src/Scene.cpp /usr/include/stdc-predef.h include/Scene.h \
  /usr/local/include/SDL2/SDL_system.h /usr/local/include/SDL2/SDL_timer.h \
  /usr/local/include/SDL2/SDL_version.h include/GameObject.h \
  include/Quaternion.h include/Vector3.h /usr/include/c++/4.8/cmath \
- include/Printable.h include/Vector2.h include/Transform.h \
- include/Component.h include/Material.h /usr/include/GL/gl.h \
- /usr/include/GL/glext.h /usr/include/c++/4.8/vector \
- /usr/include/c++/4.8/bits/stl_construct.h \
+ include/Vector2.h include/Transform.h include/Component.h \
+ include/Material.h /usr/include/GL/gl.h /usr/include/GL/glext.h \
+ /usr/include/c++/4.8/vector /usr/include/c++/4.8/bits/stl_construct.h \
  /usr/include/c++/4.8/ext/alloc_traits.h \
  /usr/include/c++/4.8/bits/stl_uninitialized.h \
  /usr/include/c++/4.8/bits/stl_vector.h \
  /usr/include/c++/4.8/bits/stl_bvector.h \
  /usr/include/c++/4.8/bits/vector.tcc include/Debug.h \
  /usr/include/c++/4.8/sstream /usr/include/c++/4.8/bits/sstream.tcc \
- include/Shader.h include/Mesh.h /usr/include/c++/4.8/ctime \
- include/Camera.h /usr/include/GL/glu.h
+ include/Shader.h include/Mesh.h include/Vertex.h \
+ /usr/include/c++/4.8/ctime include/Camera.h /usr/include/GL/glu.h

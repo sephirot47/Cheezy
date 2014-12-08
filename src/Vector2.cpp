@@ -35,13 +35,6 @@ Vector2 Vector2::Norm() const
     return Vector2(x/mod, y/mod);
 }
 
-string Vector2::ToString() const
-{
-    char buf[256];
-    sprintf(buf, "(%f, %f)", x, y);
-    return string(buf);
-}
-
 float Vector2::Distance(const Vector2 &v, const Vector2 &u)
 {
     return sqrt((v.x-u.x)*(v.x-u.x) + (v.y-u.y)*(v.y-u.y));

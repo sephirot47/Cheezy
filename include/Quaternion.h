@@ -6,11 +6,11 @@
 #include <string>
 #include <stdio.h>
 #include <cmath>
-#include "Printable.h"
+
 
 using namespace std;
 
-class Quaternion : public Printable
+class Quaternion
 {
 public:
 
@@ -27,9 +27,6 @@ public:
     ///       -angley degrees around y axis
     ///       -anglez degrees around z axis
     static Quaternion Euler(float anglex, float angley, float anglez);
-
-    ///\brief Returns a string representing the quaternion
-    string ToString() const;
 
     Quaternion& operator=(const Vector3 &v);
     Quaternion  operator+(const Quaternion &v) const;

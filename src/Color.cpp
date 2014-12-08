@@ -22,13 +22,6 @@ Color::Color(float r, float g, float b, float a)
     this->a = a;
 }
 
-string Color::ToString() const
-{
-    char buf[256];
-    sprintf(buf, "(%f, %f, %f, %f)", r, g, b, a);
-    return string(buf);
-}
-
 Color& Color::operator=(const Color &v)
 {
     this->r = v.r;

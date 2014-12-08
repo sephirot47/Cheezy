@@ -6,7 +6,8 @@
 #include <sstream>
 #include <string>
 #include "Vector3.h"
-#include "Printable.h"
+#include "Quaternion.h"
+
 
 using namespace std;
 
@@ -72,6 +73,9 @@ using namespace std;
     if(err < 0){ DbgError(msg); return false;} \
 } while(0)
 
-ostream& operator<<(ostream &log, const Printable &p);
+
+//OSTREAM OPERATORS //////////////////////////////////
+ostream& operator<<(ostream &log, const Vector3 &v);
+ostream& operator<<(ostream &log, const Quaternion &q);
 
 #endif //DEBUG_H

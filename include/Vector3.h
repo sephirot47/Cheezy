@@ -5,11 +5,11 @@
 #include <string>
 #include <stdio.h>
 #include <cmath>
-#include "Printable.h"
+
 
 using namespace std;
 
-class Vector3 : public Printable
+class Vector3 //: public Printable
 {
 public:
 
@@ -27,7 +27,7 @@ public:
     float Magnitude() const;
 
     ///\brief Converts the Vector3 to a String
-    string ToString() const; //Devuelve el string "(x,y,z)"
+    //string ToString() const; //Devuelve el string "(x,y,z)"
 
     Vector3& operator=(const Vector3 &v);
     Vector3  operator+(const Vector3 &v) const;

@@ -5,11 +5,11 @@
 #include <string>
 #include <stdio.h>
 #include <cmath>
-#include "Printable.h"
+
 
 using namespace std;
 
-class Color : public Printable
+class Color
 {
 public:
 
@@ -17,9 +17,6 @@ public:
     Color();
     Color(float r, float g, float b);
     Color(float r, float g, float b, float a);
-
-    ///\brief Returns a string representing the color
-    string ToString() const; //Devuelve el string "(r,g,b,a)"
 
     Color& operator=(const Color &v);
     Color  operator+(const Color &v) const;

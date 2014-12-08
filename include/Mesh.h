@@ -5,9 +5,11 @@
 
 #include <GL/gl.h>
 #include <GL/glext.h>
+#include <string.h>
 #include <vector>
 #include "Debug.h"
 #include "Shader.h"
+#include "Vertex.h"
 #include "Material.h"
 #include "Component.h"
 #include "Vector3.h"
@@ -30,7 +32,7 @@ public:
     void Init(){}
 
     void Draw();
-    void LoadFromFile(const char *filepath);
+    bool LoadFromFile(const char *filepath);
 
     int GetVertexCount();
 };

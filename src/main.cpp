@@ -34,6 +34,8 @@ int main()
     go2->transform->pos.z += 5;
     go2->transform->scale = Vector3(0.05, 0.05, 0.05);
 
+    DbgLog(go2->transform->pos);
+
     win.drawAxis = true;
     win.Loop();
     win.Destroy();

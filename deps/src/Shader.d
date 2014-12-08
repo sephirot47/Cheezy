@@ -120,6 +120,5 @@ src/Shader.o: src/Shader.cpp /usr/include/stdc-predef.h include/Shader.h \
  /usr/include/i386-linux-gnu/bits/nan.h \
  /usr/include/i386-linux-gnu/bits/mathdef.h \
  /usr/include/i386-linux-gnu/bits/mathcalls.h \
- /usr/include/i386-linux-gnu/bits/mathinline.h include/Printable.h \
- /usr/include/string.h /usr/include/i386-linux-gnu/bits/string3.h \
+ /usr/include/i386-linux-gnu/bits/mathinline.h include/Quaternion.h \
  include/Component.h include/Vector2.h

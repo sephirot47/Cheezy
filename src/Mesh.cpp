@@ -21,27 +21,26 @@ void Mesh::Draw()
 
     glEnableVertexAttribArray(0);
     glBindBuffer(GL_ARRAY_BUFFER, vertexBufferId);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 3, 0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), 0);
 
     DBG_ASSERT_GL(material->UseProgram()); //Use the shader
-    DBG_ASSERT_GL(glDrawArrays(GL_LINES, 0, vertexCount));
+    DBG_ASSERT_GL(glDrawArrays(GL_TRIANGLES, 0, vertexCount));
     DBG_ASSERT_GL(material->UnUseProgram()); //Dont use this shaders from now on
 
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glDisableVertexAttribArray(0);
 }
 
-void Mesh::LoadFromFile(const char *filepath)
+bool Mesh::LoadFromFile(const char *filepath)
 {
-    vector<float> vfloats;
-    vector<Vector3> vertices, tempVertices;
+    vector<Vertex> vertices, tempVertices;
     vector<unsigned int> vertexIndexes;
 
     FILE * f = fopen(filepath, "r");
     if(f == NULL)
     {
         DbgError("Error opening the Mesh file!");
-        return;
+        return false;
     }
 
     while(!feof(f))
@@ -51,8 +50,8 @@ void Mesh::LoadFromFile(const char *filepath)
         if(res < 0) break;
         if (strcmp(lineHeader, "v") == 0)
         {
-            Vector3 v;
-            res = fscanf(f, "%f %f %f\n", &v.x, &v.y, &v.z);
+            Vertex v;
+            res = fscanf(f, "%f %f %f\n", &v.pos.x, &v.pos.y, &v.pos.z);
             if(res < 0) break;
             tempVertices.push_back(v);
         }
@@ -65,8 +64,8 @@ void Mesh::LoadFromFile(const char *filepath)
 
             if (matches != 9)
             {
-                DbgError("Error reading the file!");
-                break;
+                DbgWarning("Error reading the file, the f sections don't fit in any of our parser formats!");
+                return false;
             }
 
             vertexIndexes.push_back(vertexIndex[0]);
@@ -76,18 +75,14 @@ void Mesh::LoadFromFile(const char *filepath)
     }
 
     for(int i = 0; i < (int)vertexIndexes.size(); ++i)
-    {
         vertices.push_back(tempVertices[vertexIndexes[i]-1]);
-        vfloats.push_back(tempVertices[vertexIndexes[i]-1].x);
-        vfloats.push_back(tempVertices[vertexIndexes[i]-1].y);
-        vfloats.push_back(tempVertices[vertexIndexes[i]-1].z);
-    }
 
     vertexCount = vertices.size();
     glBindBuffer(GL_ARRAY_BUFFER, vertexBufferId);
-   // glBufferData(GL_ARRAY_BUFFER, vertexCount * (sizeof(float) * 3), &vertices[0], GL_STATIC_DRAW); //Load the mesh to the GPU
-    glBufferData(GL_ARRAY_BUFFER, vfloats.size() * sizeof(float), &vfloats[0], GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, vertexCount * sizeof(Vertex), &vertices[0], GL_STATIC_DRAW); //Load the mesh to the GPU
     glBindBuffer(GL_ARRAY_BUFFER, 0);
+
+    return true;
 }
 
 int Mesh::GetVertexCount()

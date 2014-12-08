@@ -154,13 +154,14 @@ src/CheezyWin.o: src/CheezyWin.cpp /usr/include/stdc-predef.h \
  /usr/include/c++/4.8/bits/ostream.tcc /usr/include/c++/4.8/istream \
  /usr/include/c++/4.8/bits/istream.tcc /usr/include/c++/4.8/sstream \
  /usr/include/c++/4.8/bits/sstream.tcc include/Vector3.h \
- /usr/include/c++/4.8/cmath include/Printable.h include/Scene.h \
- include/GameObject.h include/Quaternion.h include/Vector2.h \
- include/Transform.h include/Component.h include/Material.h \
- /usr/include/c++/4.8/vector /usr/include/c++/4.8/bits/stl_construct.h \
+ /usr/include/c++/4.8/cmath include/Quaternion.h include/Scene.h \
+ include/GameObject.h include/Vector2.h include/Transform.h \
+ include/Component.h include/Material.h /usr/include/c++/4.8/vector \
+ /usr/include/c++/4.8/bits/stl_construct.h \
  /usr/include/c++/4.8/ext/alloc_traits.h \
  /usr/include/c++/4.8/bits/stl_uninitialized.h \
  /usr/include/c++/4.8/bits/stl_vector.h \
  /usr/include/c++/4.8/bits/stl_bvector.h \
  /usr/include/c++/4.8/bits/vector.tcc include/Shader.h include/Mesh.h \
- /usr/include/c++/4.8/ctime include/Camera.h /usr/include/GL/glu.h
+ include/Vertex.h /usr/include/c++/4.8/ctime include/Camera.h \
+ /usr/include/GL/glu.h

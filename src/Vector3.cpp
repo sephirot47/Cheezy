@@ -37,12 +37,14 @@ float inline Vector3::Magnitude() const
     return sqrt(x*x + y*y + z*z);
 }
 
+/*
 string Vector3::ToString() const
 {
     char buf[256];
     sprintf(buf, "(%f, %f, %f)", x, y, z);
     return string(buf);
 }
+*/
 
 Vector3& Vector3::operator=(const Vector3 &v)
 {

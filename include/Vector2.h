@@ -4,11 +4,11 @@
 #include <iostream>
 #include <stdio.h>
 #include <cmath>
-#include "Printable.h"
+
 
 using namespace std;
 
-class Vector2 : public Printable
+class Vector2
 {
 public:
 
@@ -24,9 +24,6 @@ public:
 
     ///\brief Returns the magnitude of the Vector2
     float Magnitude() const;
-
-    ///\brief Converts the Vector2 to a String
-    string ToString() const; //Devuelve el string "(x,y,z)"
 
     Vector2& operator=(const Vector2 &v);
     Vector2  operator+(const Vector2 &v) const;

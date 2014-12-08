@@ -70,13 +70,6 @@ Quaternion::Quaternion(Vector3 xyz, double w)
     this->w = (float)w;
 }
 
-string Quaternion::ToString() const
-{
-    char buf[256];
-    sprintf(buf, "(%f, %f, %f, %f)", x, y, z, w);
-    return string(buf);
-}
-
 Quaternion Quaternion::operator+(const Quaternion &v) const
 {
     return Quaternion(x + v.x, y + v.y, z + v.z, w + v.w);

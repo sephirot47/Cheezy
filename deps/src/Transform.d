@@ -111,5 +111,4 @@ src/Transform.o: src/Transform.cpp /usr/include/stdc-predef.h \
  /usr/include/i386-linux-gnu/bits/nan.h \
  /usr/include/i386-linux-gnu/bits/mathdef.h \
  /usr/include/i386-linux-gnu/bits/mathcalls.h \
- /usr/include/i386-linux-gnu/bits/mathinline.h include/Printable.h \
- /usr/include/string.h /usr/include/i386-linux-gnu/bits/string3.h
+ /usr/include/i386-linux-gnu/bits/mathinline.h
