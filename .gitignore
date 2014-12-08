@@ -2,6 +2,7 @@
 *.slo
 *.lo
 *.o
+*.sh
 #*.d
 cheezy
 # Precompiled Headers
