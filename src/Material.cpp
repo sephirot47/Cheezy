@@ -66,13 +66,14 @@ int Material::GetShaderId(unsigned int shaderType)
         case CZ_FRAGMENT_SHADER:
             return fragmentShaderId;
     }
-
+    
     return -1;
 }
 
 void Material::UseProgram()
 {
     if(programId > 0) glUseProgram(programId);
+    else DbgWarning("No shaders attched to this material.");
 }
 
 void Material::UnUseProgram()

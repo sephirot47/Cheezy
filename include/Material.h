@@ -40,7 +40,7 @@ public:
     ///\brief Sets the GL state in order to use the Shaders of this Material in the next rendering
     void UseProgram();
 
-    ///\brief Sets the GL state in order to leave using the Shaders of this Material in the next rendering
+    ///\brief Sets the GL state in order to stop using the Shaders of this Material in the next rendering
     void UnUseProgram();
 };
 
