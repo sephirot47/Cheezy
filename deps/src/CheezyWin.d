@@ -163,5 +163,9 @@ src/CheezyWin.o: src/CheezyWin.cpp /usr/include/stdc-predef.h \
  /usr/include/c++/4.8/bits/stl_vector.h \
  /usr/include/c++/4.8/bits/stl_bvector.h \
  /usr/include/c++/4.8/bits/vector.tcc include/Shader.h include/Mesh.h \
- include/Vertex.h /usr/include/c++/4.8/ctime include/Camera.h \
+ /usr/include/c++/4.8/fstream /usr/include/c++/4.8/bits/codecvt.h \
+ /usr/include/i386-linux-gnu/c++/4.8/bits/basic_file.h \
+ /usr/include/i386-linux-gnu/c++/4.8/bits/c++io.h \
+ /usr/include/c++/4.8/bits/fstream.tcc include/Vertex.h \
+ include/FileReader.h /usr/include/c++/4.8/ctime include/Camera.h \
  /usr/include/GL/glu.h

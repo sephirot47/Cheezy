@@ -1,5 +1,5 @@
 src/Vertex.o: src/Vertex.cpp /usr/include/stdc-predef.h include/Vertex.h \
- include/Vector3.h /usr/include/c++/4.8/iostream \
+ include/Vector2.h /usr/include/c++/4.8/iostream \
  /usr/include/i386-linux-gnu/c++/4.8/bits/c++config.h \
  /usr/include/i386-linux-gnu/c++/4.8/bits/os_defines.h \
  /usr/include/features.h /usr/include/i386-linux-gnu/sys/cdefs.h \
@@ -108,4 +108,4 @@ src/Vertex.o: src/Vertex.cpp /usr/include/stdc-predef.h include/Vertex.h \
  /usr/include/i386-linux-gnu/bits/nan.h \
  /usr/include/i386-linux-gnu/bits/mathdef.h \
  /usr/include/i386-linux-gnu/bits/mathcalls.h \
- /usr/include/i386-linux-gnu/bits/mathinline.h
+ /usr/include/i386-linux-gnu/bits/mathinline.h include/Vector3.h

@@ -57,20 +57,19 @@ using namespace std;
 
 
 #define DBG_ASSERT(x) do{\
-    if(x < 0) DbgError("There was an error");\
+    if((x) < 0) DbgError("There was an error");\
 } while(0)
 
 #define DBG_ASSERT_MSG(x, msg) do{\
-    if(x < 0) DbgError(msg);\
+    if((x) < 0) DbgError(msg);\
 } while(0)
 
 #define DBG_ASSERT_RET(x) do{\
-    if(x < 0) { DbgError("There was an error"); return false;}\
+    if((x) < 0) { DbgError("There was an error"); return false;}\
 } while(0)
 
 #define DBG_ASSERT_RET_MSG(x, msg) do{\
-    int err = x;\
-    if(err < 0){ DbgError(msg); return false;} \
+    if((x) < 0){ DbgError(msg); return false;} \
 } while(0)
 
 

@@ -122,10 +122,15 @@ src/GameObject.o: src/GameObject.cpp /usr/include/stdc-predef.h \
  /usr/include/c++/4.8/bits/vector.tcc include/Debug.h \
  /usr/include/c++/4.8/sstream /usr/include/c++/4.8/bits/sstream.tcc \
  include/Shader.h include/Mesh.h /usr/include/string.h \
- /usr/include/i386-linux-gnu/bits/string3.h include/Vertex.h \
- /usr/include/c++/4.8/map /usr/include/c++/4.8/bits/stl_tree.h \
- /usr/include/c++/4.8/bits/stl_map.h /usr/include/c++/4.8/tuple \
- /usr/include/c++/4.8/utility /usr/include/c++/4.8/bits/stl_relops.h \
- /usr/include/c++/4.8/array /usr/include/c++/4.8/stdexcept \
+ /usr/include/i386-linux-gnu/bits/string3.h /usr/include/c++/4.8/fstream \
+ /usr/include/c++/4.8/bits/codecvt.h \
+ /usr/include/i386-linux-gnu/c++/4.8/bits/basic_file.h \
+ /usr/include/i386-linux-gnu/c++/4.8/bits/c++io.h \
+ /usr/include/c++/4.8/bits/fstream.tcc include/Vertex.h \
+ include/FileReader.h /usr/include/c++/4.8/map \
+ /usr/include/c++/4.8/bits/stl_tree.h /usr/include/c++/4.8/bits/stl_map.h \
+ /usr/include/c++/4.8/tuple /usr/include/c++/4.8/utility \
+ /usr/include/c++/4.8/bits/stl_relops.h /usr/include/c++/4.8/array \
+ /usr/include/c++/4.8/stdexcept \
  /usr/include/c++/4.8/bits/uses_allocator.h \
  /usr/include/c++/4.8/bits/stl_multimap.h /usr/include/c++/4.8/ctime

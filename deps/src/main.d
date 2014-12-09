@@ -155,7 +155,12 @@ src/main.o: src/main.cpp /usr/include/stdc-predef.h \
  /usr/include/c++/4.8/bits/stl_vector.h \
  /usr/include/c++/4.8/bits/stl_bvector.h \
  /usr/include/c++/4.8/bits/vector.tcc include/Debug.h include/Shader.h \
- include/Mesh.h include/Vertex.h /usr/include/c++/4.8/map \
+ include/Mesh.h /usr/include/c++/4.8/fstream \
+ /usr/include/c++/4.8/bits/codecvt.h \
+ /usr/include/i386-linux-gnu/c++/4.8/bits/basic_file.h \
+ /usr/include/i386-linux-gnu/c++/4.8/bits/c++io.h \
+ /usr/include/c++/4.8/bits/fstream.tcc include/Vertex.h \
+ include/FileReader.h /usr/include/c++/4.8/map \
  /usr/include/c++/4.8/bits/stl_tree.h /usr/include/c++/4.8/bits/stl_map.h \
  /usr/include/c++/4.8/tuple /usr/include/c++/4.8/utility \
  /usr/include/c++/4.8/bits/stl_relops.h /usr/include/c++/4.8/array \

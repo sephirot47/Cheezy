@@ -7,11 +7,14 @@
 #include <GL/glext.h>
 #include <string.h>
 #include <vector>
+#include <fstream>
+#include <sstream>
 #include "Debug.h"
 #include "Shader.h"
 #include "Vertex.h"
 #include "Material.h"
 #include "Component.h"
+#include "FileReader.h"
 #include "Vector3.h"
 #include "Vector2.h"
 

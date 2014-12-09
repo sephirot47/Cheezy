@@ -43,10 +43,9 @@ src/Mesh.o: src/Mesh.cpp /usr/include/stdc-predef.h include/Mesh.h \
  /usr/include/c++/4.8/bits/functional_hash.h \
  /usr/include/c++/4.8/bits/hash_bytes.h \
  /usr/include/c++/4.8/bits/range_access.h \
- /usr/include/c++/4.8/bits/vector.tcc include/Debug.h \
- /usr/include/c++/4.8/iostream /usr/include/c++/4.8/ostream \
- /usr/include/c++/4.8/ios /usr/include/c++/4.8/iosfwd \
- /usr/include/c++/4.8/bits/stringfwd.h \
+ /usr/include/c++/4.8/bits/vector.tcc /usr/include/c++/4.8/fstream \
+ /usr/include/c++/4.8/istream /usr/include/c++/4.8/ios \
+ /usr/include/c++/4.8/iosfwd /usr/include/c++/4.8/bits/stringfwd.h \
  /usr/include/c++/4.8/bits/postypes.h /usr/include/c++/4.8/cwchar \
  /usr/include/wchar.h /usr/include/stdio.h \
  /usr/lib/gcc/i686-linux-gnu/4.8/include/stdarg.h \
@@ -109,10 +108,15 @@ src/Mesh.o: src/Mesh.cpp /usr/include/stdc-predef.h include/Mesh.h \
  /usr/include/c++/4.8/bits/streambuf_iterator.h \
  /usr/include/i386-linux-gnu/c++/4.8/bits/ctype_inline.h \
  /usr/include/c++/4.8/bits/locale_facets.tcc \
- /usr/include/c++/4.8/bits/basic_ios.tcc \
- /usr/include/c++/4.8/bits/ostream.tcc /usr/include/c++/4.8/istream \
- /usr/include/c++/4.8/bits/istream.tcc /usr/include/c++/4.8/sstream \
- /usr/include/c++/4.8/bits/sstream.tcc include/Vector3.h \
+ /usr/include/c++/4.8/bits/basic_ios.tcc /usr/include/c++/4.8/ostream \
+ /usr/include/c++/4.8/bits/ostream.tcc \
+ /usr/include/c++/4.8/bits/istream.tcc \
+ /usr/include/c++/4.8/bits/codecvt.h \
+ /usr/include/i386-linux-gnu/c++/4.8/bits/basic_file.h \
+ /usr/include/i386-linux-gnu/c++/4.8/bits/c++io.h \
+ /usr/include/c++/4.8/bits/fstream.tcc /usr/include/c++/4.8/sstream \
+ /usr/include/c++/4.8/bits/sstream.tcc include/Debug.h \
+ /usr/include/c++/4.8/iostream include/Vector3.h \
  /usr/include/c++/4.8/cmath /usr/include/math.h \
  /usr/include/i386-linux-gnu/bits/huge_val.h \
  /usr/include/i386-linux-gnu/bits/huge_valf.h \
@@ -123,4 +127,4 @@ src/Mesh.o: src/Mesh.cpp /usr/include/stdc-predef.h include/Mesh.h \
  /usr/include/i386-linux-gnu/bits/mathcalls.h \
  /usr/include/i386-linux-gnu/bits/mathinline.h include/Quaternion.h \
  include/Shader.h include/Component.h include/Vector2.h include/Vertex.h \
- include/Material.h
+ include/Material.h include/FileReader.h
