@@ -1,5 +1,77 @@
 #include "FileReader.h"
 
+int FileReader::GetFormat(const char *filepath)
+{
+    char *format = filepath;
+    while(*format != '.') ++format;
+    ++format;
+    if(strcmp(format, "obj") == 0) return CZ_FORMAT_OBJ;
+    return CZ_FORMAT_UNKNOWN;
+}
+
+bool FileReader::ReadMeshFile(const char *filepath, vector<Vertex> &vertices)
+{
+    int format = GetFormat(filepath);
+    if(format == CZ_FORMAT_UNKNOWN){ DbgError("Unknown mesh format. Not loading mesh(" << filepath << ")"); return false;}
+
+    if(format == CZ_FORMAT_OBJ) return FileReader::ReadOBJ(filepath, vertices);
+
+    return false;
+}
+
+void FileReader::GetOBJFormat(const char *filepath, bool &uvs, bool &normals, bool &triangles)
+{
+    FILE *f;
+    f = fopen(filepath, "r");
+    fseek(f, -3, SEEK_END);
+
+    char c, lastChar;
+    while(ftell(f) > 0)
+    {
+        lastChar = fgetc(f);
+        c = fgetc(f);
+        if(lastChar == '\n' && c == 'f')
+        {
+            int foo;
+            while((c = fgetc(f)) == ' '); //Leemos espacios despues de 'f'
+            fscanf(f, "%d", &foo); //Leemos primer indice
+            if((c = fgetc(f)) == ' ') //Solo un indice, sin barras
+            {
+                uvs = normals = false;
+            }
+            else //Hay algo tal que asi:  5/*
+            {
+                uvs = (fgetc(c) != '/');
+                if(!uvs) normals = true; //Es tal que asi 5//8
+
+                if(uvs) //Es algo tal que asi 5/8*
+                {
+                    fscanf(f, "%d", &foo); //Leemos segundo indice
+                    if(fgetc(f) == '/') //Es algo tal que asi 5/8/11
+                    {
+                        fscanf(f, "%d", &foo); //Leemos ultimo indice
+                        normals = true;
+                    }
+                    else normals = false;
+                }
+
+                //Son triangulos o quads?
+                int n = 1;
+                lastChar = c;
+                while((c = fgetc(c)) != '\n')
+                {
+                    if(lastChar == ' ' && c != ' ') ++n;
+                    lastChar = c;
+                }
+                triangles = (n == 3);
+            }
+            return;
+        }
+
+        fseek(f, -3, SEEK_CUR);
+    }
+}
+
 bool FileReader::ReadOBJ(const char *filepath, vector<Vertex> &vertices)
 {
     vector<Vector3> vertexPos;

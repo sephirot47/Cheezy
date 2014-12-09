@@ -35,7 +35,7 @@ void Mesh::Draw()
 bool Mesh::LoadFromFile(const char *filepath)
 {
     vector<Vertex> vertices;
-    DBG_ASSERT_RET(FileReader::ReadOBJ(filepath, vertices));
+    DBG_ASSERT_RET(FileReader::ReadMeshFile(filepath, vertices));
     vertexCount = vertices.size();
 
     glBindBuffer(GL_ARRAY_BUFFER, vertexBufferId);
