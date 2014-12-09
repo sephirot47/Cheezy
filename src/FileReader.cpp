@@ -2,10 +2,12 @@
 
 int FileReader::GetFormat(const char *filepath)
 {
-    char *format = filepath;
-    while(*format != '.') ++format;
-    ++format;
-    if(strcmp(format, "obj") == 0) return CZ_FORMAT_OBJ;
+    char format[1024];
+    char* p = &format[0];
+    strcpy(format, filepath);
+    while(*format != '.') ++p;
+    ++p;
+    if(strcmp(p, "obj") == 0) return CZ_FORMAT_OBJ;
     return CZ_FORMAT_UNKNOWN;
 }
 
@@ -22,8 +24,9 @@ bool FileReader::ReadMeshFile(const char *filepath, vector<Vertex> &vertices)
 void FileReader::GetOBJFormat(const char *filepath, bool &uvs, bool &normals, bool &triangles)
 {
     FILE *f;
-    f = fopen(filepath, "r");
+    f = fopen("file", "r");
     fseek(f, -3, SEEK_END);
+    int n = 1;
 
     char c, lastChar;
     while(ftell(f) > 0)
@@ -33,41 +36,43 @@ void FileReader::GetOBJFormat(const char *filepath, bool &uvs, bool &normals, bo
         if(lastChar == '\n' && c == 'f')
         {
             int foo;
-            while((c = fgetc(f)) == ' '); //Leemos espacios despues de 'f'
+            while(fgetc(f) == ' '); //Leemos espacios despues de 'f'
+            fseek(f, -1, SEEK_CUR);
             fscanf(f, "%d", &foo); //Leemos primer indice
-            if((c = fgetc(f)) == ' ') //Solo un indice, sin barras
+            if(fgetc(f) == ' ') //Solo un indice, sin barras
             {
                 uvs = normals = false;
             }
             else //Hay algo tal que asi:  5/*
             {
-                uvs = (fgetc(c) != '/');
+                uvs = (fgetc(f) != '/');
                 if(!uvs) normals = true; //Es tal que asi 5//8
-
                 if(uvs) //Es algo tal que asi 5/8*
                 {
+                    fseek(f, -1, SEEK_CUR);
                     fscanf(f, "%d", &foo); //Leemos segundo indice
                     if(fgetc(f) == '/') //Es algo tal que asi 5/8/11
                     {
+                        fseek(f, -1, SEEK_CUR);
                         fscanf(f, "%d", &foo); //Leemos ultimo indice
                         normals = true;
                     }
-                    else normals = false;
+                    else {
+                        normals = false;
+                    }
                 }
-
-                //Son triangulos o quads?
-                int n = 1;
-                lastChar = c;
-                while((c = fgetc(c)) != '\n')
-                {
-                    if(lastChar == ' ' && c != ' ') ++n;
-                    lastChar = c;
-                }
-                triangles = (n == 3);
             }
-            return;
-        }
 
+            //Son triangulos o quads?
+            lastChar = c;
+            while((c = fgetc(f)) != '\n')
+            {
+                if(lastChar == ' ' && c != ' ') ++n;
+                lastChar = c;
+            }
+            triangles = (n == 3);
+            break; //return;
+        }
         fseek(f, -3, SEEK_CUR);
     }
 }
@@ -76,11 +81,14 @@ bool FileReader::ReadOBJ(const char *filepath, vector<Vertex> &vertices)
 {
     vector<Vector3> vertexPos;
     vector<Vector2> vertexUv;
-    vector<unsigned int> vertexPosIndexes, vertexUvIndexes;
-
+    vector<unsigned int> vertexPosIndexes, vertexUvIndexes, vertexNormIndexes;
+    bool hasUvs, hasNormals, isTris;
+    FileReader::GetOBJFormat(filepath, hasUvs, hasNormals, isTris);
+    
     ifstream f(filepath, ios::in);
     DBG_ASSERT_RET_MSG(f.is_open(), "Error opening the mesh file");
     string line;
+    string e = "Error reading the mesh file";
     while(getline(f, line))
     {
         stringstream ss(line);
@@ -89,54 +97,58 @@ bool FileReader::ReadOBJ(const char *filepath, vector<Vertex> &vertices)
         if(lineHeader == "v")
         {
             Vector3 pos;
-            DBG_ASSERT_RET_MSG(ss >> pos.x, "Error reading the mesh file");
-            DBG_ASSERT_RET_MSG(ss >> pos.y, "Error reading the mesh file");
-            DBG_ASSERT_RET_MSG(ss >> pos.z, "Error reading the mesh file");
+            DBG_ASSERT_RET_MSG(ss >> pos.x, e);
+            DBG_ASSERT_RET_MSG(ss >> pos.y, e);
+            DBG_ASSERT_RET_MSG(ss >> pos.z, e);
             vertexPos.push_back(pos);
         }
-        else if(lineHeader == "vt") //Cargamos uvs, suponemos que antes ya se han leido las x,y,z de los vertices
+        else if(hasUvs && lineHeader == "vt") //Cargamos uvs, suponemos que antes ya se han leido las x,y,z de los vertices
         {
             Vector2 uv;
-            DBG_ASSERT_RET_MSG(ss >> uv.x, "Error reading the mesh file");
-            DBG_ASSERT_RET_MSG(ss >> uv.y, "Error reading the mesh file");
+            DBG_ASSERT_RET_MSG(ss >> uv.x, e);
+            DBG_ASSERT_RET_MSG(ss >> uv.y, e);
             vertexUv.push_back(uv);
         }
         else if(lineHeader == "f")
         {
-            unsigned int vertexPosIndex[3], vertexUvIndex[3], foo;
+            int n = isTris ? 3 : 4;
+            unsigned int index;
             char c;
 
-            DBG_ASSERT_RET_MSG(ss >> vertexPosIndex[0], "Error reading the mesh file");
-            DBG_ASSERT_RET_MSG(ss >> c, "Error reading the mesh file");  //Read the '/'
-            DBG_ASSERT_RET_MSG(ss >> vertexUvIndex[0], "Error reading the mesh file");
-            DBG_ASSERT_RET_MSG(ss >> c, "Error reading the mesh file");
-            DBG_ASSERT_RET_MSG(ss >> foo, "Error reading the mesh file");
-
-            DBG_ASSERT_RET_MSG(ss >> vertexPosIndex[1], "Error reading the mesh file");
-            DBG_ASSERT_RET_MSG(ss >> c, "Error reading the mesh file");
-            DBG_ASSERT_RET_MSG(ss >> vertexUvIndex[1], "Error reading the mesh file");
-            DBG_ASSERT_RET_MSG(ss >> c, "Error reading the mesh file");
-            DBG_ASSERT_RET_MSG(ss >> foo, "Error reading the mesh file");
-
-            DBG_ASSERT_RET_MSG(ss >> vertexPosIndex[2], "Error reading the mesh file");
-            DBG_ASSERT_RET_MSG(ss >> c, "Error reading the mesh file");
-            DBG_ASSERT_RET_MSG(ss >> vertexUvIndex[2], "Error reading the mesh file");
-            DBG_ASSERT_RET_MSG(ss >> c, "Error reading the mesh file");
-            DBG_ASSERT_RET_MSG(ss >> foo, "Error reading the mesh file");
-
-            vertexPosIndexes.push_back(vertexPosIndex[0]);
-            vertexPosIndexes.push_back(vertexPosIndex[1]);
-            vertexPosIndexes.push_back(vertexPosIndex[2]);
-            vertexUvIndexes.push_back(vertexUvIndex[0]);
-            vertexUvIndexes.push_back(vertexUvIndex[1]);
-            vertexUvIndexes.push_back(vertexUvIndex[2]);
+            for (int i = 0; i < n; ++i) {
+                DBG_ASSERT_RET_MSG(ss >> index, e);
+                vertexPosIndexes.push_back(index);
+                
+                if(hasUvs) 
+                {
+                    DBG_ASSERT_RET_MSG(ss >> c, e);  //Read the '/'
+                    DBG_ASSERT_RET_MSG(ss >> index, e);
+                    vertexUvIndexes.push_back(index);
+                    
+                    if (hasNormals)
+                    {
+                        DBG_ASSERT_RET_MSG(ss >> c, e);
+                        DBG_ASSERT_RET_MSG(ss >> index, e);
+                        vertexNormIndexes.push_back(index);
+                    }
+                } 
+                else 
+                {
+                    if (hasNormals)
+                    {
+                        DBG_ASSERT_RET_MSG(ss >> c, e);
+                        DBG_ASSERT_RET_MSG(ss >> index, e);
+                        vertexNormIndexes.push_back(index);
+                    }
+                }
+            }
         }
     }
 
     for(int i = 0; i < (int)vertexPosIndexes.size(); ++i)
     {
         Vertex v;
-        v.pos = vertexPos[ vertexPosIndexes[i] - 1 ];
+        v.pos =  vertexPos[ vertexPosIndexes[i] - 1 ];
         v.uv  =  vertexUv[ vertexUvIndexes [i] - 1 ];
         vertices.push_back(v);
     }

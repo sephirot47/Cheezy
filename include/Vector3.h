@@ -9,7 +9,7 @@
 
 using namespace std;
 
-class Vector3 //: public Printable
+class Vector3
 {
 public:
 
