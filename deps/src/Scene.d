@@ -165,5 +165,5 @@ src/Scene.o: src/Scene.cpp /usr/include/stdc-predef.h include/Scene.h \
  /usr/include/i386-linux-gnu/c++/4.8/bits/basic_file.h \
  /usr/include/i386-linux-gnu/c++/4.8/bits/c++io.h \
  /usr/include/c++/4.8/bits/fstream.tcc include/Vertex.h \
- include/FileReader.h /usr/include/c++/4.8/ctime include/Camera.h \
- /usr/include/GL/glu.h
+ include/FileReader.h include/Color.h /usr/include/c++/4.8/ctime \
+ include/Camera.h /usr/include/GL/glu.h

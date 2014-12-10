@@ -35,7 +35,8 @@ bool Shader::LoadFromFile(const char *filepath)
     fseek(f, 0, SEEK_SET);
 
     srcCode = new char[srcCodeLength];
-    DBG_ASSERT_RET_MSG(fread(srcCode, sizeof(char), srcCodeLength, f), "There was an error trying to read the file of the shader.");
+    int readres = fread(srcCode, sizeof(char), srcCodeLength, f);
+    DBG_ASSERT_RET_MSG(readres, "There was an error trying to read the file of the shader.");
 
     //Bind the shader with openGL
     shaderId = glCreateShader(type); //create id

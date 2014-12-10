@@ -127,4 +127,4 @@ src/Mesh.o: src/Mesh.cpp /usr/include/stdc-predef.h include/Mesh.h \
  /usr/include/i386-linux-gnu/bits/mathcalls.h \
  /usr/include/i386-linux-gnu/bits/mathinline.h include/Quaternion.h \
  include/Shader.h include/Component.h include/Vector2.h include/Vertex.h \
- include/Material.h include/FileReader.h
+ include/Material.h include/FileReader.h include/Color.h

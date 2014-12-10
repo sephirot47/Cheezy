@@ -1,12 +1,12 @@
 #version 130
 
-in vec4 pos; //0
-in vec2 uv;  //1
+attribute vec4 pos;
+attribute vec2 uvIn;
 
-out vec2 uvOut;
+varying vec2 uv;
 
 void main()
 {
 	gl_Position = gl_ModelViewProjectionMatrix * pos;
-	uvOut = uv;
+	uv = uvIn;
 }

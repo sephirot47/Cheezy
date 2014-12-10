@@ -60,7 +60,7 @@
 MY_CFLAGS = -std=c++11 -Iinclude
 
 # The linker options.
-MY_LIBS   = -lSDL2 -lGL -lGLU
+MY_LIBS   = -L . -lSDL2 -lGL -lGLU -lSOIL
 
 # The pre-processor options used by the cpp (man cpp for more).
 CPPFLAGS  = -Wall

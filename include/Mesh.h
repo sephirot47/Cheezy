@@ -26,6 +26,7 @@ private:
 
     unsigned int vertexBufferId;
     int vertexCount;
+    bool triangles;
 
 public:
 

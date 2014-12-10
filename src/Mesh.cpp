@@ -3,6 +3,8 @@
 Mesh::Mesh()
 {
     vertexCount = 0;
+    triangles = true;
+
     type = "Mesh";
     glGenBuffers(1, &vertexBufferId);
 
@@ -19,14 +21,16 @@ void Mesh::Draw()
 {
     if(vertexCount <= 0) return;
 
-    glEnableVertexAttribArray(0);
     glBindBuffer(GL_ARRAY_BUFFER, vertexBufferId);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void *)(0));               //vertices pos (index 0)
-    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void *)(sizeof(Vector3))); //vertices uv  (index 1)
+    glEnableVertexAttribArray(0);
+    DBG_ASSERT_GL( glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void *)(0)) );               //vertices pos (index 0)
+    glEnableVertexAttribArray(1);
+    DBG_ASSERT_GL( glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void *)(sizeof(Vector3))) ); //vertices uv  (index 1)
 
-    DBG_ASSERT_GL(material->UseProgram()); //Use the shader
-    DBG_ASSERT_GL(glDrawArrays(GL_TRIANGLES, 0, vertexCount));
-    DBG_ASSERT_GL(material->UnUseProgram()); //Dont use this shaders from now on
+    DBG_ASSERT_GL(material->UseProgram()); //Use the material
+    DBG_ASSERT_GL(glDrawArrays(triangles ? GL_TRIANGLES : GL_QUADS, 0, vertexCount));
+    //DBG_ASSERT_GL(glDrawArrays(GL_LINES, 0, vertexCount));
+    DBG_ASSERT_GL(material->UnUseProgram()); //Dont use this material from now on
 
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glDisableVertexAttribArray(0);
@@ -35,7 +39,7 @@ void Mesh::Draw()
 bool Mesh::LoadFromFile(const char *filepath)
 {
     vector<Vertex> vertices;
-    DBG_ASSERT_RET(FileReader::ReadMeshFile(filepath, vertices));
+    DBG_ASSERT_RET(FileReader::ReadMeshFile(filepath, vertices, triangles));
     vertexCount = vertices.size();
 
     glBindBuffer(GL_ARRAY_BUFFER, vertexBufferId);
