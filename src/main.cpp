@@ -4,6 +4,7 @@
 #include <GL/glu.h>
 #include "SDL2/SDL.h"
 #include "Debug.h"
+#include "Texture.h"
 #include "GameObject.h"
 #include "CheezyWin.h"
 #include "Color.h"
@@ -29,7 +30,11 @@ int main()
     scene->Add(go2);
     scene->SetCamera(cam);
 
+    Texture t("img.jpg");
+
     go2->transform->scale = Vector3(0.5, 0.5, 0.5);
+
+    scene->cam->pos = Vector3(50, 50, 50);
 
     DbgLog(go2->transform->pos);
 

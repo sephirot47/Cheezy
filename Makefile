@@ -57,10 +57,10 @@
 ##==========================================================================
 
 # The pre-processor and compiler options.
-MY_CFLAGS = -std=c++11 -Iinclude
+MY_CFLAGS = -std=c++11 -Iinclude -Isrc
 
 # The linker options.
-MY_LIBS   = -L . -lSDL2 -lGL -lGLU -lSOIL
+MY_LIBS   = -L . -lSDL2 -lGL -lGLU
 
 # The pre-processor options used by the cpp (man cpp for more).
 CPPFLAGS  = -Wall
