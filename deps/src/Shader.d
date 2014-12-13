@@ -43,9 +43,9 @@ src/Shader.o: src/Shader.cpp /usr/include/stdc-predef.h include/Shader.h \
  /usr/include/c++/4.8/bits/hash_bytes.h \
  /usr/include/c++/4.8/bits/range_access.h \
  /usr/include/c++/4.8/bits/vector.tcc include/Debug.h \
- /usr/include/c++/4.8/iostream /usr/include/c++/4.8/ostream \
- /usr/include/c++/4.8/ios /usr/include/c++/4.8/iosfwd \
- /usr/include/c++/4.8/bits/stringfwd.h \
+ /usr/include/GL/glu.h /usr/include/c++/4.8/iostream \
+ /usr/include/c++/4.8/ostream /usr/include/c++/4.8/ios \
+ /usr/include/c++/4.8/iosfwd /usr/include/c++/4.8/bits/stringfwd.h \
  /usr/include/c++/4.8/bits/postypes.h /usr/include/c++/4.8/cwchar \
  /usr/include/wchar.h /usr/include/stdio.h \
  /usr/lib/gcc/i686-linux-gnu/4.8/include/stdarg.h /usr/include/xlocale.h \

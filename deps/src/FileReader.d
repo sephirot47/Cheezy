@@ -125,4 +125,5 @@ src/FileReader.o: src/FileReader.cpp /usr/include/stdc-predef.h \
  /usr/include/i386-linux-gnu/bits/mathcalls.h \
  /usr/include/i386-linux-gnu/bits/mathinline.h include/Vector3.h \
  include/Color.h include/Debug.h /usr/include/GL/gl.h \
- /usr/include/GL/glext.h /usr/include/inttypes.h include/Quaternion.h
+ /usr/include/GL/glext.h /usr/include/inttypes.h /usr/include/GL/glu.h \
+ include/Quaternion.h

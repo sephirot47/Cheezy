@@ -159,12 +159,12 @@ src/Scene.o: src/Scene.cpp /usr/include/stdc-predef.h include/Scene.h \
  /usr/include/c++/4.8/bits/stl_vector.h \
  /usr/include/c++/4.8/bits/stl_bvector.h \
  /usr/include/c++/4.8/bits/vector.tcc include/Debug.h \
- /usr/include/c++/4.8/sstream /usr/include/c++/4.8/bits/sstream.tcc \
- include/Shader.h include/Bindable.h include/Texture.h \
- include/stb_image.h include/Color.h include/Mesh.h \
- /usr/include/c++/4.8/fstream /usr/include/c++/4.8/bits/codecvt.h \
+ /usr/include/GL/glu.h /usr/include/c++/4.8/sstream \
+ /usr/include/c++/4.8/bits/sstream.tcc include/Shader.h \
+ include/Bindable.h include/Texture.h include/stb_image.h include/Color.h \
+ include/Mesh.h /usr/include/c++/4.8/fstream \
+ /usr/include/c++/4.8/bits/codecvt.h \
  /usr/include/i386-linux-gnu/c++/4.8/bits/basic_file.h \
  /usr/include/i386-linux-gnu/c++/4.8/bits/c++io.h \
  /usr/include/c++/4.8/bits/fstream.tcc include/Vertex.h \
- include/FileReader.h /usr/include/c++/4.8/ctime include/Camera.h \
- /usr/include/GL/glu.h
+ include/FileReader.h /usr/include/c++/4.8/ctime include/Camera.h

@@ -137,7 +137,7 @@ src/CheezyWin.o: src/CheezyWin.cpp /usr/include/stdc-predef.h \
  /usr/local/include/SDL2/SDL_power.h /usr/local/include/SDL2/SDL_render.h \
  /usr/local/include/SDL2/SDL_system.h /usr/local/include/SDL2/SDL_timer.h \
  /usr/local/include/SDL2/SDL_version.h include/Debug.h \
- /usr/include/GL/gl.h /usr/include/GL/glext.h \
+ /usr/include/GL/gl.h /usr/include/GL/glext.h /usr/include/GL/glu.h \
  /usr/include/c++/4.8/iostream /usr/include/c++/4.8/ostream \
  /usr/include/c++/4.8/ios /usr/include/c++/4.8/bits/ios_base.h \
  /usr/include/c++/4.8/bits/locale_classes.h \
@@ -168,5 +168,4 @@ src/CheezyWin.o: src/CheezyWin.cpp /usr/include/stdc-predef.h \
  /usr/include/i386-linux-gnu/c++/4.8/bits/basic_file.h \
  /usr/include/i386-linux-gnu/c++/4.8/bits/c++io.h \
  /usr/include/c++/4.8/bits/fstream.tcc include/Vertex.h \
- include/FileReader.h /usr/include/c++/4.8/ctime include/Camera.h \
- /usr/include/GL/glu.h
+ include/FileReader.h /usr/include/c++/4.8/ctime include/Camera.h

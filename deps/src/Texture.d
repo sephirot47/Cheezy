@@ -6,32 +6,13 @@ src/Texture.o: src/Texture.cpp /usr/include/stdc-predef.h include/Texture.h \
  /usr/include/i386-linux-gnu/gnu/stubs.h \
  /usr/include/i386-linux-gnu/gnu/stubs-32.h \
  /usr/lib/gcc/i686-linux-gnu/4.8/include/stdint.h /usr/include/stdint.h \
- /usr/include/i386-linux-gnu/bits/wchar.h include/stb_image.h \
- /usr/include/stdio.h /usr/include/i386-linux-gnu/bits/types.h \
- /usr/include/i386-linux-gnu/bits/typesizes.h /usr/include/libio.h \
- /usr/include/_G_config.h /usr/include/wchar.h \
- /usr/lib/gcc/i686-linux-gnu/4.8/include/stdarg.h \
- /usr/include/i386-linux-gnu/bits/stdio_lim.h \
- /usr/include/i386-linux-gnu/bits/sys_errlist.h \
- /usr/include/i386-linux-gnu/bits/stdio.h \
- /usr/include/i386-linux-gnu/bits/stdio2.h include/Bindable.h \
- include/Color.h /usr/include/c++/4.8/iostream \
+ /usr/include/i386-linux-gnu/bits/wchar.h /usr/include/c++/4.8/vector \
+ /usr/include/c++/4.8/bits/stl_algobase.h \
  /usr/include/i386-linux-gnu/c++/4.8/bits/c++config.h \
  /usr/include/i386-linux-gnu/c++/4.8/bits/os_defines.h \
  /usr/include/i386-linux-gnu/c++/4.8/bits/cpu_defines.h \
- /usr/include/c++/4.8/ostream /usr/include/c++/4.8/ios \
- /usr/include/c++/4.8/iosfwd /usr/include/c++/4.8/bits/stringfwd.h \
- /usr/include/c++/4.8/bits/memoryfwd.h \
- /usr/include/c++/4.8/bits/postypes.h /usr/include/c++/4.8/cwchar \
- /usr/include/xlocale.h /usr/include/i386-linux-gnu/bits/wchar2.h \
- /usr/include/c++/4.8/exception \
- /usr/include/c++/4.8/bits/atomic_lockfree_defines.h \
- /usr/include/c++/4.8/bits/exception_ptr.h \
- /usr/include/c++/4.8/bits/exception_defines.h \
- /usr/include/c++/4.8/bits/nested_exception.h \
- /usr/include/c++/4.8/bits/char_traits.h \
- /usr/include/c++/4.8/bits/stl_algobase.h \
  /usr/include/c++/4.8/bits/functexcept.h \
+ /usr/include/c++/4.8/bits/exception_defines.h \
  /usr/include/c++/4.8/bits/cpp_type_traits.h \
  /usr/include/c++/4.8/ext/type_traits.h \
  /usr/include/c++/4.8/ext/numeric_traits.h \
@@ -41,7 +22,41 @@ src/Texture.o: src/Texture.cpp /usr/include/stdc-predef.h include/Texture.h \
  /usr/include/c++/4.8/bits/stl_iterator_base_types.h \
  /usr/include/c++/4.8/bits/stl_iterator_base_funcs.h \
  /usr/include/c++/4.8/debug/debug.h \
- /usr/include/c++/4.8/bits/stl_iterator.h /usr/include/c++/4.8/cstdint \
+ /usr/include/c++/4.8/bits/stl_iterator.h \
+ /usr/include/c++/4.8/bits/allocator.h \
+ /usr/include/i386-linux-gnu/c++/4.8/bits/c++allocator.h \
+ /usr/include/c++/4.8/ext/new_allocator.h /usr/include/c++/4.8/new \
+ /usr/include/c++/4.8/exception \
+ /usr/include/c++/4.8/bits/atomic_lockfree_defines.h \
+ /usr/include/c++/4.8/bits/exception_ptr.h \
+ /usr/include/c++/4.8/bits/nested_exception.h \
+ /usr/include/c++/4.8/bits/memoryfwd.h \
+ /usr/include/c++/4.8/bits/stl_construct.h \
+ /usr/include/c++/4.8/ext/alloc_traits.h \
+ /usr/include/c++/4.8/bits/alloc_traits.h \
+ /usr/include/c++/4.8/bits/ptr_traits.h \
+ /usr/include/c++/4.8/bits/stl_uninitialized.h \
+ /usr/include/c++/4.8/bits/stl_vector.h \
+ /usr/include/c++/4.8/initializer_list \
+ /usr/include/c++/4.8/bits/stl_bvector.h \
+ /usr/include/c++/4.8/bits/functional_hash.h \
+ /usr/include/c++/4.8/bits/hash_bytes.h \
+ /usr/include/c++/4.8/bits/range_access.h \
+ /usr/include/c++/4.8/bits/vector.tcc include/stb_image.h \
+ /usr/include/stdio.h /usr/include/i386-linux-gnu/bits/types.h \
+ /usr/include/i386-linux-gnu/bits/typesizes.h /usr/include/libio.h \
+ /usr/include/_G_config.h /usr/include/wchar.h \
+ /usr/lib/gcc/i686-linux-gnu/4.8/include/stdarg.h \
+ /usr/include/i386-linux-gnu/bits/stdio_lim.h \
+ /usr/include/i386-linux-gnu/bits/sys_errlist.h \
+ /usr/include/i386-linux-gnu/bits/stdio.h \
+ /usr/include/i386-linux-gnu/bits/stdio2.h include/Bindable.h \
+ include/Color.h /usr/include/c++/4.8/iostream \
+ /usr/include/c++/4.8/ostream /usr/include/c++/4.8/ios \
+ /usr/include/c++/4.8/iosfwd /usr/include/c++/4.8/bits/stringfwd.h \
+ /usr/include/c++/4.8/bits/postypes.h /usr/include/c++/4.8/cwchar \
+ /usr/include/xlocale.h /usr/include/i386-linux-gnu/bits/wchar2.h \
+ /usr/include/c++/4.8/bits/char_traits.h /usr/include/c++/4.8/cstdint \
  /usr/include/c++/4.8/bits/localefwd.h \
  /usr/include/i386-linux-gnu/c++/4.8/bits/c++locale.h \
  /usr/include/c++/4.8/clocale /usr/include/locale.h \
@@ -62,16 +77,11 @@ src/Texture.o: src/Texture.cpp /usr/include/stdc-predef.h include/Texture.h \
  /usr/include/i386-linux-gnu/bits/setjmp.h \
  /usr/include/i386-linux-gnu/c++/4.8/bits/atomic_word.h \
  /usr/include/c++/4.8/bits/locale_classes.h /usr/include/c++/4.8/string \
- /usr/include/c++/4.8/bits/allocator.h \
- /usr/include/i386-linux-gnu/c++/4.8/bits/c++allocator.h \
- /usr/include/c++/4.8/ext/new_allocator.h /usr/include/c++/4.8/new \
  /usr/include/c++/4.8/bits/ostream_insert.h \
  /usr/include/c++/4.8/bits/cxxabi_forced.h \
  /usr/include/c++/4.8/bits/stl_function.h \
  /usr/include/c++/4.8/backward/binders.h \
- /usr/include/c++/4.8/bits/range_access.h \
  /usr/include/c++/4.8/bits/basic_string.h \
- /usr/include/c++/4.8/initializer_list \
  /usr/include/c++/4.8/ext/string_conversions.h \
  /usr/include/c++/4.8/cstdlib /usr/include/stdlib.h \
  /usr/include/i386-linux-gnu/bits/waitflags.h \
@@ -89,8 +99,6 @@ src/Texture.o: src/Texture.cpp /usr/include/stdc-predef.h include/Texture.h \
  /usr/include/i386-linux-gnu/bits/errno.h /usr/include/linux/errno.h \
  /usr/include/i386-linux-gnu/asm/errno.h /usr/include/asm-generic/errno.h \
  /usr/include/asm-generic/errno-base.h \
- /usr/include/c++/4.8/bits/functional_hash.h \
- /usr/include/c++/4.8/bits/hash_bytes.h \
  /usr/include/c++/4.8/bits/basic_string.tcc \
  /usr/include/c++/4.8/bits/locale_classes.tcc \
  /usr/include/c++/4.8/streambuf /usr/include/c++/4.8/bits/streambuf.tcc \
@@ -112,5 +120,6 @@ src/Texture.o: src/Texture.cpp /usr/include/stdc-predef.h include/Texture.h \
  /usr/include/i386-linux-gnu/bits/mathdef.h \
  /usr/include/i386-linux-gnu/bits/mathcalls.h \
  /usr/include/i386-linux-gnu/bits/mathinline.h include/Debug.h \
- /usr/include/c++/4.8/sstream /usr/include/c++/4.8/bits/sstream.tcc \
- include/Vector3.h include/Vector2.h include/Quaternion.h
+ /usr/include/GL/glu.h /usr/include/c++/4.8/sstream \
+ /usr/include/c++/4.8/bits/sstream.tcc include/Vector3.h \
+ include/Vector2.h include/Quaternion.h

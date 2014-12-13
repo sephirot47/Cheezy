@@ -2,10 +2,13 @@
 #define TEXTURE_H
 
 #include <GL/gl.h>
+#include <vector>
 #include "stb_image.h"
 #include "Bindable.h"
 #include "Color.h"
 #include "Debug.h"
+
+using namespace std;
 
 class Texture : public Bindable
 {

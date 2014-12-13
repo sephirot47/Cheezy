@@ -2,6 +2,7 @@
 #define DEBUG_H
 
 #include <GL/gl.h>
+#include <GL/glu.h>
 #include <iostream>
 #include <sstream>
 #include <fstream>
@@ -50,27 +51,29 @@ using namespace std;
 } while(0)
 
 
-
 #define DBG_ASSERT_GL(x) do{\
     x;\
-    if(glGetError() > 0) DbgError("GL Error code: " << glGetError());\
+    int error = glGetError();\
+    if(error > 0) DbgError("GL Error('" << gluErrorString(error)  << "')");\
 } while(0)
 
 #define DBG_ASSERT_GL_MSG(x, msg) do{\
     x;\
-    if(glGetError() > 0) DbgError("GL Error code: " << glGetError() << ": " << msg);\
+    int error = glGetError();\
+    if(error > 0) DbgError("GL Error('" << gluErrorString(error) << "')" << ": " << msg);\
 } while(0)
 
 #define DBG_ASSERT_GL_RET(x) do{\
     x;\
-    if(glGetError() > 0){ DbgError("GL Error code: " << glGetError()); return false;} \
+    int error = glGetError();\
+    if(error > 0){ DbgError("GL Error('" << gluErrorString(error) << "')"); return false;} \
 } while(0)
 
 #define DBG_ASSERT_GL_RET_MSG(x, msg) do{\
     x;\
-    if(glGetError() > 0){ DbgError("GL Error code: " << glGetError() << ": " << msg); return false;} \
+    int error = glGetError();\
+    if(error > 0){ DbgError("GL Error('" << gluErrorString(error)  << "')" << ": " << msg); return false;} \
 } while(0)
-
 
 
 #define DBG_ASSERT(x) do{\
@@ -95,7 +98,8 @@ ostream& operator<<(ostream &log, const Vector3 &v);
 ostream& operator<<(ostream &log, const Quaternion &q);
 ostream& operator<<(ostream &log, const Vector2 &v);
 
-class Debug {
+class Debug
+{
 private:
     static string logFile;
     static ofstream fileStream;

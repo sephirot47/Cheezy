@@ -116,7 +116,7 @@ src/Mesh.o: src/Mesh.cpp /usr/include/stdc-predef.h include/Mesh.h \
  /usr/include/i386-linux-gnu/c++/4.8/bits/c++io.h \
  /usr/include/c++/4.8/bits/fstream.tcc /usr/include/c++/4.8/sstream \
  /usr/include/c++/4.8/bits/sstream.tcc include/Debug.h \
- /usr/include/c++/4.8/iostream include/Vector3.h \
+ /usr/include/GL/glu.h /usr/include/c++/4.8/iostream include/Vector3.h \
  /usr/include/c++/4.8/cmath /usr/include/math.h \
  /usr/include/i386-linux-gnu/bits/huge_val.h \
  /usr/include/i386-linux-gnu/bits/huge_valf.h \

@@ -72,7 +72,7 @@ src/Time.o: src/Time.cpp /usr/include/stdc-predef.h include/Time.h \
  /usr/local/include/SDL2/SDL_power.h /usr/local/include/SDL2/SDL_render.h \
  /usr/local/include/SDL2/SDL_system.h /usr/local/include/SDL2/SDL_timer.h \
  /usr/local/include/SDL2/SDL_version.h include/Debug.h \
- /usr/include/GL/gl.h /usr/include/GL/glext.h \
+ /usr/include/GL/gl.h /usr/include/GL/glext.h /usr/include/GL/glu.h \
  /usr/include/c++/4.8/iostream \
  /usr/include/i386-linux-gnu/c++/4.8/bits/c++config.h \
  /usr/include/i386-linux-gnu/c++/4.8/bits/os_defines.h \

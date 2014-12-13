@@ -6,7 +6,8 @@ src/Debug.o: src/Debug.cpp /usr/include/stdc-predef.h include/Debug.h \
  /usr/include/i386-linux-gnu/gnu/stubs.h \
  /usr/include/i386-linux-gnu/gnu/stubs-32.h \
  /usr/lib/gcc/i686-linux-gnu/4.8/include/stdint.h /usr/include/stdint.h \
- /usr/include/i386-linux-gnu/bits/wchar.h /usr/include/c++/4.8/iostream \
+ /usr/include/i386-linux-gnu/bits/wchar.h /usr/include/GL/glu.h \
+ /usr/include/c++/4.8/iostream \
  /usr/include/i386-linux-gnu/c++/4.8/bits/c++config.h \
  /usr/include/i386-linux-gnu/c++/4.8/bits/os_defines.h \
  /usr/include/i386-linux-gnu/c++/4.8/bits/cpu_defines.h \

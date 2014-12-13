@@ -13,14 +13,14 @@ Texture::Texture(const char *filepath) : Texture()
 bool Texture::LoadFromFile(const char *filepath)
 {
     data = stbi_load(filepath, &width, &height, &n, 0);
-    if(data == 0){ DbgError("Error loading the texure " << filepath); return false; };
+    if(data == 0){ DbgError("Error loading the texture '" << filepath << "', couldn't open/read the file."); return false; };
 
-    glBindTexture(GL_TEXTURE_2D, id);
+    DBG_ASSERT_GL_RET_MSG( glBindTexture(GL_TEXTURE_2D, id), "Couldn't bind on loading the texture '" << filepath << "'");
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     //glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, wrapMode);
     //glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, wrapMode);
-    DBG_ASSERT_GL_RET_MSG(glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB32UI, width, height, 0, GL_RGB32UI, GL_UNSIGNED_BYTE, data), "Couldnt load the texture " << filepath);
+    DBG_ASSERT_GL_RET_MSG( glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB8UI, width, height, 0, GL_RGB8UI, GL_UNSIGNED_BYTE, data), "Couldn't load the texture '" << filepath << "'");
     glBindTexture(GL_TEXTURE_2D, 0);
 
     DbgLog("Texture loaded!");
