@@ -24,6 +24,12 @@ int main()
     CheezyWin win;
     win.Init(640, 640);
 
+    Debug::SetFile("test.log");
+    Debug::fileMode = CZ_DBG_ERR | CZ_DBG_WRN;
+    DbgLog("HOLAAAAAA");
+    Debug::fileMode = CZ_DBG_ERR | CZ_DBG_WRN | CZ_DBG_LOG;
+    DbgLog("HOLAAAAAA2");
+    
     Camera cam = Camera();
     Scene *scene = win.CreateScene("FirstScene");
     GameObject *go2 = new GameObject("go2");

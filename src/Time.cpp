@@ -1,5 +1,5 @@
 #include "Time.h"
-#include "Debug.h"
+
 
 long Time::getMiliseconds() {
 	return SDL_GetTicks();
@@ -7,4 +7,13 @@ long Time::getMiliseconds() {
 
 float Time::getSeconds() {
 	return SDL_GetTicks()/1000;
+}
+
+string Time::GetDateStr(){
+	stringstream sstr;
+	time_t t = time(0);
+    struct tm * now = localtime(&t);
+    sstr << now->tm_year + 1900 << "-" << now->tm_mon + 1 << "-" << now->tm_mday 
+    << "-" << now->tm_hour << "-" << now->tm_min;
+    return sstr.str();
 }
