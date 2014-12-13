@@ -20,10 +20,8 @@ bool Texture::LoadFromFile(const char *filepath)
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     //glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, wrapMode);
     //glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, wrapMode);
-    DBG_ASSERT_GL_RET_MSG( glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB8UI, width, height, 0, GL_RGB8UI, GL_UNSIGNED_BYTE, data), "Couldn't load the texture '" << filepath << "'");
+    DBG_ASSERT_GL_RET_MSG( glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data), "Couldn't load the texture '" << filepath << "'");
     glBindTexture(GL_TEXTURE_2D, 0);
-
-    DbgLog("Texture loaded!");
 
     return true;
 }

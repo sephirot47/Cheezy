@@ -6,47 +6,29 @@ unsigned char Debug::fileMode = CZ_DBG_LOG | CZ_DBG_WRN | CZ_DBG_ERR;
 
 void Debug::Log(ostringstream &log) 
 {
-	if (fileMode & CZ_DBG_LOG)
+    if (fileMode & CZ_DBG_LOG)
 	{
-		if (fileStream.is_open())
-        	fileStream << log.str();
-    	else
-    		cerr << "Cannot open log file." << endl;
+        if (fileStream.is_open()) fileStream << log.str();
     }
-    else
-    {
-    	cout << log.str();
-    }
+    cout << log.str();
 }
 
 void Debug::Warning(ostringstream &log) 
 {
-	if (fileMode & CZ_DBG_WRN)
+    if (fileMode & CZ_DBG_WRN)
 	{
-		if (fileStream.is_open())
-        	fileStream << log.str();
-    	else
-    		cerr << "Cannot open log file." << endl;
+        if (fileStream.is_open()) fileStream << log.str();
     }
-    else
-    {
-    	cerr << log.str();
-    }
+    cerr << log.str();
 }
 
 void Debug::Error(ostringstream &log) 
 {
-	if (fileMode & CZ_DBG_ERR)
+    if (fileMode & CZ_DBG_ERR)
 	{
-		if (fileStream.is_open())
-        	fileStream << log.str();
-    	else
-    		cerr << "Cannot open log file." << endl;
+        if (fileStream.is_open()) fileStream << log.str();
     }
-    else
-    {
-    	cerr << log.str();
-    }
+    cerr << log.str();
 }
 
 void Debug::SetFile(string filepath) 
@@ -64,15 +46,17 @@ void Debug::SetFile(string filepath)
 	if (logFile != "") fileStream.open(logFile,fstream::out);	
 }
 
-ostream& operator<<(ostream &log, const Vector3 &v)
-{
-    log << "(" << v.x << ", " << v.y << ", " << v.z << ")";
-    return log;
-}
+
 
 ostream& operator<<(ostream &log, const Vector2 &v)
 {
     log << "(" << v.x << ", " << v.y << ")";
+    return log;
+}
+
+ostream& operator<<(ostream &log, const Vector3 &v)
+{
+    log << "(" << v.x << ", " << v.y << ", " << v.z << ")";
     return log;
 }
 

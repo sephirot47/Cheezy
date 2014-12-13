@@ -1,7 +1,6 @@
 #version 130
 
 uniform sampler2D tex;
-
 varying vec2 uv;
 
 void main()
