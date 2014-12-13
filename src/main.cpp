@@ -24,6 +24,7 @@ int main()
     CheezyWin win;
     win.Init(640, 640);
 
+    DbgLog("MEC");
     Camera cam = Camera();
     Scene *scene = win.CreateScene("FirstScene");
     GameObject *go2 = new GameObject("go2");
