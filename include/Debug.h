@@ -17,6 +17,8 @@
 #define CZ_DBG_LOG 0x01
 #define CZ_DBG_WRN 0x02
 #define CZ_DBG_ERR 0x04
+#define CZ_DBG_FILE 0x08
+#define CZ_DBG_TERM 0x10
 
 #define CZ_LOG_DIR "log"
 
@@ -106,6 +108,7 @@ private:
 
 public:
     static unsigned char fileMode; 
+    static unsigned char outputMode; 
     static void SetFile(string filepath);
     static void Log(ostringstream &log);
     static void Warning(ostringstream &log);

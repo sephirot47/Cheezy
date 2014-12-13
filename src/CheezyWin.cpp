@@ -2,6 +2,7 @@
 
 CheezyWin::CheezyWin()
 {
+    Debug::SetFile(CZ_AUTO_LOG_FILE);
     scenes = SceneMap();
     drawAxis = true;
     currentScene = NULL;
