@@ -4,6 +4,7 @@
 #include <GL/gl.h>
 #include <vector>
 #include "stb_image.h"
+#include "Image.h"
 #include "Bindable.h"
 #include "Color.h"
 #include "Debug.h"
@@ -15,6 +16,7 @@ class Texture : public Bindable
 private:
 
     unsigned int id;
+    unsigned int format;
 
 public:
 
@@ -26,6 +28,8 @@ public:
     bool LoadFromFile(const char *filepath);
 
     unsigned int GetId();
+    unsigned int GetFormat();
+
 
     void Bind();
     void UnBind();

@@ -159,4 +159,4 @@ src/Material.o: src/Material.cpp /usr/include/stdc-predef.h \
  /usr/local/include/SDL2/SDL_system.h /usr/local/include/SDL2/SDL_timer.h \
  /usr/local/include/SDL2/SDL_version.h /usr/include/c++/4.8/ctime \
  include/Shader.h include/Component.h include/Bindable.h \
- include/Texture.h include/stb_image.h include/Color.h
+ include/Texture.h include/stb_image.h include/Image.h include/Color.h

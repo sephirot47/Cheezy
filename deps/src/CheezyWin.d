@@ -168,5 +168,5 @@ src/CheezyWin.o: src/CheezyWin.cpp /usr/include/stdc-predef.h \
  /usr/include/c++/4.8/bits/stl_vector.h \
  /usr/include/c++/4.8/bits/stl_bvector.h \
  /usr/include/c++/4.8/bits/vector.tcc include/Shader.h include/Bindable.h \
- include/Texture.h include/stb_image.h include/Color.h include/Mesh.h \
- include/Vertex.h include/FileReader.h include/Camera.h
+ include/Texture.h include/stb_image.h include/Image.h include/Color.h \
+ include/Mesh.h include/Vertex.h include/FileReader.h include/Camera.h

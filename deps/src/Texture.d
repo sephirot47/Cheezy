@@ -50,8 +50,8 @@ src/Texture.o: src/Texture.cpp /usr/include/stdc-predef.h include/Texture.h \
  /usr/include/i386-linux-gnu/bits/stdio_lim.h \
  /usr/include/i386-linux-gnu/bits/sys_errlist.h \
  /usr/include/i386-linux-gnu/bits/stdio.h \
- /usr/include/i386-linux-gnu/bits/stdio2.h include/Bindable.h \
- include/Color.h /usr/include/c++/4.8/iostream \
+ /usr/include/i386-linux-gnu/bits/stdio2.h include/Image.h \
+ include/Bindable.h include/Color.h /usr/include/c++/4.8/iostream \
  /usr/include/c++/4.8/ostream /usr/include/c++/4.8/ios \
  /usr/include/c++/4.8/iosfwd /usr/include/c++/4.8/bits/stringfwd.h \
  /usr/include/c++/4.8/bits/postypes.h /usr/include/c++/4.8/cwchar \

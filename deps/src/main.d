@@ -157,7 +157,7 @@ src/main.o: src/main.cpp /usr/include/stdc-predef.h \
  /usr/include/c++/4.8/bits/stl_uninitialized.h \
  /usr/include/c++/4.8/bits/stl_vector.h \
  /usr/include/c++/4.8/bits/stl_bvector.h \
- /usr/include/c++/4.8/bits/vector.tcc include/stb_image.h \
+ /usr/include/c++/4.8/bits/vector.tcc include/stb_image.h include/Image.h \
  include/Bindable.h include/Color.h include/Debug.h include/GameObject.h \
  include/Transform.h include/Component.h include/Material.h \
  include/Shader.h include/Texture.h include/Mesh.h include/Vertex.h \
