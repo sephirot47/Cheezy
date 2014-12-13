@@ -1,34 +1,47 @@
 #include "Debug.h"
 
-string Debug::logFile = "";
+string Debug::logFile;
 ofstream Debug::fileStream;
 unsigned char Debug::fileMode = CZ_DBG_LOG | CZ_DBG_WRN | CZ_DBG_ERR;
+unsigned char Debug::outputMode = CZ_DBG_FILE | CZ_DBG_TERM;
 
 void Debug::Log(ostringstream &log) 
 {
-    if (fileMode & CZ_DBG_LOG)
+    if (outputMode & CZ_DBG_FILE and fileMode & CZ_DBG_LOG)
 	{
         if (fileStream.is_open()) fileStream << log.str();
     }
-    cout << log.str();
+
+    if (outputMode & CZ_DBG_TERM) 
+    {
+    	cout << log.str();
+	}
 }
 
 void Debug::Warning(ostringstream &log) 
 {
-    if (fileMode & CZ_DBG_WRN)
+    if (outputMode & CZ_DBG_FILE and fileMode & CZ_DBG_WRN)
 	{
         if (fileStream.is_open()) fileStream << log.str();
     }
-    cerr << log.str();
+
+    if (outputMode & CZ_DBG_TERM) 
+    {
+    	cerr << log.str();
+    }
 }
 
 void Debug::Error(ostringstream &log) 
 {
-    if (fileMode & CZ_DBG_ERR)
+    if (outputMode & CZ_DBG_FILE and fileMode & CZ_DBG_ERR)
 	{
-        if (fileStream.is_open()) fileStream << log.str();
+        if (fileStream.is_open()) fileStream << log.str(); 
     }
-    cerr << log.str();
+
+    if (outputMode & CZ_DBG_TERM) 
+    {
+    	cerr << log.str();
+    }
 }
 
 void Debug::SetFile(string filepath) 
@@ -45,7 +58,6 @@ void Debug::SetFile(string filepath)
 	logFile = filepath;
 	if (logFile != "") fileStream.open(logFile,fstream::out);	
 }
-
 
 
 ostream& operator<<(ostream &log, const Vector2 &v)

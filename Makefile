@@ -151,34 +151,42 @@ all: $(PROGRAM)
 #------------------------------------------
 
 %.d:%.c
+	
 	@echo -n $(dir $<) > ./deps/$@
 	@$(DEPEND.d) $< >> ./deps/$@
 
 %.d:%.C
+	
 	@echo -n $(dir $<) > ./deps/$@
 	@$(DEPEND.d) $< >> ./deps/$@
 
 %.d:%.cc
+	
 	@echo -n $(dir $<) > ./deps/$@
 	@$(DEPEND.d) $< >> ./deps/$@
 
 %.d:%.cpp
+	@mkdir -p deps/$(@D)
 	@echo -n $(dir $<) > ./deps/$@
 	@$(DEPEND.d) $< >> ./deps/$@
 
 %.d:%.CPP
+	
 	@echo -n $(dir $<) > ./deps/$@
 	@$(DEPEND.d) $< >> ./deps/$@
 
 %.d:%.c++
+	
 	@echo -n $(dir $<) > ./deps/$@
 	@$(DEPEND.d) $< >> ./deps/$@
 
 %.d:%.cp
+	
 	@echo -n $(dir $<) > ./deps/$@
 	@$(DEPEND.d) $< >> ./deps/$@
 
 %.d:%.cxx
+
 	@echo -n $(dir $<) > ./deps/$@
 	@$(DEPEND.d) $< >> ./deps/$@
 
