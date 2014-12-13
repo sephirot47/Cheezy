@@ -85,8 +85,6 @@ bool FileReader::ReadOBJ(const char *filepath, vector<Vertex> &vertices, bool &t
     bool hasUvs, hasNormals;
 
     FileReader::GetOBJFormat(filepath, hasUvs, hasNormals, triangles);
-    
-    DbgLog((hasUvs?1:0) << (hasNormals?1:0) << (triangles?1:0));
 
     ifstream f(filepath, ios::in);
     DBG_ASSERT_RET_MSG(f.is_open(), "Error opening the mesh file");

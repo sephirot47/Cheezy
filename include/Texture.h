@@ -3,21 +3,29 @@
 
 #include <GL/gl.h>
 #include "stb_image.h"
+#include "Bindable.h"
 #include "Color.h"
 #include "Debug.h"
 
-class Texture
+class Texture : public Bindable
 {
+private:
+
+    unsigned int id;
 
 public:
 
-    unsigned int texId;
     int width, height, n;
     unsigned char *data;
 
     Texture();
     Texture(const char *filepath);
     bool LoadFromFile(const char *filepath);
+
+    unsigned int GetId();
+
+    void Bind();
+    void UnBind();
 };
 
 #endif // TEXTURE_H

@@ -6,6 +6,7 @@
 #include <sstream>
 #include <string>
 #include "Vector3.h"
+#include "Vector2.h"
 #include "Quaternion.h"
 
 
@@ -36,22 +37,22 @@ using namespace std;
 
 #define DBG_ASSERT_GL(x) do{\
     x;\
-    if(glGetError() > 0) DbgError("There was an openGL error with num: " << glGetError());\
+    if(glGetError() > 0) DbgError("GL Error code: " << glGetError());\
 } while(0)
 
 #define DBG_ASSERT_GL_MSG(x, msg) do{\
     x;\
-    if(glGetError() > 0) DbgError("Error code: " << glGetError() << ": " << msg);\
+    if(glGetError() > 0) DbgError("GL Error code: " << glGetError() << ": " << msg);\
 } while(0)
 
 #define DBG_ASSERT_GL_RET(x) do{\
     x;\
-    if(glGetError() > 0){ DbgError("There was an error with code " << glGetError()); return false;} \
+    if(glGetError() > 0){ DbgError("GL Error code: " << glGetError()); return false;} \
 } while(0)
 
 #define DBG_ASSERT_GL_RET_MSG(x, msg) do{\
     x;\
-    if(glGetError() < 0){ DbgError("Error code: " << glGetError() << ": " msg); return false;} \
+    if(glGetError() > 0){ DbgError("GL Error code: " << glGetError() << ": " << msg); return false;} \
 } while(0)
 
 
@@ -76,5 +77,6 @@ using namespace std;
 //OSTREAM OPERATORS //////////////////////////////////
 ostream& operator<<(ostream &log, const Vector3 &v);
 ostream& operator<<(ostream &log, const Quaternion &q);
+ostream& operator<<(ostream &log, const Vector2 &v);
 
 #endif //DEBUG_H

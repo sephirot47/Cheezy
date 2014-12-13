@@ -110,4 +110,5 @@ src/Debug.o: src/Debug.cpp /usr/include/stdc-predef.h include/Debug.h \
  /usr/include/i386-linux-gnu/bits/nan.h \
  /usr/include/i386-linux-gnu/bits/mathdef.h \
  /usr/include/i386-linux-gnu/bits/mathcalls.h \
- /usr/include/i386-linux-gnu/bits/mathinline.h include/Quaternion.h
+ /usr/include/i386-linux-gnu/bits/mathinline.h include/Vector2.h \
+ include/Quaternion.h

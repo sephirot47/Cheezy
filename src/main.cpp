@@ -30,13 +30,8 @@ int main()
     scene->Add(go2);
     scene->SetCamera(cam);
 
-    Texture t("img.jpg");
-
     go2->transform->scale = Vector3(0.5, 0.5, 0.5);
-
     scene->cam->pos = Vector3(50, 50, 50);
-
-    DbgLog(go2->transform->pos);
 
     win.drawAxis = true;
     win.Loop();

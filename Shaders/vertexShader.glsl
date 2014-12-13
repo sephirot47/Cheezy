@@ -1,5 +1,7 @@
 #version 130
 
+uniform sampler2D tex;
+
 attribute vec4 pos;
 attribute vec2 uvIn;
 

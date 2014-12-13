@@ -9,12 +9,9 @@ Mesh::Mesh()
     glGenBuffers(1, &vertexBufferId);
 
     material = new Material();
-
-    Shader *vertexShader = new Shader(CZ_VERTEX_SHADER, "Shaders/vertexShader.glsl");
-    Shader *fragmentShader = new Shader(CZ_FRAGMENT_SHADER, "Shaders/fragmentShader.glsl");
-
-    material->AttachShader(*vertexShader);
-    material->AttachShader(*fragmentShader);
+    material->AttachShader(new Shader(CZ_VERTEX_SHADER, "Shaders/vertexShader.glsl"));
+    material->AttachShader(new Shader(CZ_FRAGMENT_SHADER, "Shaders/fragmentShader.glsl"));
+    //material->SetTexture(new Texture("img.jpg"));
 }
 
 void Mesh::Draw()
@@ -23,14 +20,14 @@ void Mesh::Draw()
 
     glBindBuffer(GL_ARRAY_BUFFER, vertexBufferId);
     glEnableVertexAttribArray(0);
-    DBG_ASSERT_GL( glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void *)(0)) );               //vertices pos (index 0)
     glEnableVertexAttribArray(1);
+    DBG_ASSERT_GL( glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void *)(0)) );               //vertices pos (index 0)
     DBG_ASSERT_GL( glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void *)(sizeof(Vector3))) ); //vertices uv  (index 1)
 
-    DBG_ASSERT_GL(material->UseProgram()); //Use the material
+    if(material) material->Bind(); //Use the material
     DBG_ASSERT_GL(glDrawArrays(triangles ? GL_TRIANGLES : GL_QUADS, 0, vertexCount));
     //DBG_ASSERT_GL(glDrawArrays(GL_LINES, 0, vertexCount));
-    DBG_ASSERT_GL(material->UnUseProgram()); //Dont use this material from now on
+    if(material) material->UnBind();
 
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glDisableVertexAttribArray(0);

@@ -111,4 +111,4 @@ src/Quaternion.o: src/Quaternion.cpp /usr/include/stdc-predef.h \
  /usr/include/i386-linux-gnu/bits/mathinline.h include/Debug.h \
  /usr/include/GL/gl.h /usr/include/GL/glext.h /usr/include/inttypes.h \
  /usr/include/c++/4.8/sstream /usr/include/c++/4.8/bits/sstream.tcc \
- include/Quaternion.h
+ include/Vector2.h include/Quaternion.h

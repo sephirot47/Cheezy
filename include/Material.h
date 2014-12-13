@@ -9,6 +9,8 @@
 #include "Debug.h"
 #include "Shader.h"
 #include "Component.h"
+#include "Bindable.h"
+#include "Texture.h"
 #include "Vector3.h"
 #include "Vector2.h"
 
@@ -16,12 +18,12 @@
 
 using namespace std;
 
-class Material
+class Material : public Bindable
 {
 private:
 
     Shader *vertexShader, *fragmentShader;
-    unsigned int vertexShaderId, fragmentShaderId;
+    Texture *texture;
     unsigned int programId;
 
 public:
@@ -32,16 +34,17 @@ public:
     ///       If there was a previous attached Shader of the same type, it will be replaced
     ///       If something goes wrong, returns false. Otherwise returns true.
     bool AttachShader(Shader &shader);
+    bool AttachShader(Shader *shader);
 
     ///\brief Returns the id of the shader attached to this Material
     ///       If no shader is attached, returns -1
     int GetShaderId(unsigned int shaderType);
 
-    ///\brief Sets the GL state in order to use the Shaders of this Material in the next rendering
-    void UseProgram();
+    void SetTexture(Texture &t);
+    void SetTexture(Texture *t);
 
-    ///\brief Sets the GL state in order to stop using the Shaders of this Material in the next rendering
-    void UnUseProgram();
+    void Bind();
+    void UnBind();
 };
 
 #endif // MATERIAL_H

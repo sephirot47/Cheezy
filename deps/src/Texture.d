@@ -14,8 +14,8 @@ src/Texture.o: src/Texture.cpp /usr/include/stdc-predef.h include/Texture.h \
  /usr/include/i386-linux-gnu/bits/stdio_lim.h \
  /usr/include/i386-linux-gnu/bits/sys_errlist.h \
  /usr/include/i386-linux-gnu/bits/stdio.h \
- /usr/include/i386-linux-gnu/bits/stdio2.h include/Color.h \
- /usr/include/c++/4.8/iostream \
+ /usr/include/i386-linux-gnu/bits/stdio2.h include/Bindable.h \
+ include/Color.h /usr/include/c++/4.8/iostream \
  /usr/include/i386-linux-gnu/c++/4.8/bits/c++config.h \
  /usr/include/i386-linux-gnu/c++/4.8/bits/os_defines.h \
  /usr/include/i386-linux-gnu/c++/4.8/bits/cpu_defines.h \
@@ -113,4 +113,4 @@ src/Texture.o: src/Texture.cpp /usr/include/stdc-predef.h include/Texture.h \
  /usr/include/i386-linux-gnu/bits/mathcalls.h \
  /usr/include/i386-linux-gnu/bits/mathinline.h include/Debug.h \
  /usr/include/c++/4.8/sstream /usr/include/c++/4.8/bits/sstream.tcc \
- include/Vector3.h include/Quaternion.h
+ include/Vector3.h include/Vector2.h include/Quaternion.h

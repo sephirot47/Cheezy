@@ -8,6 +8,7 @@
 #include <vector>
 #include "Debug.h"
 #include "Component.h"
+#include "Bindable.h"
 #include "Vector3.h"
 #include "Vector2.h"
 
@@ -45,7 +46,7 @@ public:
 
     ///\brief Returns the shader id.
     ///       If the shader hasn't been loaded yet from a file, returns -1.
-    int GetShaderId();
+    int GetId();
 
     ///\brief Returns the shader type.
     ///       It can be CZ_VERTEX_SHADER or CZ_FRAGMENT_SHADER.

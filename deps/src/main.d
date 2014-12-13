@@ -144,19 +144,20 @@ src/main.o: src/main.cpp /usr/include/stdc-predef.h \
  /usr/local/include/SDL2/SDL_system.h /usr/local/include/SDL2/SDL_timer.h \
  /usr/local/include/SDL2/SDL_version.h include/Debug.h \
  /usr/include/c++/4.8/sstream /usr/include/c++/4.8/bits/sstream.tcc \
- include/Vector3.h /usr/include/c++/4.8/cmath include/Quaternion.h \
- include/Texture.h include/stb_image.h include/Color.h include/Debug.h \
- include/GameObject.h include/Vector2.h include/Transform.h \
- include/Component.h include/Material.h /usr/include/c++/4.8/vector \
- /usr/include/c++/4.8/bits/stl_construct.h \
+ include/Vector3.h /usr/include/c++/4.8/cmath include/Vector2.h \
+ include/Quaternion.h include/Texture.h include/stb_image.h \
+ include/Bindable.h include/Color.h include/Debug.h include/GameObject.h \
+ include/Transform.h include/Component.h include/Material.h \
+ /usr/include/c++/4.8/vector /usr/include/c++/4.8/bits/stl_construct.h \
  /usr/include/c++/4.8/ext/alloc_traits.h \
  /usr/include/c++/4.8/bits/alloc_traits.h \
  /usr/include/c++/4.8/bits/ptr_traits.h \
  /usr/include/c++/4.8/bits/stl_uninitialized.h \
  /usr/include/c++/4.8/bits/stl_vector.h \
  /usr/include/c++/4.8/bits/stl_bvector.h \
- /usr/include/c++/4.8/bits/vector.tcc include/Shader.h include/Mesh.h \
- /usr/include/c++/4.8/fstream /usr/include/c++/4.8/bits/codecvt.h \
+ /usr/include/c++/4.8/bits/vector.tcc include/Shader.h include/Texture.h \
+ include/Mesh.h /usr/include/c++/4.8/fstream \
+ /usr/include/c++/4.8/bits/codecvt.h \
  /usr/include/i386-linux-gnu/c++/4.8/bits/basic_file.h \
  /usr/include/i386-linux-gnu/c++/4.8/bits/c++io.h \
  /usr/include/c++/4.8/bits/fstream.tcc include/Vertex.h \

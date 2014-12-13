@@ -25,7 +25,7 @@ void Scene::_Update()
 void Scene::Update()
 {
     double rotSpeed = 1.0f;
-    float moveSpeed = 0.05f;
+    float moveSpeed = 0.5f;
 
     if(IsPressed(SDLK_UP))
         cam->pos = cam->pos - cam->rot.GetForward() * moveSpeed;

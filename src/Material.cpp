@@ -3,7 +3,8 @@
 Material::Material()
 {
     vertexShader = fragmentShader = 0;
-    vertexShaderId = fragmentShaderId = -1;
+    texture = 0;
+
     programId = -1;
 }
 
@@ -14,12 +15,10 @@ bool Material::AttachShader(Shader &shader)
     {
         case CZ_VERTEX_SHADER:
             vertexShader = &shader;
-            vertexShaderId = shader.GetShaderId();
             break;
 
         case CZ_FRAGMENT_SHADER:
             fragmentShader = &shader;
-            fragmentShaderId = shader.GetShaderId();
             break;
     }
 
@@ -27,8 +26,8 @@ bool Material::AttachShader(Shader &shader)
     DBG_ASSERT_GL_RET(programId = glCreateProgram());
 
     //Attach the shaders to the program
-    if(vertexShader != 0) glAttachShader(programId, vertexShaderId);
-    if(fragmentShader != 0) glAttachShader(programId, fragmentShaderId);
+    if(vertexShader)   glAttachShader(programId, vertexShader->GetId());
+    if(fragmentShader) glAttachShader(programId, fragmentShader->GetId());
 
     //Link it!
     DBG_ASSERT_GL_RET(glLinkProgram(programId));
@@ -50,33 +49,38 @@ bool Material::AttachShader(Shader &shader)
     }
 
     //Detach the shaders(we dont need them attached anymore)
-    if(vertexShader != 0) glDetachShader(programId, vertexShaderId);
-    if(fragmentShader != 0) glDetachShader(programId, fragmentShaderId);
+    if(vertexShader)   glDetachShader(programId, vertexShader->GetId());
+    if(fragmentShader) glDetachShader(programId, fragmentShader->GetId());
 
     return true; //Everything went GOOD!
 }
+bool Material::AttachShader(Shader *s) { return AttachShader(*s); }
 
 int Material::GetShaderId(unsigned int shaderType)
 {
     switch(shaderType)
     {
-        case CZ_VERTEX_SHADER:
-            return vertexShaderId;
-
-        case CZ_FRAGMENT_SHADER:
-            return fragmentShaderId;
+        case CZ_VERTEX_SHADER: return vertexShader ? vertexShader->GetId() : -1;
+        case CZ_FRAGMENT_SHADER: return fragmentShader ? fragmentShader->GetId() : -1;
     }
-    
     return -1;
 }
 
-void Material::UseProgram()
+void Material::SetTexture(Texture &t)
+{
+    texture = &t;
+}
+void Material::SetTexture(Texture *t){ SetTexture(*t); }
+
+void Material::Bind()
 {
     if(programId > 0) glUseProgram(programId);
-    else DbgWarning("No shaders attched to this material.");
+    if(texture) texture->Bind();
 }
 
-void Material::UnUseProgram()
+void Material::UnBind()
 {
-    glUseProgram(0);
+    if(programId > 0) glUseProgram(0);
+    if(texture) texture->UnBind();
 }
+

@@ -145,4 +145,4 @@ src/Time.o: src/Time.cpp /usr/include/stdc-predef.h include/Time.h \
  /usr/include/c++/4.8/bits/ostream.tcc /usr/include/c++/4.8/istream \
  /usr/include/c++/4.8/bits/istream.tcc /usr/include/c++/4.8/sstream \
  /usr/include/c++/4.8/bits/sstream.tcc include/Vector3.h \
- /usr/include/c++/4.8/cmath include/Quaternion.h
+ /usr/include/c++/4.8/cmath include/Vector2.h include/Quaternion.h

@@ -6,6 +6,12 @@ ostream& operator<<(ostream &log, const Vector3 &v)
     return log;
 }
 
+ostream& operator<<(ostream &log, const Vector2 &v)
+{
+    log << "(" << v.x << ", " << v.y << ")";
+    return log;
+}
+
 ostream& operator<<(ostream &log, const Quaternion &q)
 {
     log << "(" << q.x << ", " << q.y << ", " << q.z << ", " << q.w << ")";

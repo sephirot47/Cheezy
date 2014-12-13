@@ -65,7 +65,7 @@ bool Shader::LoadFromFile(const char *filepath)
     return true; //Everything went good
 }
 
-int Shader::GetShaderId()
+int Shader::GetId()
 {
     if(shaderId == 0) return -1;
     return shaderId;
@@ -75,4 +75,3 @@ int Shader::GetType()
 {
     return type;
 }
-
