@@ -3,16 +3,16 @@
 #include <GL/gl.h>
 #include <GL/glu.h>
 #include "SDL2/SDL.h"
-#include "Debug.h"
-#include "Texture.h"
-#include "GameObject.h"
-#include "CheezyWin.h"
-#include "Color.h"
-#include "Scene.h"
-#include "Camera.h"
-#include "Vector2.h"
-#include "Vector3.h"
-#include "Quaternion.h"
+#include "include/Debug.h"
+#include "include/Texture.h"
+#include "include/GameObject.h"
+#include "include/CheezyWin.h"
+#include "include/Color.h"
+#include "include/Scene.h"
+#include "include/Camera.h"
+#include "include/Vector2.h"
+#include "include/Vector3.h"
+#include "include/Quaternion.h"
 #include <cmath>
 #include <string>
 #include <sstream>
@@ -24,7 +24,6 @@ int main()
     CheezyWin win;
     win.Init(640, 640);
 
-    DbgLog("MEC");
     Camera cam = Camera();
     Scene *scene = win.CreateScene("FirstScene");
     GameObject *go2 = new GameObject("go2");

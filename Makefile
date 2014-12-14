@@ -57,7 +57,7 @@
 ##==========================================================================
 
 # The pre-processor and compiler options.
-MY_CFLAGS = -std=c++11 -Iinclude -Isrc
+MY_CFLAGS = -std=c++11 -Iinclude -I.
 
 # The linker options.
 MY_LIBS   = -L . -lSDL2 -lGL -lGLU

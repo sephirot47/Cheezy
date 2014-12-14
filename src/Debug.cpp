@@ -1,4 +1,4 @@
-#include "Debug.h"
+#include "include/Debug.h"
 
 string Debug::logFile;
 ofstream Debug::fileStream;

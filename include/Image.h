@@ -13,10 +13,9 @@ class Image
 private:
     int width, height;
     unsigned int format;
-    
+    unsigned char *data;
 
 public:
-    unsigned char *data;
     
     Image();
     Image(const char *filepath);

@@ -1,4 +1,4 @@
-#include "Texture.h"
+#include "include/Texture.h"
 
 Texture::Texture()
 {
@@ -14,7 +14,8 @@ bool Texture::LoadFromFile(const char *filepath)
 {
     Image img(filepath);
     if(img.GetWidth() == 0) return false; //cant load image
-    data = img.data;
+    data = img.GetData();
+
     DbgLog(img.GetFormat());
     DBG_ASSERT_GL_RET_MSG( glBindTexture(GL_TEXTURE_2D, id), "Couldn't bind on loading the texture '" << filepath << "'");
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);

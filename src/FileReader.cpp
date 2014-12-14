@@ -1,4 +1,4 @@
-#include "FileReader.h"
+#include "include/FileReader.h"
 
 int FileReader::GetFormat(const char *filepath)
 {
@@ -25,7 +25,7 @@ void FileReader::GetOBJFormat(const char *filepath, bool &uvs, bool &normals, bo
     f = fopen(filepath, "r");
     if(!f)
     {
-        DbgError("Error trying to open " << filepath);
+        DbgError("Error trying to open '" << filepath << "'");
         return;
     }
 

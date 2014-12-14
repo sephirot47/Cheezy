@@ -2,6 +2,7 @@
 #ifndef GAMEOBJECT_H
 #define GAMEOBJECT_H
 
+#include "Debug.h"
 #include "Quaternion.h"
 #include "Vector3.h"
 #include "Vector2.h"
@@ -9,7 +10,6 @@
 #include "Material.h"
 #include "Shader.h"
 #include "Component.h"
-#include "Debug.h"
 #include "Mesh.h"
 #include <map>
 #include <vector>

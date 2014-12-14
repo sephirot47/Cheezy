@@ -1,5 +1,4 @@
-#include "Quaternion.h"
-#include "Debug.h"
+#include "include/Quaternion.h"
 
 Quaternion::Quaternion()
 {
