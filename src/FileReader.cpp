@@ -75,6 +75,7 @@ void FileReader::GetOBJFormat(const char *filepath, bool &uvs, bool &normals, bo
         fseek(f, -3, SEEK_CUR);
     }
     fclose(f);
+    DbgLog("triangles: " << triangles);
 }
 
 bool FileReader::ReadOBJ(const char *filepath, vector<Vertex> &vertices, bool &triangles)

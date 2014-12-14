@@ -20,7 +20,7 @@ unsigned char* Image::LoadFromFile(const char *filepath)
         DbgError("Error loading the texture '" << filepath << "', couldn't open/read the file.");
         return data;
     }
-
+    DbgLog("Img n: " << n);
     if(n == 3) format = GL_RGB;
     else format = GL_RGBA;
 

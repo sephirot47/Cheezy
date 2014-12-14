@@ -11,7 +11,7 @@ Mesh::Mesh()
     material = new Material();
     material->AttachShader(new Shader(CZ_VERTEX_SHADER, "Shaders/vertexShader.glsl"));
     material->AttachShader(new Shader(CZ_FRAGMENT_SHADER, "Shaders/fragmentShader.glsl"));
-    material->SetTexture(new Texture("img.jpg"));
+    material->SetTexture(new Texture("models/textures/luigiD.jpg"));
 }
 
 void Mesh::Draw()

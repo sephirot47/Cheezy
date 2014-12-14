@@ -56,7 +56,8 @@ void Debug::SetFile(string filepath)
 		cerr << "Saving log to: " << filepath << endl;
 	}
 	logFile = filepath;
-	if (logFile != "") fileStream.open(logFile,fstream::out);	
+	if (fileStream.is_open()) fileStream.close();
+        fileStream.open(logFile,fstream::out);
 }
 
 

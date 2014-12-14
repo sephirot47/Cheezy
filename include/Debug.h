@@ -48,7 +48,7 @@ using namespace std;
 #define DbgLog(x) do{\
     ostringstream log;\
     log << x << endl;\
-   /*Debug::Log(log);*/\
+    Debug::Log(log);\
     log.flush();\
 } while(0)
 
