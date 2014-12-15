@@ -6,20 +6,25 @@ GameObject::GameObject()
     AddComponent(*t);
 
     transform = t;
-    transform->pos = Vector3(0, 0, 0);
-    transform->rot = Quaternion::Euler(0, 0, 0);
-    transform->scale = Vector3(1, 1, 1);
+    transform->pos = vec3(0, 0, 0);
+    transform->rot = quat(vec3(0, 0, 0));
+    transform->scale = vec3(1, 1, 1);
 
     Mesh *m = new Mesh();  //Create the default Mesh
     AddComponent(*m);
 
     mesh = m;
     mesh->LoadFromFile("models/Luigi_obj.obj");
-    //mesh->LoadFromFile("canvas.obj");
 
     name = "";
 
     idGameObjects = 0;
+}
+
+GameObject::~GameObject()
+{
+    if(transform) delete transform;
+    if(mesh) delete mesh;
 }
 
 GameObject::GameObject(string name) : GameObject()
@@ -27,13 +32,13 @@ GameObject::GameObject(string name) : GameObject()
     this->name = name;
 }
 
-GameObject::GameObject(Vector3 pos, Quaternion rot) : GameObject()
+GameObject::GameObject(vec3 &pos, quat &rot) : GameObject()
 {
-    transform->pos = pos;
-    transform->rot = rot;
+    transform->pos = vec3(pos.x, pos.y, pos.z);
+    transform->rot = quat(rot.x, rot.y, rot.z, rot.w);
 }
 
-GameObject::GameObject(string name, Vector3 pos, Quaternion rot) : GameObject(pos, rot)
+GameObject::GameObject(string name, vec3 &pos, quat &rot) : GameObject(pos, rot)
 {
     this->name = name;
 }
@@ -90,7 +95,7 @@ void GameObject::_Draw()
     glTranslatef(transform->pos.x, transform->pos.y, transform->pos.z);
 
     float mat[16];
-    transform->rot.GetRotMatrix(mat);
+  //  transform->rot.GetRotMatrix(mat);
     glMultMatrixf(mat);
 
     glScalef(transform->scale.x, transform->scale.y, transform->scale.z);

@@ -8,6 +8,11 @@ Shader::Shader()
     type = CZ_VERTEX_SHADER;
 }
 
+Shader::~Shader()
+{
+    if(srcCode) delete srcCode;
+}
+
 Shader::Shader(unsigned int shaderType) : Shader()
 {
     this->type = shaderType;

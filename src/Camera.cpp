@@ -2,20 +2,22 @@
 
 Camera::Camera()
 {
-    pos = Vector3(0.5, 0.5, 0.5);
-    rot = Quaternion::Euler(0, 0, 0);
+    pos = vec3(0.5, 0.5, 0.5);
+    rot = quat(vec3(0, 0, 0));
 }
 
-void Camera::LookAt(Vector3 to, Vector3 eye, Vector3 up)
+void Camera::LookAt(vec3 to, vec3 eye, vec3 up)
 {
+    /*
     pos = eye;
 
-    Vector3 forward = (to-eye).Norm();
+    vec3 forward = (to-eye).Norm();
     up = up.Norm();
-    float cos_theta = Vector3::Dot(up, forward);
+    float cos_theta = vec3::dot(up, forward);
     float angle = acos(cos_theta);
-    Vector3 w = Vector3::Cross(up, forward).Norm();
-    rot = Quaternion::FromAxisAngle(angle, w);
+    vec3 w = vec3::cross(up, forward).Norm();
+    //rot = Quaternion::FromAxisAngle(angle, w);
+    */
 }
 
 void Camera::ApplyPerspective()
@@ -27,8 +29,7 @@ void Camera::ApplyPerspective()
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 
-    float mat[16];
-    rot.GetRotMatrix(mat);
+    const float *mat = value_ptr(mat4_cast(rot));
     glMultMatrixf(mat);
 
     glTranslatef(-pos.x, -pos.y, -pos.z);

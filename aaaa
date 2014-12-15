@@ -1,0 +1,11 @@
+src/Scene.cpp: In member function ‘void Scene::Update()’:
+src/Scene.cpg++ -std=c++11 -Iinclude -I. -g -O2 -Wall -c src/Shader.cpp -o src/Shader.o
+g++ -std=c++11 -Iinclude -I. -g -O2 -Wall -c src/stb_image.cpp -o src/stb_image.o
+g++ -std=c++11 -Iinclude -I. -g -O2 -Wall -c src/Texture.cpp -o src/Texture.o
+g++ -std=c++11 -Iinclude -I. -g -O2 -Wall -c src/Time.cpp -o src/Time.o
+g++ -std=c++11 -Iinclude -I. -g -O2 -Wall -c src/Transform.cpp -o src/Transform.o
+g++ -std=c++11 -Iinclude -I. -g -O2 -Wall -c src/Vector2.cpp -o src/Vector2.o
+g++ -std=c++11 -Iinclude -I. -g -O2 -Wall -c src/Vector3.cpp -o src/Vector3.o
+g++ -std=c++11 -Iinclude -I. -g -O2 -Wall -c src/Vertex.cpp -o src/Vertex.o
+g++ -std=c++11 -Iinclude -I. -g -O2 -Wall  src/Bindable.o src/Camera.o src/CheezyWin.o src/Color.o src/Component.o src/Debug.o src/FileReader.o src/GameObject.o src/Image.o src/main.o src/Material.o src/Mesh.o src/Quaternion.o src/Scene.o src/Shader.o src/stb_image.o src/Texture.o src/Time.o src/Transform.o src/Vector2.o src/Vector3.o src/Vertex.o -L . -lSDL2 -lGL -lGLU -o cheezy
+Type ./cheezy to execute the program.

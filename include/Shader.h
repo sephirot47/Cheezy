@@ -31,6 +31,7 @@ private:
 public:
 
     Shader();
+    virtual ~Shader();
 
     ///\brief Creates a shader of type shaderType
     ///       shaderType can be CZ_VERTEX_SHADER or CZ_FRAGMENT_SHADER

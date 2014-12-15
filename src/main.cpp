@@ -13,11 +13,13 @@
 #include "include/Vector2.h"
 #include "include/Vector3.h"
 #include "include/Quaternion.h"
+#include "include/glm/glm.hpp"
 #include <cmath>
 #include <string>
 #include <sstream>
 
 using namespace std;
+using namespace glm;
 
 int main()
 {
@@ -30,8 +32,8 @@ int main()
     scene->Add(go2);
     scene->SetCamera(cam);
 
-    go2->transform->scale = Vector3(0.5, 0.5, 0.5);
-    scene->cam->pos = Vector3(50, 50, 50);
+    go2->transform->scale = vec3(0.5, 0.5, 0.5);
+    scene->cam->pos = vec3(50, 50, 50);
 
     win.drawAxis = true;
     win.Loop();

@@ -2,6 +2,16 @@
 #ifndef GAMEOBJECT_H
 #define GAMEOBJECT_H
 
+#include <map>
+#include <vector>
+#include <string>
+#include <string.h>
+#include <stdio.h>
+#include <GL/gl.h>
+#include <ctime>
+#include <stdlib.h>
+#include "glm/glm.hpp"
+
 #include "Debug.h"
 #include "Quaternion.h"
 #include "Vector3.h"
@@ -11,16 +21,9 @@
 #include "Shader.h"
 #include "Component.h"
 #include "Mesh.h"
-#include <map>
-#include <vector>
-#include <string>
-#include <string.h>
-#include <stdio.h>
-#include <GL/gl.h>
-#include <ctime>
-#include <stdlib.h>
 
 using namespace std;
+using namespace glm;
 
 class GameObject
 {
@@ -28,7 +31,6 @@ typedef map<string, GameObject*> GameObjMap;
 typedef map<string, Component*> CompMap;
 
 private:
-    float foo;
     GameObjMap gameObjects;
     int idGameObjects;
 
@@ -42,8 +44,10 @@ public:
 
     GameObject();
     GameObject(string name);
-    GameObject(Vector3 pos, Quaternion rot);
-    GameObject(string name, Vector3 pos, Quaternion rot);
+    GameObject(vec3 &pos, quat &rot);
+    GameObject(string name, vec3 &pos, quat &rot);
+
+    virtual ~GameObject();
 
     void Add(GameObject *go);
     GameObject* Find(const string &name) const;

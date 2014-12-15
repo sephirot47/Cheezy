@@ -25,6 +25,8 @@ public:
 
     Texture();
     Texture(const char *filepath);
+    virtual ~Texture();
+
     bool LoadFromFile(const char *filepath);
 
     unsigned int GetId();

@@ -29,6 +29,7 @@ private:
 public:
 
     Material();
+    virtual ~Material();
 
     ///\brief Attaches to the Material a Shader of type shaderType
     ///       If there was a previous attached Shader of the same type, it will be replaced

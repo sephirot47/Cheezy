@@ -5,6 +5,11 @@ Texture::Texture()
     glGenTextures(1, &id);
 }
 
+Texture::~Texture()
+{
+    if(data) delete data;
+}
+
 Texture::Texture(const char *filepath) : Texture()
 {
     LoadFromFile(filepath);

@@ -32,6 +32,7 @@ public:
 
     Material *material;
     Mesh();
+    virtual ~Mesh();
 
     void Init(){}
 

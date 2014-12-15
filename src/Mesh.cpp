@@ -14,6 +14,11 @@ Mesh::Mesh()
     material->SetTexture(new Texture("models/textures/luigiD.jpg"));
 }
 
+Mesh::~Mesh()
+{
+    delete material;
+}
+
 void Mesh::Draw()
 {
     if(vertexCount <= 0) return;

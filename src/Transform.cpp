@@ -6,3 +6,6 @@ Transform::Transform()
 }
 
 
+Transform::~Transform()
+{
+}

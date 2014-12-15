@@ -8,6 +8,13 @@ Material::Material()
     programId = -1;
 }
 
+Material::~Material()
+{
+    if(vertexShader) delete vertexShader;
+    if(fragmentShader) delete fragmentShader;
+    if(texture) delete texture;
+}
+
 bool Material::AttachShader(Shader &shader)
 {
     int shaderType = shader.GetType();

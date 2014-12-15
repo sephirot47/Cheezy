@@ -3,29 +3,32 @@
 
 #include <GL/gl.h>
 #include <GL/glu.h>
+#include "glm/glm.hpp"
 #include "Vector3.h"
 #include "Debug.h"
 #include "Quaternion.h"
 
+using namespace glm;
+
 class Camera
 {
 public:
-    Vector3 pos;
-    Quaternion rot;
+    vec3 pos;
+    quat rot;
 
     Camera();
 
     ///\brief Returns the forward vector of the camera in the worldspace(direction the camera is facing to)
-    Vector3 GetForward();
+    vec3 GetForward();
 
     ///\brief Returns the right vector of the camera in the worldspace
-    Vector3 GetRight();
+    vec3 GetRight();
 
     ///\brief Returns the up vector of the camera in the worldspace
-    Vector3 GetUp();
+    vec3 GetUp();
 
     ///\brief Moves the camera to eye, and rotates it to make it look to to, with the up vector of the camera aligned with up
-    void LookAt(Vector3 to, Vector3 eye, Vector3 up);
+    void LookAt(vec3 to, vec3 eye, vec3 up);
 
     ///\brief Applies the matrices transformations of the stage perspective setting and camera position & rotation
     void ApplyPerspective();

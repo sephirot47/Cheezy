@@ -1,31 +1,16 @@
 src/GameObject.o: src/GameObject.cpp /usr/include/stdc-predef.h \
- include/GameObject.h include/Debug.h /usr/include/GL/gl.h \
- /usr/include/GL/glext.h /usr/lib/gcc/i686-linux-gnu/4.8/include/stddef.h \
- /usr/include/inttypes.h /usr/include/features.h \
- /usr/include/i386-linux-gnu/sys/cdefs.h \
+ include/GameObject.h /usr/include/c++/4.8/map \
+ /usr/include/c++/4.8/bits/stl_tree.h \
+ /usr/include/c++/4.8/bits/stl_algobase.h \
+ /usr/include/i386-linux-gnu/c++/4.8/bits/c++config.h \
+ /usr/include/i386-linux-gnu/c++/4.8/bits/os_defines.h \
+ /usr/include/features.h /usr/include/i386-linux-gnu/sys/cdefs.h \
  /usr/include/i386-linux-gnu/bits/wordsize.h \
  /usr/include/i386-linux-gnu/gnu/stubs.h \
  /usr/include/i386-linux-gnu/gnu/stubs-32.h \
- /usr/lib/gcc/i686-linux-gnu/4.8/include/stdint.h /usr/include/stdint.h \
- /usr/include/i386-linux-gnu/bits/wchar.h /usr/include/GL/glu.h \
- /usr/include/c++/4.8/iostream \
- /usr/include/i386-linux-gnu/c++/4.8/bits/c++config.h \
- /usr/include/i386-linux-gnu/c++/4.8/bits/os_defines.h \
  /usr/include/i386-linux-gnu/c++/4.8/bits/cpu_defines.h \
- /usr/include/c++/4.8/ostream /usr/include/c++/4.8/ios \
- /usr/include/c++/4.8/iosfwd /usr/include/c++/4.8/bits/stringfwd.h \
- /usr/include/c++/4.8/bits/memoryfwd.h \
- /usr/include/c++/4.8/bits/postypes.h /usr/include/c++/4.8/cwchar \
- /usr/include/wchar.h /usr/include/stdio.h \
- /usr/lib/gcc/i686-linux-gnu/4.8/include/stdarg.h /usr/include/xlocale.h \
- /usr/include/i386-linux-gnu/bits/wchar2.h /usr/include/c++/4.8/exception \
- /usr/include/c++/4.8/bits/atomic_lockfree_defines.h \
- /usr/include/c++/4.8/bits/exception_ptr.h \
- /usr/include/c++/4.8/bits/exception_defines.h \
- /usr/include/c++/4.8/bits/nested_exception.h \
- /usr/include/c++/4.8/bits/char_traits.h \
- /usr/include/c++/4.8/bits/stl_algobase.h \
  /usr/include/c++/4.8/bits/functexcept.h \
+ /usr/include/c++/4.8/bits/exception_defines.h \
  /usr/include/c++/4.8/bits/cpp_type_traits.h \
  /usr/include/c++/4.8/ext/type_traits.h \
  /usr/include/c++/4.8/ext/numeric_traits.h \
@@ -35,17 +20,46 @@ src/GameObject.o: src/GameObject.cpp /usr/include/stdc-predef.h \
  /usr/include/c++/4.8/bits/stl_iterator_base_types.h \
  /usr/include/c++/4.8/bits/stl_iterator_base_funcs.h \
  /usr/include/c++/4.8/debug/debug.h \
- /usr/include/c++/4.8/bits/stl_iterator.h /usr/include/c++/4.8/cstdint \
+ /usr/include/c++/4.8/bits/stl_iterator.h \
+ /usr/include/c++/4.8/bits/allocator.h \
+ /usr/include/i386-linux-gnu/c++/4.8/bits/c++allocator.h \
+ /usr/include/c++/4.8/ext/new_allocator.h /usr/include/c++/4.8/new \
+ /usr/include/c++/4.8/exception \
+ /usr/include/c++/4.8/bits/atomic_lockfree_defines.h \
+ /usr/include/c++/4.8/bits/exception_ptr.h \
+ /usr/include/c++/4.8/bits/nested_exception.h \
+ /usr/include/c++/4.8/bits/memoryfwd.h \
+ /usr/include/c++/4.8/bits/stl_function.h \
+ /usr/include/c++/4.8/backward/binders.h \
+ /usr/include/c++/4.8/bits/alloc_traits.h \
+ /usr/include/c++/4.8/bits/ptr_traits.h \
+ /usr/include/c++/4.8/bits/stl_map.h \
+ /usr/include/c++/4.8/initializer_list /usr/include/c++/4.8/tuple \
+ /usr/include/c++/4.8/utility /usr/include/c++/4.8/bits/stl_relops.h \
+ /usr/include/c++/4.8/array /usr/include/c++/4.8/stdexcept \
+ /usr/include/c++/4.8/string /usr/include/c++/4.8/bits/stringfwd.h \
+ /usr/include/c++/4.8/bits/char_traits.h \
+ /usr/include/c++/4.8/bits/postypes.h /usr/include/c++/4.8/cwchar \
+ /usr/include/wchar.h /usr/include/stdio.h \
+ /usr/lib/gcc/i686-linux-gnu/4.8/include/stdarg.h \
+ /usr/include/i386-linux-gnu/bits/wchar.h \
+ /usr/lib/gcc/i686-linux-gnu/4.8/include/stddef.h /usr/include/xlocale.h \
+ /usr/include/i386-linux-gnu/bits/wchar2.h /usr/include/c++/4.8/cstdint \
+ /usr/lib/gcc/i686-linux-gnu/4.8/include/stdint.h /usr/include/stdint.h \
  /usr/include/c++/4.8/bits/localefwd.h \
  /usr/include/i386-linux-gnu/c++/4.8/bits/c++locale.h \
  /usr/include/c++/4.8/clocale /usr/include/locale.h \
- /usr/include/i386-linux-gnu/bits/locale.h /usr/include/c++/4.8/cctype \
- /usr/include/ctype.h /usr/include/i386-linux-gnu/bits/types.h \
+ /usr/include/i386-linux-gnu/bits/locale.h /usr/include/c++/4.8/iosfwd \
+ /usr/include/c++/4.8/cctype /usr/include/ctype.h \
+ /usr/include/i386-linux-gnu/bits/types.h \
  /usr/include/i386-linux-gnu/bits/typesizes.h /usr/include/endian.h \
  /usr/include/i386-linux-gnu/bits/endian.h \
  /usr/include/i386-linux-gnu/bits/byteswap.h \
  /usr/include/i386-linux-gnu/bits/byteswap-16.h \
- /usr/include/c++/4.8/bits/ios_base.h \
+ /usr/include/c++/4.8/bits/ostream_insert.h \
+ /usr/include/c++/4.8/bits/cxxabi_forced.h \
+ /usr/include/c++/4.8/bits/range_access.h \
+ /usr/include/c++/4.8/bits/basic_string.h \
  /usr/include/c++/4.8/ext/atomicity.h \
  /usr/include/i386-linux-gnu/c++/4.8/bits/gthr.h \
  /usr/include/i386-linux-gnu/c++/4.8/bits/gthr-default.h \
@@ -56,17 +70,6 @@ src/GameObject.o: src/GameObject.cpp /usr/include/stdc-predef.h \
  /usr/include/i386-linux-gnu/bits/pthreadtypes.h \
  /usr/include/i386-linux-gnu/bits/setjmp.h \
  /usr/include/i386-linux-gnu/c++/4.8/bits/atomic_word.h \
- /usr/include/c++/4.8/bits/locale_classes.h /usr/include/c++/4.8/string \
- /usr/include/c++/4.8/bits/allocator.h \
- /usr/include/i386-linux-gnu/c++/4.8/bits/c++allocator.h \
- /usr/include/c++/4.8/ext/new_allocator.h /usr/include/c++/4.8/new \
- /usr/include/c++/4.8/bits/ostream_insert.h \
- /usr/include/c++/4.8/bits/cxxabi_forced.h \
- /usr/include/c++/4.8/bits/stl_function.h \
- /usr/include/c++/4.8/backward/binders.h \
- /usr/include/c++/4.8/bits/range_access.h \
- /usr/include/c++/4.8/bits/basic_string.h \
- /usr/include/c++/4.8/initializer_list \
  /usr/include/c++/4.8/ext/string_conversions.h \
  /usr/include/c++/4.8/cstdlib /usr/include/stdlib.h \
  /usr/include/i386-linux-gnu/bits/waitflags.h \
@@ -91,6 +94,88 @@ src/GameObject.o: src/GameObject.cpp /usr/include/stdc-predef.h \
  /usr/include/c++/4.8/bits/functional_hash.h \
  /usr/include/c++/4.8/bits/hash_bytes.h \
  /usr/include/c++/4.8/bits/basic_string.tcc \
+ /usr/include/c++/4.8/bits/uses_allocator.h \
+ /usr/include/c++/4.8/bits/stl_multimap.h /usr/include/c++/4.8/vector \
+ /usr/include/c++/4.8/bits/stl_construct.h \
+ /usr/include/c++/4.8/ext/alloc_traits.h \
+ /usr/include/c++/4.8/bits/stl_uninitialized.h \
+ /usr/include/c++/4.8/bits/stl_vector.h \
+ /usr/include/c++/4.8/bits/stl_bvector.h \
+ /usr/include/c++/4.8/bits/vector.tcc /usr/include/string.h \
+ /usr/include/i386-linux-gnu/bits/string3.h /usr/include/GL/gl.h \
+ /usr/include/GL/glext.h /usr/include/inttypes.h \
+ /usr/include/c++/4.8/ctime include/glm/glm.hpp \
+ include/glm/detail/_fixes.hpp /usr/include/c++/4.8/cmath \
+ /usr/include/math.h /usr/include/i386-linux-gnu/bits/huge_val.h \
+ /usr/include/i386-linux-gnu/bits/huge_valf.h \
+ /usr/include/i386-linux-gnu/bits/huge_vall.h \
+ /usr/include/i386-linux-gnu/bits/inf.h \
+ /usr/include/i386-linux-gnu/bits/nan.h \
+ /usr/include/i386-linux-gnu/bits/mathdef.h \
+ /usr/include/i386-linux-gnu/bits/mathcalls.h \
+ /usr/include/i386-linux-gnu/bits/mathinline.h \
+ /usr/include/c++/4.8/climits \
+ /usr/lib/gcc/i686-linux-gnu/4.8/include-fixed/limits.h \
+ /usr/lib/gcc/i686-linux-gnu/4.8/include-fixed/syslimits.h \
+ /usr/include/limits.h /usr/include/i386-linux-gnu/bits/posix1_lim.h \
+ /usr/include/i386-linux-gnu/bits/local_lim.h /usr/include/linux/limits.h \
+ /usr/include/i386-linux-gnu/bits/posix2_lim.h \
+ /usr/include/i386-linux-gnu/bits/xopen_lim.h /usr/include/c++/4.8/cfloat \
+ /usr/lib/gcc/i686-linux-gnu/4.8/include/float.h \
+ /usr/include/c++/4.8/limits /usr/include/c++/4.8/cassert \
+ /usr/include/assert.h include/glm/fwd.hpp \
+ include/glm/detail/type_int.hpp include/glm/detail/setup.hpp \
+ /usr/include/c++/4.8/cstddef include/glm/detail/type_float.hpp \
+ include/glm/detail/type_vec.hpp include/glm/detail/precision.hpp \
+ include/glm/detail/type_mat.hpp include/glm/vec2.hpp \
+ include/glm/detail/type_vec2.hpp include/glm/detail/type_vec2.inl \
+ include/glm/vec3.hpp include/glm/detail/type_vec3.hpp \
+ include/glm/detail/type_vec3.inl include/glm/vec4.hpp \
+ include/glm/detail/type_vec4.hpp include/glm/detail/type_vec4.inl \
+ include/glm/mat2x2.hpp include/glm/detail/type_mat2x2.hpp \
+ include/glm/detail/type_mat2x2.inl include/glm/mat2x3.hpp \
+ include/glm/detail/type_mat2x3.hpp include/glm/detail/type_mat2x3.inl \
+ include/glm/mat2x4.hpp include/glm/detail/type_mat2x4.hpp \
+ include/glm/detail/type_mat2x4.inl include/glm/mat3x2.hpp \
+ include/glm/detail/type_mat3x2.hpp include/glm/detail/type_mat3x2.inl \
+ include/glm/mat3x3.hpp include/glm/detail/type_mat3x3.hpp \
+ include/glm/detail/type_mat3x3.inl include/glm/mat3x4.hpp \
+ include/glm/detail/type_mat3x4.hpp include/glm/detail/type_mat3x4.inl \
+ include/glm/mat4x2.hpp include/glm/detail/type_mat4x2.hpp \
+ include/glm/detail/type_mat4x2.inl include/glm/mat4x3.hpp \
+ include/glm/detail/type_mat4x3.hpp include/glm/detail/type_mat4x3.inl \
+ include/glm/mat4x4.hpp include/glm/detail/type_mat4x4.hpp \
+ include/glm/detail/type_mat4x4.inl include/glm/gtc/quaternion.hpp \
+ include/glm/gtc/../gtc/constants.hpp \
+ include/glm/gtc/../gtc/constants.inl include/glm/gtc/quaternion.inl \
+ include/glm/gtc/../trigonometric.hpp \
+ include/glm/gtc/../detail/func_trigonometric.hpp \
+ include/glm/gtc/../detail/func_trigonometric.inl \
+ include/glm/gtc/../detail/_vectorize.hpp \
+ include/glm/gtc/../detail/type_vec1.hpp \
+ include/glm/gtc/../detail/type_vec1.inl include/glm/gtc/../geometric.hpp \
+ include/glm/gtc/../detail/func_geometric.hpp \
+ include/glm/gtc/../detail/func_geometric.inl \
+ include/glm/gtc/../detail/func_exponential.hpp \
+ include/glm/gtc/../detail/func_exponential.inl \
+ include/glm/gtc/../detail/func_vector_relational.hpp \
+ include/glm/gtc/../detail/func_vector_relational.inl \
+ include/glm/gtc/../detail/func_common.hpp \
+ include/glm/gtc/../detail/_fixes.hpp \
+ include/glm/gtc/../detail/func_common.inl \
+ include/glm/gtc/../exponential.hpp include/glm/gtc/type_ptr.hpp \
+ /usr/include/c++/4.8/cstring include/glm/gtc/type_ptr.inl \
+ include/glm/common.hpp include/glm/packing.hpp \
+ include/glm/detail/func_packing.hpp include/glm/detail/func_packing.inl \
+ include/glm/detail/type_half.hpp include/glm/detail/type_half.inl \
+ include/glm/matrix.hpp include/glm/detail/func_matrix.hpp \
+ include/glm/detail/func_matrix.inl include/glm/vector_relational.hpp \
+ include/glm/integer.hpp include/glm/detail/func_integer.hpp \
+ include/glm/detail/func_integer.inl include/Debug.h \
+ /usr/include/GL/glu.h /usr/include/c++/4.8/iostream \
+ /usr/include/c++/4.8/ostream /usr/include/c++/4.8/ios \
+ /usr/include/c++/4.8/bits/ios_base.h \
+ /usr/include/c++/4.8/bits/locale_classes.h \
  /usr/include/c++/4.8/bits/locale_classes.tcc \
  /usr/include/c++/4.8/streambuf /usr/include/c++/4.8/bits/streambuf.tcc \
  /usr/include/c++/4.8/bits/basic_ios.h \
@@ -108,22 +193,13 @@ src/GameObject.o: src/GameObject.cpp /usr/include/stdc-predef.h \
  /usr/include/i386-linux-gnu/c++/4.8/bits/basic_file.h \
  /usr/include/i386-linux-gnu/c++/4.8/bits/c++io.h \
  /usr/include/c++/4.8/bits/fstream.tcc include/Vector3.h \
- /usr/include/c++/4.8/cmath /usr/include/math.h \
- /usr/include/i386-linux-gnu/bits/huge_val.h \
- /usr/include/i386-linux-gnu/bits/huge_valf.h \
- /usr/include/i386-linux-gnu/bits/huge_vall.h \
- /usr/include/i386-linux-gnu/bits/inf.h \
- /usr/include/i386-linux-gnu/bits/nan.h \
- /usr/include/i386-linux-gnu/bits/mathdef.h \
- /usr/include/i386-linux-gnu/bits/mathcalls.h \
- /usr/include/i386-linux-gnu/bits/mathinline.h include/Vector2.h \
- include/Quaternion.h include/Time.h /usr/local/include/SDL2/SDL.h \
- /usr/local/include/SDL2/SDL_main.h /usr/local/include/SDL2/SDL_stdinc.h \
+ include/Vector2.h include/Quaternion.h include/Time.h \
+ /usr/local/include/SDL2/SDL.h /usr/local/include/SDL2/SDL_main.h \
+ /usr/local/include/SDL2/SDL_stdinc.h \
  /usr/local/include/SDL2/SDL_config.h \
  /usr/local/include/SDL2/SDL_platform.h \
  /usr/local/include/SDL2/begin_code.h \
- /usr/local/include/SDL2/close_code.h /usr/include/string.h \
- /usr/include/i386-linux-gnu/bits/string3.h /usr/include/strings.h \
+ /usr/local/include/SDL2/close_code.h /usr/include/strings.h \
  /usr/include/iconv.h /usr/local/include/SDL2/SDL_assert.h \
  /usr/local/include/SDL2/SDL_atomic.h /usr/local/include/SDL2/SDL_audio.h \
  /usr/local/include/SDL2/SDL_error.h /usr/local/include/SDL2/SDL_endian.h \
@@ -149,21 +225,7 @@ src/GameObject.o: src/GameObject.cpp /usr/include/stdc-predef.h \
  /usr/local/include/SDL2/SDL_messagebox.h \
  /usr/local/include/SDL2/SDL_power.h /usr/local/include/SDL2/SDL_render.h \
  /usr/local/include/SDL2/SDL_system.h /usr/local/include/SDL2/SDL_timer.h \
- /usr/local/include/SDL2/SDL_version.h /usr/include/c++/4.8/ctime \
- include/Transform.h include/Component.h include/Material.h \
- /usr/include/c++/4.8/vector /usr/include/c++/4.8/bits/stl_construct.h \
- /usr/include/c++/4.8/ext/alloc_traits.h \
- /usr/include/c++/4.8/bits/alloc_traits.h \
- /usr/include/c++/4.8/bits/ptr_traits.h \
- /usr/include/c++/4.8/bits/stl_uninitialized.h \
- /usr/include/c++/4.8/bits/stl_vector.h \
- /usr/include/c++/4.8/bits/stl_bvector.h \
- /usr/include/c++/4.8/bits/vector.tcc include/Shader.h include/Bindable.h \
- include/Texture.h include/stb_image.h include/Image.h include/Color.h \
- include/Mesh.h include/Vertex.h include/FileReader.h \
- /usr/include/c++/4.8/map /usr/include/c++/4.8/bits/stl_tree.h \
- /usr/include/c++/4.8/bits/stl_map.h /usr/include/c++/4.8/tuple \
- /usr/include/c++/4.8/utility /usr/include/c++/4.8/bits/stl_relops.h \
- /usr/include/c++/4.8/array /usr/include/c++/4.8/stdexcept \
- /usr/include/c++/4.8/bits/uses_allocator.h \
- /usr/include/c++/4.8/bits/stl_multimap.h
+ /usr/local/include/SDL2/SDL_version.h include/Transform.h \
+ include/Component.h include/Material.h include/Shader.h \
+ include/Bindable.h include/Texture.h include/stb_image.h include/Image.h \
+ include/Color.h include/Mesh.h include/Vertex.h include/FileReader.h
