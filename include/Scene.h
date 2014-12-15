@@ -5,6 +5,7 @@
 #include <string>
 #include <map>
 #include <SDL2/SDL.h>
+#include "glm/glm.hpp"
 
 #include "GameObject.h"
 #include "Debug.h"
@@ -13,6 +14,7 @@
 typedef map<string, GameObject*> GameObjMap;
 
 using namespace std;
+using namespace glm;
 
 class Scene
 {

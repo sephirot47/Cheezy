@@ -95,7 +95,9 @@ void GameObject::_Draw()
     glTranslatef(transform->pos.x, transform->pos.y, transform->pos.z);
 
     float mat[16];
-  //  transform->rot.GetRotMatrix(mat);
+    mat4 x = mat4_cast(transform->rot);
+    const float *matPointer = (const float*)value_ptr(x);
+    for(int i = 0; i < 16; ++i) mat[i] = matPointer[i];
     glMultMatrixf(mat);
 
     glScalef(transform->scale.x, transform->scale.y, transform->scale.z);

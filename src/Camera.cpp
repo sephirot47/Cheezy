@@ -29,16 +29,26 @@ void Camera::ApplyPerspective()
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 
-    const float *mat = value_ptr(mat4_cast(rot));
+    float mat[16];
+    mat4 x = mat4_cast(rot);
+    const float *matPointer = (const float*)value_ptr(x);
+    for(int i = 0; i < 16; ++i) mat[i] = matPointer[i];
     glMultMatrixf(mat);
 
     glTranslatef(-pos.x, -pos.y, -pos.z);
+}
 
-    //DbgLog(rot);
+vec3 Camera::GetForward()
+{
+    return conjugate(rot) * vec3(0, 0, -1);
+}
 
-    /*
-    glRotatef(rot.x, 1.0, 0.0, 0.0);
-    glRotatef(rot.y, 0.0, 1.0, 0.0);
-    glRotatef(rot.z, 0.0, 0.0, 1.0);
-    */
+vec3 Camera::GetUp()
+{
+    return conjugate(rot) * vec3(0, 1, 0);
+}
+
+vec3 Camera::GetRight()
+{
+    return conjugate(rot) * vec3(1, 0, 0);
 }

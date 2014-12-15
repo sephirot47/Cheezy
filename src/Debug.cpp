@@ -61,19 +61,19 @@ void Debug::SetFile(string filepath)
 }
 
 
-ostream& operator<<(ostream &log, const Vector2 &v)
+ostream& operator<<(ostream &log, const vec2 &v)
 {
     log << "(" << v.x << ", " << v.y << ")";
     return log;
 }
 
-ostream& operator<<(ostream &log, const Vector3 &v)
+ostream& operator<<(ostream &log, const vec3 &v)
 {
     log << "(" << v.x << ", " << v.y << ", " << v.z << ")";
     return log;
 }
 
-ostream& operator<<(ostream &log, const Quaternion &q)
+ostream& operator<<(ostream &log, const quat &q)
 {
     log << "(" << q.x << ", " << q.y << ", " << q.z << ", " << q.w << ")";
     return log;

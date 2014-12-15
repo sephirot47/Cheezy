@@ -157,17 +157,9 @@ src/CheezyWin.o: src/CheezyWin.cpp /usr/include/stdc-predef.h \
  /usr/include/c++/4.8/bits/codecvt.h \
  /usr/include/i386-linux-gnu/c++/4.8/bits/basic_file.h \
  /usr/include/i386-linux-gnu/c++/4.8/bits/c++io.h \
- /usr/include/c++/4.8/bits/fstream.tcc include/Vector3.h \
- /usr/include/c++/4.8/cmath include/Vector2.h include/Quaternion.h \
- include/Time.h /usr/include/c++/4.8/ctime include/Scene.h \
- include/GameObject.h /usr/include/c++/4.8/vector \
- /usr/include/c++/4.8/bits/stl_construct.h \
- /usr/include/c++/4.8/ext/alloc_traits.h \
- /usr/include/c++/4.8/bits/stl_uninitialized.h \
- /usr/include/c++/4.8/bits/stl_vector.h \
- /usr/include/c++/4.8/bits/stl_bvector.h \
- /usr/include/c++/4.8/bits/vector.tcc include/glm/glm.hpp \
- include/glm/detail/_fixes.hpp /usr/include/c++/4.8/climits \
+ /usr/include/c++/4.8/bits/fstream.tcc include/glm/glm.hpp \
+ include/glm/detail/_fixes.hpp /usr/include/c++/4.8/cmath \
+ /usr/include/c++/4.8/climits \
  /usr/lib/gcc/i686-linux-gnu/4.8/include-fixed/limits.h \
  /usr/lib/gcc/i686-linux-gnu/4.8/include-fixed/syslimits.h \
  /usr/include/limits.h /usr/include/i386-linux-gnu/bits/posix1_lim.h \
@@ -224,7 +216,15 @@ src/CheezyWin.o: src/CheezyWin.cpp /usr/include/stdc-predef.h \
  include/glm/matrix.hpp include/glm/detail/func_matrix.hpp \
  include/glm/detail/func_matrix.inl include/glm/vector_relational.hpp \
  include/glm/integer.hpp include/glm/detail/func_integer.hpp \
- include/glm/detail/func_integer.inl include/Transform.h \
+ include/glm/detail/func_integer.inl include/Vector3.h include/Vector2.h \
+ include/Quaternion.h include/Time.h /usr/include/c++/4.8/ctime \
+ include/Scene.h include/GameObject.h /usr/include/c++/4.8/vector \
+ /usr/include/c++/4.8/bits/stl_construct.h \
+ /usr/include/c++/4.8/ext/alloc_traits.h \
+ /usr/include/c++/4.8/bits/stl_uninitialized.h \
+ /usr/include/c++/4.8/bits/stl_vector.h \
+ /usr/include/c++/4.8/bits/stl_bvector.h \
+ /usr/include/c++/4.8/bits/vector.tcc include/Transform.h \
  include/Component.h include/Material.h include/Shader.h \
  include/Bindable.h include/Texture.h include/stb_image.h include/Image.h \
  include/Color.h include/Mesh.h include/Vertex.h include/FileReader.h \

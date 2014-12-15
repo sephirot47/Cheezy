@@ -7,6 +7,8 @@
 #include <sstream>
 #include <fstream>
 #include <string>
+#include "glm/glm.hpp"
+
 #include "Vector3.h"
 #include "Vector2.h"
 #include "Quaternion.h"
@@ -22,8 +24,8 @@
 
 #define CZ_LOG_DIR "log"
 
-
 using namespace std;
+using namespace glm;
 
 #define DbgWarning(x) do{\
     ostringstream log;\
@@ -96,9 +98,9 @@ using namespace std;
 
 
 //OSTREAM OPERATORS //////////////////////////////////
-ostream& operator<<(ostream &log, const Vector3 &v);
-ostream& operator<<(ostream &log, const Quaternion &q);
-ostream& operator<<(ostream &log, const Vector2 &v);
+ostream& operator<<(ostream &log, const vec3 &v);
+ostream& operator<<(ostream &log, const quat &q);
+ostream& operator<<(ostream &log, const vec2 &v);
 
 class Debug
 {

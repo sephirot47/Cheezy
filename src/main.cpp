@@ -32,8 +32,8 @@ int main()
     scene->Add(go2);
     scene->SetCamera(cam);
 
-    go2->transform->scale = vec3(0.5, 0.5, 0.5);
-    scene->cam->pos = vec3(50, 50, 50);
+    go2->transform->scale = vec3(0.05, 0.05, 0.05);
+    scene->cam->pos = vec3(10, 10, 10);
 
     win.drawAxis = true;
     win.Loop();

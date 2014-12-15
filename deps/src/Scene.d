@@ -149,14 +149,7 @@ src/Scene.o: src/Scene.cpp /usr/include/stdc-predef.h include/Scene.h \
  /usr/local/include/SDL2/SDL_messagebox.h \
  /usr/local/include/SDL2/SDL_power.h /usr/local/include/SDL2/SDL_render.h \
  /usr/local/include/SDL2/SDL_system.h /usr/local/include/SDL2/SDL_timer.h \
- /usr/local/include/SDL2/SDL_version.h include/GameObject.h \
- /usr/include/c++/4.8/vector /usr/include/c++/4.8/bits/stl_construct.h \
- /usr/include/c++/4.8/ext/alloc_traits.h \
- /usr/include/c++/4.8/bits/stl_uninitialized.h \
- /usr/include/c++/4.8/bits/stl_vector.h \
- /usr/include/c++/4.8/bits/stl_bvector.h \
- /usr/include/c++/4.8/bits/vector.tcc /usr/include/GL/gl.h \
- /usr/include/GL/glext.h /usr/include/c++/4.8/ctime include/glm/glm.hpp \
+ /usr/local/include/SDL2/SDL_version.h include/glm/glm.hpp \
  include/glm/detail/_fixes.hpp /usr/include/c++/4.8/cmath \
  /usr/include/c++/4.8/climits \
  /usr/lib/gcc/i686-linux-gnu/4.8/include-fixed/limits.h \
@@ -215,7 +208,14 @@ src/Scene.o: src/Scene.cpp /usr/include/stdc-predef.h include/Scene.h \
  include/glm/matrix.hpp include/glm/detail/func_matrix.hpp \
  include/glm/detail/func_matrix.inl include/glm/vector_relational.hpp \
  include/glm/integer.hpp include/glm/detail/func_integer.hpp \
- include/glm/detail/func_integer.inl include/Debug.h \
+ include/glm/detail/func_integer.inl include/GameObject.h \
+ /usr/include/c++/4.8/vector /usr/include/c++/4.8/bits/stl_construct.h \
+ /usr/include/c++/4.8/ext/alloc_traits.h \
+ /usr/include/c++/4.8/bits/stl_uninitialized.h \
+ /usr/include/c++/4.8/bits/stl_vector.h \
+ /usr/include/c++/4.8/bits/stl_bvector.h \
+ /usr/include/c++/4.8/bits/vector.tcc /usr/include/GL/gl.h \
+ /usr/include/GL/glext.h /usr/include/c++/4.8/ctime include/Debug.h \
  /usr/include/GL/glu.h /usr/include/c++/4.8/sstream \
  /usr/include/c++/4.8/bits/sstream.tcc /usr/include/c++/4.8/fstream \
  /usr/include/c++/4.8/bits/codecvt.h \
