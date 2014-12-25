@@ -4,9 +4,9 @@
 #include <GL/gl.h>
 #include <GL/glu.h>
 #include "glm/glm.hpp"
-#include "Vector3.h"
+
 #include "Debug.h"
-#include "Quaternion.h"
+
 
 using namespace glm;
 
@@ -28,7 +28,7 @@ public:
     vec3 GetUp();
 
     ///\brief Moves the camera to eye, and rotates it to make it look to to, with the up vector of the camera aligned with up
-    void LookAt(vec3 to, vec3 eye, vec3 up);
+    void LookAt(vec3 camPos, vec3 lookTo, vec3 up);
 
     ///\brief Applies the matrices transformations of the stage perspective setting and camera position & rotation
     void ApplyPerspective();

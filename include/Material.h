@@ -11,8 +11,8 @@
 #include "Component.h"
 #include "Bindable.h"
 #include "Texture.h"
-#include "Vector3.h"
-#include "Vector2.h"
+
+
 
 #define CZ_MAX_MATERIAL_ERROR_LOG_SIZE 2056
 

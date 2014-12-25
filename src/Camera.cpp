@@ -6,18 +6,11 @@ Camera::Camera()
     rot = quat(vec3(0, 0, 0));
 }
 
-void Camera::LookAt(vec3 to, vec3 eye, vec3 up)
+void Camera::LookAt(vec3 camPos, vec3 lookTo, vec3 up)
 {
-    /*
-    pos = eye;
-
-    vec3 forward = (to-eye).Norm();
-    up = up.Norm();
-    float cos_theta = vec3::dot(up, forward);
-    float angle = acos(cos_theta);
-    vec3 w = vec3::cross(up, forward).Norm();
-    //rot = Quaternion::FromAxisAngle(angle, w);
-    */
+    mat4 x = lookAt(camPos, lookTo, up);
+    pos = camPos;
+    rot = quat_cast(x);
 }
 
 void Camera::ApplyPerspective()

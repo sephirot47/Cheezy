@@ -8,10 +8,6 @@
 #include <fstream>
 #include <string>
 #include "glm/glm.hpp"
-
-#include "Vector3.h"
-#include "Vector2.h"
-#include "Quaternion.h"
 #include "Time.h"
 
 #define CZ_AUTO_LOG_FILE "cz_auto_log_file"
@@ -96,6 +92,11 @@ using namespace glm;
     if((x) < 0){ DbgError(msg); return false;} \
 } while(0)
 
+#define DBG_ASSERT_RET_VOID_MSG(x, msg) do{\
+    x;\
+    int error = glGetError();\
+    if(error > 0){ DbgError("GL Error('" << gluErrorString(error)  << "')" << ": " << msg); return;} \
+} while(0)
 
 //OSTREAM OPERATORS //////////////////////////////////
 ostream& operator<<(ostream &log, const vec3 &v);

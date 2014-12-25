@@ -13,9 +13,9 @@
 #include "glm/glm.hpp"
 
 #include "Debug.h"
-#include "Quaternion.h"
-#include "Vector3.h"
-#include "Vector2.h"
+
+
+
 #include "Transform.h"
 #include "Material.h"
 #include "Shader.h"

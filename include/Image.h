@@ -5,7 +5,7 @@
 #include <vector>
 #include "stb_image.h"
 #include "Bindable.h"
-#include "Color.h"
+
 #include "Debug.h"
 
 class Image

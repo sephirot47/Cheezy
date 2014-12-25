@@ -51,9 +51,10 @@ src/Texture.o: src/Texture.cpp /usr/include/stdc-predef.h include/Texture.h \
  /usr/include/i386-linux-gnu/bits/sys_errlist.h \
  /usr/include/i386-linux-gnu/bits/stdio.h \
  /usr/include/i386-linux-gnu/bits/stdio2.h include/Image.h \
- include/Bindable.h include/Color.h /usr/include/c++/4.8/iostream \
- /usr/include/c++/4.8/ostream /usr/include/c++/4.8/ios \
- /usr/include/c++/4.8/iosfwd /usr/include/c++/4.8/bits/stringfwd.h \
+ include/Bindable.h include/Debug.h /usr/include/GL/glu.h \
+ /usr/include/c++/4.8/iostream /usr/include/c++/4.8/ostream \
+ /usr/include/c++/4.8/ios /usr/include/c++/4.8/iosfwd \
+ /usr/include/c++/4.8/bits/stringfwd.h \
  /usr/include/c++/4.8/bits/postypes.h /usr/include/c++/4.8/cwchar \
  /usr/include/xlocale.h /usr/include/i386-linux-gnu/bits/wchar2.h \
  /usr/include/c++/4.8/bits/char_traits.h /usr/include/c++/4.8/cstdint \
@@ -111,7 +112,13 @@ src/Texture.o: src/Texture.cpp /usr/include/stdc-predef.h include/Texture.h \
  /usr/include/c++/4.8/bits/locale_facets.tcc \
  /usr/include/c++/4.8/bits/basic_ios.tcc \
  /usr/include/c++/4.8/bits/ostream.tcc /usr/include/c++/4.8/istream \
- /usr/include/c++/4.8/bits/istream.tcc /usr/include/c++/4.8/cmath \
+ /usr/include/c++/4.8/bits/istream.tcc /usr/include/c++/4.8/sstream \
+ /usr/include/c++/4.8/bits/sstream.tcc /usr/include/c++/4.8/fstream \
+ /usr/include/c++/4.8/bits/codecvt.h \
+ /usr/include/i386-linux-gnu/c++/4.8/bits/basic_file.h \
+ /usr/include/i386-linux-gnu/c++/4.8/bits/c++io.h \
+ /usr/include/c++/4.8/bits/fstream.tcc include/glm/glm.hpp \
+ include/glm/detail/_fixes.hpp /usr/include/c++/4.8/cmath \
  /usr/include/math.h /usr/include/i386-linux-gnu/bits/huge_val.h \
  /usr/include/i386-linux-gnu/bits/huge_valf.h \
  /usr/include/i386-linux-gnu/bits/huge_vall.h \
@@ -119,14 +126,8 @@ src/Texture.o: src/Texture.cpp /usr/include/stdc-predef.h include/Texture.h \
  /usr/include/i386-linux-gnu/bits/nan.h \
  /usr/include/i386-linux-gnu/bits/mathdef.h \
  /usr/include/i386-linux-gnu/bits/mathcalls.h \
- /usr/include/i386-linux-gnu/bits/mathinline.h include/Debug.h \
- /usr/include/GL/glu.h /usr/include/c++/4.8/sstream \
- /usr/include/c++/4.8/bits/sstream.tcc /usr/include/c++/4.8/fstream \
- /usr/include/c++/4.8/bits/codecvt.h \
- /usr/include/i386-linux-gnu/c++/4.8/bits/basic_file.h \
- /usr/include/i386-linux-gnu/c++/4.8/bits/c++io.h \
- /usr/include/c++/4.8/bits/fstream.tcc include/glm/glm.hpp \
- include/glm/detail/_fixes.hpp /usr/include/c++/4.8/climits \
+ /usr/include/i386-linux-gnu/bits/mathinline.h \
+ /usr/include/c++/4.8/climits \
  /usr/lib/gcc/i686-linux-gnu/4.8/include-fixed/limits.h \
  /usr/lib/gcc/i686-linux-gnu/4.8/include-fixed/syslimits.h \
  /usr/include/limits.h /usr/include/i386-linux-gnu/bits/posix1_lim.h \
@@ -178,15 +179,17 @@ src/Texture.o: src/Texture.cpp /usr/include/stdc-predef.h include/Texture.h \
  include/glm/gtc/../exponential.hpp include/glm/gtc/type_ptr.hpp \
  /usr/include/c++/4.8/cstring /usr/include/string.h \
  /usr/include/i386-linux-gnu/bits/string3.h include/glm/gtc/type_ptr.inl \
- include/glm/common.hpp include/glm/packing.hpp \
- include/glm/detail/func_packing.hpp include/glm/detail/func_packing.inl \
- include/glm/detail/type_half.hpp include/glm/detail/type_half.inl \
- include/glm/matrix.hpp include/glm/detail/func_matrix.hpp \
- include/glm/detail/func_matrix.inl include/glm/vector_relational.hpp \
+ include/glm/gtc/matrix_transform.hpp \
+ include/glm/gtc/matrix_transform.inl include/glm/gtc/../matrix.hpp \
+ include/glm/gtc/../detail/func_matrix.hpp \
+ include/glm/gtc/../detail/func_matrix.inl include/glm/common.hpp \
+ include/glm/packing.hpp include/glm/detail/func_packing.hpp \
+ include/glm/detail/func_packing.inl include/glm/detail/type_half.hpp \
+ include/glm/detail/type_half.inl include/glm/vector_relational.hpp \
  include/glm/integer.hpp include/glm/detail/func_integer.hpp \
- include/glm/detail/func_integer.inl include/Vector3.h include/Vector2.h \
- include/Quaternion.h include/Time.h /usr/local/include/SDL2/SDL.h \
- /usr/local/include/SDL2/SDL_main.h /usr/local/include/SDL2/SDL_stdinc.h \
+ include/glm/detail/func_integer.inl include/Time.h \
+ /usr/local/include/SDL2/SDL.h /usr/local/include/SDL2/SDL_main.h \
+ /usr/local/include/SDL2/SDL_stdinc.h \
  /usr/local/include/SDL2/SDL_config.h \
  /usr/local/include/SDL2/SDL_platform.h \
  /usr/local/include/SDL2/begin_code.h \

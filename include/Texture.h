@@ -6,7 +6,7 @@
 #include "stb_image.h"
 #include "Image.h"
 #include "Bindable.h"
-#include "Color.h"
+
 #include "Debug.h"
 
 using namespace std;

@@ -1,22 +1,51 @@
-#ifndef VERTEX_H
-#define VERTEX_H
+#ifndef VERTEX_FORMAT_H
+#define VERTEX_FORMAT_H
 
-#include "Vector2.h"
-#include "Vector3.h"
+#define GL_GLEXT_PROTOTYPES
 
-#define CZ_VERTEX_ATTR_VECTOR3 0
-#define CZ_VERTEX_ATTR_UV 1
+#include <unordered_map>
+#include <GL/gl.h>
+#include <GL/glext.h>
+#include <string>
+#include "Debug.h"
+#include "VertexAttribute.h"
+#include "glm/glm.hpp"
 
-class Vertex
+using namespace std;
+
+class VertexFormat
 {
+private:
+
+    unordered_map<string, VertexAttribute*> attributes;
+    string posName, uvsName, normalsName;
+    unsigned int vaoId;
+
 public:
 
-    Vertex();
-    Vertex(float posx, float posy, float posz);
-    Vertex(Vector3 pos);
+    VertexFormat();
 
-    Vector3 pos;
-    Vector2 uv;
+    static VertexFormat Default;
+
+    int GetOffsetOf(string attributeName) const;
+    int GetSizeOf(string attributeName) const;
+    int GetStride() const;
+
+    void AddAttribute(VertexAttribute &va);
+    void AddAttribute(VertexAttribute *va);
+    void DeleteAttribute(VertexAttribute &va);
+    void DeleteAttribute(VertexAttribute *va);
+
+    bool HasAttributeOfType(int type) const;
+    VertexAttribute GetAttribute(string name);
+
+
+    void SetPositionAttribute(string attributeName);
+    void SetTexCoordsAttribute(string attributeName);
+    void SetNormalsAttribute(string attributeName);
+
+    unsigned int CreateVAO();
+    void DeleteVAO();
 };
 
-#endif // VERTEX_H
+#endif // VERTEX_FORMAT_H

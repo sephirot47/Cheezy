@@ -14,7 +14,7 @@ GameObject::GameObject()
     AddComponent(*m);
 
     mesh = m;
-    mesh->LoadFromFile("models/Luigi_obj.obj");
+    mesh->LoadFromFile("models/ferrari.obj");
 
     name = "";
 

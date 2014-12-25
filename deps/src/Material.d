@@ -177,15 +177,17 @@ src/Material.o: src/Material.cpp /usr/include/stdc-predef.h \
  include/glm/gtc/../exponential.hpp include/glm/gtc/type_ptr.hpp \
  /usr/include/c++/4.8/cstring /usr/include/string.h \
  /usr/include/i386-linux-gnu/bits/string3.h include/glm/gtc/type_ptr.inl \
- include/glm/common.hpp include/glm/packing.hpp \
- include/glm/detail/func_packing.hpp include/glm/detail/func_packing.inl \
- include/glm/detail/type_half.hpp include/glm/detail/type_half.inl \
- include/glm/matrix.hpp include/glm/detail/func_matrix.hpp \
- include/glm/detail/func_matrix.inl include/glm/vector_relational.hpp \
+ include/glm/gtc/matrix_transform.hpp \
+ include/glm/gtc/matrix_transform.inl include/glm/gtc/../matrix.hpp \
+ include/glm/gtc/../detail/func_matrix.hpp \
+ include/glm/gtc/../detail/func_matrix.inl include/glm/common.hpp \
+ include/glm/packing.hpp include/glm/detail/func_packing.hpp \
+ include/glm/detail/func_packing.inl include/glm/detail/type_half.hpp \
+ include/glm/detail/type_half.inl include/glm/vector_relational.hpp \
  include/glm/integer.hpp include/glm/detail/func_integer.hpp \
- include/glm/detail/func_integer.inl include/Vector3.h include/Vector2.h \
- include/Quaternion.h include/Time.h /usr/local/include/SDL2/SDL.h \
- /usr/local/include/SDL2/SDL_main.h /usr/local/include/SDL2/SDL_stdinc.h \
+ include/glm/detail/func_integer.inl include/Time.h \
+ /usr/local/include/SDL2/SDL.h /usr/local/include/SDL2/SDL_main.h \
+ /usr/local/include/SDL2/SDL_stdinc.h \
  /usr/local/include/SDL2/SDL_config.h \
  /usr/local/include/SDL2/SDL_platform.h \
  /usr/local/include/SDL2/begin_code.h \
@@ -217,4 +219,4 @@ src/Material.o: src/Material.cpp /usr/include/stdc-predef.h \
  /usr/local/include/SDL2/SDL_system.h /usr/local/include/SDL2/SDL_timer.h \
  /usr/local/include/SDL2/SDL_version.h /usr/include/c++/4.8/ctime \
  include/Shader.h include/Component.h include/Bindable.h \
- include/Texture.h include/stb_image.h include/Image.h include/Color.h
+ include/Texture.h include/stb_image.h include/Image.h

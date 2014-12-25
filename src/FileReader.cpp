@@ -9,12 +9,12 @@ int FileReader::GetFormat(const char *filepath)
     return CZ_FORMAT_UNKNOWN;
 }
 
-bool FileReader::ReadMeshFile(const char *filepath, vector<Vertex> &vertices, bool &triangles)
+bool FileReader::ReadMeshFile(const char *filepath, vector<Vertex> &vertices, VertexFormat &vf, bool &triangles)
 {
     int format = GetFormat(filepath);
     if(format == CZ_FORMAT_UNKNOWN){ DbgError("Unknown mesh format. Not loading mesh(" << filepath << ")"); return false;}
 
-    if(format == CZ_FORMAT_OBJ) return FileReader::ReadOBJ(filepath, vertices, triangles);
+    if(format == CZ_FORMAT_OBJ) return FileReader::ReadOBJ(filepath, vertices, vf, triangles);
 
     return false;
 }
@@ -78,10 +78,10 @@ void FileReader::GetOBJFormat(const char *filepath, bool &uvs, bool &normals, bo
     DbgLog("triangles: " << triangles);
 }
 
-bool FileReader::ReadOBJ(const char *filepath, vector<Vertex> &vertices, bool &triangles)
+bool FileReader::ReadOBJ(const char *filepath, vector<Vertex> &vertices, VertexFormat &vf, bool &triangles)
 {
-    vector<Vector3> vertexPos;
-    vector<Vector2> vertexUv;
+    vector<vec3> vertexPos;
+    vector<vec2> vertexUv;
     vector<unsigned int> vertexPosIndexes, vertexUvIndexes, vertexNormIndexes;
     bool hasUvs, hasNormals;
 
@@ -90,7 +90,7 @@ bool FileReader::ReadOBJ(const char *filepath, vector<Vertex> &vertices, bool &t
     ifstream f(filepath, ios::in);
     DBG_ASSERT_RET_MSG(f.is_open(), "Error opening the mesh file");
     string line;
-    string e = "Error reading the mesh file";
+    string errormsg = "Error reading the mesh file";
     while(getline(f, line))
     {
         stringstream ss(line);
@@ -98,17 +98,17 @@ bool FileReader::ReadOBJ(const char *filepath, vector<Vertex> &vertices, bool &t
         if(!(ss >> lineHeader)) continue;
         if(lineHeader == "v")
         {
-            Vector3 pos;
-            DBG_ASSERT_RET_MSG(ss >> pos.x, e);
-            DBG_ASSERT_RET_MSG(ss >> pos.y, e);
-            DBG_ASSERT_RET_MSG(ss >> pos.z, e);
+            vec3 pos;
+            DBG_ASSERT_RET_MSG(ss >> pos.x, errormsg);
+            DBG_ASSERT_RET_MSG(ss >> pos.y, errormsg);
+            DBG_ASSERT_RET_MSG(ss >> pos.z, errormsg);
             vertexPos.push_back(pos);
         }
         else if(hasUvs && lineHeader == "vt") //Cargamos uvs, suponemos que antes ya se han leido las x,y,z de los vertices
         {
-            Vector2 uv;
-            DBG_ASSERT_RET_MSG(ss >> uv.x, e);
-            DBG_ASSERT_RET_MSG(ss >> uv.y, e);
+            vec2 uv;
+            DBG_ASSERT_RET_MSG(ss >> uv.x, errormsg);
+            DBG_ASSERT_RET_MSG(ss >> uv.y, errormsg);
             vertexUv.push_back(uv);
         }
         else if(lineHeader == "f")
@@ -119,19 +119,19 @@ bool FileReader::ReadOBJ(const char *filepath, vector<Vertex> &vertices, bool &t
 
             for (int i = 0; i < n; ++i)
             {
-                DBG_ASSERT_RET_MSG(ss >> index, e);
+                DBG_ASSERT_RET_MSG(ss >> index, errormsg);
                 vertexPosIndexes.push_back(index);
                 
                 if(hasUvs) 
                 {
-                    DBG_ASSERT_RET_MSG(ss >> c, e);  //Read the '/'
-                    DBG_ASSERT_RET_MSG(ss >> index, e);
+                    DBG_ASSERT_RET_MSG(ss >> c, errormsg);  //Read the '/'
+                    DBG_ASSERT_RET_MSG(ss >> index, errormsg);
                     vertexUvIndexes.push_back(index);
                     
                     if (hasNormals)
                     {
-                        DBG_ASSERT_RET_MSG(ss >> c, e);
-                        DBG_ASSERT_RET_MSG(ss >> index, e);
+                        DBG_ASSERT_RET_MSG(ss >> c, errormsg);
+                        DBG_ASSERT_RET_MSG(ss >> index, errormsg);
                         vertexNormIndexes.push_back(index);
                     }
                 } 
@@ -139,8 +139,8 @@ bool FileReader::ReadOBJ(const char *filepath, vector<Vertex> &vertices, bool &t
                 {
                     if (hasNormals)
                     {
-                        DBG_ASSERT_RET_MSG(ss >> c, e);
-                        DBG_ASSERT_RET_MSG(ss >> index, e);
+                        DBG_ASSERT_RET_MSG(ss >> c, errormsg);
+                        DBG_ASSERT_RET_MSG(ss >> index, errormsg);
                         vertexNormIndexes.push_back(index);
                     }
                 }
@@ -150,21 +150,21 @@ bool FileReader::ReadOBJ(const char *filepath, vector<Vertex> &vertices, bool &t
 
     for(int i = 0; i < (int)vertexPosIndexes.size(); ++i)
     {
-        Vertex v;
-        v.pos = vertexPos[ vertexPosIndexes[i] - 1 ];
-        if(hasUvs) v.uv  = vertexUv[ vertexUvIndexes [i] - 1 ];
-        vertices.push_back(v);
+        //Vertex v;
+        //v.pos = vertexPos[ vertexPosIndexes[i] - 1 ];
+        //if(hasUvs) v.uv  = vertexUv[ vertexUvIndexes [i] - 1 ];
+        //vertices.push_back(v);
     }
 
     return true;
 }
 
-bool FileReader::ReadTexture(const char * filepath, vector<Color> &pixels)
+bool FileReader::ReadTexture(const char * filepath, vector<vec4> &pixels)
 {
     return true;
 }
 
-bool FileReader::LoadBitmap(const char* filepath, vector<Color> &pixels)
+bool FileReader::LoadBitmap(const char* filepath, vector<vec4> &pixels)
 {
     return true;
 }

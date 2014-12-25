@@ -165,11 +165,13 @@ src/GameObject.o: src/GameObject.cpp /usr/include/stdc-predef.h \
  include/glm/gtc/../detail/func_common.inl \
  include/glm/gtc/../exponential.hpp include/glm/gtc/type_ptr.hpp \
  /usr/include/c++/4.8/cstring include/glm/gtc/type_ptr.inl \
- include/glm/common.hpp include/glm/packing.hpp \
- include/glm/detail/func_packing.hpp include/glm/detail/func_packing.inl \
- include/glm/detail/type_half.hpp include/glm/detail/type_half.inl \
- include/glm/matrix.hpp include/glm/detail/func_matrix.hpp \
- include/glm/detail/func_matrix.inl include/glm/vector_relational.hpp \
+ include/glm/gtc/matrix_transform.hpp \
+ include/glm/gtc/matrix_transform.inl include/glm/gtc/../matrix.hpp \
+ include/glm/gtc/../detail/func_matrix.hpp \
+ include/glm/gtc/../detail/func_matrix.inl include/glm/common.hpp \
+ include/glm/packing.hpp include/glm/detail/func_packing.hpp \
+ include/glm/detail/func_packing.inl include/glm/detail/type_half.hpp \
+ include/glm/detail/type_half.inl include/glm/vector_relational.hpp \
  include/glm/integer.hpp include/glm/detail/func_integer.hpp \
  include/glm/detail/func_integer.inl include/Debug.h \
  /usr/include/GL/glu.h /usr/include/c++/4.8/iostream \
@@ -192,8 +194,7 @@ src/GameObject.o: src/GameObject.cpp /usr/include/stdc-predef.h \
  /usr/include/c++/4.8/bits/codecvt.h \
  /usr/include/i386-linux-gnu/c++/4.8/bits/basic_file.h \
  /usr/include/i386-linux-gnu/c++/4.8/bits/c++io.h \
- /usr/include/c++/4.8/bits/fstream.tcc include/Vector3.h \
- include/Vector2.h include/Quaternion.h include/Time.h \
+ /usr/include/c++/4.8/bits/fstream.tcc include/Time.h \
  /usr/local/include/SDL2/SDL.h /usr/local/include/SDL2/SDL_main.h \
  /usr/local/include/SDL2/SDL_stdinc.h \
  /usr/local/include/SDL2/SDL_config.h \
@@ -228,4 +229,8 @@ src/GameObject.o: src/GameObject.cpp /usr/include/stdc-predef.h \
  /usr/local/include/SDL2/SDL_version.h include/Transform.h \
  include/Component.h include/Material.h include/Shader.h \
  include/Bindable.h include/Texture.h include/stb_image.h include/Image.h \
- include/Color.h include/Mesh.h include/Vertex.h include/FileReader.h
+ include/Mesh.h include/Vertex.h include/VertexFormat.h \
+ /usr/include/c++/4.8/unordered_map /usr/include/c++/4.8/bits/hashtable.h \
+ /usr/include/c++/4.8/bits/hashtable_policy.h \
+ /usr/include/c++/4.8/bits/unordered_map.h include/VertexAttribute.h \
+ include/FileReader.h

@@ -1,19 +1,19 @@
 ********** TODO ************
-
-- Hacer clase Image con función load y tal.
-
 - Generalizar formatos texturas (basandonos en la n que returna stbi_load, generalizar y cambiar entre GL_RGB y tal).
 
 - Hacer paso de uniforms a shaders (y poder especificar el nombre que se le da en el shader para poder asociarlos! ).
-
-- Crear archivo de log por defecto.
 
 - Estamos haciendo bien(moderno) lo de las texturas? (slots y eso no usamos, is it ok? :/ )
 
 - Vertices con atributos (VertexFormat)
 
-- Arreglar Quaternions y camara, no funcionan bien...
-
 - Lighting siguiente paso !!!!
 
+- SceneManager
+*****************************
+
+********** DONE ************
+- Hacer clase Image con función load y tal.
+- Arreglar Quaternions y camara, no funcionan bien...
+- Crear archivo de log por defecto.
 *****************************

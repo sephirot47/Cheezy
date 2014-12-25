@@ -7,12 +7,8 @@
 #include "include/Texture.h"
 #include "include/GameObject.h"
 #include "include/CheezyWin.h"
-#include "include/Color.h"
 #include "include/Scene.h"
 #include "include/Camera.h"
-#include "include/Vector2.h"
-#include "include/Vector3.h"
-#include "include/Quaternion.h"
 #include "include/glm/glm.hpp"
 #include <cmath>
 #include <string>
@@ -33,7 +29,9 @@ int main()
     scene->SetCamera(cam);
 
     go2->transform->scale = vec3(0.05, 0.05, 0.05);
-    scene->cam->pos = vec3(10, 10, 10);
+    scene->cam->LookAt(vec3(10, 10, 10), vec3(0, 0, 0) , vec3(0, 1, 0));
+
+    VertexFormat vf;
 
     win.drawAxis = true;
     win.Loop();

@@ -12,11 +12,10 @@
 #include "Debug.h"
 #include "Shader.h"
 #include "Vertex.h"
+#include "VertexFormat.h"
 #include "Material.h"
 #include "Component.h"
 #include "FileReader.h"
-#include "Vector3.h"
-#include "Vector2.h"
 
 using namespace std;
 
@@ -24,14 +23,16 @@ class Mesh : public Component
 {
 private:
 
-    unsigned int vertexBufferId;
+    unsigned int vboId, vaoId;
     int vertexCount;
     bool triangles;
 
 public:
 
     Material *material;
-    Mesh();
+    VertexFormat vertexFormat;
+
+    Mesh(VertexFormat vf = VertexFormat::Default);
     virtual ~Mesh();
 
     void Init(){}

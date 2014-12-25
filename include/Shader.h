@@ -9,8 +9,8 @@
 #include "Debug.h"
 #include "Component.h"
 #include "Bindable.h"
-#include "Vector3.h"
-#include "Vector2.h"
+
+
 
 #define CZ_VERTEX_SHADER GL_VERTEX_SHADER
 #define CZ_FRAGMENT_SHADER GL_FRAGMENT_SHADER
@@ -26,7 +26,7 @@ private:
     char* srcCode;
     int srcCodeLength;
     unsigned int shaderId;
-    unsigned int type; //Vertex o fragment
+    unsigned int type; //VertexFormat o fragment
 
 public:
 
