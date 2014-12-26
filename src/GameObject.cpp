@@ -15,6 +15,7 @@ GameObject::GameObject()
 
     mesh = m;
     mesh->LoadFromFile("models/ferrari.obj");
+    cout << "MESH LOADED" << endl;
 
     name = "";
 

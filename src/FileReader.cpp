@@ -84,6 +84,7 @@ bool FileReader::ReadOBJ(const char *filepath, vector<Vertex> &vertices, VertexF
     vector<vec2> vertexUv;
     vector<unsigned int> vertexPosIndexes, vertexUvIndexes, vertexNormIndexes;
     bool hasUvs, hasNormals;
+    int vCount = 0;
 
     FileReader::GetOBJFormat(filepath, hasUvs, hasNormals, triangles);
 
@@ -98,6 +99,7 @@ bool FileReader::ReadOBJ(const char *filepath, vector<Vertex> &vertices, VertexF
         if(!(ss >> lineHeader)) continue;
         if(lineHeader == "v")
         {
+            ++vCount;
             vec3 pos;
             DBG_ASSERT_RET_MSG(ss >> pos.x, errormsg);
             DBG_ASSERT_RET_MSG(ss >> pos.y, errormsg);
@@ -148,14 +150,12 @@ bool FileReader::ReadOBJ(const char *filepath, vector<Vertex> &vertices, VertexF
         }
     }
 
+    vertices  = vector<Vertex>(vCount, Vertex(vf));
     for(int i = 0; i < (int)vertexPosIndexes.size(); ++i)
     {
-        //Vertex v;
-        //v.pos = vertexPos[ vertexPosIndexes[i] - 1 ];
-        //if(hasUvs) v.uv  = vertexUv[ vertexUvIndexes [i] - 1 ];
-        //vertices.push_back(v);
+        vertices[i].SetAttribute("pos", &vertexPos[ vertexPosIndexes[i] - 1 ], vf);
+        if(hasUvs) vertices[i].SetAttribute("uv", &vertexUv[ vertexUvIndexes [i] - 1 ], vf);
     }
-
     return true;
 }
 

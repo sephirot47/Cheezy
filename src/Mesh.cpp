@@ -45,6 +45,7 @@ bool Mesh::LoadFromFile(const char *filepath)
     vector<Vertex> vertices;
     DBG_ASSERT_RET(FileReader::ReadMeshFile(filepath, vertices, vertexFormat, triangles));
     vertexCount = vertices.size();
+    cout << "Finished loading from file" << endl;
 
     glBindBuffer(GL_ARRAY_BUFFER, vboId);
     glBufferData(GL_ARRAY_BUFFER, vertexCount * sizeof(Vertex), &vertices[0], GL_STATIC_DRAW); //Load the mesh to the GPU

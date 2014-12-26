@@ -10,6 +10,7 @@ Vertex::~Vertex()
     if(data)
     {
         free(data);
+        data = 0;
     }
 }
 

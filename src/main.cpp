@@ -31,9 +31,10 @@ int main()
     go2->transform->scale = vec3(0.05, 0.05, 0.05);
     scene->cam->LookAt(vec3(10, 10, 10), vec3(0, 0, 0) , vec3(0, 1, 0));
 
-    VertexFormat vf;
+    //VertexFormat vf;
 
     win.drawAxis = true;
+    cout << "Entering loop" << endl;
     win.Loop();
     win.Destroy();
     return 0;
