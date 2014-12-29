@@ -5,7 +5,7 @@
 #include <GL/glu.h>
 #include "glm/glm.hpp"
 
-#include "Debug.h"
+#include "include/Debug.h"
 
 
 using namespace glm;

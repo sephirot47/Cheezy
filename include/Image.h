@@ -3,10 +3,10 @@
 
 #include <GL/gl.h>
 #include <vector>
-#include "stb_image.h"
-#include "Bindable.h"
 
-#include "Debug.h"
+#include "stb_image.h"
+#include "include/Bindable.h"
+#include "include/Debug.h"
 
 class Image
 {

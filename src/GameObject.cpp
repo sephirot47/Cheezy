@@ -2,6 +2,9 @@
 
 GameObject::GameObject()
 {
+    name = "";
+    idGameObjects = 0;
+
     Transform *t = new Transform(); //Create the default Transform
     AddComponent(*t);
 
@@ -10,16 +13,16 @@ GameObject::GameObject()
     transform->rot = quat(vec3(0, 0, 0));
     transform->scale = vec3(1, 1, 1);
 
-    Mesh *m = new Mesh();  //Create the default Mesh
+    VertexAttribute posAttr("pos", 3, GL_FLOAT), uvAttr("uv", 2, GL_FLOAT);
+    VertexFormat vf;
+    vf.AddAttribute(uvAttr);
+    vf.AddAttribute(posAttr);
+
+    Mesh *m = new Mesh(vf);  //Create the default Mesh
     AddComponent(*m);
 
     mesh = m;
-    mesh->LoadFromFile("models/ferrari.obj");
-    cout << "MESH LOADED" << endl;
-
-    name = "";
-
-    idGameObjects = 0;
+    mesh->LoadFromFile("models/boy.obj");
 }
 
 GameObject::~GameObject()

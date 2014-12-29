@@ -3,8 +3,9 @@
 
 #include <map>
 #include <SDL2/SDL.h>
-#include "Debug.h"
-#include "Scene.h"
+
+#include "include/Debug.h"
+#include "include/Scene.h"
 
 #define CZ_DELAY_TIME 15
 

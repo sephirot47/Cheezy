@@ -75,7 +75,6 @@ void FileReader::GetOBJFormat(const char *filepath, bool &uvs, bool &normals, bo
         fseek(f, -3, SEEK_CUR);
     }
     fclose(f);
-    DbgLog("triangles: " << triangles);
 }
 
 bool FileReader::ReadOBJ(const char *filepath, vector<Vertex> &vertices, VertexFormat &vf, bool &triangles)
@@ -84,9 +83,9 @@ bool FileReader::ReadOBJ(const char *filepath, vector<Vertex> &vertices, VertexF
     vector<vec2> vertexUv;
     vector<unsigned int> vertexPosIndexes, vertexUvIndexes, vertexNormIndexes;
     bool hasUvs, hasNormals;
-    int vCount = 0;
 
     FileReader::GetOBJFormat(filepath, hasUvs, hasNormals, triangles);
+    cout << (hasUvs? "uv" : "NOuvs") << " " << (hasNormals? "normals" : "NOnormals") << "*********" << endl;
 
     ifstream f(filepath, ios::in);
     DBG_ASSERT_RET_MSG(f.is_open(), "Error opening the mesh file");
@@ -99,7 +98,6 @@ bool FileReader::ReadOBJ(const char *filepath, vector<Vertex> &vertices, VertexF
         if(!(ss >> lineHeader)) continue;
         if(lineHeader == "v")
         {
-            ++vCount;
             vec3 pos;
             DBG_ASSERT_RET_MSG(ss >> pos.x, errormsg);
             DBG_ASSERT_RET_MSG(ss >> pos.y, errormsg);
@@ -150,11 +148,14 @@ bool FileReader::ReadOBJ(const char *filepath, vector<Vertex> &vertices, VertexF
         }
     }
 
-    vertices  = vector<Vertex>(vCount, Vertex(vf));
-    for(int i = 0; i < (int)vertexPosIndexes.size(); ++i)
+    vertices = vector<Vertex>(vertexPosIndexes.size(), Vertex());
+    for(int i = 0; i < int(vertices.size()); ++i)
+        vertices[i].Create(vf); //Reservamos espacio para cada vertice
+
+    for(int i = 0; i < int(vertexPosIndexes.size()); ++i)
     {
-        vertices[i].SetAttribute("pos", &vertexPos[ vertexPosIndexes[i] - 1 ], vf);
-        if(hasUvs) vertices[i].SetAttribute("uv", &vertexUv[ vertexUvIndexes [i] - 1 ], vf);
+        vertices[i].SetAttribute("pos", &vertexPos[vertexPosIndexes[i]-1], vf);
+        if(hasUvs) vertices[i].SetAttribute("uv", &vertexUv[vertexUvIndexes[i]-1], vf);
     }
     return true;
 }

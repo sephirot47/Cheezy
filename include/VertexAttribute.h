@@ -3,7 +3,7 @@
 
 #include <GL/gl.h>
 #include <string>
-#include "Debug.h"
+#include "include/Debug.h"
 
 using namespace std;
 

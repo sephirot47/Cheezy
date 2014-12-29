@@ -45,7 +45,7 @@ bool Shader::LoadFromFile(const char *filepath)
 
     //Bind the shader with openGL
     shaderId = glCreateShader(type); //create id
-    //Pass the read code to openGL
+    //Pass the code to openGL
     DBG_ASSERT_GL_MSG(glShaderSource(shaderId, 1, &srcCode, &srcCodeLength), "There was an error trying to read the shader file.");
 
     //Try to compile the shader

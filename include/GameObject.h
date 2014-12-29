@@ -12,15 +12,12 @@
 #include <stdlib.h>
 #include "glm/glm.hpp"
 
-#include "Debug.h"
-
-
-
-#include "Transform.h"
-#include "Material.h"
-#include "Shader.h"
-#include "Component.h"
-#include "Mesh.h"
+#include "include/Debug.h"
+#include "include/Transform.h"
+#include "include/Material.h"
+#include "include/Shader.h"
+#include "include/Component.h"
+#include "include/Mesh.h"
 
 using namespace std;
 using namespace glm;

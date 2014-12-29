@@ -7,9 +7,11 @@
 #include <vector>
 #include <fstream>
 #include <sstream>
-#include "Vertex.h"
-#include "VertexFormat.h"
-#include "Debug.h"
+
+#include "glm/glm.hpp"
+#include "include/Vertex.h"
+#include "include/VertexFormat.h"
+#include "include/Debug.h"
 
 #define CZ_FORMAT_OBJ 1
 #define CZ_FORMAT_UNKNOWN -1
@@ -19,7 +21,6 @@ using namespace std;
 class FileReader
 {
 public:
-
     static int GetFormat(const char *filepath);
 
     static void GetOBJFormat(const char *filepath, bool &uvs, bool &normals, bool &triangles);

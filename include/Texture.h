@@ -4,10 +4,10 @@
 #include <GL/gl.h>
 #include <vector>
 #include "stb_image.h"
-#include "Image.h"
-#include "Bindable.h"
+#include "include/Image.h"
+#include "include/Bindable.h"
 
-#include "Debug.h"
+#include "include/Debug.h"
 
 using namespace std;
 

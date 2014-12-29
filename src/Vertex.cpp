@@ -1,8 +1,8 @@
 #include "include/Vertex.h"
 
-Vertex::Vertex(const VertexFormat &vf)
+Vertex::Vertex()
 {
-    data = malloc(vf.GetStride());
+    data = 0;
 }
 
 Vertex::~Vertex()
@@ -14,23 +14,38 @@ Vertex::~Vertex()
     }
 }
 
-void* Vertex::GetAttribute(string name, VertexFormat &vf)
+void Vertex::Create(const VertexFormat &vf)
+{
+    int totalVertexSize = vf.GetStride();
+    if(totalVertexSize > 0) data = malloc(totalVertexSize);
+    else data = 0;
+}
+
+void* Vertex::GetAttributePointer(string name, VertexFormat &vf)
 {
     int offset = vf.GetOffsetOf(name);
     if(offset == -1) return 0; //No existe el atributo, return
     return (void*)((char*)data + offset); //(fem cast a char xk la aritmetica de punters sumi de byte en byte(si es void no sap com sumar))
 }
 
-void Vertex::SetAttribute(string name, void* value, VertexFormat &vf)
+bool Vertex::HasAttribute(string name, VertexFormat &vf)
 {
     int offset = vf.GetOffsetOf(name);
-    if(offset == -1) return; //No existe el atributo, return
+    return (offset != -1);
+}
 
-    void *p = (void*)((char*)data + offset);
+void Vertex::SetAttribute(string name, void* pvalue, VertexFormat &vf)
+{
+    int offset = vf.GetOffsetOf(name);
+    if(offset == -1) return;
     int type = vf.GetAttribute(name).GetComponentsType();
-    if(type == GL_FLOAT)       *((float*)p)         = *((float*)value);
-    else if(type == GL_DOUBLE) *((double*)p)        = *((double*)value);
-    else if(type == GL_INT)    *((int*)p)           = *((int*)value);
-    else if(type == GL_SHORT)  *((short*)p)         = *((short*)value);
-    else if(type == GL_BYTE)   *((unsigned char*)p) = *((unsigned char*)value);
+    void *pdata  = GetAttributePointer(name, vf);
+    for(int i = 0; i < vf.GetAttribute(name).GetComponentsNum(); ++i)
+    {
+        if(type == GL_DOUBLE)      *((double*)pdata + i)        = *((double*)pvalue + i);
+        else if(type == GL_FLOAT)  *((float*)pdata + i)         = *((float*)pvalue + i);
+        else if(type == GL_INT)    *((int*)pdata + i)           = *((int*)pvalue + i);
+        else if(type == GL_SHORT)  *((short*)pdata + i)         = *((short*)pvalue + i);
+        else if(type == GL_BYTE)   *((unsigned char*)pdata + i) = *((unsigned char*)pvalue + i);
+    }
 }

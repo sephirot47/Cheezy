@@ -7,9 +7,9 @@
 #include <SDL2/SDL.h>
 #include "glm/glm.hpp"
 
-#include "GameObject.h"
-#include "Debug.h"
-#include "Camera.h"
+#include "include/GameObject.h"
+#include "include/Debug.h"
+#include "include/Camera.h"
 
 typedef map<string, GameObject*> GameObjMap;
 

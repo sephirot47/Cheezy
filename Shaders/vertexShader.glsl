@@ -1,14 +1,12 @@
 #version 130
 
-uniform sampler2D tex;
-
+attribute vec2 uv;
 attribute vec4 pos;
-attribute vec2 uvIn;
 
-varying vec2 uv;
+varying vec2 uvFrag;
 
 void main()
 {
 	gl_Position = gl_ModelViewProjectionMatrix * pos;
-	uv = uvIn;
+	uvFrag = uv;
 }

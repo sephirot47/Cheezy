@@ -25,16 +25,14 @@ int main()
     Camera cam = Camera();
     Scene *scene = win.CreateScene("FirstScene");
     GameObject *go2 = new GameObject("go2");
+    DbgLog("go created");
     scene->Add(go2);
     scene->SetCamera(cam);
 
     go2->transform->scale = vec3(0.05, 0.05, 0.05);
-    scene->cam->LookAt(vec3(10, 10, 10), vec3(0, 0, 0) , vec3(0, 1, 0));
-
-    //VertexFormat vf;
+    scene->cam->LookAt(vec3(1, 1, 1), go2->transform->pos, vec3(0, 1, 0));
 
     win.drawAxis = true;
-    cout << "Entering loop" << endl;
     win.Loop();
     win.Destroy();
     return 0;

@@ -1,7 +1,7 @@
 #ifndef TRANSFORM_H
 #define TRANSFORM_H
 
-#include "Component.h"
+#include "include/Component.h"
 
 
 #include "glm/glm.hpp"

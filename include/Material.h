@@ -6,11 +6,11 @@
 #include <GL/gl.h>
 #include <GL/glext.h>
 #include <vector>
-#include "Debug.h"
-#include "Shader.h"
-#include "Component.h"
-#include "Bindable.h"
-#include "Texture.h"
+#include "include/Debug.h"
+#include "include/Shader.h"
+#include "include/Component.h"
+#include "include/Bindable.h"
+#include "include/Texture.h"
 
 
 

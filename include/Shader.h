@@ -6,9 +6,9 @@
 #include <GL/gl.h>
 #include <GL/glext.h>
 #include <vector>
-#include "Debug.h"
-#include "Component.h"
-#include "Bindable.h"
+#include "include/Debug.h"
+#include "include/Component.h"
+#include "include/Bindable.h"
 
 
 

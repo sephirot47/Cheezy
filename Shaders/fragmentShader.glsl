@@ -1,15 +1,8 @@
 #version 130
 
-uniform sampler2D tex;
-varying vec2 uv;
+varying vec2 uvFrag;
 
 void main()
 {	
-	vec2 nUv;
-	nUv.x = uv.x;
-	nUv.y = 1.0 - uv.y;
-
-	vec4 texel = texture2D(tex, nUv);
-	gl_FragColor = vec4(texel.r, texel.g, texel.b, 1);
-	gl_FragColor = vec4(1, 0, 0, 1);
+	gl_FragColor = vec4(sin(uvFrag.x), cos(uvFrag.y), 0, 1);
 }

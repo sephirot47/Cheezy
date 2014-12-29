@@ -7,8 +7,9 @@
 #include <sstream>
 #include <fstream>
 #include <string>
+
 #include "glm/glm.hpp"
-#include "Time.h"
+#include "include/Time.h"
 
 #define CZ_AUTO_LOG_FILE "cz_auto_log_file"
 

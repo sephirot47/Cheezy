@@ -7,8 +7,8 @@
 #include <GL/gl.h>
 #include <GL/glext.h>
 #include <string>
-#include "Debug.h"
-#include "VertexAttribute.h"
+#include "include/Debug.h"
+#include "include/VertexAttribute.h"
 #include "glm/glm.hpp"
 
 using namespace std;
@@ -17,34 +17,28 @@ class VertexFormat
 {
 private:
 
-    unordered_map<string, VertexAttribute*> attributes;
+    unordered_map<string, VertexAttribute> attributes;
     string posName, uvsName, normalsName;
     unsigned int vaoId;
 
 public:
 
     VertexFormat();
-
-    static VertexFormat Default;
+    VertexFormat(VertexFormat &vf);
+    ~VertexFormat();
 
     int GetOffsetOf(string attributeName) const;
     int GetSizeOf(string attributeName) const;
     int GetStride() const;
 
     void AddAttribute(VertexAttribute &va);
-    void AddAttribute(VertexAttribute *va);
-    void DeleteAttribute(VertexAttribute &va);
-    void DeleteAttribute(VertexAttribute *va);
-
-    bool HasAttributeOfType(int type) const;
     VertexAttribute GetAttribute(string name);
-
 
     void SetPositionAttribute(string attributeName);
     void SetTexCoordsAttribute(string attributeName);
     void SetNormalsAttribute(string attributeName);
 
-    unsigned int CreateVAO();
+    unsigned int CreateVAO(int vboId);
     void DeleteVAO();
 };
 

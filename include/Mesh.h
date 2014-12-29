@@ -9,13 +9,14 @@
 #include <vector>
 #include <fstream>
 #include <sstream>
-#include "Debug.h"
-#include "Shader.h"
-#include "Vertex.h"
-#include "VertexFormat.h"
-#include "Material.h"
-#include "Component.h"
-#include "FileReader.h"
+
+#include "include/Debug.h"
+#include "include/Shader.h"
+#include "include/Vertex.h"
+#include "include/VertexFormat.h"
+#include "include/Material.h"
+#include "include/Component.h"
+#include "include/FileReader.h"
 
 using namespace std;
 
@@ -32,7 +33,7 @@ public:
     Material *material;
     VertexFormat vertexFormat;
 
-    Mesh(VertexFormat vf = VertexFormat::Default);
+    Mesh(VertexFormat& vf);
     virtual ~Mesh();
 
     void Init(){}

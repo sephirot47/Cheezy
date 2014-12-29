@@ -15,7 +15,7 @@ src/main.o: src/main.cpp /usr/include/stdc-predef.h \
  /usr/lib/gcc/i686-linux-gnu/4.8/include/stdarg.h \
  /usr/include/i386-linux-gnu/bits/wchar.h \
  /usr/lib/gcc/i686-linux-gnu/4.8/include/stddef.h /usr/include/xlocale.h \
- /usr/include/i386-linux-gnu/bits/wchar2.h /usr/include/c++/4.8/exception \
+ /usr/include/c++/4.8/exception \
  /usr/include/c++/4.8/bits/atomic_lockfree_defines.h \
  /usr/include/c++/4.8/bits/exception_ptr.h \
  /usr/include/c++/4.8/bits/exception_defines.h \
@@ -73,19 +73,15 @@ src/main.o: src/main.cpp /usr/include/stdc-predef.h \
  /usr/include/i386-linux-gnu/sys/select.h \
  /usr/include/i386-linux-gnu/bits/select.h \
  /usr/include/i386-linux-gnu/bits/sigset.h \
- /usr/include/i386-linux-gnu/bits/select2.h \
  /usr/include/i386-linux-gnu/sys/sysmacros.h /usr/include/alloca.h \
- /usr/include/i386-linux-gnu/bits/stdlib-bsearch.h \
  /usr/include/i386-linux-gnu/bits/stdlib-float.h \
- /usr/include/i386-linux-gnu/bits/stdlib.h /usr/include/c++/4.8/cstdio \
- /usr/include/libio.h /usr/include/_G_config.h \
- /usr/include/i386-linux-gnu/bits/stdio_lim.h \
+ /usr/include/c++/4.8/cstdio /usr/include/libio.h \
+ /usr/include/_G_config.h /usr/include/i386-linux-gnu/bits/stdio_lim.h \
  /usr/include/i386-linux-gnu/bits/sys_errlist.h \
- /usr/include/i386-linux-gnu/bits/stdio.h \
- /usr/include/i386-linux-gnu/bits/stdio2.h /usr/include/c++/4.8/cerrno \
- /usr/include/errno.h /usr/include/i386-linux-gnu/bits/errno.h \
- /usr/include/linux/errno.h /usr/include/i386-linux-gnu/asm/errno.h \
- /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h \
+ /usr/include/c++/4.8/cerrno /usr/include/errno.h \
+ /usr/include/i386-linux-gnu/bits/errno.h /usr/include/linux/errno.h \
+ /usr/include/i386-linux-gnu/asm/errno.h /usr/include/asm-generic/errno.h \
+ /usr/include/asm-generic/errno-base.h \
  /usr/include/c++/4.8/bits/functional_hash.h \
  /usr/include/c++/4.8/bits/hash_bytes.h \
  /usr/include/c++/4.8/bits/basic_string.tcc \
@@ -108,15 +104,14 @@ src/main.o: src/main.cpp /usr/include/stdc-predef.h \
  /usr/local/include/SDL2/SDL_platform.h \
  /usr/local/include/SDL2/begin_code.h \
  /usr/local/include/SDL2/close_code.h /usr/include/string.h \
- /usr/include/i386-linux-gnu/bits/string3.h /usr/include/strings.h \
- /usr/include/math.h /usr/include/i386-linux-gnu/bits/huge_val.h \
+ /usr/include/strings.h /usr/include/math.h \
+ /usr/include/i386-linux-gnu/bits/huge_val.h \
  /usr/include/i386-linux-gnu/bits/huge_valf.h \
  /usr/include/i386-linux-gnu/bits/huge_vall.h \
  /usr/include/i386-linux-gnu/bits/inf.h \
  /usr/include/i386-linux-gnu/bits/nan.h \
  /usr/include/i386-linux-gnu/bits/mathdef.h \
- /usr/include/i386-linux-gnu/bits/mathcalls.h \
- /usr/include/i386-linux-gnu/bits/mathinline.h /usr/include/iconv.h \
+ /usr/include/i386-linux-gnu/bits/mathcalls.h /usr/include/iconv.h \
  /usr/local/include/SDL2/SDL_assert.h \
  /usr/local/include/SDL2/SDL_atomic.h /usr/local/include/SDL2/SDL_audio.h \
  /usr/local/include/SDL2/SDL_error.h /usr/local/include/SDL2/SDL_endian.h \
@@ -218,17 +213,17 @@ src/main.o: src/main.cpp /usr/include/stdc-predef.h \
  /usr/include/c++/4.8/bits/stl_vector.h \
  /usr/include/c++/4.8/bits/stl_bvector.h \
  /usr/include/c++/4.8/bits/vector.tcc include/stb_image.h include/Image.h \
- include/Bindable.h include/Debug.h include/GameObject.h \
- /usr/include/c++/4.8/map /usr/include/c++/4.8/bits/stl_tree.h \
- /usr/include/c++/4.8/bits/stl_map.h /usr/include/c++/4.8/tuple \
- /usr/include/c++/4.8/utility /usr/include/c++/4.8/bits/stl_relops.h \
- /usr/include/c++/4.8/array /usr/include/c++/4.8/stdexcept \
+ include/Bindable.h include/GameObject.h /usr/include/c++/4.8/map \
+ /usr/include/c++/4.8/bits/stl_tree.h /usr/include/c++/4.8/bits/stl_map.h \
+ /usr/include/c++/4.8/tuple /usr/include/c++/4.8/utility \
+ /usr/include/c++/4.8/bits/stl_relops.h /usr/include/c++/4.8/array \
+ /usr/include/c++/4.8/stdexcept \
  /usr/include/c++/4.8/bits/uses_allocator.h \
  /usr/include/c++/4.8/bits/stl_multimap.h include/Transform.h \
- include/Component.h include/Material.h include/Shader.h \
- include/Texture.h include/Mesh.h include/Vertex.h include/VertexFormat.h \
+ include/Component.h include/Material.h include/Shader.h include/Mesh.h \
+ include/Vertex.h include/VertexFormat.h \
  /usr/include/c++/4.8/unordered_map /usr/include/c++/4.8/bits/hashtable.h \
  /usr/include/c++/4.8/bits/hashtable_policy.h \
  /usr/include/c++/4.8/bits/unordered_map.h include/VertexAttribute.h \
  include/FileReader.h include/CheezyWin.h include/Scene.h \
- include/GameObject.h include/Camera.h include/Scene.h include/Camera.h
+ include/Camera.h

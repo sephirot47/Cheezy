@@ -49,7 +49,6 @@ src/Material.o: src/Material.cpp /usr/include/stdc-predef.h \
  /usr/include/c++/4.8/bits/postypes.h /usr/include/c++/4.8/cwchar \
  /usr/include/wchar.h /usr/include/stdio.h \
  /usr/lib/gcc/i686-linux-gnu/4.8/include/stdarg.h /usr/include/xlocale.h \
- /usr/include/i386-linux-gnu/bits/wchar2.h \
  /usr/include/c++/4.8/bits/char_traits.h /usr/include/c++/4.8/cstdint \
  /usr/include/c++/4.8/bits/localefwd.h \
  /usr/include/i386-linux-gnu/c++/4.8/bits/c++locale.h \
@@ -85,19 +84,15 @@ src/Material.o: src/Material.cpp /usr/include/stdc-predef.h \
  /usr/include/i386-linux-gnu/sys/select.h \
  /usr/include/i386-linux-gnu/bits/select.h \
  /usr/include/i386-linux-gnu/bits/sigset.h \
- /usr/include/i386-linux-gnu/bits/select2.h \
  /usr/include/i386-linux-gnu/sys/sysmacros.h /usr/include/alloca.h \
- /usr/include/i386-linux-gnu/bits/stdlib-bsearch.h \
  /usr/include/i386-linux-gnu/bits/stdlib-float.h \
- /usr/include/i386-linux-gnu/bits/stdlib.h /usr/include/c++/4.8/cstdio \
- /usr/include/libio.h /usr/include/_G_config.h \
- /usr/include/i386-linux-gnu/bits/stdio_lim.h \
+ /usr/include/c++/4.8/cstdio /usr/include/libio.h \
+ /usr/include/_G_config.h /usr/include/i386-linux-gnu/bits/stdio_lim.h \
  /usr/include/i386-linux-gnu/bits/sys_errlist.h \
- /usr/include/i386-linux-gnu/bits/stdio.h \
- /usr/include/i386-linux-gnu/bits/stdio2.h /usr/include/c++/4.8/cerrno \
- /usr/include/errno.h /usr/include/i386-linux-gnu/bits/errno.h \
- /usr/include/linux/errno.h /usr/include/i386-linux-gnu/asm/errno.h \
- /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h \
+ /usr/include/c++/4.8/cerrno /usr/include/errno.h \
+ /usr/include/i386-linux-gnu/bits/errno.h /usr/include/linux/errno.h \
+ /usr/include/i386-linux-gnu/asm/errno.h /usr/include/asm-generic/errno.h \
+ /usr/include/asm-generic/errno-base.h \
  /usr/include/c++/4.8/bits/basic_string.tcc \
  /usr/include/c++/4.8/bits/locale_classes.tcc \
  /usr/include/c++/4.8/streambuf /usr/include/c++/4.8/bits/streambuf.tcc \
@@ -124,7 +119,6 @@ src/Material.o: src/Material.cpp /usr/include/stdc-predef.h \
  /usr/include/i386-linux-gnu/bits/nan.h \
  /usr/include/i386-linux-gnu/bits/mathdef.h \
  /usr/include/i386-linux-gnu/bits/mathcalls.h \
- /usr/include/i386-linux-gnu/bits/mathinline.h \
  /usr/include/c++/4.8/climits \
  /usr/lib/gcc/i686-linux-gnu/4.8/include-fixed/limits.h \
  /usr/lib/gcc/i686-linux-gnu/4.8/include-fixed/syslimits.h \
@@ -176,8 +170,7 @@ src/Material.o: src/Material.cpp /usr/include/stdc-predef.h \
  include/glm/gtc/../detail/func_common.inl \
  include/glm/gtc/../exponential.hpp include/glm/gtc/type_ptr.hpp \
  /usr/include/c++/4.8/cstring /usr/include/string.h \
- /usr/include/i386-linux-gnu/bits/string3.h include/glm/gtc/type_ptr.inl \
- include/glm/gtc/matrix_transform.hpp \
+ include/glm/gtc/type_ptr.inl include/glm/gtc/matrix_transform.hpp \
  include/glm/gtc/matrix_transform.inl include/glm/gtc/../matrix.hpp \
  include/glm/gtc/../detail/func_matrix.hpp \
  include/glm/gtc/../detail/func_matrix.inl include/glm/common.hpp \
