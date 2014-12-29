@@ -25,7 +25,7 @@ int main()
     Camera cam = Camera();
     Scene *scene = win.CreateScene("FirstScene");
     GameObject *go2 = new GameObject("go2");
-    DbgLog("go created");
+
     scene->Add(go2);
     scene->SetCamera(cam);
 

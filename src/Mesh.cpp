@@ -41,21 +41,18 @@ void Mesh::Draw()
 
 bool Mesh::LoadFromFile(const char *filepath)
 {
-    vector<Vertex> vertices;
-    DBG_ASSERT_RET(FileReader::ReadMeshFile(filepath, vertices, vertexFormat, triangles));
+    void *rawVerticesData = 0;
+    DBG_ASSERT_RET(FileReader::ReadMeshFile(filepath, rawVerticesData, vertexCount, vertexFormat, triangles));
+    if(rawVerticesData == 0) return false;
 
-    vertexCount = vertices.size();
     int stride = vertexFormat.GetStride();
-    vector<char> rawVertexData = vector<char>(vertexCount * stride);
-    for(int i = 0; i < int(rawVertexData.size()); ++i)
-    {
-        rawVertexData[i] = *( (char*)vertices[i/stride].data + i%stride );
-    }
-
     glBindBuffer(GL_ARRAY_BUFFER, vboId);
-    glBufferData(GL_ARRAY_BUFFER, vertexCount * stride, &rawVertexData[0], GL_STATIC_DRAW); //Load the mesh to the GPU
+    glBufferData(GL_ARRAY_BUFFER, vertexCount * stride, rawVerticesData, GL_STATIC_DRAW);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
-    vaoId = vertexFormat.CreateVAO(vboId);
+
+    vaoId = vertexFormat.CreateVAO(vboId); //CREATE THE VAO AND BIND THE VAO WITH THE VBO
+
+    free(rawVerticesData);
     return true;
 }
 

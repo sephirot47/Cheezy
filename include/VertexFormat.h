@@ -28,7 +28,9 @@ public:
     ~VertexFormat();
 
     int GetOffsetOf(string attributeName) const;
+    int GetOffsetOf(int indexAttribute) const;
     int GetSizeOf(string attributeName) const;
+    int GetSizeOf(int indexAttribute) const;
     int GetStride() const;
 
     void AddAttribute(VertexAttribute &va);

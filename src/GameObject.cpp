@@ -15,14 +15,14 @@ GameObject::GameObject()
 
     VertexAttribute posAttr("pos", 3, GL_FLOAT), uvAttr("uv", 2, GL_FLOAT);
     VertexFormat vf;
-    vf.AddAttribute(uvAttr);
     vf.AddAttribute(posAttr);
+    vf.AddAttribute(uvAttr);
 
     Mesh *m = new Mesh(vf);  //Create the default Mesh
     AddComponent(*m);
 
     mesh = m;
-    mesh->LoadFromFile("models/boy.obj");
+    mesh->LoadFromFile("models/luigi.obj");
 }
 
 GameObject::~GameObject()

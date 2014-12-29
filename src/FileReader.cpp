@@ -9,12 +9,12 @@ int FileReader::GetFormat(const char *filepath)
     return CZ_FORMAT_UNKNOWN;
 }
 
-bool FileReader::ReadMeshFile(const char *filepath, vector<Vertex> &vertices, VertexFormat &vf, bool &triangles)
+bool FileReader::ReadMeshFile(const char *filepath, void* &data, int &vertexCount, VertexFormat &vf, bool &triangles)
 {
     int format = GetFormat(filepath);
     if(format == CZ_FORMAT_UNKNOWN){ DbgError("Unknown mesh format. Not loading mesh(" << filepath << ")"); return false;}
 
-    if(format == CZ_FORMAT_OBJ) return FileReader::ReadOBJ(filepath, vertices, vf, triangles);
+    if(format == CZ_FORMAT_OBJ) return FileReader::ReadOBJ(filepath, data, vertexCount, vf, triangles);
 
     return false;
 }
@@ -77,7 +77,7 @@ void FileReader::GetOBJFormat(const char *filepath, bool &uvs, bool &normals, bo
     fclose(f);
 }
 
-bool FileReader::ReadOBJ(const char *filepath, vector<Vertex> &vertices, VertexFormat &vf, bool &triangles)
+bool FileReader::ReadOBJ(const char *filepath, void* &data, int &vertexCount, VertexFormat &vf, bool &triangles)
 {
     vector<vec3> vertexPos;
     vector<vec2> vertexUv;
@@ -148,14 +148,20 @@ bool FileReader::ReadOBJ(const char *filepath, vector<Vertex> &vertices, VertexF
         }
     }
 
-    vertices = vector<Vertex>(vertexPosIndexes.size(), Vertex());
-    for(int i = 0; i < int(vertices.size()); ++i)
-        vertices[i].Create(vf); //Reservamos espacio para cada vertice
+    vector<Vertex> vertices = vector<Vertex>(vertexPosIndexes.size(), Vertex());
+    vertexCount = int(vertices.size());
+    for(int i = 0; i < int(vertices.size()); ++i) vertices[i].Create(vf); //Reservamos espacio para cada vertice
 
+    int stride = vf.GetStride();
+    data = malloc(vertexCount * stride);
+    char *p = (char*)data;
     for(int i = 0; i < int(vertexPosIndexes.size()); ++i)
     {
         vertices[i].SetAttribute("pos", &vertexPos[vertexPosIndexes[i]-1], vf);
-        if(hasUvs) vertices[i].SetAttribute("uv", &vertexUv[vertexUvIndexes[i]-1], vf);
+        if(hasUvs) vertices[i].SetAttribute("uv",  &vertexUv[vertexUvIndexes[i]-1],   vf);
+
+        memcpy((void*)p, vertices[i].data, stride);
+        p += stride;
     }
     return true;
 }

@@ -30,10 +30,30 @@ int VertexFormat::GetOffsetOf(string attributeName) const
     return -1;
 }
 
+int VertexFormat::GetOffsetOf(int attrIndex) const
+{
+    int off = 0, i = 0;
+    for(auto it : attributes)
+    {
+        if(i++ == attrIndex) return off;
+        off += it.second.GetSize();
+    }
+    return -1;
+}
+
 int VertexFormat::GetSizeOf(string attributeName) const
 {
     if(attributes.find(attributeName) != attributes.end())
         return attributes.find(attributeName)->second.GetSize();
+    return -1;
+}
+
+
+int VertexFormat::GetSizeOf(int attrIndex) const
+{
+    int i = 0;
+    for(auto it : attributes)
+        if(i++ == attrIndex) return it.second.GetSize();
     return -1;
 }
 

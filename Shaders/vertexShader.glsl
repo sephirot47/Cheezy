@@ -1,7 +1,7 @@
 #version 130
 
-attribute vec2 uv;
 attribute vec4 pos;
+attribute vec2 uv;
 
 varying vec2 uvFrag;
 
