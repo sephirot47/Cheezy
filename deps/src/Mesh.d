@@ -221,5 +221,8 @@ src/Mesh.o: src/Mesh.cpp /usr/include/stdc-predef.h include/Mesh.h \
  /usr/include/c++/4.8/bits/hashtable.h \
  /usr/include/c++/4.8/bits/hashtable_policy.h \
  /usr/include/c++/4.8/bits/unordered_map.h include/VertexAttribute.h \
- include/Material.h include/Texture.h include/stb_image.h include/Image.h \
- include/FileReader.h include/VertexGroup.h
+ include/Material.h /usr/include/c++/4.8/map \
+ /usr/include/c++/4.8/bits/stl_tree.h /usr/include/c++/4.8/bits/stl_map.h \
+ /usr/include/c++/4.8/bits/stl_multimap.h include/Texture.h \
+ include/stb_image.h include/Image.h include/FileReader.h \
+ include/VertexGroup.h

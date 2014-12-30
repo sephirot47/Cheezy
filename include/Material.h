@@ -5,14 +5,13 @@
 
 #include <GL/gl.h>
 #include <GL/glext.h>
+#include <map>
 #include <vector>
 #include "include/Debug.h"
 #include "include/Shader.h"
 #include "include/Component.h"
 #include "include/Bindable.h"
 #include "include/Texture.h"
-
-
 
 #define CZ_MAX_MATERIAL_ERROR_LOG_SIZE 2056
 
@@ -24,6 +23,11 @@ private:
 
     Shader *vertexShader, *fragmentShader;
     Texture *texture;
+    map<string, vec4>  uniformsVec4;
+    map<string, vec3>  uniformsVec3;
+    map<string, vec2>  uniformsVec2;
+    map<string, float> uniformsFloat;
+    map<string, int>   uniformsInt;
     unsigned int programId;
 
 public:

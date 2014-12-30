@@ -62,6 +62,9 @@ void GameObject::_Update()
 
 void GameObject::Update()
 {
+    mesh->material->SetUniform("multiplier", 1.5f);
+    mesh->material->SetUniform("mixing", 0.5f);
+    mesh->material->SetUniform("mec", vec4((sin(Time::GetMiliseconds() / 50.0)+1.0f)*0.5f, (cos(Time::GetMiliseconds() / 50.0)+1.0f)*0.5f, 0.0f, 1.0f));
 }
 
 bool GameObject::AddComponent(Component &c)
