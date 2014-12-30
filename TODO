@@ -5,15 +5,23 @@
 
 - Estamos haciendo bien(moderno) lo de las texturas? (slots y eso no usamos, is it ok? :/ )
 
-- Vertices con atributos (VertexFormat)
-
 - Lighting siguiente paso !!!!
 
 - SceneManager
+
+- Ir haciendo constructores de copia y destructores (evitar memory leaks)
+
+- Poner defaults a VertexFormat
+
+- VertexAttributes con propiedad sí o no Normalized (para a la hora de crear vao)
+
+- (bool triangles) debería ir en VertexGroup?
+
 *****************************
 
 ********** DONE ************
 - Hacer clase Image con función load y tal.
 - Arreglar Quaternions y camara, no funcionan bien...
 - Crear archivo de log por defecto.
+- Vertices con atributos (VertexFormat)
 *****************************

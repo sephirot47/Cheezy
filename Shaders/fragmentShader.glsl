@@ -3,8 +3,9 @@
 uniform sampler2D tex;
 
 varying vec2 uvFrag;
+varying vec4 tint;
 
 void main()
 {	
-	gl_FragColor = texture2D(tex, vec2(uvFrag.x, 1.0 - uvFrag.y));
+	gl_FragColor = mix(tint, texture2D(tex, vec2(uvFrag.x, 1.0 - uvFrag.y)), 0.7);
 }

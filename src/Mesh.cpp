@@ -31,6 +31,8 @@ void Mesh::Draw()
     glBindVertexArray(vaoId);
 
     if(material) material->Bind(); //Use the material
+    glUniform1f(0, sin(Time::getMiliseconds() / 50.0) * 2.0f);
+    glUniform4f(1, (sin(Time::getMiliseconds() / 50.0)+1.0f)*0.5f, (cos(Time::getMiliseconds() / 50.0)+1.0f)*0.5f, 0.0f, 1.0f);
     DBG_ASSERT_GL(glDrawArrays(triangles ? GL_TRIANGLES : GL_QUADS, 0, vertexCount));
     if(material) material->UnBind();
 
