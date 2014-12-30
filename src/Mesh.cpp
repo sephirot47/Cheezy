@@ -12,8 +12,10 @@ Mesh::Mesh(VertexFormat &vf)
     vertexFormat = VertexFormat(vf);
 
     material = new Material();
-    material->AttachShader(new Shader(CZ_VERTEX_SHADER, "Shaders/vertexShader.glsl"));
-    material->AttachShader(new Shader(CZ_FRAGMENT_SHADER, "Shaders/fragmentShader.glsl"));
+    Shader vertexShader(CZ_VERTEX_SHADER, "Shaders/vertexShader.glsl"),
+           fragmentShader(CZ_FRAGMENT_SHADER, "Shaders/fragmentShader.glsl");
+    material->AttachShader(vertexShader);
+    material->AttachShader(fragmentShader);
     material->SetTexture(new Texture("models/textures/gordaco.bmp"));
 }
 
@@ -31,8 +33,9 @@ void Mesh::Draw()
     glBindVertexArray(vaoId);
 
     if(material) material->Bind(); //Use the material
-    glUniform1f(0, sin(Time::getMiliseconds() / 50.0) * 2.0f);
-    glUniform4f(1, (sin(Time::getMiliseconds() / 50.0)+1.0f)*0.5f, (cos(Time::getMiliseconds() / 50.0)+1.0f)*0.5f, 0.0f, 1.0f);
+    material->SetUniform("multiplier", 1.5f);
+    material->SetUniform("mixing", 0.5f);
+    material->SetUniform("mec", vec4((sin(Time::GetMiliseconds() / 50.0)+1.0f)*0.5f, (cos(Time::GetMiliseconds() / 50.0)+1.0f)*0.5f, 0.0f, 1.0f));
     DBG_ASSERT_GL(glDrawArrays(triangles ? GL_TRIANGLES : GL_QUADS, 0, vertexCount));
     if(material) material->UnBind();
 

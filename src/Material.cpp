@@ -61,7 +61,6 @@ bool Material::AttachShader(Shader &shader)
 
     return true; //Everything went GOOD!
 }
-bool Material::AttachShader(Shader *s) { return AttachShader(*s); }
 
 int Material::GetShaderId(unsigned int shaderType)
 {
@@ -73,11 +72,55 @@ int Material::GetShaderId(unsigned int shaderType)
     return -1;
 }
 
-void Material::SetTexture(Texture &t)
+int Material::GetProgramId()
 {
-    texture = &t;
+    return programId;
 }
-void Material::SetTexture(Texture *t){ SetTexture(*t); }
+
+void Material::SetTexture(Texture *t)
+{
+    texture = t;
+}
+
+void Material::SetUniform(string name, vec4 value)
+{
+    if(programId < 0) { DbgWarning("The material program is not linked, can't set any uniform."); return; }
+    int location = glGetUniformLocation(programId, name.c_str());
+    if(location < 0){ DbgWarning("The uniform '" << name << "' couldn't be found."); return; }
+    glUniform4f(location, value.x, value.y, value.z, value.w);
+}
+
+void Material::SetUniform(string name, vec3 value)
+{
+    if(programId < 0) { DbgWarning("The material program is not linked, can't set any uniform."); return; }
+    int location = glGetUniformLocation(programId, name.c_str());
+    if(location < 0){ DbgWarning("The uniform '" << name << "' couldn't be found."); return; }
+    glUniform3f(location, value.x, value.y, value.z);
+}
+
+void Material::SetUniform(string name, vec2 value)
+{
+    if(programId < 0) { DbgWarning("The material program is not linked, can't set any uniform."); return; }
+    int location = glGetUniformLocation(programId, name.c_str());
+    if(location < 0){ DbgWarning("The uniform '" << name << "' couldn't be found."); return; }
+    glUniform2f(location, value.x, value.y);
+}
+
+void Material::SetUniform(string name, float value)
+{
+    if(programId < 0) { DbgWarning("The material program is not linked, can't set any uniform."); return; }
+    int location = glGetUniformLocation(programId, name.c_str());
+    if(location < 0){ DbgWarning("The uniform '" << name << "' couldn't be found."); return; }
+    glUniform1f(location, value);
+}
+
+void Material::SetUniform(string name, int value)
+{
+    if(programId < 0) { DbgWarning("The material program is not linked, can't set any uniform."); return; }
+    int location = glGetUniformLocation(programId, name.c_str());
+    if(location < 0){ DbgWarning("The uniform '" << name << "' couldn't be found."); return; }
+    glUniform1i(location, value);
+}
 
 void Material::Bind()
 {

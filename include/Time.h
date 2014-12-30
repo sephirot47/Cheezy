@@ -12,9 +12,7 @@
 //ESTA PERFECTE!!!!!!!!!!!!! (victor)
 
 /*TODO:
-
     Sleep functions.
-    Functions to get time of today(day month year hour blah blah) formatted into a string
 */
 
 using namespace std;
@@ -23,10 +21,10 @@ class Time
 public:
 
     ///\brief Returns the time in seconds since the engine started
-    static float getSeconds(); //Retorna Segons des de que s'inicia SDL
+    static float GetSeconds(); //Retorna Segons des de que s'inicia SDL
 
     ///\brief Returns the time in milisecs since the engine started
-	static long getMiliseconds(); //Retorna Milisegons des de que s'inicia SDL
+    static long GetMiliseconds(); //Retorna Milisegons des de que s'inicia SDL
 
 	static string GetDateStr();
 };

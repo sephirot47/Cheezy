@@ -15,8 +15,7 @@ class Texture : public Bindable
 {
 private:
 
-    unsigned int id;
-    unsigned int format;
+    unsigned int id, format, size;
 
 public:
 
@@ -24,6 +23,7 @@ public:
     unsigned char *data;
 
     Texture();
+    Texture(Texture &tex);
     Texture(const char *filepath);
     virtual ~Texture();
 
@@ -31,7 +31,7 @@ public:
 
     unsigned int GetId();
     unsigned int GetFormat();
-
+    unsigned int GetSize();
 
     void Bind();
     void UnBind();
