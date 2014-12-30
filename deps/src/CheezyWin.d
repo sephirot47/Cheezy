@@ -226,4 +226,4 @@ src/CheezyWin.o: src/CheezyWin.cpp /usr/include/stdc-predef.h \
  /usr/include/c++/4.8/unordered_map /usr/include/c++/4.8/bits/hashtable.h \
  /usr/include/c++/4.8/bits/hashtable_policy.h \
  /usr/include/c++/4.8/bits/unordered_map.h include/VertexAttribute.h \
- include/FileReader.h include/Camera.h
+ include/FileReader.h include/VertexGroup.h include/Camera.h

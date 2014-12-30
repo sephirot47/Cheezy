@@ -7,6 +7,8 @@
 #include <GL/gl.h>
 #include <GL/glext.h>
 #include <string>
+#include <vector>
+
 #include "include/Debug.h"
 #include "include/VertexAttribute.h"
 #include "glm/glm.hpp"
@@ -18,27 +20,35 @@ class VertexFormat
 private:
 
     unordered_map<string, VertexAttribute> attributes;
+    vector<string> insertionOrder;
     string posName, uvsName, normalsName;
+    int attributesNum;
     unsigned int vaoId;
 
 public:
 
     VertexFormat();
-    VertexFormat(VertexFormat &vf);
+    VertexFormat(const VertexFormat &vf);
     ~VertexFormat();
 
     int GetOffsetOf(string attributeName) const;
-    int GetOffsetOf(int indexAttribute) const;
+    int GetOffsetOf(int i) const;
     int GetSizeOf(string attributeName) const;
-    int GetSizeOf(int indexAttribute) const;
+    int GetSizeOf(int i) const;
     int GetStride() const;
+    int GetAttributesNum() const;
 
     void AddAttribute(VertexAttribute &va);
-    VertexAttribute GetAttribute(string name);
+    VertexAttribute GetAttribute(int i) const;
+    VertexAttribute GetAttribute(string name) const;
 
-    void SetPositionAttribute(string attributeName);
-    void SetTexCoordsAttribute(string attributeName);
-    void SetNormalsAttribute(string attributeName);
+    void SetPositionAttributeName(string attributeName);
+    void SetTexCoordsAttributeName(string attributeName);
+    void SetNormalsAttributeName(string attributeName);
+
+    VertexAttribute GetPositionAttribute();
+    VertexAttribute GetTexCoordsAttribute();
+    VertexAttribute GetNormalsAttribute();
 
     unsigned int CreateVAO(int vboId);
     void DeleteVAO();

@@ -17,6 +17,10 @@ public:
     void* GetAttributePointer(string name, VertexFormat &vf);
     bool  HasAttribute(string name, VertexFormat &vf);
     void  SetAttribute(string name, void* value, VertexFormat &vf);
+
+    void SetPositionAttribute(void* value, VertexFormat &vf);
+    void SetTexCoordsAttribute(void* value, VertexFormat &vf);
+    void SetNormalsAttribute(void* value, VertexFormat &vf);
 };
 
 #endif // VERTEX_H
