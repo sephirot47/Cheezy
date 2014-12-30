@@ -41,7 +41,7 @@ string VertexAttribute::GetName() const
     return name;
 }
 
-int VertexAttribute::GetComponentsNum() const
+int VertexAttribute::GetComponentsCount() const
 {
     return componentsNum;
 }

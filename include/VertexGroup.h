@@ -21,11 +21,16 @@ public:
     virtual ~VertexGroup();
 
     void         SetAttribute(string attributeName, void *pvalue, int vertexIndex);
-    void* GetAttributePointer(string attributeName, int vertexIndex) const;
 
-    int   GetVertexCount();
-    void* GetRawData();
-    VertexFormat* GetVertexFormatPointer();
+    Vertex* GetVertexPointer(int vertexIndex) const;
+    void*   GetAttributePointer(string attributeName, int vertexIndex) const;
+
+    int   GetVertexCount() const;
+    void* GetRawData() const;
+    VertexFormat GetVertexFormat() const;
+
+    void   SetVertex(int vertexIndex, Vertex &v);
+    Vertex GetVertex(int vertexIndex) const;
 };
 
 #endif // VERTEXGROUP_H

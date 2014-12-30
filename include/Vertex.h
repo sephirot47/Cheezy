@@ -7,20 +7,17 @@
 
 class Vertex
 {
+private:
+    void *data;
+
 public:
     Vertex();
+    void Init(const VertexFormat &vf);
     virtual ~Vertex();
-
-    void Create(const VertexFormat &vf);
-    void *data;
 
     void* GetAttributePointer(string name, VertexFormat &vf);
     bool  HasAttribute(string name, VertexFormat &vf);
     void  SetAttribute(string name, void* value, VertexFormat &vf);
-
-    void SetPositionAttribute(void* value, VertexFormat &vf);
-    void SetTexCoordsAttribute(void* value, VertexFormat &vf);
-    void SetNormalsAttribute(void* value, VertexFormat &vf);
 };
 
 #endif // VERTEX_H

@@ -3,13 +3,13 @@
 VertexFormat::VertexFormat()
 {
     posName = uvsName = normalsName = "";
-    attributesNum = 0;
+    attributesCount = 0;
     vaoId = -1;
 }
 
 VertexFormat::VertexFormat(const VertexFormat &vf) : VertexFormat()
 {
-    for(int i = 0; i < vf.attributesNum; ++i)
+    for(int i = 0; i < vf.attributesCount; ++i)
     {
         VertexAttribute attr = vf.attributes.find(vf.insertionOrder[i])->second;
         this->AddAttribute(attr);
@@ -27,7 +27,7 @@ VertexFormat::~VertexFormat()
 int VertexFormat::GetOffsetOf(string attributeName) const
 {
     int off = 0;
-    for(int i = 0; i < attributesNum; ++i)
+    for(int i = 0; i < attributesCount; ++i)
     {
         if(attributes.find(insertionOrder[i])->second.GetName() != attributeName)
             off += attributes.find(insertionOrder[i])->second.GetSize();
@@ -39,9 +39,9 @@ int VertexFormat::GetOffsetOf(string attributeName) const
 
 int VertexFormat::GetOffsetOf(int index) const
 {
-    if(index >= attributesNum or index < 0) { DbgWarning("Trying to get the offset of an attribute of an index out of bounds (returning -1)"); return -1; }
+    if(index >= attributesCount or index < 0) { DbgWarning("Trying to get the offset of an attribute of an index out of bounds (returning -1)"); return -1; }
     int off = 0;
-    for(int i = 0; i < attributesNum; ++i)
+    for(int i = 0; i < attributesCount; ++i)
     {
         if(i != index)
             off += attributes.find(insertionOrder[i])->second.GetSize();
@@ -60,37 +60,37 @@ int VertexFormat::GetSizeOf(string attributeName) const
 
 int VertexFormat::GetSizeOf(int i) const
 {
-    if(i >= attributesNum or i < 0) { DbgWarning("Trying to get the size of an attribute of an index out of bounds (returning -1)"); return -1; }
+    if(i >= attributesCount or i < 0) { DbgWarning("Trying to get the size of an attribute of an index out of bounds (returning -1)"); return -1; }
     else return attributes.find(insertionOrder[i])->second.GetSize();
 }
 
 int VertexFormat::GetStride() const
 {
     int size = 0;
-    for(int i = 0; i < attributesNum; ++i)
+    for(int i = 0; i < attributesCount; ++i)
         size += attributes.find(insertionOrder[i])->second.GetSize();
     return size;
 }
 
 VertexAttribute VertexFormat::GetAttribute(int i) const
 {
-    if(i >= attributesNum or i < 0) { DbgWarning("Trying to get an attribute of an index out of bounds (returning empty VertexAttribute"); return VertexAttribute(); }
+    if(i >= attributesCount or i < 0) { DbgWarning("Trying to get an attribute of an index out of bounds (returning empty VertexAttribute"); return VertexAttribute(); }
     else return attributes.find(insertionOrder[i])->second;
 }
 
 int VertexFormat::GetAttributesNum() const
 {
-    return attributesNum;
+    return attributesCount;
 }
 
 void VertexFormat::AddAttribute(VertexAttribute &va)
 {
     DBG_ASSERT_RET_VOID_MSG((va.GetName() == ""), "The vertex attribute you passed doesn't have a name.");
-    DBG_ASSERT_RET_VOID_MSG((va.GetComponentsNum() == 0), "The vertex attribute have 0 elements.");
+    DBG_ASSERT_RET_VOID_MSG((va.GetComponentsCount() == 0), "The vertex attribute have 0 elements.");
     DBG_ASSERT_RET_VOID_MSG((va.GetSize() == 0), "The vertex attribute have elements of size 0.");
 
-    ++attributesNum;
-    attributes[va.GetName()] = VertexAttribute(va.GetName(), va.GetComponentsNum(), va.GetComponentsType());
+    ++attributesCount;
+    attributes[va.GetName()] = VertexAttribute(va.GetName(), va.GetComponentsCount(), va.GetComponentsType());
     insertionOrder.push_back(va.GetName());
 }
 
@@ -117,21 +117,21 @@ void VertexFormat::SetNormalsAttributeName(string attributeName)
     else DbgWarning("Setting normals attribute as an attribute that doesn't exist (" << attributeName << ")");
 }
 
-VertexAttribute VertexFormat::GetPositionAttribute()
+VertexAttribute VertexFormat::GetPositionAttribute() const
 {
-    if(posName != "") return attributes[posName];
+    if(posName != "") return attributes.find(posName)->second;
     return VertexAttribute();
 }
 
-VertexAttribute VertexFormat::GetTexCoordsAttribute()
+VertexAttribute VertexFormat::GetTexCoordsAttribute() const
 {
-    if(uvsName != "") return attributes[uvsName];
+    if(uvsName != "") return attributes.find(uvsName)->second;
     return VertexAttribute();
 }
 
-VertexAttribute VertexFormat::GetNormalsAttribute()
+VertexAttribute VertexFormat::GetNormalsAttribute() const
 {
-    if(normalsName != "") return attributes[normalsName];
+    if(normalsName != "") return attributes.find(normalsName)->second;
     return VertexAttribute();
 }
 
@@ -143,11 +143,11 @@ unsigned int VertexFormat::CreateVAO(int vboId)
     glBindVertexArray(vaoId);
     glBindBuffer(GL_ARRAY_BUFFER, vboId);
     int offset = 0, stride = GetStride();
-    for(int i = 0; i < attributesNum; ++i)
+    for(int i = 0; i < attributesCount; ++i)
     {
         VertexAttribute attr = attributes.find(insertionOrder[i])->second;
         glVertexAttribPointer(i,
-                              attr.GetComponentsNum(),
+                              attr.GetComponentsCount(),
                               attr.GetComponentsType(),
                               GL_FALSE,
                               stride,

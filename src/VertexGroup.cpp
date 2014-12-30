@@ -65,7 +65,7 @@ void VertexGroup::SetAttribute(string attributeName, void *pvalue, int vertexInd
 
     void *pdata  = (void*)((char*)data + offset);
     int type = vertexFormat.GetAttribute(attributeName).GetComponentsType();
-    int numComponents = vertexFormat.GetAttribute(attributeName).GetComponentsNum();
+    int numComponents = vertexFormat.GetAttribute(attributeName).GetComponentsCount();
     for(int i = 0; i < numComponents; ++i)
     {
         if(type == GL_DOUBLE)      *((double*)pdata + i) = *((double*)pvalue + i);
@@ -76,12 +76,58 @@ void VertexGroup::SetAttribute(string attributeName, void *pvalue, int vertexInd
     }
 }
 
+Vertex* VertexGroup::GetVertexPointer(int vertexIndex) const
+{
+    if(vertexIndex < 0 or vertexIndex > vertexCount)
+    {
+        DbgWarning("Trying to get a pointer to a vertex out of bounds(returning null pointer)");
+        return 0;
+    }
+    return (Vertex*)((char*)data + vertexIndex * vertexFormat.GetStride());
+}
+
 void* VertexGroup::GetAttributePointer(string attributeName, int vertexIndex) const
 {
-    if(data == 0) return (void*)0;
+    if(vertexIndex < 0 or vertexIndex >= vertexCount)
+    {
+        DbgWarning("Trying to get a pointer to an attribute of a vertex out of bounds (returning null pointer)");
+        return (void*)0;
+    }
+    int offset = vertexFormat.GetOffsetOf(attributeName);
+    if(offset == - 1)
+    {
+        DbgWarning("Trying to get a pointer to an attribute that doesn't exist (returning null pointer)");
+        return (void*)0;
+    }
+
+    Vertex *v = GetVertexPointer(vertexIndex);
+    return (void*)((char*)v + offset);
     return (void*)0;
 }
 
-int VertexGroup::GetVertexCount() { return vertexCount; }
-void* VertexGroup::GetRawData() { return data; }
-VertexFormat* VertexGroup::GetVertexFormatPointer() { return &vertexFormat; }
+int VertexGroup::GetVertexCount() const { return vertexCount; }
+void* VertexGroup::GetRawData() const { return data; }
+VertexFormat VertexGroup::GetVertexFormat() const { return vertexFormat; }
+
+
+void VertexGroup::SetVertex(int vertexIndex, Vertex &v)
+{
+    if(vertexIndex < 0 or vertexIndex > vertexCount)
+    {
+        DbgWarning("Trying to set a vertex out of bounds (doing nothing)");
+        return;
+    }
+    Vertex *vdata = GetVertexPointer(vertexIndex);
+    *vdata = v;
+}
+
+Vertex VertexGroup::GetVertex(int vertexIndex) const
+{
+    if(vertexIndex < 0 or vertexIndex > vertexCount)
+    {
+        DbgWarning("Trying to get a vertex out of bounds (returning empty Vertex)");
+        return Vertex();
+    }
+    return *((Vertex*)((char*)data + vertexIndex * vertexFormat.GetStride()));
+}
+

@@ -22,7 +22,7 @@ private:
     unordered_map<string, VertexAttribute> attributes;
     vector<string> insertionOrder;
     string posName, uvsName, normalsName;
-    int attributesNum;
+    int attributesCount;
     unsigned int vaoId;
 
 public:
@@ -46,9 +46,9 @@ public:
     void SetTexCoordsAttributeName(string attributeName);
     void SetNormalsAttributeName(string attributeName);
 
-    VertexAttribute GetPositionAttribute();
-    VertexAttribute GetTexCoordsAttribute();
-    VertexAttribute GetNormalsAttribute();
+    VertexAttribute GetPositionAttribute() const;
+    VertexAttribute GetTexCoordsAttribute() const;
+    VertexAttribute GetNormalsAttribute() const;
 
     unsigned int CreateVAO(int vboId);
     void DeleteVAO();

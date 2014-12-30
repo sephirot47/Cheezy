@@ -186,9 +186,9 @@ bool FileReader::ReadOBJ(const char *filepath, VertexGroup &vg, const VertexForm
     DbgLog("________" << vf.GetStride() << ", " << vf.GetOffsetOf("normal"));
     for(int i = 0; i < vg.GetVertexCount(); ++i)
     {
-        string posName = vg.GetVertexFormatPointer()->GetPositionAttribute().GetName();
-        string uvsName = vg.GetVertexFormatPointer()->GetTexCoordsAttribute().GetName();
-        string normalsName = vg.GetVertexFormatPointer()->GetNormalsAttribute().GetName();
+        string posName = vf.GetPositionAttribute().GetName();
+        string uvsName = vf.GetTexCoordsAttribute().GetName();
+        string normalsName = vf.GetNormalsAttribute().GetName();
 
         vg.SetAttribute(posName, &vertexPos[vertexPosIndexes[i]-1], i);
 
