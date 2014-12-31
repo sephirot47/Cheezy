@@ -69,7 +69,7 @@ void CheezyWin::DrawAxis()
 
 void CheezyWin::Draw()
 {
-    glClearColor(0.4, 0.0, 0.4, 1.0);
+    glClearColor(0.0, 0.0, 0.05, 1.0);
     glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
 
     if(currentScene != 0)

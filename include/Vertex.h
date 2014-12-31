@@ -7,12 +7,13 @@
 
 class Vertex
 {
+private:
+    void *data;
+
 public:
     Vertex();
+    void Init(const VertexFormat &vf);
     virtual ~Vertex();
-
-    void Create(const VertexFormat &vf);
-    void *data;
 
     void* GetAttributePointer(string name, VertexFormat &vf);
     bool  HasAttribute(string name, VertexFormat &vf);

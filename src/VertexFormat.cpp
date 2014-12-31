@@ -3,16 +3,21 @@
 VertexFormat::VertexFormat()
 {
     posName = uvsName = normalsName = "";
+    attributesCount = 0;
     vaoId = -1;
 }
 
-VertexFormat::VertexFormat(VertexFormat &vf) : VertexFormat()
+VertexFormat::VertexFormat(const VertexFormat &vf) : VertexFormat()
 {
-    for(auto it : vf.attributes)
+    for(int i = 0; i < vf.attributesCount; ++i)
     {
-        VertexAttribute attr(it.second.GetName(), it.second.GetComponentsNum(), it.second.GetComponentsType());
+        VertexAttribute attr = vf.attributes.find(vf.insertionOrder[i])->second;
         this->AddAttribute(attr);
     }
+
+    this->posName = vf.posName;
+    this->uvsName = vf.uvsName;
+    this->normalsName = vf.normalsName;
 }
 
 VertexFormat::~VertexFormat()
@@ -22,10 +27,26 @@ VertexFormat::~VertexFormat()
 int VertexFormat::GetOffsetOf(string attributeName) const
 {
     int off = 0;
-    for(auto it : attributes)
+    for(int i = 0; i < attributesCount; ++i)
     {
-        if(it.second.GetName() != attributeName) off += it.second.GetSize();
-        else return off;
+        if(attributes.find(insertionOrder[i])->second.GetName() != attributeName)
+            off += attributes.find(insertionOrder[i])->second.GetSize();
+        else
+            return off;
+    }
+    return -1;
+}
+
+int VertexFormat::GetOffsetOf(int index) const
+{
+    if(index >= attributesCount or index < 0) { DbgWarning("Trying to get the offset of an attribute of an index out of bounds (returning -1)"); return -1; }
+    int off = 0;
+    for(int i = 0; i < attributesCount; ++i)
+    {
+        if(i != index)
+            off += attributes.find(insertionOrder[i])->second.GetSize();
+        else
+            return off;
     }
     return -1;
 }
@@ -37,72 +58,103 @@ int VertexFormat::GetSizeOf(string attributeName) const
     return -1;
 }
 
+int VertexFormat::GetSizeOf(int i) const
+{
+    if(i >= attributesCount or i < 0) { DbgWarning("Trying to get the size of an attribute of an index out of bounds (returning -1)"); return -1; }
+    else return attributes.find(insertionOrder[i])->second.GetSize();
+}
+
 int VertexFormat::GetStride() const
 {
     int size = 0;
-    for(auto it : attributes) size += it.second.GetSize();
+    for(int i = 0; i < attributesCount; ++i)
+        size += attributes.find(insertionOrder[i])->second.GetSize();
     return size;
+}
+
+VertexAttribute VertexFormat::GetAttribute(int i) const
+{
+    if(i >= attributesCount or i < 0) { DbgWarning("Trying to get an attribute of an index out of bounds (returning empty VertexAttribute"); return VertexAttribute(); }
+    else return attributes.find(insertionOrder[i])->second;
+}
+
+int VertexFormat::GetAttributesNum() const
+{
+    return attributesCount;
 }
 
 void VertexFormat::AddAttribute(VertexAttribute &va)
 {
     DBG_ASSERT_RET_VOID_MSG((va.GetName() == ""), "The vertex attribute you passed doesn't have a name.");
-    DBG_ASSERT_RET_VOID_MSG((va.GetComponentsNum() == 0), "The vertex attribute have 0 elements.");
+    DBG_ASSERT_RET_VOID_MSG((va.GetComponentsCount() == 0), "The vertex attribute have 0 elements.");
     DBG_ASSERT_RET_VOID_MSG((va.GetSize() == 0), "The vertex attribute have elements of size 0.");
 
-    attributes[va.GetName()] = VertexAttribute(va.GetName(), va.GetComponentsNum(), va.GetComponentsType());
+    ++attributesCount;
+    attributes[va.GetName()] = VertexAttribute(va.GetName(), va.GetComponentsCount(), va.GetComponentsType());
+    insertionOrder.push_back(va.GetName());
 }
 
-VertexAttribute VertexFormat::GetAttribute(string name)
+VertexAttribute VertexFormat::GetAttribute(string name) const
 {
-    return attributes[name];
+    return attributes.find(name)->second;
 }
 
-void VertexFormat::SetPositionAttribute(string attributeName)
+void VertexFormat::SetPositionAttributeName(string attributeName)
 {
     if(attributes.find(attributeName) != attributes.end()) posName = attributeName;
     else DbgWarning("Setting position attribute as an attribute that doesn't exist (" << attributeName << ")");
 }
 
-void VertexFormat::SetTexCoordsAttribute(string attributeName)
+void VertexFormat::SetTexCoordsAttributeName(string attributeName)
 {
     if(attributes.find(attributeName) != attributes.end()) uvsName = attributeName;
     else DbgWarning("Setting texCoord attribute as an attribute that doesn't exist (" << attributeName << ")");
 }
 
-void VertexFormat::SetNormalsAttribute(string attributeName)
+void VertexFormat::SetNormalsAttributeName(string attributeName)
 {
     if(attributes.find(attributeName) != attributes.end()) normalsName = attributeName;
     else DbgWarning("Setting normals attribute as an attribute that doesn't exist (" << attributeName << ")");
 }
 
+VertexAttribute VertexFormat::GetPositionAttribute() const
+{
+    if(posName != "") return attributes.find(posName)->second;
+    return VertexAttribute();
+}
+
+VertexAttribute VertexFormat::GetTexCoordsAttribute() const
+{
+    if(uvsName != "") return attributes.find(uvsName)->second;
+    return VertexAttribute();
+}
+
+VertexAttribute VertexFormat::GetNormalsAttribute() const
+{
+    if(normalsName != "") return attributes.find(normalsName)->second;
+    return VertexAttribute();
+}
+
 unsigned int VertexFormat::CreateVAO(int vboId)
 {
     glGenVertexArrays(1, &vaoId);
-    if(vaoId < 0) { DbgError("Error creating the VAO"); return -1; }
+    if(vaoId < 0) { DbgError("Error generating the VAO"); return -1; }
 
     glBindVertexArray(vaoId);
     glBindBuffer(GL_ARRAY_BUFFER, vboId);
-
-    int i = 0, offset = 0, stride = GetStride();
-    DbgLog("----------------------");
-    DbgLog("Creating VAO: stride: " << GetStride() << ", offset: " << offset);
-    for(auto it : attributes)
+    int offset = 0, stride = GetStride();
+    for(int i = 0; i < attributesCount; ++i)
     {
-        DbgLog("glVertexAttribPointer(" << i << ", " << it.second.GetComponentsNum() << ", " << it.second.GetComponentsType() << ", false, " << stride << ")");
+        VertexAttribute attr = attributes.find(insertionOrder[i])->second;
         glVertexAttribPointer(i,
-                              it.second.GetComponentsNum(),
-                              it.second.GetComponentsType(),
+                              attr.GetComponentsCount(),
+                              attr.GetComponentsType(),
                               GL_FALSE,
                               stride,
                               (void*)offset);
-        DbgLog("Enable va: " << i);
         glEnableVertexAttribArray(i);
-
-        offset += it.second.GetSize();
-        ++i;
+        offset += attr.GetSize();
     }
-    DbgLog("----------------------");
     glBindVertexArray(0);
     return vaoId;
 }

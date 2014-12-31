@@ -12,7 +12,7 @@ class Image
 {
 private:
     int width, height;
-    unsigned int format;
+    unsigned int format, size;
     unsigned char *data;
 
 public:
@@ -23,6 +23,7 @@ public:
 
     int GetWidth();
     int GetHeight();
+    int GetSize();
     unsigned char* GetData();
     unsigned int GetFormat();
 };

@@ -12,9 +12,11 @@ Mesh::Mesh(VertexFormat &vf)
     vertexFormat = VertexFormat(vf);
 
     material = new Material();
-    material->AttachShader(new Shader(CZ_VERTEX_SHADER, "Shaders/vertexShader.glsl"));
-    material->AttachShader(new Shader(CZ_FRAGMENT_SHADER, "Shaders/fragmentShader.glsl"));
-    material->SetTexture(new Texture("models/textures/luigiD.jpg"));
+    Shader vertexShader(CZ_VERTEX_SHADER, "Shaders/vertexShader.glsl"),
+           fragmentShader(CZ_FRAGMENT_SHADER, "Shaders/fragmentShader.glsl");
+    material->AttachShader(vertexShader);
+    material->AttachShader(fragmentShader);
+    material->SetTexture(new Texture("models/textures/gordaco.bmp"));
 }
 
 Mesh::~Mesh()
@@ -41,21 +43,18 @@ void Mesh::Draw()
 
 bool Mesh::LoadFromFile(const char *filepath)
 {
-    vector<Vertex> vertices;
-    DBG_ASSERT_RET(FileReader::ReadMeshFile(filepath, vertices, vertexFormat, triangles));
+    VertexGroup vg;
+    DBG_ASSERT_RET(FileReader::ReadMeshFile(filepath, vg, vertexFormat, triangles));
+    vertexCount = vg.GetVertexCount();
+    if(vertexCount == 0) return false;
 
-    vertexCount = vertices.size();
     int stride = vertexFormat.GetStride();
-    vector<char> rawVertexData = vector<char>(vertexCount * stride);
-    for(int i = 0; i < int(rawVertexData.size()); ++i)
-    {
-        rawVertexData[i] = *( (char*)vertices[i/stride].data + i%stride );
-    }
-
+    //for(int i = 0; i < vertexCount * stride; ++i) if(i%4 == 0) DbgLog( i << ": " << *((float*)((char*)vg.GetRawData() + i)) );
     glBindBuffer(GL_ARRAY_BUFFER, vboId);
-    glBufferData(GL_ARRAY_BUFFER, vertexCount * stride, &rawVertexData[0], GL_STATIC_DRAW); //Load the mesh to the GPU
+    glBufferData(GL_ARRAY_BUFFER, vertexCount * stride, vg.GetRawData(), GL_STATIC_DRAW);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
-    vaoId = vertexFormat.CreateVAO(vboId);
+
+    vaoId = vertexFormat.CreateVAO(vboId); //CREATE THE VAO AND BIND THE VAO WITH THE VBO
     return true;
 }
 

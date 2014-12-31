@@ -1,15 +1,17 @@
 #include "include/Time.h"
 
-
-long Time::getMiliseconds() {
+long Time::GetMiliseconds()
+{
 	return SDL_GetTicks();
 }
 
-float Time::getSeconds() {
+float Time::GetSeconds()
+{
 	return SDL_GetTicks()/1000;
 }
 
-string Time::GetDateStr(){
+string Time::GetDateStr()
+{
 	stringstream sstr;
 	time_t t = time(0);
     struct tm * now = localtime(&t);

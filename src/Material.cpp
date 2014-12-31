@@ -61,7 +61,6 @@ bool Material::AttachShader(Shader &shader)
 
     return true; //Everything went GOOD!
 }
-bool Material::AttachShader(Shader *s) { return AttachShader(*s); }
 
 int Material::GetShaderId(unsigned int shaderType)
 {
@@ -73,16 +72,70 @@ int Material::GetShaderId(unsigned int shaderType)
     return -1;
 }
 
-void Material::SetTexture(Texture &t)
+int Material::GetProgramId()
 {
-    texture = &t;
+    return programId;
 }
-void Material::SetTexture(Texture *t){ SetTexture(*t); }
+
+void Material::SetTexture(Texture *t)
+{
+    texture = t;
+}
+
+void Material::SetUniform(string name, vec4 value)
+{
+    if(programId < 0) { DbgWarning("The material program is not linked, can't set any uniform."); return; }
+    int location = glGetUniformLocation(programId, name.c_str());
+    if(location < 0){ DbgWarning("The uniform '" << name << "' couldn't be found."); return; }
+    uniformsVec4[name] = value;
+}
+
+void Material::SetUniform(string name, vec3 value)
+{
+    if(programId < 0) { DbgWarning("The material program is not linked, can't set any uniform."); return; }
+    int location = glGetUniformLocation(programId, name.c_str());
+    if(location < 0){ DbgWarning("The uniform '" << name << "' couldn't be found."); return; }
+    uniformsVec3[name] = value;
+}
+
+void Material::SetUniform(string name, vec2 value)
+{
+    if(programId < 0) { DbgWarning("The material program is not linked, can't set any uniform."); return; }
+    int location = glGetUniformLocation(programId, name.c_str());
+    if(location < 0){ DbgWarning("The uniform '" << name << "' couldn't be found."); return; }
+    uniformsVec2[name] = value;
+}
+
+void Material::SetUniform(string name, float value)
+{
+    if(programId < 0) { DbgWarning("The material program is not linked, can't set any uniform."); return; }
+    int location = glGetUniformLocation(programId, name.c_str());
+    if(location < 0){ DbgWarning("The uniform '" << name << "' couldn't be found."); return; }
+    uniformsFloat[name] = value;
+}
+
+void Material::SetUniform(string name, int value)
+{
+    if(programId < 0) { DbgWarning("The material program is not linked, can't set any uniform."); return; }
+    int location = glGetUniformLocation(programId, name.c_str());
+    if(location < 0){ DbgWarning("The uniform '" << name << "' couldn't be found."); return; }
+    uniformsInt[name] = value;
+}
 
 void Material::Bind()
 {
-    if(programId > 0) glUseProgram(programId);
+    if(programId > 0)
+    {
+        glUseProgram(programId);
+        //Cargamos uniforms a saco
+        for(auto it : uniformsVec4)  glUniform4f(glGetUniformLocation(programId, it.first.c_str()), it.second.x, it.second.y, it.second.z, it.second.w);
+        for(auto it : uniformsVec3)  glUniform3f(glGetUniformLocation(programId, it.first.c_str()), it.second.x, it.second.y, it.second.z);
+        for(auto it : uniformsVec2)  glUniform2f(glGetUniformLocation(programId, it.first.c_str()), it.second.x, it.second.y);
+        for(auto it : uniformsFloat) glUniform1f(glGetUniformLocation(programId, it.first.c_str()), it.second);
+        for(auto it : uniformsInt)   glUniform1i(glGetUniformLocation(programId, it.first.c_str()), it.second);
+    }
     if(texture) texture->Bind();
+
 }
 
 void Material::UnBind()

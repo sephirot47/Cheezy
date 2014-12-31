@@ -9,12 +9,12 @@ int FileReader::GetFormat(const char *filepath)
     return CZ_FORMAT_UNKNOWN;
 }
 
-bool FileReader::ReadMeshFile(const char *filepath, vector<Vertex> &vertices, VertexFormat &vf, bool &triangles)
+bool FileReader::ReadMeshFile(const char *filepath, VertexGroup &vg, const VertexFormat &vf, bool &triangles)
 {
     int format = GetFormat(filepath);
     if(format == CZ_FORMAT_UNKNOWN){ DbgError("Unknown mesh format. Not loading mesh(" << filepath << ")"); return false;}
 
-    if(format == CZ_FORMAT_OBJ) return FileReader::ReadOBJ(filepath, vertices, vf, triangles);
+    if(format == CZ_FORMAT_OBJ) return FileReader::ReadOBJ(filepath, vg, vf, triangles);
 
     return false;
 }
@@ -77,9 +77,9 @@ void FileReader::GetOBJFormat(const char *filepath, bool &uvs, bool &normals, bo
     fclose(f);
 }
 
-bool FileReader::ReadOBJ(const char *filepath, vector<Vertex> &vertices, VertexFormat &vf, bool &triangles)
+bool FileReader::ReadOBJ(const char *filepath, VertexGroup &vg, const VertexFormat &vf, bool &triangles)
 {
-    vector<vec3> vertexPos;
+    vector<vec3> vertexPos, vertexNormals;
     vector<vec2> vertexUv;
     vector<unsigned int> vertexPosIndexes, vertexUvIndexes, vertexNormIndexes;
     bool hasUvs, hasNormals;
@@ -104,12 +104,20 @@ bool FileReader::ReadOBJ(const char *filepath, vector<Vertex> &vertices, VertexF
             DBG_ASSERT_RET_MSG(ss >> pos.z, errormsg);
             vertexPos.push_back(pos);
         }
-        else if(hasUvs && lineHeader == "vt") //Cargamos uvs, suponemos que antes ya se han leido las x,y,z de los vertices
+        else if(hasUvs && lineHeader == "vt") //Cargamos uvs
         {
             vec2 uv;
             DBG_ASSERT_RET_MSG(ss >> uv.x, errormsg);
             DBG_ASSERT_RET_MSG(ss >> uv.y, errormsg);
             vertexUv.push_back(uv);
+        }
+        else if(hasNormals && lineHeader == "vn") //Cargamos normals
+        {
+            vec3 normal;
+            DBG_ASSERT_RET_MSG(ss >> normal.x, errormsg);
+            DBG_ASSERT_RET_MSG(ss >> normal.y, errormsg);
+            DBG_ASSERT_RET_MSG(ss >> normal.z, errormsg);
+            vertexNormals.push_back(normal);
         }
         else if(lineHeader == "f")
         {
@@ -148,14 +156,51 @@ bool FileReader::ReadOBJ(const char *filepath, vector<Vertex> &vertices, VertexF
         }
     }
 
-    vertices = vector<Vertex>(vertexPosIndexes.size(), Vertex());
-    for(int i = 0; i < int(vertices.size()); ++i)
-        vertices[i].Create(vf); //Reservamos espacio para cada vertice
+    /*
+    vector<Vertex> vertices = vector<Vertex>(vertexPosIndexes.size(), Vertex());
+    for(int i = 0; i < int(vertices.size()); ++i) vertices[i].Create(vf); //Reservamos espacio para cada vertice
 
+    int stride = vf.GetStride();
+    data = malloc(vertexCount * stride);
+    char *p = (char*)data;
     for(int i = 0; i < int(vertexPosIndexes.size()); ++i)
     {
-        vertices[i].SetAttribute("pos", &vertexPos[vertexPosIndexes[i]-1], vf);
-        if(hasUvs) vertices[i].SetAttribute("uv", &vertexUv[vertexUvIndexes[i]-1], vf);
+        vertices[i].SetPositionAttribute(&vertexPos[vertexPosIndexes[i]-1], vf);
+
+        float defaultUvs[2] = {(float)i/vertexPosIndexes.size(), (float)i/vertexPosIndexes.size()};
+        if(hasUvs) vertices[i].SetTexCoordsAttribute(&vertexUv[vertexUvIndexes[i]-1], vf);
+        else vertices[i].SetTexCoordsAttribute(&defaultUvs, vf);
+
+        float defaultNormals[3] = {0.0f, 1.0f, 0.0f};
+        if(hasNormals) vertices[i].SetNormalsAttribute(&vertexNormals[vertexNormIndexes[i]-1], vf);
+        else vertices[i].SetNormalsAttribute(&defaultNormals, vf);
+
+        memcpy((void*)p, vertices[i].data, stride);
+        p += stride;
+    }
+    */
+
+    vg.Init(int(vertexPosIndexes.size()), vf); //Creamos el vertexGroup con el vertexCount y el vertexFormat adecuados
+    float defaultUvs[2] = {0.5f, 0.5f};
+    float defaultNormals[3] = {0.0f, 0.0f, 1.0f};
+    DbgLog("________" << vf.GetStride() << ", " << vf.GetOffsetOf("normal"));
+    for(int i = 0; i < vg.GetVertexCount(); ++i)
+    {
+        string posName = vf.GetPositionAttribute().GetName();
+        string uvsName = vf.GetTexCoordsAttribute().GetName();
+        string normalsName = vf.GetNormalsAttribute().GetName();
+
+        vg.SetAttribute(posName, &vertexPos[vertexPosIndexes[i]-1], i);
+
+        if(hasUvs)
+            vg.SetAttribute(uvsName, &vertexUv[vertexUvIndexes[i]-1], i);
+        else
+            vg.SetAttribute(uvsName, &defaultUvs, i);
+
+        if(hasNormals)
+            vg.SetAttribute(normalsName, &vertexNormals[vertexNormIndexes[i]-1], i);
+        else
+            vg.SetAttribute(normalsName, &defaultNormals, i);
     }
     return true;
 }

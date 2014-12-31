@@ -14,7 +14,7 @@ Vertex::~Vertex()
     }
 }
 
-void Vertex::Create(const VertexFormat &vf)
+void Vertex::Init(const VertexFormat &vf)
 {
     int totalVertexSize = vf.GetStride();
     if(totalVertexSize > 0) data = malloc(totalVertexSize);
@@ -40,7 +40,7 @@ void Vertex::SetAttribute(string name, void* pvalue, VertexFormat &vf)
     if(offset == -1) return;
     int type = vf.GetAttribute(name).GetComponentsType();
     void *pdata  = GetAttributePointer(name, vf);
-    for(int i = 0; i < vf.GetAttribute(name).GetComponentsNum(); ++i)
+    for(int i = 0; i < vf.GetAttribute(name).GetComponentsCount(); ++i)
     {
         if(type == GL_DOUBLE)      *((double*)pdata + i)        = *((double*)pvalue + i);
         else if(type == GL_FLOAT)  *((float*)pdata + i)         = *((float*)pvalue + i);
