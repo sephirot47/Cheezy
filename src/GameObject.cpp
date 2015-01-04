@@ -13,6 +13,7 @@ GameObject::GameObject()
     transform->rot = quat(vec3(0, 0, 0));
     transform->scale = vec3(1, 1, 1);
 
+    /*
     VertexAttribute posAttr("pos", 3, GL_FLOAT), uvAttr("uv", 2, GL_FLOAT), normalAttr("normal", 3, GL_FLOAT);
     VertexFormat vf;
     vf.AddAttribute(posAttr);
@@ -21,10 +22,10 @@ GameObject::GameObject()
     vf.SetPositionAttributeName("pos");
     vf.SetTexCoordsAttributeName("uv");
     vf.SetNormalsAttributeName("normal");
+    */
 
-    Mesh *m = new Mesh(vf);  //Create the default Mesh
+    Mesh *m = new Mesh();  //Create the default Mesh
     AddComponent(*m);
-
     mesh = m;
     mesh->LoadFromFile("models/gordaco.obj");
 }
@@ -62,9 +63,9 @@ void GameObject::_Update()
 
 void GameObject::Update()
 {
-    mesh->material->SetUniform("multiplier", 1.5f);
-    mesh->material->SetUniform("mixing", 0.5f);
-    mesh->material->SetUniform("mec", vec4((sin(Time::GetMiliseconds() / 50.0)+1.0f)*0.5f, (cos(Time::GetMiliseconds() / 50.0)+1.0f)*0.5f, 0.0f, 1.0f));
+    mesh->material->SetUniform("multiplier", 0.5f + (float)fabs(sin(Time::GetMiliseconds() / 500.0f))*2.0f );
+    mesh->material->SetUniform("mixing", 0.9f);
+    mesh->material->SetUniform("mec", vec4((sin(Time::GetMiliseconds() / 500.0)+1.0f)*0.5f, (cos(Time::GetMiliseconds() / 500.0)+1.0f)*0.5f, 0.0f, 1.0f));
 }
 
 bool GameObject::AddComponent(Component &c)

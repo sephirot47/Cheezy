@@ -28,28 +28,28 @@ unsigned char* Image::LoadFromFile(const char *filepath)
     return data;
 }
 
-int Image::GetWidth()
+int Image::GetWidth() const
 {
     return width;
 }
 
-int Image::GetHeight()
+int Image::GetHeight() const
 {
     return height;
 }
 
-int Image::GetSize()
+int Image::GetSize() const
 {
     return size;
 }
 
 
-unsigned char* Image::GetData()
+unsigned char* Image::GetData() const
 {
     return data;
 }
 
-unsigned int Image::GetFormat()
+unsigned int Image::GetFormat() const
 {
     return format;
 }

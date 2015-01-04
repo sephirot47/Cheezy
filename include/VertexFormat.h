@@ -10,6 +10,7 @@
 #include <vector>
 
 #include "include/Debug.h"
+#include "include/Material.h"
 #include "include/VertexAttribute.h"
 #include "glm/glm.hpp"
 
@@ -29,7 +30,10 @@ public:
 
     VertexFormat();
     VertexFormat(const VertexFormat &vf);
+    VertexFormat& operator=(const VertexFormat &vf);
     ~VertexFormat();
+
+    static VertexFormat* GetDefault();
 
     int GetOffsetOf(string attributeName) const;
     int GetOffsetOf(int i) const;
@@ -38,7 +42,7 @@ public:
     int GetStride() const;
     int GetAttributesNum() const;
 
-    void AddAttribute(VertexAttribute &va);
+    void AddAttribute(const VertexAttribute &va);
     VertexAttribute GetAttribute(int i) const;
     VertexAttribute GetAttribute(string name) const;
 
@@ -50,7 +54,8 @@ public:
     VertexAttribute GetTexCoordsAttribute() const;
     VertexAttribute GetNormalsAttribute() const;
 
-    unsigned int CreateVAO(int vboId);
+    int CreateVAO(int vboId);
+    int CreateVAOForMaterial(int vboId, const Material &material);
     void DeleteVAO();
 };
 

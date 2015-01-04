@@ -17,6 +17,8 @@ private:
 public:
 
     VertexAttribute();
+    VertexAttribute(const VertexAttribute &va);
+    VertexAttribute& operator=(const VertexAttribute &va);
     VertexAttribute(string name, int nComponents, int componentsType);
 
     string GetName() const;

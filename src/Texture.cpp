@@ -49,14 +49,19 @@ bool Texture::LoadFromFile(const char *filepath)
     return true;
 }
 
-unsigned int Texture::GetId()
+unsigned int Texture::GetId() const
 {
     return id;
 }
 
-unsigned int Texture::GetFormat()
+unsigned int Texture::GetFormat() const
 {
     return format;
+}
+
+unsigned int Texture::GetSize() const
+{
+    return size;
 }
 
 void Texture::Bind()

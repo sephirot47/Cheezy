@@ -5,12 +5,11 @@
 
 #include <GL/gl.h>
 #include <GL/glext.h>
+#include <string>
 #include <vector>
 #include "include/Debug.h"
 #include "include/Component.h"
 #include "include/Bindable.h"
-
-
 
 #define CZ_VERTEX_SHADER GL_VERTEX_SHADER
 #define CZ_FRAGMENT_SHADER GL_FRAGMENT_SHADER
@@ -23,7 +22,7 @@ class Shader
 {
 private:
 
-    char* srcCode;
+    char *srcCode, *filepath;
     int srcCodeLength;
     unsigned int shaderId;
     unsigned int type; //VertexFormat o fragment
@@ -31,7 +30,12 @@ private:
 public:
 
     Shader();
+    Shader(const Shader &shader);
+    Shader& operator=(const Shader &shader);
     virtual ~Shader();
+
+    static Shader* GetDefaultVertex();
+    static Shader* GetDefaultFragment();
 
     ///\brief Creates a shader of type shaderType
     ///       shaderType can be CZ_VERTEX_SHADER or CZ_FRAGMENT_SHADER
@@ -45,13 +49,15 @@ public:
     ///       If something went wrong, returns false. Otherwise, returns true.
     bool LoadFromFile(const char *filepath);
 
+    bool LoadFromSourceCode(const char *srcCode);
+
     ///\brief Returns the shader id.
     ///       If the shader hasn't been loaded yet from a file, returns -1.
-    int GetId();
+    int GetId() const;
 
     ///\brief Returns the shader type.
     ///       It can be CZ_VERTEX_SHADER or CZ_FRAGMENT_SHADER.
-    int GetType();
+    int GetType() const;
 };
 
 #endif // SHADER_H

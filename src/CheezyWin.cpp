@@ -42,7 +42,7 @@ void CheezyWin::SetCurrentScene(const char* sceneName)
     currentScene = GetScene(sceneName);
 }
 
-void CheezyWin::DrawAxis()
+void CheezyWin::DrawAxis() const
 {
     const float size = 999999.0f;
     glMatrixMode(GL_MODELVIEW);
@@ -67,7 +67,7 @@ void CheezyWin::DrawAxis()
     glPopMatrix();
 }
 
-void CheezyWin::Draw()
+void CheezyWin::Draw() const
 {
     glClearColor(0.0, 0.0, 0.05, 1.0);
     glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);

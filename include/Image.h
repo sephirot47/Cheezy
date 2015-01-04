@@ -21,11 +21,11 @@ public:
     Image(const char *filepath);
     unsigned char* LoadFromFile(const char *filepath);
 
-    int GetWidth();
-    int GetHeight();
-    int GetSize();
-    unsigned char* GetData();
-    unsigned int GetFormat();
+    int GetWidth() const;
+    int GetHeight() const;
+    int GetSize() const;
+    unsigned char* GetData() const;
+    unsigned int GetFormat() const;
 };
 
 #endif // IMAGE_H

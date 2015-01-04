@@ -30,18 +30,22 @@ private:
 
 public:
 
-    Material *material;
-    VertexFormat vertexFormat;
+    static Mesh* GetDefault();
 
+    Material *material;
+    VertexFormat *vertexFormat;
+
+    Mesh();
+    Mesh(const Mesh& mesh);
     Mesh(VertexFormat& vf);
     virtual ~Mesh();
 
-    void Init(){}
+    void Init() {}
 
-    void Draw();
+    void Draw() const;
     bool LoadFromFile(const char *filepath);
 
-    int GetVertexCount();
+    int GetVertexCount() const;
 };
 
 #endif // MESH_H

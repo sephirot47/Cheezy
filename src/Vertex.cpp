@@ -5,6 +5,24 @@ Vertex::Vertex()
     data = 0;
 }
 
+Vertex::Vertex(const Vertex &v, const VertexFormat &vf)
+{
+    int stride = vf.GetStride();
+    if(v.data != 0 and stride > 0)
+    {
+        data = malloc(stride);
+        memcpy(data, v.data, stride);
+    }
+    else data = 0;
+}
+
+Vertex &Vertex::operator=(const Vertex &v)
+{
+    data = v.data; //Pfff...por poner algo :S
+    DbgWarning("In order to copy a Vertex you should use the copy constructor passing the vertex's VertexFormat!");
+    return *this;
+}
+
 Vertex::~Vertex()
 {
     if(data)
@@ -21,20 +39,20 @@ void Vertex::Init(const VertexFormat &vf)
     else data = 0;
 }
 
-void* Vertex::GetAttributePointer(string name, VertexFormat &vf)
+void* Vertex::GetAttributePointer(string name, const VertexFormat &vf) const
 {
     int offset = vf.GetOffsetOf(name);
     if(offset == -1) return 0; //No existe el atributo, return
     return (void*)((char*)data + offset); //(fem cast a char xk la aritmetica de punters sumi de byte en byte(si es void no sap com sumar))
 }
 
-bool Vertex::HasAttribute(string name, VertexFormat &vf)
+bool Vertex::HasAttribute(string name, const VertexFormat &vf) const
 {
     int offset = vf.GetOffsetOf(name);
     return (offset != -1);
 }
 
-void Vertex::SetAttribute(string name, void* pvalue, VertexFormat &vf)
+void Vertex::SetAttribute(string name, void* pvalue, const VertexFormat &vf)
 {
     int offset = vf.GetOffsetOf(name);
     if(offset == -1) return;

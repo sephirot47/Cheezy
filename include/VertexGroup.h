@@ -14,13 +14,15 @@ private:
 public:
     void *data;
     VertexGroup();
+    VertexGroup(const VertexGroup &vg);
+    VertexGroup& operator=(const VertexGroup &vg);
     void Init(const VertexGroup& vg);
     void Init(int vertexCount);
     void Init(const VertexFormat &vf);
     void Init(int vertexCount, const VertexFormat &vf);
     virtual ~VertexGroup();
 
-    void         SetAttribute(string attributeName, void *pvalue, int vertexIndex);
+    void SetAttribute(string attributeName, void *pvalue, int vertexIndex);
 
     Vertex* GetVertexPointer(int vertexIndex) const;
     void*   GetAttributePointer(string attributeName, int vertexIndex) const;
@@ -29,7 +31,7 @@ public:
     void* GetRawData() const;
     VertexFormat GetVertexFormat() const;
 
-    void   SetVertex(int vertexIndex, Vertex &v);
+    void   SetVertex(int vertexIndex, const  Vertex &v);
     Vertex GetVertex(int vertexIndex) const;
 };
 

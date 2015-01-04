@@ -1,0 +1,8 @@
+#version 130
+
+varying vec2 uvFrag;
+
+void main()
+{
+	gl_FragColor = vec4(uvFrag.x, uvFrag.y, 0.0, 1.0);
+}

@@ -7,6 +7,39 @@ VertexGroup::VertexGroup()
     vertexCount = 0;
 }
 
+VertexGroup::VertexGroup(const VertexGroup &vg)
+{
+    if(data) free(data);
+    if(vg.data)
+    {
+        int dataSize = vg.vertexCount * vg.vertexFormat.GetStride();
+        data = malloc(dataSize);
+        memcpy(data, vg.data, dataSize);
+    }
+    else data = 0;
+
+    vertexFormat = vg.vertexFormat;
+    vertexCount = vg.vertexCount;
+}
+
+VertexGroup &VertexGroup::operator=(const VertexGroup &vg)
+{
+    if(this == &vg) return *this;
+
+    if(data) free(data);
+    if(vg.data)
+    {
+        int dataSize = vg.vertexCount * vg.vertexFormat.GetStride();
+        data = malloc(dataSize);
+        memcpy(data, vg.data, dataSize);
+    }
+    else data = 0;
+
+    vertexFormat = vg.vertexFormat;
+    vertexCount = vg.vertexCount;
+    return *this;
+}
+
 void VertexGroup::Init(const VertexGroup& vg)
 {
     vertexCount = vg.vertexCount;
@@ -110,7 +143,7 @@ void* VertexGroup::GetRawData() const { return data; }
 VertexFormat VertexGroup::GetVertexFormat() const { return vertexFormat; }
 
 
-void VertexGroup::SetVertex(int vertexIndex, Vertex &v)
+void VertexGroup::SetVertex(int vertexIndex, const Vertex &v)
 {
     if(vertexIndex < 0 or vertexIndex > vertexCount)
     {

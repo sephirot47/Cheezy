@@ -2,8 +2,6 @@
 #define TRANSFORM_H
 
 #include "include/Component.h"
-
-
 #include "glm/glm.hpp"
 
 using namespace glm;
@@ -16,6 +14,8 @@ public:
     quat rot;
 
     Transform();
+    Transform(const Transform &t);
+    Transform& operator=(const Transform &t);
     virtual ~Transform();
     void Init(){}
 };

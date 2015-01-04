@@ -24,9 +24,10 @@ int main()
 
     Camera cam = Camera();
     Scene *scene = win.CreateScene("FirstScene");
-    GameObject *go2 = new GameObject("go2");
 
+    GameObject *go2 = new GameObject("go2");
     scene->Add(go2);
+
     scene->SetCamera(cam);
 
     go2->transform->scale = vec3(0.05, 0.05, 0.05);

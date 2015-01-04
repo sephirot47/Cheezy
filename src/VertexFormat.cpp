@@ -20,8 +20,41 @@ VertexFormat::VertexFormat(const VertexFormat &vf) : VertexFormat()
     this->normalsName = vf.normalsName;
 }
 
+VertexFormat &VertexFormat::operator=(const VertexFormat &vf)
+{
+    if(this == &vf) return *this;
+    posName = vf.posName;
+    uvsName = vf.uvsName;
+    normalsName = vf.normalsName;
+    attributesCount = vf.attributesCount;
+    attributes = vf.attributes;
+    insertionOrder = vf.insertionOrder;
+    vaoId = -1;
+    return *this;
+}
+
 VertexFormat::~VertexFormat()
 {
+}
+
+VertexFormat *VertexFormat::GetDefault()
+{
+    string defaultVertexFormatPositionName = "pos";
+    string defaultVertexFormatTexCoordName = "uv";
+    string defaultVertexFormatNormalsName  = "normal";
+
+    VertexAttribute posAttr(defaultVertexFormatPositionName, 3, GL_FLOAT),
+                     uvAttr(defaultVertexFormatTexCoordName, 2, GL_FLOAT),
+                 normalAttr(defaultVertexFormatNormalsName,  3, GL_FLOAT);
+
+    VertexFormat *defaultVertexFormat = new VertexFormat();
+    defaultVertexFormat->AddAttribute(posAttr);
+    defaultVertexFormat->AddAttribute(uvAttr);
+    defaultVertexFormat->AddAttribute(normalAttr);
+    defaultVertexFormat->SetPositionAttributeName(defaultVertexFormatPositionName);
+    defaultVertexFormat->SetTexCoordsAttributeName(defaultVertexFormatTexCoordName);
+    defaultVertexFormat->SetNormalsAttributeName(defaultVertexFormatNormalsName);
+    return defaultVertexFormat;
 }
 
 int VertexFormat::GetOffsetOf(string attributeName) const
@@ -83,7 +116,7 @@ int VertexFormat::GetAttributesNum() const
     return attributesCount;
 }
 
-void VertexFormat::AddAttribute(VertexAttribute &va)
+void VertexFormat::AddAttribute(const VertexAttribute &va)
 {
     DBG_ASSERT_RET_VOID_MSG((va.GetName() == ""), "The vertex attribute you passed doesn't have a name.");
     DBG_ASSERT_RET_VOID_MSG((va.GetComponentsCount() == 0), "The vertex attribute have 0 elements.");
@@ -135,10 +168,10 @@ VertexAttribute VertexFormat::GetNormalsAttribute() const
     return VertexAttribute();
 }
 
-unsigned int VertexFormat::CreateVAO(int vboId)
+int VertexFormat::CreateVAO(int vboId)
 {
     glGenVertexArrays(1, &vaoId);
-    if(vaoId < 0) { DbgError("Error generating the VAO"); return -1; }
+    if(vaoId < 0) { DbgError("Error generating the VAO. Returning -1."); return -1; }
 
     glBindVertexArray(vaoId);
     glBindBuffer(GL_ARRAY_BUFFER, vboId);
@@ -153,6 +186,38 @@ unsigned int VertexFormat::CreateVAO(int vboId)
                               stride,
                               (void*)offset);
         glEnableVertexAttribArray(i);
+        offset += attr.GetSize();
+    }
+    glBindVertexArray(0);
+    return vaoId;
+}
+
+int VertexFormat::CreateVAOForMaterial(int vboId, const Material &material)
+{
+    int programId = material.GetProgramId();
+    if(programId < 0) { DbgWarning("Passing a material whose program isn't linked yet. Returning -1."); return -1;}
+
+    glGenVertexArrays(1, &vaoId);
+    if(vaoId < 0) { DbgError("Error generating the VAO"); return -1; }
+
+    glBindVertexArray(vaoId);
+    glBindBuffer(GL_ARRAY_BUFFER, vboId);
+
+
+    int offset = 0, stride = GetStride();
+    for(int i = 0; i < attributesCount; ++i)
+    {
+        int location = glGetAttribLocation(programId, insertionOrder[i].c_str());
+        if(location < 0) continue;
+
+        VertexAttribute attr = attributes.find(insertionOrder[i])->second;
+        glVertexAttribPointer(location,
+                              attr.GetComponentsCount(),
+                              attr.GetComponentsType(),
+                              GL_FALSE,
+                              stride,
+                              (void*)offset);
+        glEnableVertexAttribArray(location);
         offset += attr.GetSize();
     }
     glBindVertexArray(0);

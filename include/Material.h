@@ -33,7 +33,10 @@ private:
 public:
 
     Material();
+    Material(const Material &m);
     virtual ~Material();
+
+    static Material* GetDefault();
 
     ///\brief Attaches to the Material a Shader of type shaderType
     ///       If there was a previous attached Shader of the same type, it will be replaced
@@ -42,8 +45,8 @@ public:
 
     ///\brief Returns the id of the shader attached to this Material
     ///       If no shader is attached, returns -1
-    int GetShaderId(unsigned int shaderType);
-    int GetProgramId();
+    int GetShaderId(unsigned int shaderType) const;
+    int GetProgramId() const;
 
     void SetTexture(Texture *t);
 
@@ -52,6 +55,8 @@ public:
     void SetUniform(string name, vec2 value);
     void SetUniform(string name, float value);
     void SetUniform(string name, int value);
+
+    int GetAttributeLocation(string attributeName) const;
 
     void Bind();
     void UnBind();

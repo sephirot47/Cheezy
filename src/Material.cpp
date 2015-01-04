@@ -4,8 +4,19 @@ Material::Material()
 {
     vertexShader = fragmentShader = 0;
     texture = 0;
+    programId = 0;
+}
 
-    programId = -1;
+Material::Material(const Material &m)
+{
+    vertexShader = fragmentShader = 0;
+    texture = 0;
+    programId = 0;
+    if(m.vertexShader)   vertexShader   = new Shader(*m.vertexShader);
+    if(m.fragmentShader) fragmentShader = new Shader(*m.fragmentShader);
+    if(m.texture) texture = m.texture;
+    if(m.vertexShader)   AttachShader(*vertexShader);
+    if(m.fragmentShader) AttachShader(*fragmentShader);
 }
 
 Material::~Material()
@@ -15,8 +26,18 @@ Material::~Material()
     if(texture) delete texture;
 }
 
+Material *Material::GetDefault()
+{
+    Material *defaultMaterial = new Material();
+    defaultMaterial->AttachShader(*Shader::GetDefaultVertex());
+    defaultMaterial->AttachShader(*Shader::GetDefaultFragment());
+    return defaultMaterial;
+}
+
 bool Material::AttachShader(Shader &shader)
 {
+    if(programId > 0) DBG_ASSERT_GL_RET(glDeleteProgram(programId));
+
     int shaderType = shader.GetType();
     switch(shaderType)
     {
@@ -36,33 +57,28 @@ bool Material::AttachShader(Shader &shader)
     if(vertexShader)   glAttachShader(programId, vertexShader->GetId());
     if(fragmentShader) glAttachShader(programId, fragmentShader->GetId());
 
-    //Link it!
+    //Link it!¡
     DBG_ASSERT_GL_RET(glLinkProgram(programId));
 
     int isLinked;
     glGetProgramiv(programId, GL_LINK_STATUS, &isLinked);
     if(isLinked == GL_FALSE)
     {
-        DbgError("There was an error when trying to link your shaders: ");
-
         char errorInfo[CZ_MAX_MATERIAL_ERROR_LOG_SIZE];
         glGetProgramInfoLog(programId, CZ_MAX_MATERIAL_ERROR_LOG_SIZE, 0, errorInfo);
-
+        DbgError("There was an error when trying to link your shaders: ");
         DbgLog(errorInfo);
-
-        //Undo the changes
         glDeleteProgram(programId);
         return false;
     }
 
-    //Detach the shaders(we dont need them attached anymore)
     if(vertexShader)   glDetachShader(programId, vertexShader->GetId());
     if(fragmentShader) glDetachShader(programId, fragmentShader->GetId());
 
     return true; //Everything went GOOD!
 }
 
-int Material::GetShaderId(unsigned int shaderType)
+int Material::GetShaderId(unsigned int shaderType) const
 {
     switch(shaderType)
     {
@@ -72,7 +88,7 @@ int Material::GetShaderId(unsigned int shaderType)
     return -1;
 }
 
-int Material::GetProgramId()
+int Material::GetProgramId() const
 {
     return programId;
 }
@@ -84,42 +100,38 @@ void Material::SetTexture(Texture *t)
 
 void Material::SetUniform(string name, vec4 value)
 {
-    if(programId < 0) { DbgWarning("The material program is not linked, can't set any uniform."); return; }
-    int location = glGetUniformLocation(programId, name.c_str());
-    if(location < 0){ DbgWarning("The uniform '" << name << "' couldn't be found."); return; }
+    if(programId <= 0) { DbgWarning("The material program is not linked, can't set any uniform."); return; }
     uniformsVec4[name] = value;
 }
 
 void Material::SetUniform(string name, vec3 value)
 {
-    if(programId < 0) { DbgWarning("The material program is not linked, can't set any uniform."); return; }
-    int location = glGetUniformLocation(programId, name.c_str());
-    if(location < 0){ DbgWarning("The uniform '" << name << "' couldn't be found."); return; }
+    if(programId <= 0) { DbgWarning("The material program is not linked, can't set any uniform."); return; }
     uniformsVec3[name] = value;
 }
 
 void Material::SetUniform(string name, vec2 value)
 {
-    if(programId < 0) { DbgWarning("The material program is not linked, can't set any uniform."); return; }
-    int location = glGetUniformLocation(programId, name.c_str());
-    if(location < 0){ DbgWarning("The uniform '" << name << "' couldn't be found."); return; }
+    if(programId <= 0) { DbgWarning("The material program is not linked, can't set any uniform."); return; }
     uniformsVec2[name] = value;
 }
 
 void Material::SetUniform(string name, float value)
 {
-    if(programId < 0) { DbgWarning("The material program is not linked, can't set any uniform."); return; }
-    int location = glGetUniformLocation(programId, name.c_str());
-    if(location < 0){ DbgWarning("The uniform '" << name << "' couldn't be found."); return; }
+    if(programId <= 0) { DbgWarning("The material program is not linked, can't set any uniform."); return; }
     uniformsFloat[name] = value;
 }
 
 void Material::SetUniform(string name, int value)
 {
-    if(programId < 0) { DbgWarning("The material program is not linked, can't set any uniform."); return; }
-    int location = glGetUniformLocation(programId, name.c_str());
-    if(location < 0){ DbgWarning("The uniform '" << name << "' couldn't be found."); return; }
+    if(programId <= 0) { DbgWarning("The material program is not linked, can't set any uniform."); return; }
     uniformsInt[name] = value;
+}
+
+int Material::GetAttributeLocation(string attributeName) const
+{
+    if(programId <= 0) { DbgWarning("The material program is not linked, can't set any uniform. Returning -1."); return -1; }
+    return glGetAttribLocation(programId, attributeName.c_str());
 }
 
 void Material::Bind()

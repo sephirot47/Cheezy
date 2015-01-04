@@ -19,19 +19,19 @@ public:
     Camera();
 
     ///\brief Returns the forward vector of the camera in the worldspace(direction the camera is facing to)
-    vec3 GetForward();
+    vec3 GetForward() const;
 
     ///\brief Returns the right vector of the camera in the worldspace
-    vec3 GetRight();
+    vec3 GetRight() const;
 
     ///\brief Returns the up vector of the camera in the worldspace
-    vec3 GetUp();
+    vec3 GetUp() const;
 
     ///\brief Moves the camera to eye, and rotates it to make it look to to, with the up vector of the camera aligned with up
     void LookAt(vec3 camPos, vec3 lookTo, vec3 up);
 
     ///\brief Applies the matrices transformations of the stage perspective setting and camera position & rotation
-    void ApplyPerspective();
+    void ApplyPerspective() const;
 };
 
 #endif // CAMERA_H

@@ -13,7 +13,7 @@ void Camera::LookAt(vec3 camPos, vec3 lookTo, vec3 up)
     rot = quat_cast(x);
 }
 
-void Camera::ApplyPerspective()
+void Camera::ApplyPerspective() const
 {
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
@@ -31,17 +31,17 @@ void Camera::ApplyPerspective()
     glTranslatef(-pos.x, -pos.y, -pos.z);
 }
 
-vec3 Camera::GetForward()
+vec3 Camera::GetForward() const
 {
     return conjugate(rot) * vec3(0, 0, -1);
 }
 
-vec3 Camera::GetUp()
+vec3 Camera::GetUp() const
 {
     return conjugate(rot) * vec3(0, 1, 0);
 }
 
-vec3 Camera::GetRight()
+vec3 Camera::GetRight() const
 {
     return conjugate(rot) * vec3(1, 0, 0);
 }

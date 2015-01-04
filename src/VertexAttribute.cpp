@@ -7,6 +7,24 @@ VertexAttribute::VertexAttribute()
     componentsNum = componentsSize = 0;
 }
 
+VertexAttribute::VertexAttribute(const VertexAttribute &va)
+{
+    name = va.name;
+    componentsType = va.componentsType;
+    componentsNum = va.componentsNum;
+    componentsSize = va.componentsSize;
+}
+
+VertexAttribute &VertexAttribute::operator=(const VertexAttribute &va)
+{
+    if(this == &va) return *this;
+    name = va.name;
+    componentsType = va.componentsType;
+    componentsNum = va.componentsNum;
+    componentsSize = va.componentsSize;
+    return *this;
+}
+
 VertexAttribute::VertexAttribute(string name, int nComponents, int componentsType)
 {
     bool correct = true;

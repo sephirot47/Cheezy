@@ -29,9 +29,9 @@ public:
 
     bool LoadFromFile(const char *filepath);
 
-    unsigned int GetId();
-    unsigned int GetFormat();
-    unsigned int GetSize();
+    unsigned int GetId() const;
+    unsigned int GetFormat() const;
+    unsigned int GetSize() const;
 
     void Bind();
     void UnBind();
