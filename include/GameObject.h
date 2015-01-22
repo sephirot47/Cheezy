@@ -26,7 +26,7 @@ using namespace glm;
 class GameObject
 {
 typedef map<string, GameObject*> GameObjMap;
-typedef map<string, Component*> CompMap;
+typedef map<ComponentType, Component*> CompMap;
 
 private:
     GameObjMap gameObjects;
@@ -57,14 +57,14 @@ public:
 
     ///\brief Returns true if the GameObject already contains a component of type type.
     ///       Returns false otherwise.
-    bool HasComponent(const char *type) const;
+    bool HasComponent(ComponentType type) const;
 
     ///\brief Returns a pointer to the component of type type of this GameObject.
     ///       If the GameObject doesn't contain a component of type type, returns null.
-    Component* GetComponent(const char *type) const;
+    Component* GetComponent(ComponentType type) const;
 
     ///\brief Removes the component c from the GameObject
-    void RemoveComponent(string type);
+    void RemoveComponent(ComponentType type);
 
     void _Update();
     void _Draw();

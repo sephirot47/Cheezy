@@ -56,7 +56,7 @@ bool GameObject::AddComponent(Component *c)
 {
     if(components.find(c->type) == components.end())
     {
-        components.insert(pair<string, Component*>(c->type, c));
+        components.insert(pair<ComponentType, Component*>(c->type, c));
         return true;
     }
     else
@@ -66,17 +66,17 @@ bool GameObject::AddComponent(Component *c)
     }
 }
 
-bool GameObject::HasComponent(const char *type) const
+bool GameObject::HasComponent(ComponentType type) const
 {
     return components.find(type) != components.end();
 }
 
-Component* GameObject::GetComponent(const char *type) const
+Component* GameObject::GetComponent(ComponentType type) const
 {
     return components.find(type)->second;
 }
 
-void GameObject::RemoveComponent(string type)
+void GameObject::RemoveComponent(ComponentType type)
 {
     auto it = components.find(type);
     if(it == components.end()) DbgWarning("Removing a component that doesnt exist ('" << type << "'')");

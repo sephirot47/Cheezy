@@ -27,7 +27,7 @@ int main()
 
     GameObject *go = new GameObject("go");
     GameObject *light = new GameObject("lus");
-    light->RemoveComponent("Mesh");
+    light->RemoveComponent(MeshType);
     light->AddComponent(new Light());
     light->transform->pos = vec3(100.0, 100.0, 100.0);
 

@@ -48,7 +48,7 @@ void Scene::Draw()
     vector<GameObject*> gameObjectsWithLight;
     for(auto it : gameObjects)
     {
-        if(it.second->HasComponent("Light")) gameObjectsWithLight.push_back(it.second);
+        if(it.second->HasComponent(LightType)) gameObjectsWithLight.push_back(it.second);
     }
 
     for(auto it : gameObjects)
@@ -60,7 +60,7 @@ void Scene::Draw()
             if(light->transform != 0 && go->mesh != 0 && go->mesh->material != 0)
             {
                 go->mesh->material->SetUniform("lightPos",       light->transform->pos);
-                go->mesh->material->SetUniform("lightIntensity", ((Light*)(light->GetComponent("Light")))->GetIntensity());
+                go->mesh->material->SetUniform("lightIntensity", ((Light*)(light->GetComponent(LightType)))->GetIntensity());
             }
         }
 
