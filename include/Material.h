@@ -34,9 +34,10 @@ public:
 
     Material();
     Material(const Material &m);
+    Material& operator=(const Material &m);
     virtual ~Material();
 
-    static Material* GetDefault();
+    static void GetDefault(Material &m);
 
     ///\brief Attaches to the Material a Shader of type shaderType
     ///       If there was a previous attached Shader of the same type, it will be replaced

@@ -8,8 +8,10 @@ Mesh::Mesh()
     vaoId = -1;
 
     glGenBuffers(1, &vboId);
-    vertexFormat = VertexFormat::GetDefault();
-    material = Material::GetDefault();
+    vertexFormat = new VertexFormat();
+    VertexFormat::GetDefault(*vertexFormat);
+    material = new Material();
+    Material::GetDefault(*material);
 }
 
 Mesh::Mesh(const Mesh &mesh)
@@ -36,17 +38,17 @@ Mesh::Mesh(VertexFormat &vf)
     vertexFormat = new VertexFormat(vf);
 
     material = new Material();
-    Shader vertexShader(VertexShader, "Shaders/vertexShader.glsl"),
-           fragmentShader(FragmentShader, "Shaders/fragmentShader.glsl");
-    material->AttachShader(vertexShader);
-    material->AttachShader(fragmentShader);
+    Shader  *vertexShader   = new Shader(VertexShader, "Shaders/vertexShader.glsl"),
+            *fragmentShader = new Shader(FragmentShader, "Shaders/fragmentShader.glsl");
+    material->AttachShader(*vertexShader);
+    material->AttachShader(*fragmentShader);
     material->SetTexture(new Texture("models/textures/gordaco.bmp"));
 }
 
 Mesh::~Mesh()
 {
-    vertexFormat->DeleteVAO();
-    delete material;
+    if(vertexFormat){ vertexFormat->DeleteVAO(); delete vertexFormat;}
+    if(material) delete material;
 }
 
 void Mesh::AddVertices(const vector<Vertex> &vertices, int startingIndex)
@@ -68,11 +70,9 @@ void Mesh::RemoveVertex(int i)
 
 }
 
-Mesh* const Mesh::GetDefault()
+void Mesh::GetDefault(Mesh &m)
 {
-    Mesh *defaultMesh = new Mesh(*VertexFormat::GetDefault());
-    defaultMesh->material = Material::GetDefault();
-    return defaultMesh;
+    m = Mesh();
 }
 
 void Mesh::Draw() const
@@ -108,6 +108,16 @@ bool Mesh::LoadFromFile(const char *filepath)
 }
 
 int Mesh::GetVertexCount() const { return vertexCount; }
+
+Material *Mesh::GetMaterial()
+{
+    return material;
+}
+
+VertexFormat *Mesh::GetVertexFormat()
+{
+    return vertexFormat;
+}
 
 void Mesh::Destroy()
 {

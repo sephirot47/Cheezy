@@ -26,10 +26,9 @@ Transform &Transform::operator=(const Transform &t)
     return *this;
 }
 
-Transform* const Transform::GetDefault()
+void Transform::GetDefault(Transform &t)
 {
-    Transform *t = new Transform();
-    return t;
+    t = Transform();
 }
 
 Transform::~Transform()

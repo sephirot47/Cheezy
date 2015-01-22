@@ -6,7 +6,7 @@ Texture::Texture()
     size = 0;
 }
 
-Texture::Texture(Texture &tex)
+Texture::Texture(const Texture &tex) : Texture()
 {
     glGenTextures(1, &id);
     width = tex.width;
@@ -17,14 +17,14 @@ Texture::Texture(Texture &tex)
     memcpy(data, tex.data, tex.size);
 }
 
-Texture::~Texture()
-{
-    if(data) delete data;
-}
-
 Texture::Texture(const char *filepath) : Texture()
 {
     LoadFromFile(filepath);
+}
+
+Texture::~Texture()
+{
+    if(data) delete data;
 }
 
 bool Texture::LoadFromFile(const char *filepath)
@@ -34,11 +34,12 @@ bool Texture::LoadFromFile(const char *filepath)
     data = img.GetData();
     size = img.GetSize();
 
-    glBindTexture(GL_TEXTURE_2D, id);
+    DBG_ASSERT_GL_RET_MSG(glBindTexture(GL_TEXTURE_2D, id), "Couldn't bind the texture");
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_R, GL_REPEAT);
 
     DBG_ASSERT_GL_RET_MSG( glTexImage2D(GL_TEXTURE_2D, 0,
                                         img.GetFormat(), img.GetWidth(), img.GetHeight(), 0,

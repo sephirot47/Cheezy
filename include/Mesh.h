@@ -28,12 +28,13 @@ private:
     int vertexCount;
     bool triangles;
 
-public:
-
     Material *material;
     VertexFormat *vertexFormat;
 
-    static Mesh* const GetDefault();
+public:
+
+
+    static void GetDefault(Mesh &m);
 
     Mesh();
     Mesh(const Mesh& mesh);
@@ -50,6 +51,9 @@ public:
     bool LoadFromFile(const char *filepath);
 
     int GetVertexCount() const;
+
+    Material* GetMaterial();
+    VertexFormat* GetVertexFormat();
 
     void Destroy();
 };

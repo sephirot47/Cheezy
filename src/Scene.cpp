@@ -57,13 +57,12 @@ void Scene::Draw()
         for(unsigned int i = 0; i < gameObjectsWithLight.size(); ++i)
         {
             GameObject *light = gameObjectsWithLight[i];
-            if(light->transform != 0 && go->mesh != 0 && go->mesh->material != 0)
+            if(light->GetTransform() != nullptr && go->GetMesh() != nullptr)
             {
-                go->mesh->material->SetUniform("lightPos",       light->transform->pos);
-                go->mesh->material->SetUniform("lightIntensity", ((Light*)(light->GetComponent(LightType)))->GetIntensity());
+                go->GetMesh()->GetMaterial()->SetUniform("lightPos",       light->GetTransform()->pos);
+                go->GetMesh()->GetMaterial()->SetUniform("lightIntensity", ((Light*)(light->GetComponent(LightType)))->GetIntensity());
             }
         }
-
         it.second->_Draw();
     }
 }

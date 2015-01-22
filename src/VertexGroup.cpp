@@ -51,7 +51,7 @@ void VertexGroup::Init(int vertexCount)
 {
     this->vertexCount = vertexCount;
 
-    vertexFormat = VertexFormat::GetDefault(); //Create default vertexFormat
+    VertexFormat::GetDefault(*vertexFormat); //Create default vertexFormat
 
     int bytesAllocation = vertexCount * vertexFormat->GetStride();
     if(bytesAllocation == 0) data = 0;

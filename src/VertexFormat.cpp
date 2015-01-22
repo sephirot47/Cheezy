@@ -11,8 +11,11 @@ VertexFormat::VertexFormat(const VertexFormat &vf) : VertexFormat()
 {
     for(int i = 0; i < vf.attributesCount; ++i)
     {
-        VertexAttribute attr = vf.attributes.find(vf.insertionOrder[i])->second;
-        this->AddAttribute(attr);
+        auto it = vf.attributes.find(vf.insertionOrder[i]);
+        if(it != vf.attributes.end())
+        {
+            this->AddAttribute(it->second);
+        }
     }
 
     this->posName = vf.posName;
@@ -37,7 +40,7 @@ VertexFormat::~VertexFormat()
 {
 }
 
-VertexFormat *VertexFormat::GetDefault()
+void VertexFormat::GetDefault(VertexFormat &vf)
 {
     string defaultVertexFormatPositionName = "pos";
     string defaultVertexFormatTexCoordName = "uv";
@@ -47,14 +50,13 @@ VertexFormat *VertexFormat::GetDefault()
                      uvAttr(defaultVertexFormatTexCoordName, 2, GL_FLOAT),
                  normalAttr(defaultVertexFormatNormalsName,  3, GL_FLOAT);
 
-    VertexFormat *defaultVertexFormat = new VertexFormat();
-    defaultVertexFormat->AddAttribute(posAttr);
-    defaultVertexFormat->AddAttribute(uvAttr);
-    defaultVertexFormat->AddAttribute(normalAttr);
-    defaultVertexFormat->SetPositionAttributeName(defaultVertexFormatPositionName);
-    defaultVertexFormat->SetTexCoordsAttributeName(defaultVertexFormatTexCoordName);
-    defaultVertexFormat->SetNormalsAttributeName(defaultVertexFormatNormalsName);
-    return defaultVertexFormat;
+    vf = VertexFormat();
+    vf.AddAttribute(posAttr);
+    vf.AddAttribute(uvAttr);
+    vf.AddAttribute(normalAttr);
+    vf.SetPositionAttributeName(defaultVertexFormatPositionName);
+    vf.SetTexCoordsAttributeName(defaultVertexFormatTexCoordName);
+    vf.SetNormalsAttributeName(defaultVertexFormatNormalsName);
 }
 
 int VertexFormat::GetOffsetOf(string attributeName) const

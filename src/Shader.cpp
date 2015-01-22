@@ -36,14 +36,14 @@ Shader::~Shader()
     if(srcCode) delete srcCode;
 }
 
-Shader *Shader::GetDefaultVertex()
+void Shader::GetDefaultVertex(Shader &s)
 {
-    return new Shader(VertexShader, "Shaders/Default/vertex");
+    s = Shader(VertexShader, "Shaders/Default/vertex");
 }
 
-Shader *Shader::GetDefaultFragment()
+void Shader::GetDefaultFragment(Shader &s)
 {
-    return new Shader(FragmentShader, "Shaders/Default/fragment");
+    s = Shader(FragmentShader, "Shaders/Default/fragment");
 }
 
 Shader::Shader(ShaderType shaderType) : Shader()
@@ -53,7 +53,6 @@ Shader::Shader(ShaderType shaderType) : Shader()
 
 Shader::Shader(ShaderType shaderType, const char *filepath) : Shader(shaderType)
 {
-    this->type = shaderType;
     LoadFromFile(filepath);
 }
 
@@ -143,7 +142,7 @@ int Shader::GetId() const
     return shaderId;
 }
 
-int Shader::GetType() const
+ShaderType Shader::GetType() const
 {
     return type;
 }

@@ -33,7 +33,7 @@ public:
     VertexFormat& operator=(const VertexFormat &vf);
     ~VertexFormat();
 
-    static VertexFormat* GetDefault();
+    static void GetDefault(VertexFormat &vf);
 
     int GetOffsetOf(string attributeName) const;
     int GetOffsetOf(int i) const;

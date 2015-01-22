@@ -32,13 +32,14 @@ private:
     GameObjMap gameObjects;
     int idGameObjects;
 
+    Transform *transform;
+    Mesh *mesh;
+
 public:
 
     string name;
 
     CompMap components;
-    Transform *transform; //default pointer to Transform for fast access
-    Mesh *mesh; //default pointer to Mesh for fast access
 
     GameObject();
     GameObject(string name);
@@ -62,6 +63,9 @@ public:
     ///\brief Returns a pointer to the component of type type of this GameObject.
     ///       If the GameObject doesn't contain a component of type type, returns null.
     Component* GetComponent(ComponentType type) const;
+
+    Transform *GetTransform();
+    Mesh *GetMesh();
 
     ///\brief Removes the component c from the GameObject
     void RemoveComponent(ComponentType type);

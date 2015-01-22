@@ -40,8 +40,8 @@ public:
     Shader& operator=(const Shader &shader);
     virtual ~Shader();
 
-    static Shader* GetDefaultVertex();
-    static Shader* GetDefaultFragment();
+    static void GetDefaultVertex(Shader &s);
+    static void GetDefaultFragment(Shader &s);
 
     ///\brief Creates a shader of type shaderType
     ///       shaderType can be CZ_VERTEX_SHADER or CZ_FRAGMENT_SHADER
@@ -63,7 +63,7 @@ public:
 
     ///\brief Returns the shader type.
     ///       It can be CZ_VERTEX_SHADER or CZ_FRAGMENT_SHADER.
-    int GetType() const;
+    ShaderType GetType() const;
 };
 
 #endif // SHADER_H

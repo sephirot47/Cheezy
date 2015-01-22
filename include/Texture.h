@@ -41,7 +41,7 @@ public:
     unsigned char *data;
 
     Texture();
-    Texture(Texture &tex);
+    Texture(const Texture &tex);
     Texture(const char *filepath);
     virtual ~Texture();
 

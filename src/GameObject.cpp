@@ -5,11 +5,12 @@ GameObject::GameObject()
     name = "";
     idGameObjects = 0;
 
-    transform = Transform::GetDefault(); //Create the default Transform
+    transform = new Transform();
+    Transform::GetDefault(*transform); //Create the default Transform
 
-    mesh = Mesh::GetDefault();  //Create the default Mesh
+    mesh = new Mesh();
     mesh->LoadFromFile("models/luigi.obj");
-    mesh->material->SetTexture(new Texture("models/textures/luigiD.jpg"));
+    mesh->GetMaterial()->SetTexture(new Texture("models/textures/luigiD.jpg"));
     AddComponent(transform);
     AddComponent(mesh);
 }
@@ -47,9 +48,9 @@ void GameObject::_Update()
 
 void GameObject::Update()
 {
-    mesh->material->SetUniform("multiplier", 0.5f + (float)fabs(sin(Time::GetMiliseconds() / 500.0f))*2.0f );
-    mesh->material->SetUniform("mixing", 0.9f);
-    mesh->material->SetUniform("mec", vec4((sin(Time::GetMiliseconds() / 500.0)+1.0f)*0.5f, (cos(Time::GetMiliseconds() / 500.0)+1.0f)*0.5f, 0.0f, 1.0f));
+    mesh->GetMaterial()->SetUniform("multiplier", 0.5f + (float)fabs(sin(Time::GetMiliseconds() / 500.0f))*2.0f );
+    mesh->GetMaterial()->SetUniform("mixing", 0.9f);
+    mesh->GetMaterial()->SetUniform("mec", vec4((sin(Time::GetMiliseconds() / 500.0)+1.0f)*0.5f, (cos(Time::GetMiliseconds() / 500.0)+1.0f)*0.5f, 0.0f, 1.0f));
 }
 
 bool GameObject::AddComponent(Component *c)
@@ -74,6 +75,16 @@ bool GameObject::HasComponent(ComponentType type) const
 Component* GameObject::GetComponent(ComponentType type) const
 {
     return components.find(type)->second;
+}
+
+Transform *GameObject::GetTransform()
+{
+    return transform;
+}
+
+Mesh *GameObject::GetMesh()
+{
+    return mesh;
 }
 
 void GameObject::RemoveComponent(ComponentType type)

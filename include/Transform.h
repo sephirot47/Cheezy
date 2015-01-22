@@ -17,7 +17,7 @@ public:
     Transform(const Transform &t);
     Transform& operator=(const Transform &t);
 
-    static Transform* const GetDefault();
+    static void GetDefault(Transform &t);
 
     virtual ~Transform();
     virtual ComponentType GetType() const { return type; }

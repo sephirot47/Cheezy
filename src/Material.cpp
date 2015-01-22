@@ -19,6 +19,17 @@ Material::Material(const Material &m)
     if(m.fragmentShader) AttachShader(*fragmentShader);
 }
 
+Material& Material::operator=(const Material &m)
+{
+    if(this == &m) return *this;
+    if(m.vertexShader)   vertexShader   = new Shader(*m.vertexShader); else vertexShader = 0;
+    if(m.fragmentShader) fragmentShader = new Shader(*m.fragmentShader); else fragmentShader = 0;
+    if(m.texture) texture = m.texture; else texture = 0;
+    if(m.vertexShader)   AttachShader(*vertexShader);
+    if(m.fragmentShader) AttachShader(*fragmentShader);
+    return *this;
+}
+
 Material::~Material()
 {
     if(vertexShader) delete vertexShader;
@@ -26,12 +37,14 @@ Material::~Material()
     if(texture) delete texture;
 }
 
-Material *Material::GetDefault()
+void Material::GetDefault(Material &m)
 {
-    Material *defaultMaterial = new Material();
-    defaultMaterial->AttachShader(*Shader::GetDefaultVertex());
-    defaultMaterial->AttachShader(*Shader::GetDefaultFragment());
-    return defaultMaterial;
+    m = Material();
+    Shader vs, fs;
+    Shader::GetDefaultVertex(vs);
+    Shader::GetDefaultFragment(fs);
+    m.AttachShader(vs);
+    m.AttachShader(fs);
 }
 
 bool Material::AttachShader(Shader &shader)
@@ -41,11 +54,11 @@ bool Material::AttachShader(Shader &shader)
     int shaderType = shader.GetType();
     switch(shaderType)
     {
-        case CZ_VERTEX_SHADER:
+        case VertexShader:
             vertexShader = &shader;
             break;
 
-        case CZ_FRAGMENT_SHADER:
+        case FragmentShader:
             fragmentShader = &shader;
             break;
     }
@@ -75,7 +88,7 @@ bool Material::AttachShader(Shader &shader)
     if(vertexShader)   glDetachShader(programId, vertexShader->GetId());
     if(fragmentShader) glDetachShader(programId, fragmentShader->GetId());
 
-    return true; //Everything went GOOD!
+    return true;
 }
 
 int Material::GetShaderId(unsigned int shaderType) const
