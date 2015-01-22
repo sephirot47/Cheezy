@@ -5,13 +5,21 @@
 
 using namespace std;
 
+enum ComponentType
+{
+    MeshType = 1,
+    LightType = 2,
+    TransformType = 3
+};
+
 class Component
 {
 public:
 
-    string type;
+    ComponentType type;
     Component(){}
-    virtual void Init() = 0;
+    virtual ComponentType GetType() const = 0;
+    virtual void Destroy() = 0;
 };
 
 #endif // COMPONENT_H

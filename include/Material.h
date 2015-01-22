@@ -58,8 +58,8 @@ public:
 
     int GetAttributeLocation(string attributeName) const;
 
-    void Bind();
-    void UnBind();
+    void Bind() const;
+    void UnBind() const;
 };
 
 #endif // MATERIAL_H

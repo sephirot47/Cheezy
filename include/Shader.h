@@ -11,6 +11,12 @@
 #include "include/Component.h"
 #include "include/Bindable.h"
 
+enum ShaderType
+{
+    VertexShader = GL_VERTEX_SHADER,
+    FragmentShader = GL_FRAGMENT_SHADER
+};
+
 #define CZ_VERTEX_SHADER GL_VERTEX_SHADER
 #define CZ_FRAGMENT_SHADER GL_FRAGMENT_SHADER
 
@@ -25,7 +31,7 @@ private:
     char *srcCode, *filepath;
     int srcCodeLength;
     unsigned int shaderId;
-    unsigned int type; //VertexFormat o fragment
+    ShaderType type;
 
 public:
 
@@ -39,11 +45,11 @@ public:
 
     ///\brief Creates a shader of type shaderType
     ///       shaderType can be CZ_VERTEX_SHADER or CZ_FRAGMENT_SHADER
-    Shader(unsigned int shaderType);
+    Shader(ShaderType shaderType);
 
     ///\brief Creates a shader of type shaderType and calls LoadFromFile(filepath) directly
     ///       shaderType can be CZ_VERTEX_SHADER or CZ_FRAGMENT_SHADER
-    Shader(unsigned int shaderType, const char* filepath);
+    Shader(ShaderType shaderType, const char* filepath);
 
     ///\brief Loads a shader from a file, compiles it and binds it to openGL
     ///       If something went wrong, returns false. Otherwise, returns true.

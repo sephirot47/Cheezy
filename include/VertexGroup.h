@@ -9,9 +9,10 @@ class VertexGroup
 {
 private:
     int vertexCount;
-    VertexFormat vertexFormat;
+    VertexFormat *vertexFormat;
 
 public:
+
     void *data;
     VertexGroup();
     VertexGroup(const VertexGroup &vg);
@@ -20,6 +21,7 @@ public:
     void Init(int vertexCount);
     void Init(const VertexFormat &vf);
     void Init(int vertexCount, const VertexFormat &vf);
+    void Init(const vector<Vertex>& vertices);
     virtual ~VertexGroup();
 
     void SetAttribute(string attributeName, void *pvalue, int vertexIndex);

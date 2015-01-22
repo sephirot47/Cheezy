@@ -37,15 +37,33 @@ void Scene::Update()
     if(IsPressed(SDLK_d)) cam->rot = quat(vec3(0 ,rotSpeed, 0)) * cam->rot;
     if(IsPressed(SDLK_q)) cam->rot = quat(vec3(0, 0, rotSpeed)) * cam->rot;
     if(IsPressed(SDLK_e)) cam->rot = quat(vec3(0, 0, -rotSpeed)) * cam->rot;
-
-    //DbgLog("pos: " << cam->pos << ", rot: " << cam->rot);
 }
 
 void Scene::Draw()
 {
     cam->ApplyPerspective();
+
+    //We must check every gameObject, and if it has a light component
+    //Set the uniform for every gameObject material in the scene :)
+    vector<GameObject*> gameObjectsWithLight;
     for(auto it : gameObjects)
     {
+        if(it.second->HasComponent("Light")) gameObjectsWithLight.push_back(it.second);
+    }
+
+    for(auto it : gameObjects)
+    {
+        GameObject *go = it.second;
+        for(unsigned int i = 0; i < gameObjectsWithLight.size(); ++i)
+        {
+            GameObject *light = gameObjectsWithLight[i];
+            if(light->transform != 0 && go->mesh != 0 && go->mesh->material != 0)
+            {
+                go->mesh->material->SetUniform("lightPos",       light->transform->pos);
+                go->mesh->material->SetUniform("lightIntensity", ((Light*)(light->GetComponent("Light")))->GetIntensity());
+            }
+        }
+
         it.second->_Draw();
     }
 }

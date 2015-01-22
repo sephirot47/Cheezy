@@ -1,9 +1,10 @@
-#include "include/Transform.h"
+#include "../include/Transform.h"
 
 Transform::Transform()
 {
-    type = "Transform";
-    pos = scale = vec3(0);
+    type = TransformType;
+    pos = vec3(0);
+    scale = vec3(1);
     rot = quat();
 }
 
@@ -25,6 +26,11 @@ Transform &Transform::operator=(const Transform &t)
     return *this;
 }
 
+Transform* const Transform::GetDefault()
+{
+    Transform *t = new Transform();
+    return t;
+}
 
 Transform::~Transform()
 {

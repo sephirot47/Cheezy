@@ -6,15 +6,6 @@
 #include <ctime>
 #include <sstream>
 
-//Vector, Joan xD... No se si tot eso esta be, xD... nomes m aborria i he pillat la wiki de la sdl i he buscat algo que semblés faciolte xD
-//Suposo que s'haurà de borrar todo de totes formes xD, així que nop feu massa cas de les tonteries que he escrit.
-
-//ESTA PERFECTE!!!!!!!!!!!!! (victor)
-
-/*TODO:
-    Sleep functions.
-*/
-
 using namespace std;
 class Time
 {

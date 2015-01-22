@@ -15,6 +15,7 @@
 #include "include/Debug.h"
 #include "include/Transform.h"
 #include "include/Material.h"
+#include "include/Light.h"
 #include "include/Shader.h"
 #include "include/Component.h"
 #include "include/Mesh.h"
@@ -33,7 +34,7 @@ private:
 
 public:
 
-    string  name;
+    string name;
 
     CompMap components;
     Transform *transform; //default pointer to Transform for fast access
@@ -52,7 +53,7 @@ public:
     ///\brief Add the component c to the GameObject
     ///       If a component of the same type exists, returns false.
     ///       Otherwise returns true.
-    bool AddComponent(Component &c);
+    bool AddComponent(Component *c);
 
     ///\brief Returns true if the GameObject already contains a component of type type.
     ///       Returns false otherwise.
@@ -63,7 +64,7 @@ public:
     Component* GetComponent(const char *type) const;
 
     ///\brief Removes the component c from the GameObject
-    void RemoveComponent(Component &c);
+    void RemoveComponent(string type);
 
     void _Update();
     void _Draw();

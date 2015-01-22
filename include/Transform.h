@@ -16,8 +16,12 @@ public:
     Transform();
     Transform(const Transform &t);
     Transform& operator=(const Transform &t);
+
+    static Transform* const GetDefault();
+
     virtual ~Transform();
-    void Init(){}
+    virtual ComponentType GetType() const { return type; }
+    void Destroy() {}
 };
 
 #endif // TRANSFORM_H

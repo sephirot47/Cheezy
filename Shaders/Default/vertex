@@ -4,10 +4,24 @@ attribute vec4 normal;
 attribute vec4 pos;
 attribute vec2 uv;
 
-varying vec2 uvFrag;
+uniform vec4 mec;
+uniform vec3 lightPos;
+uniform float lightIntensity;
 
-void main() 
+uniform float multiplier;
+
+varying vec2 uvFrag;
+varying vec4 tint;
+varying float bright;
+
+void main()
 {
-	gl_Position = gl_ModelViewProjectionMatrix * pos;
+	vec3 toLight = normalize(lightPos - pos.xyz);
+	float cos = dot(normal.xyz, toLight);
+	bright = clamp(cos * lightIntensity, 0.0, 1.0); 
+
+	vec4 position = pos;
+	gl_Position = gl_ModelViewProjectionMatrix * position;
 	uvFrag = uv;
+	tint = mec;
 }

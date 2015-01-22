@@ -19,7 +19,7 @@ int CheezyWin::InitWindow(SDL_Window **win, SDL_Renderer **ren, int x, int y, in
 void CheezyWin::Init(int width, int height)
 {
     InitWindow(&sdlWin, &sdlRen, 0, 0, width, height);
-    SDL_SetRenderDrawColor(sdlRen, 0, 90, 50, 255);
+    SDL_SetRenderDrawColor(sdlRen, 255, 255, 255, 255);
 
     glEnable(GL_DEPTH_TEST);
 }
@@ -69,7 +69,7 @@ void CheezyWin::DrawAxis() const
 
 void CheezyWin::Draw() const
 {
-    glClearColor(0.0, 0.0, 0.05, 1.0);
+    glClearColor(0.0, 0.05, 0.0, 1.0);
     glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
 
     if(currentScene != 0)

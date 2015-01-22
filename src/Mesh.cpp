@@ -4,7 +4,7 @@ Mesh::Mesh()
 {
     vertexCount = 0;
     triangles = true;
-    type = "Mesh";
+    type = MeshType;
     vaoId = -1;
 
     glGenBuffers(1, &vboId);
@@ -28,7 +28,7 @@ Mesh::Mesh(VertexFormat &vf)
 {
     vertexCount = 0;
     triangles = true;
-    type = "Mesh";
+    type = MeshType;
     vaoId = -1;
 
     glGenBuffers(1, &vboId);
@@ -36,8 +36,8 @@ Mesh::Mesh(VertexFormat &vf)
     vertexFormat = new VertexFormat(vf);
 
     material = new Material();
-    Shader vertexShader(CZ_VERTEX_SHADER, "Shaders/vertexShader.glsl"),
-           fragmentShader(CZ_FRAGMENT_SHADER, "Shaders/fragmentShader.glsl");
+    Shader vertexShader(VertexShader, "Shaders/vertexShader.glsl"),
+           fragmentShader(FragmentShader, "Shaders/fragmentShader.glsl");
     material->AttachShader(vertexShader);
     material->AttachShader(fragmentShader);
     material->SetTexture(new Texture("models/textures/gordaco.bmp"));
@@ -49,7 +49,26 @@ Mesh::~Mesh()
     delete material;
 }
 
-Mesh* Mesh::GetDefault()
+void Mesh::AddVertices(const vector<Vertex> &vertices, int startingIndex)
+{
+    /*
+    glBindBuffer(GL_ARRAY_BUFFER, vboId);
+    int vSize = vertexFormat->GetStride();
+    glBufferSubData(GL_ARRAY_BUFFER, startingIndex * vSize, vertices.size() * vSize, &vertices[0]);
+    glBindBuffer(GL_ARRAY_BUFFER, 0);*/
+}
+
+void Mesh::GetVertices(vector<Vertex> &vertices)
+{
+
+}
+
+void Mesh::RemoveVertex(int i)
+{
+
+}
+
+Mesh* const Mesh::GetDefault()
 {
     Mesh *defaultMesh = new Mesh(*VertexFormat::GetDefault());
     defaultMesh->material = Material::GetDefault();
@@ -80,7 +99,6 @@ bool Mesh::LoadFromFile(const char *filepath)
     if(vertexCount == 0) return false;
 
     int stride = vertexFormat->GetStride();
-    //for(int i = 0; i < vertexCount * stride; ++i) if(i%4 == 0) DbgLog( i << ": " << *((float*)((char*)vg.GetRawData() + i)) );
     glBindBuffer(GL_ARRAY_BUFFER, vboId);
     glBufferData(GL_ARRAY_BUFFER, vertexCount * stride, vg.GetRawData(), GL_STATIC_DRAW);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
@@ -90,5 +108,9 @@ bool Mesh::LoadFromFile(const char *filepath)
 }
 
 int Mesh::GetVertexCount() const { return vertexCount; }
+
+void Mesh::Destroy()
+{
+}
 
 

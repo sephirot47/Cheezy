@@ -5,40 +5,24 @@ GameObject::GameObject()
     name = "";
     idGameObjects = 0;
 
-    Transform *t = new Transform(); //Create the default Transform
-    AddComponent(*t);
+    transform = Transform::GetDefault(); //Create the default Transform
 
-    transform = t;
-    transform->pos = vec3(0, 0, 0);
-    transform->rot = quat(vec3(0, 0, 0));
-    transform->scale = vec3(1, 1, 1);
+    mesh = Mesh::GetDefault();  //Create the default Mesh
+    mesh->LoadFromFile("models/luigi.obj");
+    mesh->material->SetTexture(new Texture("models/textures/luigiD.jpg"));
+    AddComponent(transform);
+    AddComponent(mesh);
+}
 
-    /*
-    VertexAttribute posAttr("pos", 3, GL_FLOAT), uvAttr("uv", 2, GL_FLOAT), normalAttr("normal", 3, GL_FLOAT);
-    VertexFormat vf;
-    vf.AddAttribute(posAttr);
-    vf.AddAttribute(uvAttr);
-    vf.AddAttribute(normalAttr);
-    vf.SetPositionAttributeName("pos");
-    vf.SetTexCoordsAttributeName("uv");
-    vf.SetNormalsAttributeName("normal");
-    */
-
-    Mesh *m = new Mesh();  //Create the default Mesh
-    AddComponent(*m);
-    mesh = m;
-    mesh->LoadFromFile("models/gordaco.obj");
+GameObject::GameObject(string name) : GameObject()
+{
+    this->name = name;
 }
 
 GameObject::~GameObject()
 {
     if(transform) delete transform;
     if(mesh) delete mesh;
-}
-
-GameObject::GameObject(string name) : GameObject()
-{
-    this->name = name;
 }
 
 GameObject::GameObject(vec3 &pos, quat &rot) : GameObject()
@@ -68,16 +52,16 @@ void GameObject::Update()
     mesh->material->SetUniform("mec", vec4((sin(Time::GetMiliseconds() / 500.0)+1.0f)*0.5f, (cos(Time::GetMiliseconds() / 500.0)+1.0f)*0.5f, 0.0f, 1.0f));
 }
 
-bool GameObject::AddComponent(Component &c)
+bool GameObject::AddComponent(Component *c)
 {
-    if(components.find(c.type) == components.end())
+    if(components.find(c->type) == components.end())
     {
-        components.insert(pair<string, Component*>(c.type, &c));
+        components.insert(pair<string, Component*>(c->type, c));
         return true;
     }
     else
     {
-        DbgWarning("You cant add two components of the same type (" << c.type << ")");
+        DbgWarning("You cant add two components of the same type (" << c->type << ")");
         return false;
     }
 }
@@ -92,11 +76,15 @@ Component* GameObject::GetComponent(const char *type) const
     return components.find(type)->second;
 }
 
-void GameObject::RemoveComponent(Component &c)
+void GameObject::RemoveComponent(string type)
 {
-    auto it = components.find(c.type);
-    if(it == components.end()) DbgWarning("Removing a component that doesnt exist (" << c.type << ")");
-    else components.erase(it);
+    auto it = components.find(type);
+    if(it == components.end()) DbgWarning("Removing a component that doesnt exist ('" << type << "'')");
+    else
+    {
+        it->second->Destroy();
+        components.erase(it);
+    }
 }
 
 void GameObject::_Draw()

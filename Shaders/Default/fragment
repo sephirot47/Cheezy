@@ -1,8 +1,36 @@
 #version 130
 
+#define  Pr  .299
+#define  Pg  .587
+#define  Pb  .114
+
+uniform sampler2D tex;
+uniform float mixing;
+
 varying vec2 uvFrag;
+varying vec4 tint;
+varying float bright;
+
+float Discret(float v, float step)
+{
+	return round(v/step) * step;
+}
+
+vec4 vDiscret(vec4 v, float step)
+{
+	return vec4(Discret(v.x, step), Discret(v.y, step), Discret(v.z, step), v.w);
+}
+
+vec4 saturate(vec4 color, float amount)
+{
+	float p = sqrt(color.r * color.r * Pr + color.g * color.g * Pg + color.b * color.b * Pb);
+	return vec4(p + (color.r-p)*amount, p + (color.g-p)*amount, p + (color.b-p)*amount, color.a);
+}
 
 void main()
-{
-	gl_FragColor = vec4(uvFrag.x, uvFrag.y, 0.0, 1.0);
+{	
+	vec4 texel = texture2D(tex, vec2(uvFrag.x, 1.0 - uvFrag.y));
+	texel = vDiscret(texel, 0.1);
+	//texel = saturate(texel, 1.0);
+	gl_FragColor = texel * Discret(bright, 1.0);
 }

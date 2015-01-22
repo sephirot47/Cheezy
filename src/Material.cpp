@@ -134,7 +134,7 @@ int Material::GetAttributeLocation(string attributeName) const
     return glGetAttribLocation(programId, attributeName.c_str());
 }
 
-void Material::Bind()
+void Material::Bind() const
 {
     if(programId > 0)
     {
@@ -150,7 +150,7 @@ void Material::Bind()
 
 }
 
-void Material::UnBind()
+void Material::UnBind() const
 {
     if(programId > 0) glUseProgram(0);
     if(texture) texture->UnBind();

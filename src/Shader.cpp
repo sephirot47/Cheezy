@@ -5,7 +5,7 @@ Shader::Shader()
     srcCode = 0;
     srcCodeLength = 0;
     shaderId = -1;
-    type = CZ_VERTEX_SHADER;
+    type = VertexShader;
     filepath = 0;
 }
 
@@ -38,20 +38,20 @@ Shader::~Shader()
 
 Shader *Shader::GetDefaultVertex()
 {
-    return new Shader(CZ_VERTEX_SHADER, "Shaders/Default/vertex");
+    return new Shader(VertexShader, "Shaders/Default/vertex");
 }
 
 Shader *Shader::GetDefaultFragment()
 {
-    return new Shader(CZ_FRAGMENT_SHADER, "Shaders/Default/fragment");
+    return new Shader(FragmentShader, "Shaders/Default/fragment");
 }
 
-Shader::Shader(unsigned int shaderType) : Shader()
+Shader::Shader(ShaderType shaderType) : Shader()
 {
     this->type = shaderType;
 }
 
-Shader::Shader(unsigned int shaderType, const char *filepath) : Shader(shaderType)
+Shader::Shader(ShaderType shaderType, const char *filepath) : Shader(shaderType)
 {
     this->type = shaderType;
     LoadFromFile(filepath);

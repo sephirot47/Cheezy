@@ -11,14 +11,16 @@
 #include "glm/glm.hpp"
 #include "include/Time.h"
 
+enum DbgMode
+{
+    DbgModeLog = 1,
+    DbgModeWarning = 2,
+    DbgModeError = 4,
+    DbgModeFile = 8,
+    DbgModeTerm = 10
+};
+
 #define CZ_AUTO_LOG_FILE "cz_auto_log_file"
-
-#define CZ_DBG_LOG 0x01
-#define CZ_DBG_WRN 0x02
-#define CZ_DBG_ERR 0x04
-#define CZ_DBG_FILE 0x08
-#define CZ_DBG_TERM 0x10
-
 #define CZ_LOG_DIR "log"
 
 using namespace std;
@@ -111,8 +113,8 @@ private:
     static ofstream fileStream;
 
 public:
-    static unsigned char fileMode; 
-    static unsigned char outputMode; 
+    static unsigned int fileMode;
+    static unsigned int outputMode;
     static void SetFile(string filepath);
     static void Log(ostringstream &log);
     static void Warning(ostringstream &log);

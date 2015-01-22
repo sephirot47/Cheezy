@@ -2,17 +2,17 @@
 
 string Debug::logFile;
 ofstream Debug::fileStream;
-unsigned char Debug::fileMode = CZ_DBG_LOG | CZ_DBG_WRN | CZ_DBG_ERR;
-unsigned char Debug::outputMode = CZ_DBG_FILE | CZ_DBG_TERM;
+unsigned int Debug::fileMode = DbgModeLog | DbgModeWarning | DbgModeError;
+unsigned int Debug::outputMode = DbgModeFile | DbgModeTerm;
 
 void Debug::Log(ostringstream &log) 
 {
-    if (outputMode & CZ_DBG_FILE and fileMode & CZ_DBG_LOG)
+    if (outputMode & DbgModeFile and fileMode & DbgModeLog)
 	{
         if (fileStream.is_open()) fileStream << log.str();
     }
 
-    if (outputMode & CZ_DBG_TERM) 
+    if (outputMode & DbgModeTerm)
     {
     	cout << log.str();
 	}
@@ -20,12 +20,12 @@ void Debug::Log(ostringstream &log)
 
 void Debug::Warning(ostringstream &log) 
 {
-    if (outputMode & CZ_DBG_FILE and fileMode & CZ_DBG_WRN)
+    if (outputMode & DbgModeFile and fileMode & DbgModeWarning)
 	{
         if (fileStream.is_open()) fileStream << log.str();
     }
 
-    if (outputMode & CZ_DBG_TERM) 
+    if (outputMode & DbgModeTerm)
     {
     	cerr << log.str();
     }
@@ -33,12 +33,12 @@ void Debug::Warning(ostringstream &log)
 
 void Debug::Error(ostringstream &log) 
 {
-    if (outputMode & CZ_DBG_FILE and fileMode & CZ_DBG_ERR)
+    if (outputMode & DbgModeFile and fileMode & DbgModeError)
 	{
         if (fileStream.is_open()) fileStream << log.str(); 
     }
 
-    if (outputMode & CZ_DBG_TERM) 
+    if (outputMode & DbgModeTerm)
     {
     	cerr << log.str();
     }

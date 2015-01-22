@@ -3,7 +3,7 @@
 VertexGroup::VertexGroup()
 {
     data = 0;
-    vertexFormat = VertexFormat();
+    vertexFormat = new VertexFormat();
     vertexCount = 0;
 }
 
@@ -12,13 +12,13 @@ VertexGroup::VertexGroup(const VertexGroup &vg)
     if(data) free(data);
     if(vg.data)
     {
-        int dataSize = vg.vertexCount * vg.vertexFormat.GetStride();
+        int dataSize = vg.vertexCount * vg.vertexFormat->GetStride();
         data = malloc(dataSize);
         memcpy(data, vg.data, dataSize);
     }
     else data = 0;
 
-    vertexFormat = vg.vertexFormat;
+    vertexFormat = new VertexFormat(*vg.vertexFormat);
     vertexCount = vg.vertexCount;
 }
 
@@ -29,13 +29,13 @@ VertexGroup &VertexGroup::operator=(const VertexGroup &vg)
     if(data) free(data);
     if(vg.data)
     {
-        int dataSize = vg.vertexCount * vg.vertexFormat.GetStride();
+        int dataSize = vg.vertexCount * vg.vertexFormat->GetStride();
         data = malloc(dataSize);
         memcpy(data, vg.data, dataSize);
     }
     else data = 0;
 
-    vertexFormat = vg.vertexFormat;
+    vertexFormat = new VertexFormat(*vg.vertexFormat);
     vertexCount = vg.vertexCount;
     return *this;
 }
@@ -43,23 +43,17 @@ VertexGroup &VertexGroup::operator=(const VertexGroup &vg)
 void VertexGroup::Init(const VertexGroup& vg)
 {
     vertexCount = vg.vertexCount;
-    vertexFormat = VertexFormat(vg.vertexFormat);
-    data = malloc(vertexCount * vertexFormat.GetStride());
+    vertexFormat = new VertexFormat(*vg.vertexFormat);
+    data = malloc(vertexCount * vertexFormat->GetStride());
 }
 
 void VertexGroup::Init(int vertexCount)
 {
     this->vertexCount = vertexCount;
 
-    //Create default vertexFormat
-    vertexFormat = VertexFormat();
-    VertexAttribute posAttr("pos", 3, GL_FLOAT), uvAttr("uv", 2, GL_FLOAT);
-    vertexFormat.AddAttribute(posAttr);
-    vertexFormat.AddAttribute(uvAttr);
-    vertexFormat.SetPositionAttributeName("pos");
-    vertexFormat.SetTexCoordsAttributeName("uv");
+    vertexFormat = VertexFormat::GetDefault(); //Create default vertexFormat
 
-    int bytesAllocation = vertexCount * vertexFormat.GetStride();
+    int bytesAllocation = vertexCount * vertexFormat->GetStride();
     if(bytesAllocation == 0) data = 0;
     else data = malloc(bytesAllocation);
 }
@@ -68,16 +62,26 @@ void VertexGroup::Init(const VertexFormat &vf)
 {
     data = 0;
     vertexCount = 0;
-    vertexFormat = VertexFormat(vf);
+    vertexFormat = new VertexFormat(vf);
 }
 
 void VertexGroup::Init(int vertexCount, const VertexFormat &vf)
 {
     this->vertexCount = vertexCount;
-    vertexFormat = VertexFormat(vf);
-    int bytesAllocation = vertexCount * vertexFormat.GetStride();
+    vertexFormat = new VertexFormat(vf);
+    int bytesAllocation = vertexCount * vertexFormat->GetStride();
     if(bytesAllocation == 0) data = 0;
     else data = malloc(bytesAllocation);
+}
+
+void VertexGroup::Init(const vector<Vertex> &vertices)
+{
+    if(data != 0) free(data);
+    data = malloc(vertices.size() * vertexFormat->GetStride());
+    for(unsigned int i = 0; i < vertices.size(); ++i)
+    {
+        SetVertex(i, vertices[i]);
+    }
 }
 
 VertexGroup::~VertexGroup()
@@ -92,13 +96,13 @@ VertexGroup::~VertexGroup()
 void VertexGroup::SetAttribute(string attributeName, void *pvalue, int vertexIndex)
 {
     if(data == 0) return;
-    int offset = vertexFormat.GetOffsetOf(attributeName);
+    int offset = vertexFormat->GetOffsetOf(attributeName);
     if(offset == -1) return;
-    offset += vertexFormat.GetStride() * vertexIndex;
+    offset += vertexFormat->GetStride() * vertexIndex;
 
     void *pdata  = (void*)((char*)data + offset);
-    int type = vertexFormat.GetAttribute(attributeName).GetComponentsType();
-    int numComponents = vertexFormat.GetAttribute(attributeName).GetComponentsCount();
+    int type = vertexFormat->GetAttribute(attributeName).GetComponentsType();
+    int numComponents = vertexFormat->GetAttribute(attributeName).GetComponentsCount();
     for(int i = 0; i < numComponents; ++i)
     {
         if(type == GL_DOUBLE)      *((double*)pdata + i) = *((double*)pvalue + i);
@@ -116,7 +120,7 @@ Vertex* VertexGroup::GetVertexPointer(int vertexIndex) const
         DbgWarning("Trying to get a pointer to a vertex out of bounds(returning null pointer)");
         return 0;
     }
-    return (Vertex*)((char*)data + vertexIndex * vertexFormat.GetStride());
+    return (Vertex*)((char*)data + vertexIndex * vertexFormat->GetStride());
 }
 
 void* VertexGroup::GetAttributePointer(string attributeName, int vertexIndex) const
@@ -126,7 +130,7 @@ void* VertexGroup::GetAttributePointer(string attributeName, int vertexIndex) co
         DbgWarning("Trying to get a pointer to an attribute of a vertex out of bounds (returning null pointer)");
         return (void*)0;
     }
-    int offset = vertexFormat.GetOffsetOf(attributeName);
+    int offset = vertexFormat->GetOffsetOf(attributeName);
     if(offset == - 1)
     {
         DbgWarning("Trying to get a pointer to an attribute that doesn't exist (returning null pointer)");
@@ -135,12 +139,11 @@ void* VertexGroup::GetAttributePointer(string attributeName, int vertexIndex) co
 
     Vertex *v = GetVertexPointer(vertexIndex);
     return (void*)((char*)v + offset);
-    return (void*)0;
 }
 
 int VertexGroup::GetVertexCount() const { return vertexCount; }
 void* VertexGroup::GetRawData() const { return data; }
-VertexFormat VertexGroup::GetVertexFormat() const { return vertexFormat; }
+VertexFormat VertexGroup::GetVertexFormat() const { return *vertexFormat; }
 
 
 void VertexGroup::SetVertex(int vertexIndex, const Vertex &v)
@@ -151,7 +154,7 @@ void VertexGroup::SetVertex(int vertexIndex, const Vertex &v)
         return;
     }
     Vertex *vdata = GetVertexPointer(vertexIndex);
-    *vdata = v;
+    memcpy(vdata, &v, vertexFormat->GetStride());
 }
 
 Vertex VertexGroup::GetVertex(int vertexIndex) const
@@ -161,6 +164,6 @@ Vertex VertexGroup::GetVertex(int vertexIndex) const
         DbgWarning("Trying to get a vertex out of bounds (returning empty Vertex)");
         return Vertex();
     }
-    return *((Vertex*)((char*)data + vertexIndex * vertexFormat.GetStride()));
+    return *((Vertex*)((char*)data + vertexIndex * vertexFormat->GetStride()));
 }
 

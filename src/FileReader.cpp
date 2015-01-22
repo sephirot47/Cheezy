@@ -1,20 +1,20 @@
 #include "include/FileReader.h"
 
-int FileReader::GetFormat(const char *filepath)
+FileReaderFormat FileReader::GetFormat(const char *filepath)
 {
     unsigned int i = 0;
     while(filepath[i] != '.') ++i;
     ++i;
-    if(i < strlen(filepath) && strcmp(&filepath[i], "obj") == 0) return CZ_FORMAT_OBJ;
-    return CZ_FORMAT_UNKNOWN;
+    if(i < strlen(filepath) && strcmp(&filepath[i], "obj") == 0) return FormatObj;
+    return FormatUnknown;
 }
 
 bool FileReader::ReadMeshFile(const char *filepath, VertexGroup &vg, const VertexFormat &vf, bool &triangles)
 {
-    int format = GetFormat(filepath);
-    if(format == CZ_FORMAT_UNKNOWN){ DbgError("Unknown mesh format. Not loading mesh(" << filepath << ")"); return false;}
+    FileReaderFormat format = GetFormat(filepath);
+    if(format == FormatUnknown){ DbgError("Unknown mesh format. Not loading mesh(" << filepath << ")"); return false;}
 
-    if(format == CZ_FORMAT_OBJ) return FileReader::ReadOBJ(filepath, vg, vf, triangles);
+    if(format == FormatObj) return FileReader::ReadOBJ(filepath, vg, vf, triangles);
 
     return false;
 }
@@ -156,34 +156,9 @@ bool FileReader::ReadOBJ(const char *filepath, VertexGroup &vg, const VertexForm
         }
     }
 
-    /*
-    vector<Vertex> vertices = vector<Vertex>(vertexPosIndexes.size(), Vertex());
-    for(int i = 0; i < int(vertices.size()); ++i) vertices[i].Create(vf); //Reservamos espacio para cada vertice
-
-    int stride = vf.GetStride();
-    data = malloc(vertexCount * stride);
-    char *p = (char*)data;
-    for(int i = 0; i < int(vertexPosIndexes.size()); ++i)
-    {
-        vertices[i].SetPositionAttribute(&vertexPos[vertexPosIndexes[i]-1], vf);
-
-        float defaultUvs[2] = {(float)i/vertexPosIndexes.size(), (float)i/vertexPosIndexes.size()};
-        if(hasUvs) vertices[i].SetTexCoordsAttribute(&vertexUv[vertexUvIndexes[i]-1], vf);
-        else vertices[i].SetTexCoordsAttribute(&defaultUvs, vf);
-
-        float defaultNormals[3] = {0.0f, 1.0f, 0.0f};
-        if(hasNormals) vertices[i].SetNormalsAttribute(&vertexNormals[vertexNormIndexes[i]-1], vf);
-        else vertices[i].SetNormalsAttribute(&defaultNormals, vf);
-
-        memcpy((void*)p, vertices[i].data, stride);
-        p += stride;
-    }
-    */
-
     vg.Init(int(vertexPosIndexes.size()), vf); //Creamos el vertexGroup con el vertexCount y el vertexFormat adecuados
     float defaultUvs[2] = {0.5f, 0.5f};
     float defaultNormals[3] = {0.0f, 0.0f, 1.0f};
-    DbgLog("________" << vf.GetStride() << ", " << vf.GetOffsetOf("normal"));
     for(int i = 0; i < vg.GetVertexCount(); ++i)
     {
         string posName = vf.GetPositionAttribute().GetName();

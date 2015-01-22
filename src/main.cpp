@@ -25,13 +25,19 @@ int main()
     Camera cam = Camera();
     Scene *scene = win.CreateScene("FirstScene");
 
-    GameObject *go2 = new GameObject("go2");
-    scene->Add(go2);
+    GameObject *go = new GameObject("go");
+    GameObject *light = new GameObject("lus");
+    light->RemoveComponent("Mesh");
+    light->AddComponent(new Light());
+    light->transform->pos = vec3(100.0, 100.0, 100.0);
+
+    scene->Add(go);
+    scene->Add(light);
 
     scene->SetCamera(cam);
 
-    go2->transform->scale = vec3(0.05, 0.05, 0.05);
-    scene->cam->LookAt(vec3(1, 1, 1), go2->transform->pos, vec3(0, 1, 0));
+    go->transform->scale = light->transform->scale = vec3(0.05, 0.05, 0.05);
+    scene->cam->LookAt(vec3(1, 1, 1), go->transform->pos, vec3(0, 1, 0));
 
     win.drawAxis = true;
     win.Loop();
