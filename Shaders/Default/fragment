@@ -31,6 +31,6 @@ void main()
 {	
 	vec4 texel = texture2D(tex, vec2(uvFrag.x, 1.0 - uvFrag.y));
 	texel = vDiscret(texel, 0.1);
-	//texel = saturate(texel, 1.0);
-	gl_FragColor = texel * Discret(bright, 1.0);
+	texel = saturate(texel, 0.5);
+	gl_FragColor = texel;// * Discret(bright, 0.2);
 }

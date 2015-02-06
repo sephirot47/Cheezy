@@ -11,6 +11,7 @@ GameObject::GameObject()
     mesh = new Mesh();
     mesh->LoadFromFile("models/luigi.obj");
     mesh->GetMaterial()->SetTexture(new Texture("models/textures/luigiD.jpg"));
+
     AddComponent(transform);
     AddComponent(mesh);
 }
@@ -51,13 +52,16 @@ void GameObject::Update()
     mesh->GetMaterial()->SetUniform("multiplier", 0.5f + (float)fabs(sin(Time::GetMiliseconds() / 500.0f))*2.0f );
     mesh->GetMaterial()->SetUniform("mixing", 0.9f);
     mesh->GetMaterial()->SetUniform("mec", vec4((sin(Time::GetMiliseconds() / 500.0)+1.0f)*0.5f, (cos(Time::GetMiliseconds() / 500.0)+1.0f)*0.5f, 0.0f, 1.0f));
+
+    transform->pos.z += sin(Time::GetMiliseconds() / 500.0) * 0.05;
+    transform->pos.x += cos(Time::GetMiliseconds() / 500.0) * 0.05;
 }
 
 bool GameObject::AddComponent(Component *c)
 {
     if(components.find(c->type) == components.end())
     {
-        components.insert(pair<ComponentType, Component*>(c->type, c));
+        components.insert(pair<string, Component*>(c->type, c));
         return true;
     }
     else
@@ -67,32 +71,41 @@ bool GameObject::AddComponent(Component *c)
     }
 }
 
-bool GameObject::HasComponent(ComponentType type) const
+bool GameObject::HasComponent(string type) const
 {
     return components.find(type) != components.end();
 }
 
-Component* GameObject::GetComponent(ComponentType type) const
+Component* GameObject::GetComponent(string type) const
 {
     return components.find(type)->second;
 }
 
-Transform *GameObject::GetTransform()
+Transform *GameObject::GetTransform() const
 {
     return transform;
 }
 
-Mesh *GameObject::GetMesh()
+Mesh *GameObject::GetMesh() const
 {
     return mesh;
 }
 
-void GameObject::RemoveComponent(ComponentType type)
+Scene *GameObject::GetScene()
+{
+    return scene;
+}
+
+mat4 GameObject::GetModelMatrix()
+{
+    return modelMatrix;
+}
+
+void GameObject::RemoveComponent(string type)
 {
     auto it = components.find(type);
     if(it == components.end()) DbgWarning("Removing a component that doesnt exist ('" << type << "'')");
-    else
-    {
+    else {
         it->second->Destroy();
         components.erase(it);
     }
@@ -100,31 +113,31 @@ void GameObject::RemoveComponent(ComponentType type)
 
 void GameObject::_Draw()
 {
-    glMatrixMode(GL_MODELVIEW);
-    glPushMatrix();
+    if(transform) //create model matrix
+    {
+        mat4 T, R, S;
+        T = translate(T, transform->pos);
+        R = mat4_cast(transform->rot);
+        S = scale(S, transform->scale);
+        modelMatrix = T * R * S;
+        mesh->GetMaterial()->SetUniform("modelMatrix", modelMatrix);
+    }
 
-    glTranslatef(transform->pos.x, transform->pos.y, transform->pos.z);
+    if(scene and scene->GetCurrentCamera())
+    {
+        mesh->GetMaterial()->SetUniform("viewMatrix",       scene->GetCurrentCamera()->GetViewMatrix());
+        mesh->GetMaterial()->SetUniform("projectionMatrix", scene->GetCurrentCamera()->GetProjectionMatrix());
 
-    float mat[16];
-    mat4 x = mat4_cast(transform->rot);
-    const float *matPointer = (const float*)value_ptr(x);
-    for(int i = 0; i < 16; ++i) mat[i] = matPointer[i];
-    glMultMatrixf(mat);
+        if(mesh) mesh->Draw();
 
-    glScalef(transform->scale.x, transform->scale.y, transform->scale.z);
-
-    mesh->Draw();
-
-    for(auto it : gameObjects) it.second->_Draw();
-
-    glPopMatrix();
+        for(auto it : gameObjects) it.second->_Draw();
+    }
 }
 
 void GameObject::Add(GameObject *go)
 {
     ++idGameObjects;
-    if(go->name == "") //Assignem nom per defecte
-    {
+    if(go->name == "") {
         char buff[1024];
         sprintf(buff, "%s.GO%d", name.c_str(), idGameObjects);
         go->name = buff;

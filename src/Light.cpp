@@ -1,8 +1,8 @@
-#include "Light.h"
+#include "include/Light.h"
 
 Light::Light()
 {
-    type = LightType;
+    type = "Light";
     radius = 1.0f;
     intensity = 1.0f;
 }

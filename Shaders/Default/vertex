@@ -4,6 +4,9 @@ attribute vec4 normal;
 attribute vec4 pos;
 attribute vec2 uv;
 
+uniform mat4 modelMatrix;
+uniform mat4 viewMatrix;
+uniform mat4 projectionMatrix;
 uniform vec4 mec;
 uniform vec3 lightPos;
 uniform float lightIntensity;
@@ -16,12 +19,26 @@ varying float bright;
 
 void main()
 {
+	mat4 translate = mat4(1.0, 0.0, 0.0, 0.0,
+			      0.0, 1.0, 0.0, 0.0,
+			      0.0, 0.0, 1.0, 0.0,
+			      0.0, 0.0, 0.0, 1.0);
+
+	mat4 rotate = mat4(1.0, 0.0, 0.0, 0.0,
+			   0.0, 1.0, 0.0, 0.0,
+			   0.0, 0.0, 1.0, 0.0,
+			   0.0, 0.0, 0.0, 1.0);
+
+	mat4 scale = mat4(1.0, 0.0, 0.0, 0.0,
+			  0.0, 1.0, 0.0, 0.0,
+			  0.0, 0.0, 1.0, 0.0,
+			  0.0, 0.0, 0.0, 1.0);
+
 	vec3 toLight = normalize(lightPos - pos.xyz);
 	float cos = dot(normal.xyz, toLight);
 	bright = clamp(cos * lightIntensity, 0.0, 1.0); 
 
-	vec4 position = pos;
-	gl_Position = gl_ModelViewProjectionMatrix * position;
+	gl_Position = projectionMatrix * viewMatrix * modelMatrix * pos;
 	uvFrag = uv;
 	tint = mec;
 }

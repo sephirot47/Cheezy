@@ -11,10 +11,12 @@
 #include "include/Debug.h"
 #include "include/Camera.h"
 
-typedef map<string, GameObject*> GameObjMap;
-
 using namespace std;
 using namespace glm;
+
+class GameObject;
+
+typedef map<string, GameObject*> GameObjMap;
 
 class Scene
 {
@@ -29,6 +31,7 @@ public:
 
     Scene();
     Scene(string name);
+    virtual ~Scene();
 
     ///\brief Adds the go GameObject to the scene.
     void Add(GameObject *go);
@@ -38,7 +41,9 @@ public:
     GameObject* Find(const string &name) const;
 
     ///\brief Sets the scene's current camera
-    void SetCamera(Camera &cam);
+    void SetCurrentCamera(Camera &cam);
+
+    Camera *GetCurrentCamera() const;
 
     ///\brief Updates the scene. This function is called each frame, before Draw is called.
     void Update();
@@ -54,6 +59,7 @@ public:
 
     ///\brief This method is called every time a key is pushed down.
     virtual void OnKeyDown();
+
     ///\brief This method is called every time a key is released.
     virtual void OnKeyUp();
 };

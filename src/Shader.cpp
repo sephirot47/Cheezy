@@ -2,87 +2,72 @@
 
 Shader::Shader()
 {
-    srcCode = 0;
-    srcCodeLength = 0;
+    srcCode = filepath = "";
     shaderId = -1;
     type = VertexShader;
-    filepath = 0;
 }
 
-Shader::Shader(const Shader &shader)
+Shader::Shader(const Shader &shader) : Shader()
 {
-    srcCode = 0;
-    srcCodeLength = 0;
-    shaderId = -1;
+    srcCode = shader.srcCode;
+    filepath = shader.filepath;
     type = shader.type;
-    if(shader.filepath) LoadFromFile(shader.filepath);
-    else if(shader.srcCode) LoadFromSourceCode(shader.srcCode);
+    shaderId = -1;
+    if(filepath != "") LoadFromFile(shader.filepath);
+    else if(srcCode != "") LoadFromSourceCode(shader.srcCode);
 }
 
 Shader& Shader::operator=(const Shader &shader)
 {
     if(this == &shader) return *this;
-    srcCode = 0;
-    srcCodeLength = 0;
-    shaderId = -1;
+    srcCode = shader.srcCode;
+    filepath = shader.filepath;
     type = shader.type;
-    if(shader.filepath) LoadFromFile(shader.filepath);
-    else if(shader.srcCode) LoadFromSourceCode(shader.srcCode);
+    shaderId = -1;
+    if(filepath != "") LoadFromFile(shader.filepath);
+    else if(srcCode != "") LoadFromSourceCode(shader.srcCode);
     return *this;
 }
 
 Shader::~Shader()
 {
-    if(srcCode) delete srcCode;
 }
 
-void Shader::GetDefaultVertex(Shader &s)
-{
+void Shader::GetDefaultVertex(Shader &s) {
     s = Shader(VertexShader, "Shaders/Default/vertex");
 }
 
-void Shader::GetDefaultFragment(Shader &s)
-{
+void Shader::GetDefaultFragment(Shader &s) {
     s = Shader(FragmentShader, "Shaders/Default/fragment");
 }
 
-Shader::Shader(ShaderType shaderType) : Shader()
-{
+Shader::Shader(ShaderType shaderType) : Shader() {
     this->type = shaderType;
 }
 
-Shader::Shader(ShaderType shaderType, const char *filepath) : Shader(shaderType)
-{
+Shader::Shader(ShaderType shaderType, string filepath) : Shader(shaderType) {
     LoadFromFile(filepath);
 }
 
-bool Shader::LoadFromFile(const char *filepath)
+bool Shader::LoadFromFile(string path)
 {
-    if(srcCode != 0) delete srcCode; //Free the previous srcCode
-    this->filepath = new char[strlen(filepath)];
-    strcpy(this->filepath, filepath);
-
-    FILE * f = fopen(filepath, "r");
-    if(f == NULL)
-    {
-        DbgError("Error opening the shader file " << filepath);
-        return false;
-    }
+    filepath = path;
+    FILE * f = fopen(filepath.c_str(), "r");
+    if(f == NULL) { DbgError("Error opening the shader file " << filepath); return false; }
 
     fseek(f, 0, SEEK_END);
-    srcCodeLength = ftell(f);
+    int srcCodeLength = ftell(f);
     fseek(f, 0, SEEK_SET);
 
-    srcCode = new char[srcCodeLength];
-    int readres = fread(srcCode, sizeof(char), srcCodeLength, f);
+    char *srcCodeC = new char[srcCodeLength];
+    int readres = fread(srcCodeC, sizeof(char), srcCodeLength, f);
     DBG_ASSERT_RET_MSG(readres, "There was an error trying to read the file of the shader.");
+    srcCode = srcCodeC;
 
-    //Bind the shader with openGL
     shaderId = glCreateShader(type); //create id
-    //Pass the code to openGL
-    DBG_ASSERT_GL_MSG(glShaderSource(shaderId, 1, &srcCode, &srcCodeLength), "There was an error trying to read the shader file.");
+    DBG_ASSERT_GL_MSG(glShaderSource(shaderId, 1, &srcCodeC, &srcCodeLength), "There was an error trying to read the shader file.");
+    delete[] srcCodeC;
 
-    //Try to compile the shader
     DBG_ASSERT_GL_MSG(glCompileShader(shaderId), "There was an error when trying to compile your shader.");
 
     int compilationResult;
@@ -92,29 +77,25 @@ bool Shader::LoadFromFile(const char *filepath)
     {
         char shaderErrorLog[CZ_MAX_SHADER_ERROR_LOG_SIZE];
         glGetShaderInfoLog(shaderId, CZ_MAX_SHADER_ERROR_LOG_SIZE, 0, shaderErrorLog);
-        DbgError("'" << filepath << "'' contains errors! It can't be compiled");
-        DbgLog(shaderErrorLog);
-
-        delete srcCode;
-        srcCode = 0;
-        srcCodeLength = 0;
+        DbgError("'" << filepath << "'' contains errors! It can't be compiled"); DbgLog(shaderErrorLog);
+        srcCode = "";
         glDeleteShader(shaderId);
         return false;
     }
     return true; //Everything went good
 }
 
-bool Shader::LoadFromSourceCode(const char *source)
+bool Shader::LoadFromSourceCode(string source)
 {
-    //Bind the shader with openGL
     shaderId = glCreateShader(type); //create id
-    //Pass the code to openGL
-    srcCodeLength = strlen(source);
-    srcCode = new char[srcCodeLength];
-    memcpy(srcCode, source, srcCodeLength);
-    DBG_ASSERT_GL_MSG(glShaderSource(shaderId, 1, &source, &srcCodeLength), "There was an error trying to read the shader file.");
 
-    //Try to compile the shader
+    srcCode = source;
+    int srcCodeLength = srcCode.length();
+    char *srcCodeCharP = new char[srcCodeLength]; strcpy(srcCodeCharP, srcCode.c_str());
+    DbgLog("___" << srcCodeCharP);
+    DBG_ASSERT_GL_MSG(glShaderSource(shaderId, 1, &srcCodeCharP, &srcCodeLength), "There was an error trying to read the shader file.");
+    delete[] srcCodeCharP;
+
     DBG_ASSERT_GL_MSG(glCompileShader(shaderId), "There was an error when trying to compile your shader.");
 
     int compilationResult;
@@ -124,16 +105,12 @@ bool Shader::LoadFromSourceCode(const char *source)
     {
         char shaderErrorLog[CZ_MAX_SHADER_ERROR_LOG_SIZE];
         glGetShaderInfoLog(shaderId, CZ_MAX_SHADER_ERROR_LOG_SIZE, 0, shaderErrorLog);
-        DbgError("The source code contains errors! It can't be compiled");
-        DbgLog(shaderErrorLog);
-
-        delete srcCode;
-        srcCode = 0;
-        srcCodeLength = 0;
+        DbgError("The source code contains errors! It can't be compiled"); DbgLog(shaderErrorLog);
+        srcCode = "";
         glDeleteShader(shaderId);
         return false;
     }
-    return true; //Everything went good
+    return true;
 }
 
 int Shader::GetId() const

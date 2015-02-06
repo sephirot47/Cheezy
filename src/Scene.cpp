@@ -4,21 +4,23 @@ Scene::Scene()
 {
     this->name = "unnamedScene";
     idGameObjects = 0;
+    cam = nullptr;
 }
 
-Scene::Scene(string name)
+Scene::Scene(string name) : Scene()
 {
     this->name = name;
-    idGameObjects = 0;
+}
+
+Scene::~Scene()
+{
+    for(auto it : gameObjects) delete it.second;
+    if(cam) delete cam;
 }
 
 void Scene::_Update()
 {
-    for(auto it : gameObjects)
-    {
-        it.second->_Update();
-    }
-
+    for(auto it : gameObjects) it.second->_Update();
     Update();
 }
 
@@ -37,18 +39,17 @@ void Scene::Update()
     if(IsPressed(SDLK_d)) cam->rot = quat(vec3(0 ,rotSpeed, 0)) * cam->rot;
     if(IsPressed(SDLK_q)) cam->rot = quat(vec3(0, 0, rotSpeed)) * cam->rot;
     if(IsPressed(SDLK_e)) cam->rot = quat(vec3(0, 0, -rotSpeed)) * cam->rot;
+    cam->UpdateMatrices();
 }
 
 void Scene::Draw()
 {
     cam->ApplyPerspective();
 
-    //We must check every gameObject, and if it has a light component
-    //Set the uniform for every gameObject material in the scene :)
     vector<GameObject*> gameObjectsWithLight;
     for(auto it : gameObjects)
     {
-        if(it.second->HasComponent(LightType)) gameObjectsWithLight.push_back(it.second);
+        if(it.second->HasComponent("Light")) gameObjectsWithLight.push_back(it.second);
     }
 
     for(auto it : gameObjects)
@@ -60,23 +61,23 @@ void Scene::Draw()
             if(light->GetTransform() != nullptr && go->GetMesh() != nullptr)
             {
                 go->GetMesh()->GetMaterial()->SetUniform("lightPos",       light->GetTransform()->pos);
-                go->GetMesh()->GetMaterial()->SetUniform("lightIntensity", ((Light*)(light->GetComponent(LightType)))->GetIntensity());
+                go->GetMesh()->GetMaterial()->SetUniform("lightIntensity", ((Light*)(light->GetComponent("Light")))->GetIntensity());
             }
         }
         it.second->_Draw();
     }
 }
 
-
 void Scene::Add(GameObject *go)
 {
     ++idGameObjects;
-    if(go->name == "") //Assignem nom per defecte
+    if(go->name == "")
     {
         char buff[1024];
         sprintf(buff, "GO%d", idGameObjects);
         go->name = buff;
     }
+    go->scene = this;
     gameObjects.insert(pair<string, GameObject*>(go->name, go));
 }
 
@@ -87,10 +88,14 @@ GameObject* Scene::Find(const string &name) const
     else return 0;
 }
 
-
-void Scene::SetCamera(Camera &cam)
+void Scene::SetCurrentCamera(Camera &cam)
 {
     this->cam = &cam;
+}
+
+Camera *Scene::GetCurrentCamera() const
+{
+    return cam;
 }
 
 bool Scene::IsPressed(int keyCode)

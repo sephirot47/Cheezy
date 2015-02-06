@@ -2,7 +2,7 @@
 
 VertexGroup::VertexGroup()
 {
-    data = 0;
+    data = nullptr;
     vertexFormat = new VertexFormat();
     vertexCount = 0;
 }
@@ -10,13 +10,12 @@ VertexGroup::VertexGroup()
 VertexGroup::VertexGroup(const VertexGroup &vg)
 {
     if(data) free(data);
-    if(vg.data)
-    {
+    if(vg.data) {
         int dataSize = vg.vertexCount * vg.vertexFormat->GetStride();
         data = malloc(dataSize);
         memcpy(data, vg.data, dataSize);
     }
-    else data = 0;
+    else data = nullptr;
 
     vertexFormat = new VertexFormat(*vg.vertexFormat);
     vertexCount = vg.vertexCount;
@@ -33,7 +32,7 @@ VertexGroup &VertexGroup::operator=(const VertexGroup &vg)
         data = malloc(dataSize);
         memcpy(data, vg.data, dataSize);
     }
-    else data = 0;
+    else data = nullptr;
 
     vertexFormat = new VertexFormat(*vg.vertexFormat);
     vertexCount = vg.vertexCount;
@@ -54,13 +53,13 @@ void VertexGroup::Init(int vertexCount)
     VertexFormat::GetDefault(*vertexFormat); //Create default vertexFormat
 
     int bytesAllocation = vertexCount * vertexFormat->GetStride();
-    if(bytesAllocation == 0) data = 0;
+    if(bytesAllocation == 0) data = nullptr;
     else data = malloc(bytesAllocation);
 }
 
 void VertexGroup::Init(const VertexFormat &vf)
 {
-    data = 0;
+    data = nullptr;
     vertexCount = 0;
     vertexFormat = new VertexFormat(vf);
 }
@@ -70,32 +69,30 @@ void VertexGroup::Init(int vertexCount, const VertexFormat &vf)
     this->vertexCount = vertexCount;
     vertexFormat = new VertexFormat(vf);
     int bytesAllocation = vertexCount * vertexFormat->GetStride();
-    if(bytesAllocation == 0) data = 0;
+    if(bytesAllocation == 0) data = nullptr;
     else data = malloc(bytesAllocation);
 }
 
 void VertexGroup::Init(const vector<Vertex> &vertices)
 {
-    if(data != 0) free(data);
+    if(data) free(data);
     data = malloc(vertices.size() * vertexFormat->GetStride());
-    for(unsigned int i = 0; i < vertices.size(); ++i)
-    {
+    for(unsigned int i = 0; i < vertices.size(); ++i) {
         SetVertex(i, vertices[i]);
     }
 }
 
 VertexGroup::~VertexGroup()
 {
-    if(data)
-    {
+    if(data) {
         free(data);
-        data = 0;
+        data = nullptr;
     }
 }
 
 void VertexGroup::SetAttribute(string attributeName, void *pvalue, int vertexIndex)
 {
-    if(data == 0) return;
+    if(!data) return;
     int offset = vertexFormat->GetOffsetOf(attributeName);
     if(offset == -1) return;
     offset += vertexFormat->GetStride() * vertexIndex;
@@ -118,7 +115,7 @@ Vertex* VertexGroup::GetVertexPointer(int vertexIndex) const
     if(vertexIndex < 0 or vertexIndex > vertexCount)
     {
         DbgWarning("Trying to get a pointer to a vertex out of bounds(returning null pointer)");
-        return 0;
+        return nullptr;
     }
     return (Vertex*)((char*)data + vertexIndex * vertexFormat->GetStride());
 }
@@ -128,13 +125,13 @@ void* VertexGroup::GetAttributePointer(string attributeName, int vertexIndex) co
     if(vertexIndex < 0 or vertexIndex >= vertexCount)
     {
         DbgWarning("Trying to get a pointer to an attribute of a vertex out of bounds (returning null pointer)");
-        return (void*)0;
+        return nullptr;
     }
     int offset = vertexFormat->GetOffsetOf(attributeName);
     if(offset == - 1)
     {
         DbgWarning("Trying to get a pointer to an attribute that doesn't exist (returning null pointer)");
-        return (void*)0;
+        return nullptr;
     }
 
     Vertex *v = GetVertexPointer(vertexIndex);

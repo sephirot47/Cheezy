@@ -41,7 +41,7 @@ public:
     Mesh(VertexFormat& vf);
     virtual ~Mesh();
 
-    virtual ComponentType GetType() const { return type; }
+    virtual string GetType() const { return type; }
 
     void AddVertices(const vector<Vertex> &vertices, int startingIndex);
     void GetVertices(vector<Vertex> &vertices);

@@ -23,6 +23,7 @@ private:
 
     Shader *vertexShader, *fragmentShader;
     Texture *texture;
+    map<string, mat4>  uniformsMat4;
     map<string, vec4>  uniformsVec4;
     map<string, vec3>  uniformsVec3;
     map<string, vec2>  uniformsVec2;
@@ -51,9 +52,10 @@ public:
 
     void SetTexture(Texture *t);
 
-    void SetUniform(string name, vec4 value);
-    void SetUniform(string name, vec3 value);
-    void SetUniform(string name, vec2 value);
+    void SetUniform(string name, const mat4& value);
+    void SetUniform(string name, const vec4& value);
+    void SetUniform(string name, const vec3& value);
+    void SetUniform(string name, const vec2& value);
     void SetUniform(string name, float value);
     void SetUniform(string name, int value);
 

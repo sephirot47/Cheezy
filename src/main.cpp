@@ -26,21 +26,23 @@ int main()
     Scene *scene = win.CreateScene("FirstScene");
 
     GameObject *go = new GameObject("go");
-   // GameObject *light = new GameObject("lus");
-   // light->RemoveComponent(MeshType);
-    //light->AddComponent(new Light());
-    //light->GetTransform()->pos = vec3(100.0, 100.0, 100.0);
+    /*GameObject *light = new GameObject("lus");
+    light->RemoveComponent("Mesh");
+    light->AddComponent(new Light());
+    light->GetTransform()->pos = vec3(100.0, 100.0, 100.0);*/
 
     scene->Add(go);
-   // scene->Add(light);
+    //scene->Add(light);
 
-    scene->SetCamera(cam);
+    scene->SetCurrentCamera(cam);
 
-    go->GetTransform()->scale = /*light->GetTransform()->scale = */ vec3(0.05, 0.05, 0.05);
-    scene->cam->LookAt(vec3(1, 1, 1), go->GetTransform()->pos, vec3(0, 1, 0));
+    go->GetTransform()->scale = vec3(0.05);
+    vec3 camPos = vec3(1, 1, 1), camUp = vec3(0, 1, 0);
+    scene->cam->LookAt(camPos, go->GetTransform()->pos, camUp);
 
     win.drawAxis = true;
     win.Loop();
     win.Destroy();
+
     return 0;
 }

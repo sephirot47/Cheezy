@@ -4,12 +4,14 @@ Mesh::Mesh()
 {
     vertexCount = 0;
     triangles = true;
-    type = MeshType;
+    type = "Mesh";
     vaoId = -1;
 
     glGenBuffers(1, &vboId);
+
     vertexFormat = new VertexFormat();
     VertexFormat::GetDefault(*vertexFormat);
+
     material = new Material();
     Material::GetDefault(*material);
 }
@@ -18,7 +20,7 @@ Mesh::Mesh(const Mesh &mesh)
 {
     vertexCount = mesh.vertexCount;
     triangles = mesh.triangles;
-    type = mesh.type;
+    type = "Mesh";
     vaoId = -1;
 
     glGenBuffers(1, &vboId);
@@ -30,7 +32,7 @@ Mesh::Mesh(VertexFormat &vf)
 {
     vertexCount = 0;
     triangles = true;
-    type = MeshType;
+    type = "Mesh";
     vaoId = -1;
 
     glGenBuffers(1, &vboId);

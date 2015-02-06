@@ -20,7 +20,7 @@ public:
     static void GetDefault(Transform &t);
 
     virtual ~Transform();
-    virtual ComponentType GetType() const { return type; }
+    virtual string GetType() const { return type; }
     void Destroy() {}
 };
 

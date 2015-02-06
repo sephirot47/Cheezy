@@ -9,25 +9,8 @@
 
 #include "include/Debug.h"
 
-#define CZ_FILTER_POINT GL_NEAREST
-#define CZ_FILTER_BILINEAR GL_LINEAR
-
-#define CZ_WRAP_CLAMP GL_CLAMP
-#define CZ_WRAP_REPEAT GL_REPEAT
-
 using namespace std;
 
-enum FilterMode
-{
-    LinearFilter = GL_LINEAR,
-    PointFilter = GL_NEAREST
-};
-
-enum WrapMode
-{
-    ClampWrap = GL_CLAMP,
-    RepeatWrap = GL_REPEAT
-};
 
 class Texture : public Bindable
 {
@@ -37,6 +20,16 @@ private:
     int width, height, n;
 
 public:
+
+    enum FilterMode {
+        FilterLinear = GL_LINEAR,
+        FilterPoint = GL_NEAREST
+    };
+
+    enum WrapMode {
+        WrapClamp = GL_CLAMP,
+        WrapRepeat = GL_REPEAT
+    };
 
     unsigned char *data;
 

@@ -17,9 +17,6 @@ enum ShaderType
     FragmentShader = GL_FRAGMENT_SHADER
 };
 
-#define CZ_VERTEX_SHADER GL_VERTEX_SHADER
-#define CZ_FRAGMENT_SHADER GL_FRAGMENT_SHADER
-
 #define CZ_MAX_SHADER_ERROR_LOG_SIZE 2056
 
 using namespace std;
@@ -28,8 +25,7 @@ class Shader
 {
 private:
 
-    char *srcCode, *filepath;
-    int srcCodeLength;
+    string srcCode, filepath;
     unsigned int shaderId;
     ShaderType type;
 
@@ -49,13 +45,13 @@ public:
 
     ///\brief Creates a shader of type shaderType and calls LoadFromFile(filepath) directly
     ///       shaderType can be CZ_VERTEX_SHADER or CZ_FRAGMENT_SHADER
-    Shader(ShaderType shaderType, const char* filepath);
+    Shader(ShaderType shaderType, string filepath);
 
     ///\brief Loads a shader from a file, compiles it and binds it to openGL
     ///       If something went wrong, returns false. Otherwise, returns true.
-    bool LoadFromFile(const char *filepath);
+    bool LoadFromFile(string filepath);
 
-    bool LoadFromSourceCode(const char *srcCode);
+    bool LoadFromSourceCode(string srcCode);
 
     ///\brief Returns the shader id.
     ///       If the shader hasn't been loaded yet from a file, returns -1.

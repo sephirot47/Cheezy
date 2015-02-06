@@ -13,7 +13,7 @@ public:
 
     Light();
 
-    virtual ComponentType GetType() const { return type; }
+    virtual string GetType() const { return type; }
 
     void SetRadius(float r);
     float GetRadius();

@@ -2,7 +2,7 @@
 
 Transform::Transform()
 {
-    type = TransformType;
+    type = "Transform";
     pos = vec3(0);
     scale = vec3(1);
     rot = quat();

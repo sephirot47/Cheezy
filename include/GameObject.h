@@ -16,6 +16,7 @@
 #include "include/Transform.h"
 #include "include/Material.h"
 #include "include/Light.h"
+#include "include/Scene.h"
 #include "include/Shader.h"
 #include "include/Component.h"
 #include "include/Mesh.h"
@@ -23,10 +24,12 @@
 using namespace std;
 using namespace glm;
 
+class Scene;
+
 class GameObject
 {
 typedef map<string, GameObject*> GameObjMap;
-typedef map<ComponentType, Component*> CompMap;
+typedef map<string, Component*> CompMap;
 
 private:
     GameObjMap gameObjects;
@@ -35,8 +38,13 @@ private:
     Transform *transform;
     Mesh *mesh;
 
+    Scene *scene;
+
+    mat4 modelMatrix;
+
 public:
 
+    friend class Scene;
     string name;
 
     CompMap components;
@@ -58,17 +66,20 @@ public:
 
     ///\brief Returns true if the GameObject already contains a component of type type.
     ///       Returns false otherwise.
-    bool HasComponent(ComponentType type) const;
+    bool HasComponent(string type) const;
 
     ///\brief Returns a pointer to the component of type type of this GameObject.
     ///       If the GameObject doesn't contain a component of type type, returns null.
-    Component* GetComponent(ComponentType type) const;
+    Component* GetComponent(string type) const;
 
-    Transform *GetTransform();
-    Mesh *GetMesh();
+    Transform *GetTransform() const;
+    Mesh *GetMesh() const;
+
+    Scene *GetScene();
+    mat4 GetModelMatrix();
 
     ///\brief Removes the component c from the GameObject
-    void RemoveComponent(ComponentType type);
+    void RemoveComponent(string type);
 
     void _Update();
     void _Draw();

@@ -11,6 +11,7 @@
 
 using namespace std;
 
+class Scene;
 typedef map<string, Scene*> SceneMap;
 
 class CheezyWin
@@ -31,11 +32,12 @@ public:
     SDL_Renderer *sdlRen;
 
     CheezyWin();
+    virtual ~CheezyWin();
 
     ///\brief Inits and creates the window
     void Init(int width, int height);
 
-    ///\brief Creates a scene with name sceneName nad returns a pointer to it.
+    ///\brief Creates a scene with name sceneName and returns a pointer to it.
     Scene* CreateScene(const char* sceneName);
 
     ///\brief Sets the current scene to be drawn

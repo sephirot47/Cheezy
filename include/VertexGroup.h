@@ -17,12 +17,13 @@ public:
     VertexGroup();
     VertexGroup(const VertexGroup &vg);
     VertexGroup& operator=(const VertexGroup &vg);
+    virtual ~VertexGroup();
+
     void Init(const VertexGroup& vg);
     void Init(int vertexCount);
     void Init(const VertexFormat &vf);
     void Init(int vertexCount, const VertexFormat &vf);
     void Init(const vector<Vertex>& vertices);
-    virtual ~VertexGroup();
 
     void SetAttribute(string attributeName, void *pvalue, int vertexIndex);
 

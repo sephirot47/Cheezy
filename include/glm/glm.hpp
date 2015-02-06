@@ -107,10 +107,11 @@
 #include "mat4x3.hpp"
 #include "mat4x4.hpp"
 
-//ANADIDOS
+//ANADIDOS///////////
 #include "gtc/quaternion.hpp"
 #include "gtc/type_ptr.hpp"
 #include "gtc/matrix_transform.hpp"
+#include "gtx/euler_angles.hpp"
 /////////////////////
 
 #include "trigonometric.hpp"

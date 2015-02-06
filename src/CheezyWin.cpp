@@ -7,6 +7,11 @@ CheezyWin::CheezyWin()
     currentScene = NULL;
 }
 
+CheezyWin::~CheezyWin()
+{
+    for(auto it : scenes) delete it.second;
+}
+
 int CheezyWin::InitWindow(SDL_Window **win, SDL_Renderer **ren, int x, int y, int width, int height)
 {
     if(SDL_Init(SDL_INIT_EVERYTHING) != 0) { DbgError("Could not init SDL!"); return 0; }
@@ -78,7 +83,6 @@ void CheezyWin::Draw() const
         currentScene->Draw();
     }
 
-
     if(drawAxis) DrawAxis();
 
     glFlush();
@@ -86,6 +90,7 @@ void CheezyWin::Draw() const
 
 void CheezyWin::Destroy()
 {
+    delete this;
     SDL_DestroyWindow(sdlWin);
     SDL_Quit();
 }

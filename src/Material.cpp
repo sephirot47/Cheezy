@@ -32,9 +32,9 @@ Material& Material::operator=(const Material &m)
 
 Material::~Material()
 {
-    if(vertexShader) delete vertexShader;
+    if(vertexShader)   delete vertexShader;
     if(fragmentShader) delete fragmentShader;
-    if(texture) delete texture;
+    if(texture)        delete texture;
 }
 
 void Material::GetDefault(Material &m)
@@ -43,6 +43,7 @@ void Material::GetDefault(Material &m)
     Shader vs, fs;
     Shader::GetDefaultVertex(vs);
     Shader::GetDefaultFragment(fs);
+
     m.AttachShader(vs);
     m.AttachShader(fs);
 }
@@ -95,8 +96,8 @@ int Material::GetShaderId(unsigned int shaderType) const
 {
     switch(shaderType)
     {
-        case CZ_VERTEX_SHADER: return vertexShader ? vertexShader->GetId() : -1;
-        case CZ_FRAGMENT_SHADER: return fragmentShader ? fragmentShader->GetId() : -1;
+        case VertexShader: return vertexShader ? vertexShader->GetId() : -1;
+        case FragmentShader: return fragmentShader ? fragmentShader->GetId() : -1;
     }
     return -1;
 }
@@ -111,19 +112,25 @@ void Material::SetTexture(Texture *t)
     texture = t;
 }
 
-void Material::SetUniform(string name, vec4 value)
+void Material::SetUniform(string name, const mat4& value)
+{
+    if(programId <= 0) { DbgWarning("The material program is not linked, can't set any uniform."); return; }
+    uniformsMat4[name] = value;
+}
+
+void Material::SetUniform(string name, const vec4& value)
 {
     if(programId <= 0) { DbgWarning("The material program is not linked, can't set any uniform."); return; }
     uniformsVec4[name] = value;
 }
 
-void Material::SetUniform(string name, vec3 value)
+void Material::SetUniform(string name, const vec3& value)
 {
     if(programId <= 0) { DbgWarning("The material program is not linked, can't set any uniform."); return; }
     uniformsVec3[name] = value;
 }
 
-void Material::SetUniform(string name, vec2 value)
+void Material::SetUniform(string name, const vec2& value)
 {
     if(programId <= 0) { DbgWarning("The material program is not linked, can't set any uniform."); return; }
     uniformsVec2[name] = value;
@@ -153,6 +160,7 @@ void Material::Bind() const
     {
         glUseProgram(programId);
         //Cargamos uniforms a saco
+        for(auto it : uniformsMat4)  glUniformMatrix4fv(glGetUniformLocation(programId, it.first.c_str()), 1, GL_FALSE, &it.second[0][0]);
         for(auto it : uniformsVec4)  glUniform4f(glGetUniformLocation(programId, it.first.c_str()), it.second.x, it.second.y, it.second.z, it.second.w);
         for(auto it : uniformsVec3)  glUniform3f(glGetUniformLocation(programId, it.first.c_str()), it.second.x, it.second.y, it.second.z);
         for(auto it : uniformsVec2)  glUniform2f(glGetUniformLocation(programId, it.first.c_str()), it.second.x, it.second.y);

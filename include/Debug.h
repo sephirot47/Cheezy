@@ -105,6 +105,8 @@ using namespace glm;
 ostream& operator<<(ostream &log, const vec3 &v);
 ostream& operator<<(ostream &log, const quat &q);
 ostream& operator<<(ostream &log, const vec2 &v);
+ostream& operator<<(ostream &log, const mat4 &v);
+
 
 class Debug
 {

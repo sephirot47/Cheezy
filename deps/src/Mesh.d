@@ -174,14 +174,15 @@ src/Mesh.o: src/Mesh.cpp /usr/include/stdc-predef.h include/Mesh.h \
  include/glm/gtc/matrix_transform.hpp \
  include/glm/gtc/matrix_transform.inl include/glm/gtc/../matrix.hpp \
  include/glm/gtc/../detail/func_matrix.hpp \
- include/glm/gtc/../detail/func_matrix.inl include/glm/common.hpp \
- include/glm/packing.hpp include/glm/detail/func_packing.hpp \
- include/glm/detail/func_packing.inl include/glm/detail/type_half.hpp \
- include/glm/detail/type_half.inl include/glm/vector_relational.hpp \
- include/glm/integer.hpp include/glm/detail/func_integer.hpp \
- include/glm/detail/func_integer.inl include/Time.h \
- /usr/local/include/SDL2/SDL.h /usr/local/include/SDL2/SDL_main.h \
- /usr/local/include/SDL2/SDL_stdinc.h \
+ include/glm/gtc/../detail/func_matrix.inl \
+ include/glm/gtx/euler_angles.hpp include/glm/gtx/euler_angles.inl \
+ include/glm/common.hpp include/glm/packing.hpp \
+ include/glm/detail/func_packing.hpp include/glm/detail/func_packing.inl \
+ include/glm/detail/type_half.hpp include/glm/detail/type_half.inl \
+ include/glm/vector_relational.hpp include/glm/integer.hpp \
+ include/glm/detail/func_integer.hpp include/glm/detail/func_integer.inl \
+ include/Time.h /usr/local/include/SDL2/SDL.h \
+ /usr/local/include/SDL2/SDL_main.h /usr/local/include/SDL2/SDL_stdinc.h \
  /usr/local/include/SDL2/SDL_config.h \
  /usr/local/include/SDL2/SDL_platform.h \
  /usr/local/include/SDL2/begin_code.h \

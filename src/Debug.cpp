@@ -78,3 +78,13 @@ ostream& operator<<(ostream &log, const quat &q)
     log << "(" << q.x << ", " << q.y << ", " << q.z << ", " << q.w << ")";
     return log;
 }
+
+
+ostream &operator<<(ostream &log, const mat4 &v)
+{
+    log << "(" << v[0][0] << ", " << v[1][0] << ", " << v[2][0] << ", " << v[3][0] << "," << endl;
+    log << " " << v[0][1] << ", " << v[1][1] << ", " << v[2][1] << ", " << v[3][1] << "," << endl;
+    log << " " << v[0][2] << ", " << v[1][2] << ", " << v[2][2] << ", " << v[3][2] << "," << endl;
+    log << " " << v[0][3] << ", " << v[1][3] << ", " << v[2][3] << ", " << v[3][3] << ")" << endl;
+    return log;
+}
