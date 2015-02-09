@@ -28,9 +28,6 @@ public:
     ///\brief Moves the camera to eye, and rotates it to make it look to to, with the up vector of the camera aligned with up
     void LookAt(const vec3& camPos, const vec3& lookTo, const vec3& up);
 
-    ///\brief Applies the matrices transformations of the stage perspective setting and camera position & rotation
-    void ApplyPerspective();
-
     mat4 GetViewMatrix() const;
     mat4 GetProjectionMatrix() const;
 

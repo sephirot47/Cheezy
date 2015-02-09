@@ -29,7 +29,6 @@ public:
     string name;
     Camera *cam;
 
-    Scene();
     Scene(string name);
     virtual ~Scene();
 
