@@ -37,6 +37,8 @@ void main()
 	vec3 toLight = normalize(lightPos - pos.xyz);
 	float cos = dot(normal.xyz, toLight);
 	bright = clamp(cos * lightIntensity, 0.0, 1.0); 
+	
+	vec4 worldPos = viewMatrix * modelMatrix * pos;
 
 	gl_Position = projectionMatrix * viewMatrix * modelMatrix * pos;
 	uvFrag = uv;

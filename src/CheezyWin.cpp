@@ -3,8 +3,7 @@
 CheezyWin::CheezyWin()
 {
     Debug::SetFile(CZ_AUTO_LOG_FILE);
-    drawAxis = true;
-    currentScene = NULL;
+    currentScene = nullptr;
 }
 
 CheezyWin::~CheezyWin()
@@ -33,7 +32,7 @@ Scene* CheezyWin::CreateScene(const char* sceneName)
 {
     Scene *scene = new Scene(sceneName);
     scenes.insert(pair<string, Scene*>(sceneName, scene));
-    if(currentScene == NULL) SetCurrentScene(sceneName);
+    if(!currentScene) SetCurrentScene(sceneName);
     return scene;
 }
 
@@ -47,31 +46,6 @@ void CheezyWin::SetCurrentScene(const char* sceneName)
     currentScene = GetScene(sceneName);
 }
 
-void CheezyWin::DrawAxis() const
-{
-    const float size = 999999.0f;
-    glMatrixMode(GL_MODELVIEW);
-    glPushMatrix();
-
-    glBegin(GL_LINES);
-    glColor3f(1.0f, 0.0f, 0.0f);
-    glVertex3f(0.0f, 0.0f, 0.0f);
-    glVertex3f(size, 0.0f, 0.0f);
-    glEnd();
-    glBegin(GL_LINES);
-    glColor3f(0.0f, 1.0f, 0.0f);
-    glVertex3f(0.0f, 0.0f, 0.0f);
-    glVertex3f(0.0f, size, 0.0);
-    glEnd();
-    glBegin(GL_LINES);
-    glColor3f(0.0f, 0.0f, 1.0f);
-    glVertex3f(0.0f, 0.0f, 0.0f);
-    glVertex3f(0.0f, 0.0f, size);
-    glEnd();
-
-    glPopMatrix();
-}
-
 void CheezyWin::Draw() const
 {
     glClearColor(0.0, 0.05, 0.0, 1.0);
@@ -82,9 +56,6 @@ void CheezyWin::Draw() const
         currentScene->Update();
         currentScene->Draw();
     }
-
-    if(drawAxis) DrawAxis();
-
     glFlush();
 }
 
@@ -116,7 +87,6 @@ void CheezyWin::Loop()
 
         currentScene->_Update();
         Draw();
-
         SDL_GL_SwapWindow(sdlWin);
         SDL_Delay(CZ_DELAY_TIME);
     }

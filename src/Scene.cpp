@@ -20,20 +20,19 @@ void Scene::Update()
 {
     float rotSpeed = 0.05f, moveSpeed = 0.05f;
 
-    //Esto esta mal
     if(IsPressed(SDLK_UP))    cam->pos += cam->GetForward() * moveSpeed;
     if(IsPressed(SDLK_DOWN))  cam->pos -= cam->GetForward() * moveSpeed;
     if(IsPressed(SDLK_LEFT))  cam->pos -= cam->GetRight() * moveSpeed;
     if(IsPressed(SDLK_RIGHT)) cam->pos += cam->GetRight() * moveSpeed;
 
-    //Esto esta mal
-    if(IsPressed(SDLK_w)) cam->rot = quat(rotSpeed  * vec3(1, 0, 0)) * cam->rot;
-    if(IsPressed(SDLK_s)) cam->rot = quat(-rotSpeed * vec3(1, 0, 0)) * cam->rot;
-    if(IsPressed(SDLK_a)) cam->rot = quat(vec3(0 ,rotSpeed, 0)) * cam->rot;
-    if(IsPressed(SDLK_d)) cam->rot = quat(vec3(0 ,-rotSpeed, 0)) * cam->rot;
-    if(IsPressed(SDLK_q)) cam->rot = quat(vec3(0, 0, -rotSpeed)) * cam->rot;
-    if(IsPressed(SDLK_e)) cam->rot = quat(vec3(0, 0, rotSpeed)) * cam->rot;
-    cam->UpdateMatrices();
+    if(IsPressed(SDLK_w)) cam->RotateAround(cam->GetRight(), rotSpeed);
+    if(IsPressed(SDLK_s)) cam->RotateAround(cam->GetRight(), -rotSpeed);
+    if(IsPressed(SDLK_a)) cam->RotateAround(cam->GetUp(), rotSpeed);
+    if(IsPressed(SDLK_d)) cam->RotateAround(cam->GetUp(), -rotSpeed);
+    if(IsPressed(SDLK_q)) cam->RotateAround(cam->GetForward(), rotSpeed);
+    if(IsPressed(SDLK_e)) cam->RotateAround(cam->GetForward(), -rotSpeed);
+    if(IsPressed(SDLK_SPACE)){ vec3 zero(0, 0, 0), up(0,1,0); cam->LookAt(zero, up); }
+    //DbgLog(cam->GetForward());
 }
 
 void Scene::Draw()

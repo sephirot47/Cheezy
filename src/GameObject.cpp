@@ -40,9 +40,6 @@ void GameObject::Update()
     mesh->GetMaterial()->SetUniform("multiplier", 0.5f + (float)fabs(sin(Time::GetMiliseconds() / 500.0f))*2.0f );
     mesh->GetMaterial()->SetUniform("mixing", 0.9f);
     mesh->GetMaterial()->SetUniform("mec", vec4((sin(Time::GetMiliseconds() / 500.0)+1.0f)*0.5f, (cos(Time::GetMiliseconds() / 500.0)+1.0f)*0.5f, 0.0f, 1.0f));
-
-    //transform->pos.x += 0.05;
-    //transform->rot = quat(vec3(0, -0.05, 0)) * transform->rot;
 }
 
 bool GameObject::AddComponent(Component *c)

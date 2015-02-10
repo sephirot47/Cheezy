@@ -37,10 +37,9 @@ int main()
     scene->SetCurrentCamera(cam);
 
     go->GetTransform()->scale = vec3(0.05);
-    vec3 camPos = vec3(1, 1, 1), camUp = vec3(0, 1, 0);
-    scene->cam->LookAt(camPos, go->GetTransform()->pos, camUp);
+    vec3 camPos = vec3(5, 5, 10), camUp = vec3(0, 1, 0);
+    scene->cam->LookAt(camPos, vec3(0, 0, 0), camUp);
 
-    win.drawAxis = true;
     win.Loop();
     win.Destroy();
 
